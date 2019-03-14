@@ -1,0 +1,119 @@
+<!doctype html><!-- app7000-Zapp -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>ʕ⊙ᴥ⊙ʔ</title>
+
+
+    <!-- ========================================= APP MAIN -->
+
+    <!-- design font -->
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
+
+    <link  href="design.css" rel="stylesheet" type="text/css">
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template">
+
+<!-- Знакомство с королём -->
+<section class="el-scene layer scene-welcome-appking">
+
+    <figure class="character-welcome-appking">
+        <img src="art/characters/appking-welcome.svg" alt="App King">
+    </figure>
+
+    <div class="textblock-welcome-appking">
+
+        <h2 class="title">Это король Апп.</h2>
+        <p class="subtitle">Версия Альфа Второй</p>
+        <p>Он настоящий король, потому что <nobr>¹) умеет управлять</nobr> <nobr>и ²) у него</nobr> есть корона.</p>
+        <p>Корона слегка повреждена, об этом рассказывает легенда:</p>
+
+        <figure class="character-welcome-arrow">
+            <img src="art/characters/arrow-fat-bottom.svg" alt="Welcome!">
+        </figure>
+
+    </div>
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <style>
+        .scene-welcome-appking {
+            background-color: hsl(201, 55%, 12%); /* Funny Like the Space */
+            color: white;
+            min-height: 100vh;
+
+            /* contentbox: xy-centered */
+            display: flex;
+            justify-content: center;
+            align-items:     center;
+            align-content:   center;
+        }
+        .character-welcome-appking {
+            flex-shrink: 0;
+            height: 100vh;
+            width:  50vh;
+
+            /* contentbox: xy-centered */
+            display: flex;
+            justify-content: center;
+            align-items:     center;
+            align-content:   center;
+        }
+        .character-welcome-appking img {
+            height: 100%;
+            width:  auto;
+        }
+        .textblock-welcome-appking {
+            font-size: 1.2em;
+            max-width: 24em;
+            align-self: flex-end;
+
+            /* has text grid 
+            display: grid;
+            grid-row-gap: 1.5em;
+            grid-auto-flow: row;
+            grid-template-columns: 1em [main-start] 1fr [main-end] 1em;
+            */
+        }
+        .character-welcome-arrow {
+            margin: 0 auto 2em 0;
+        }
+        .character-welcome-arrow img {
+            width:  auto;
+            height: 4em;
+        }
+        @media (max-width:56em) {
+            .scene-welcome-appking {
+                flex-direction: column;
+            }
+            .character-welcome-appking {
+                height:  32vh;
+                width:   100%;
+                padding: 0.5em 1.5em 0 1.6em;
+                justify-content: flex-start;
+            }
+            .textblock-welcome-appking {
+                font-size: 1em;
+            }
+            .character-welcome-arrow {
+                margin-left: auto;
+            }
+        }
+    </style>
+</section>
+
+
+</body>
+</html>
