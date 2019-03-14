@@ -1,4 +1,83 @@
+/* King Style Sheet, KSS, 2019.3.14 */
+/* Last revision: 2019.3.14 */
+/* KSS base html markup */
+/* ------------------------------------ scale model */
+:root {
+  --rem-unit: 10px;
+  --em-unit: 16px; }
+
+html {
+  font-size: var(--rem-unit); }
+
 body {
-  background: firebrick;
-  color: white;
-}
+  font-size: var(--em-unit);
+  line-height: 1.5; }
+
+/* ------------------------------------ minimal box model */
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  height: 100%; }
+
+html, body {
+  margin: 0;
+  padding: 0; }
+
+/* ------------------------------------ improve design & UX */
+html {
+  cursor: default; }
+
+body {
+  overflow-y: scroll; }
+
+a, area, button, input, label, select, summary, textarea, [tabindex] {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation; }
+
+@supports (hanging-punctuation: first) {
+  * {
+    hanging-punctuation: first; } }
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+
+/* ------------------------------------ avoid rendering errors */
+img, svg {
+  max-width: 100%; }
+
+canvas {
+  display: inline-block; }
+
+/* ----------------- use semantic markup without browser`s design */
+blockquote, figure, figcaption {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  white-space: normal; }
+
+article, section, header, footer, main, aside, nav {
+  display: block; }
+
+nav ul, nav ol {
+  padding: 0;
+  margin: 0;
+  list-style-type: none; }
+
+/* KSS base design */
+body {
+  font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; }
+
+/* KSS interface workers */
+/* KSS screens */
+/* EOF KSS Style Sheet */

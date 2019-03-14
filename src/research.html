@@ -1,0 +1,96 @@
+<!doctype html><!-- app7000-Zapp -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Research</title>
+
+
+    <!-- ========================================= APP MAIN -->
+
+
+    <!-- design font -->
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
+
+    <link  href="design.css" rel="stylesheet" type="text/css">
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template">
+
+
+<section class="research-font-sizes">
+    <style>
+        .research-font-sizes {
+            padding: 1em;
+        }
+        .research-font-sizes .result p {
+            margin: 1em auto;
+        }
+        .research-font-sizes .txt {
+            padding: 1em 0;
+        }
+        .research-font-sizes .w1 p { max-width: 22em; }
+        .research-font-sizes .w2 p { max-width: 32em; }
+        .research-font-sizes .w3 p { max-width: 36em; }
+        .research-font-sizes .t1 p { font-size: 24px; }
+        .research-font-sizes .t2 p { font-size: 20px; }
+        .research-font-sizes .t3 p { font-size: 16px; }
+    </style>
+    <div class="content">
+        <p>Ах, побывать бы в королевских родных краях. Там содержание выращивают на горных склонах под светом ярких идей. Сеют добро и к осени пожинают плоды. Крохотные летающие феи — контенты — тщательно собирают содержание в корзинки и относят в редакцию. Где большие, как бегемоты, редакторы перерабатывают содержание объективным взглядом.</p>
+        <p>Переработанное содержание складывают для просушки на солнечном пляже. Под шелест волн суетятся крабы. Стайками бегают между кучками с содержанием и форматируют. Перекладывают содержание из кучки в кучку, готовые кучки подписывают перед загрузкой на сервер.</p>
+        <p>Огромные плавучие сервера, с серьёзными капитанами и с трубами густого чёрного дыма, подплывают к берегу чтобы загрузить содержание. Уже на серверах, сотни функций оптимизируют содержание и упаковывают к выдаче.</p>
+        <p>На экран свежее содержание подаётся распакованным и очищенным от ошибок. Когда видишь на экране интересное содержание, наполненное смыслом и лёгким ароматом элегантного дизайна, то каждый раз влюбляешься...</p>
+<p>
+    Король Апп удивился разговорам. Кто здесь?
+</p>
+<p>
+    — Я создатель<br>
+    — Создатель чего?<br>
+    — Тебя, например, создал
+</p>
+<p>
+    Король на секунду задумался. Заявление собеседника было похоже на правду, но уточнение никогда не бывает лишним.
+</p>
+<p>
+    — Меня создал? Чем докажешь?, — спросил король Апп.
+</p>
+<p>
+    — Каждой твоей частичкой. Ты сделан из смеси пустого места и воли создателя. Посмотри на себя внимательно:
+</p>
+    </div>
+    <div class="result"></div>
+    <script>
+        $(function font_size_content () {
+            const txt = $('.research-font-sizes .content').html()
+            const output = $('.research-font-sizes .result')
+
+            for ( let t = 1; t <= 3; t++ )
+                for ( let i = 1; i <= 3; i++ )
+                    $('<div>')
+                        .addClass('txt')
+                        .addClass('w'+i)
+                        .addClass('t'+t)
+                        .html(txt)
+                        .prepend('<span>w'+i+'/t'+t+'</span><hr>')
+                        .appendTo(output)
+        })
+    </script>
+</section>
+
+
+</body>
+</html>
