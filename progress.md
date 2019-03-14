@@ -1,5 +1,8 @@
 # plan
 
-- scss base
 - scetches
 - article layout
+
+# plan done
+
+- scss base
