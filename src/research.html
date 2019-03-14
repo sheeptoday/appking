@@ -31,6 +31,161 @@
 <body class="body-wrap design-template">
 
 <section class="research-welcome-layout">
+    <style>
+        .scene--welcome-appking {
+            background-color: hsl(215, 81%, 82%);
+            /* contentbox */
+            min-height: 100vh;
+            display: flex;
+            flex-direction:  column;
+            justify-content: space-between;
+            align-items:     stretch;
+            align-content:   stretch;
+        }
+        .scene--welcome-appking > header { flex-grow: 0; }
+        .scene--welcome-appking > footer { flex-grow: 2; }
+
+        /* sky header */
+
+        .scene--welcome-appking > header {
+            min-height: 32vh;
+            /* text-grid */
+            display: grid;
+            grid-gap: 0 1em;
+            grid-template-columns:
+                [full-start]
+                    minmax(0, auto)
+                [prefix-start]
+                    6em
+                [prefix-end main-start]
+                    minmax(auto, 26em)
+                [suffix-start main-end]
+                    6em
+                [suffix-end]
+                    minmax(0, auto)
+                [full-end];
+            /**/
+        }
+        .scene--welcome-appking > header .caption {
+            /* contentbox */
+            display: flex;
+            justify-content: flex-start;
+            align-items:     flex-end;
+            align-content:   flex-end;
+            /**/
+        }
+        .scene--welcome-appking > header .caption blockquote {
+            padding-bottom: 2em;
+            padding-right:  1em;
+        }
+        .scene--welcome-appking > header h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        .scene--welcome-appking > header .subtitle {
+            font-size: 0.75em;
+            margin:  0;
+            padding: 0.5em;
+            display: inline-block;
+            background-color: firebrick;
+            color: white;
+        }
+        .scene--welcome-appking > header .character {
+            width: 6em;
+            transform: translateY(4em) rotateY(180grad);
+            z-index: 1;
+        }
+
+        /* ground footer */
+
+
+        .scene--welcome-appking > footer {
+            background-color: hsl(95, 81%, 82%);
+            padding-top: 4em;
+            clip-path: polygon( 0 2rem, 20% 0, 25% 1rem, 40% 0, 60% 2rem, 80% 0, 100% 1rem, 100% 100%, 0 100%);
+            align-content: center;
+            /* text-grid */
+            display: grid;
+            grid-gap: 0 1em;
+            grid-template-columns:
+                [full-start]
+                    minmax(0, auto)
+                [prefix-start]
+                    6em
+                [prefix-end main-start]
+                    minmax(auto, 26em)
+                [suffix-start main-end]
+                    6em
+                [suffix-end]
+                    minmax(0, auto)
+                [full-end];
+            /**/
+        }
+        .scene--welcome-appking > footer .arrow {
+            margin: 0 auto;
+        }
+
+
+        .text-grid {
+            display: grid;
+            grid-template-columns:
+                [full-start]
+                    minmax(0, auto)
+                [prefix-start]
+                    6em
+                [prefix-end main-start]
+                    minmax(auto, 26em)
+                [suffix-start main-end]
+                    6em
+                [suffix-end]
+                    minmax(0, auto)
+                [full-end];
+        }
+        .text-grid *,
+        .scene--welcome-appking > header *,
+        .scene--welcome-appking > footer *
+        { grid-column: main; }
+        @media (max-width:800px) {
+            :root {
+                --em-unit: 16px;
+            }
+            .scene--welcome-appking > header,
+            .scene--welcome-appking > footer,
+            .text-grid {
+                grid-gap: 0;
+                grid-template-columns:
+                    [full-start]
+                        minmax(1rem, auto)
+                    [prefix-start suffix-start main-start]
+                        minmax(auto, 26em)
+                    [prefix-end suffix-end main-end]
+                        minmax(1rem, auto)
+                    [full-end];
+            }
+        }
+    </style>
+    <section class="el-scene scene--welcome-appking">
+        <header>
+            <section class="caption">
+                <blockquote>
+                    <h1>Это король Апп</h1>
+                    <p class="subtitle">Версия Альфа Второй</p>
+                </blockquote>
+                <figure class="character">
+                    <div class="character--welcome-appking"><img src="art/characters/appking-welcome.svg" alt="App King"></div>
+                </figure>
+            </section>
+        </header>
+        <footer>
+            <blockquote>
+                <p>Литературный персонаж стоит у входа в королевство.</p>
+                <p>Корона слегка повреждена, об этом рассказывает легенда:</p>
+            </blockquote>
+            <figure class="arrow">
+                <div class="character--welcome-arrow"><img src="art/characters/arrow-fat-bottom.svg" alt="Welcome!"></div>
+            </figure>
+        </footer>
+    </section>
     <section class="el-scene scene--welcome-appking">
         <header>
             <section class="textblock">
@@ -41,14 +196,19 @@
                 <img src="art/characters/appking-welcome.svg" alt="App King">
             </figure>
         </header>
-        <footer>
+        <footer class="text-grid">
+           <div style="grid-column:prefix;background:pink;">x</div>
             <section class="textblock">
                 <p>Он настоящий король, потому что <nobr>¹) умеет управлять</nobr> <nobr>и ²) у него</nobr> есть корона.</p>
                 <p>Корона слегка повреждена, об этом рассказывает легенда:</p>
             </section>
+            <div style="grid-column:suffix;">
+                <img src="art/characters/appking-welcome.svg" alt="App King">
+            </div>
             <figure class="character--welcome-arrow">
                 <img src="art/characters/arrow-fat-bottom.svg" alt="Welcome!">
             </figure>
+            <div style="grid-column:suffix;">x</div>
         </footer>
     </section>
 </section>

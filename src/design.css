@@ -4,59 +4,85 @@
 /* ------------------------------------ scale model */
 :root {
   --rem-unit: 10px;
-  --em-unit: 16px; }
+  --em-unit: 24px;
+}
 
 html {
-  font-size: var(--rem-unit); }
+  font-size: var(--rem-unit);
+}
 
 body {
   font-size: var(--em-unit);
-  line-height: 1.5; }
+  line-height: 1.25;
+}
 
 /* ------------------------------------ minimal box model */
 *, *:before, *:after {
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 html {
   box-sizing: border-box;
-  height: 100%; }
+  height: 100%;
+}
 
 html, body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /* ------------------------------------ improve design & UX */
 html {
-  cursor: default; }
+  cursor: default;
+}
 
 body {
-  overflow-y: scroll; }
+  overflow-y: scroll;
+}
 
 a, area, button, input, label, select, summary, textarea, [tabindex] {
   -ms-touch-action: manipulation;
-  touch-action: manipulation; }
+  touch-action: manipulation;
+}
 
 @supports (hanging-punctuation: first) {
   * {
-    hanging-punctuation: first; } }
+    hanging-punctuation: first;
+  }
+}
 
 html {
   -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; }
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  max-width: 26em;
+  margin-right: auto;
+}
+
+p + p {
+  padding-top: 1em;
+}
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 
 /* ------------------------------------ avoid rendering errors */
 img, svg {
-  max-width: 100%; }
+  max-width: 100%;
+  display: block;
+}
 
 canvas {
-  display: inline-block; }
+  display: inline-block;
+}
 
 /* ----------------- use semantic markup without browser`s design */
 blockquote, figure, figcaption {
@@ -64,19 +90,32 @@ blockquote, figure, figcaption {
   margin: 0;
   padding: 0;
   border: 0;
-  white-space: normal; }
+  white-space: normal;
+}
 
 article, section, header, footer, main, aside, nav {
-  display: block; }
+  display: block;
+}
 
 nav ul, nav ol {
   padding: 0;
   margin: 0;
-  list-style-type: none; }
+  list-style-type: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+}
 
 /* KSS base design */
 body {
-  font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; }
+  font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+}
 
 /* KSS interface workers */
 /* KSS screens */

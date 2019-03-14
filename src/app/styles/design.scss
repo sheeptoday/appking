@@ -12,11 +12,11 @@
 
 :root {
     --rem-unit: 10px;
-    --em-unit:  16px;
+    --em-unit:  24px;
 }
 
 html { font-size: var(--rem-unit); }
-body { font-size: var(--em-unit); line-height: 1.5; }
+body { font-size: var(--em-unit); line-height: 1.25; }
 
 
 /* ------------------------------------ minimal box model */
@@ -57,6 +57,13 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 }
+p {
+    max-width:    26em;
+    margin-right: auto;
+}
+p+p {
+    padding-top: 1em;
+}
 
 // native font stack 2018
 
@@ -82,7 +89,7 @@ body {
 /* ------------------------------------ avoid rendering errors */
 
 
-img, svg { max-width: 100% }
+img, svg { max-width: 100%; display: block; }
 canvas   { display: inline-block; }
 
 
@@ -101,6 +108,14 @@ nav ul, nav ol {
     padding: 0;
     margin: 0;
     list-style-type: none;
+}
+h1, h2, h3, h4, h5, h6, p, blockquote {
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    margin:  0;
+    padding: 0;
 }
 
 
