@@ -137,11 +137,46 @@ body {
      font-family: $font-family-preset--tufte-serif;
 }
 
+$screenForMobile: 'max-width:800px';
+$screenNotMobile: 'min-width:801px';
+
 
 // ---------------------------------------------------------------
 /* KSS interface workers */
 // ---------------------------------------------------------------
 
+@import "design-animations";
+
+/* common layout for text content */
+
+.text-grid {
+    display: grid;
+    grid-gap: 0 1em;
+    grid-template-columns:
+        [full-start]
+            minmax(0, auto)
+        [prefix-start]
+            6em
+        [prefix-end main-start]
+            minmax(auto, 26em)
+        [suffix-start main-end]
+            6em
+        [suffix-end]
+            minmax(0, auto)
+        [full-end];
+    & * { grid-column: main; }
+    @media ($screenForMobile) {
+        grid-gap: 0;
+        grid-template-columns:
+            [full-start]
+                minmax(1rem, auto)
+            [prefix-start suffix-start main-start]
+                minmax(auto, 26em)
+            [prefix-end suffix-end main-end]
+                minmax(1rem, auto)
+            [full-end];
+    }
+}
 
 // ---------------------------------------------------------------
 /* KSS screens */
