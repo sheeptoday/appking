@@ -74,7 +74,7 @@
             margin: 0;
             color:white;
         }
-        @media (min-width:501px) {
+        @media (min-width:601px) {
             .scene--welcome-appking > header h1 {
                 font-size: 2em;
             }
@@ -92,7 +92,7 @@
             transform: translateY(1em) rotateY(180grad);
             z-index: 1;
         }
-        @media (min-width:500px) {
+        @media (min-width:601px) {
             .scene--welcome-appking > header .character {
                 width: 6em;
                 transform: translateY(4em) rotateY(180grad);
@@ -107,7 +107,7 @@
             background-color: hsl(95, 81%, 82%);
             background-image: linear-gradient(hsl(95, 61%, 62%),hsl(95, 41%, 92%));
             padding-top:    2em;
-            padding-bottom: 5em;
+            padding-bottom: 0;
             clip-path: polygon( 0 2rem, 20% 0, 25% 1rem, 40% 0, 60% 2rem, 80% 0, 100% 1rem, 100% 100%, 0 100%);
             align-content: start;
         }
@@ -118,13 +118,17 @@
 
         /* Nina the Arrow */
 
-        .character--welcome-arrow {
-            position: absolute;
-            bottom: 1em;
-            left: 40%;
+        .scene--welcome-appking > footer .arrow {
+            margin: 0 auto;
+            padding: 1em 0;
         }
         .character--welcome-arrow img {
             width: 4em;
+        }
+        @media (max-width:600px) {
+            .character--welcome-arrow img {
+                width: 3em;
+            }
         }
 
     </style>
@@ -145,10 +149,10 @@
                 <p>Он выглядит картинкой, ведёт себя как литературный персонаж и работает как функция. Надо заметить, что в каждом случае, король Апп служит эталоном доблести и благородства. На то он и король.</p>
                 <p>Корона слегка повреждена, об этом рассказывает легенда...</p>
             </blockquote>
+            <figure class="arrow">
+                <div class="character--welcome-arrow animated infinite pulse"><img src="art/characters/arrow-fat-bottom.svg" alt="Welcome!"></div>
+            </figure>
         </footer>
-        <figure class="arrow">
-            <div class="character--welcome-arrow animated infinite pulse"><img src="art/characters/arrow-fat-bottom.svg" alt="Welcome!"></div>
-        </figure>
     </section>
 </section>
 
