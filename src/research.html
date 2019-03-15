@@ -33,8 +33,9 @@
 <section class="research-welcome-layout">
     <style>
         .scene--welcome-appking {
+            position: relative;
             background-color: hsl(215, 81%, 82%);
-            background-image: linear-gradient( hsl(215, 91%, 72%), hsl(215, 61%, 92%) );
+            background-image: linear-gradient( hsl(215, 61%, 42%), hsl(215, 31%, 62%) );
             /* contentbox */
             min-height: 100vh;
             display: flex;
@@ -69,7 +70,9 @@
             padding-right:  1em;
         }
         .scene--welcome-appking > header h1 {
+            font-size: 1.25em;
             margin: 0;
+            color:white;
         }
         @media (min-width:501px) {
             .scene--welcome-appking > header h1 {
@@ -78,15 +81,15 @@
         }
         .scene--welcome-appking > header .subtitle {
             font-size: 0.75em;
-            margin:  0;
-            padding: 0.5em;
+            margin:  0 0 0 -1rem;
+            padding: 0.75rem 1rem;
             display: inline-block;
             background-color: firebrick;
             color: white;
         }
         .scene--welcome-appking > header .character {
-            width: 4em;
-            transform: translateY(2em) rotateY(180grad);
+            width: 3em;
+            transform: translateY(1em) rotateY(180grad);
             z-index: 1;
         }
         @media (min-width:500px) {
@@ -102,7 +105,7 @@
         .scene--welcome-appking > footer {
             min-height: 50vh;
             background-color: hsl(95, 81%, 82%);
-            background-image: linear-gradient(hsl(95, 41%, 62%),hsl(95, 41%, 82%));
+            background-image: linear-gradient(hsl(95, 61%, 62%),hsl(95, 41%, 92%));
             padding-top:    2em;
             padding-bottom: 5em;
             clip-path: polygon( 0 2rem, 20% 0, 25% 1rem, 40% 0, 60% 2rem, 80% 0, 100% 1rem, 100% 100%, 0 100%);
