@@ -374,10 +374,44 @@
         <p>Взгляд кота настолько выразителен, что, <em>скорее всего</em>, он что-то выражает. <em>Скорее всего</em>, у кота есть свои задачи в поисках своих решений. <em>Очень вероятно</em>, что кот как-то делает свои задачи.</p>
         <p>Чтобы понимать кота и других жителей этого мира, стоит посмотреть на мир изнутри...</p>
     </blockquote>
-    <blockquote class="text-grid">
-        
+    <blockquote class="text-grid matrix-code-layer">
+        <div class="matrix-code">
+            <p>&lt;H1&gt;</p>
+            <p class="span1">Изнутри мир выглядит примерно так.</p>
+            <p>&lt;/H1&gt;</p>
+            <p>&lt;P&gt;</p>
+            <p class="span1">В бескрайнем пространстве живёт множество зелёных букашек-символов. Символы объединяются в слова и строки. Некоторые из них выстраиваются в обычный текст, который можно прочесть.</p>
+            <p>&lt;/P&gt;</p>
+            <p>&lt;P&gt;</p>
+            <p class="span1">Другие комбинации символов странные — их читает браузер. Кстати, этот кот опять здесь...</p>
+            <p>&lt;/P&gt;</p>
+        </div>
+        <figure class="character--matrix-browser">
+            <img src="art/characters/this-cat.svg" alt="Bergamot is here again">
+        </figure>
+        <div class="matrix-code">
+            <p>&lt;FIGURE CLASS="side-illustration"&gt;</p>
+            <p class="span1">
+                &lt;IMG SRC="art/characters/this-cat.svg"&gt;
+            </p>
+            <p>&lt;/FIGURE&gt;</p>
+            <p>&lt;P&gt;</p>
+            <p class="span1">Зелёные символы из этого мира читают все: и люди, и разные браузеры, и настоящие роботы. <em>Скорее всего</em>, этот мир читают даже коты.</p>
+            <p>&lt;/P&gt;</p>
+            <p>&lt;P&gt;</p>
+            <p class="span1">Поэтому сообща придумали общий язык, который каждый прочитает и поймёт. В языке перемешаны обычные слова, команды, описания, картинки и всё что угодно. Можно добавить даже видеотрансляцию с Юпитера в прямом эфире с космическими тюленями и субтитрами клинописью. Только где взять такую трансляцию.</p>
+            <p>&lt;/P&gt;</p>
+            <p>&lt;P&gt;</p>
+            <p class="span1">Когда придумали язык, зелёные букашки-символы объединились в &lt;CODE&gt;<code>код</code>&lt;/CODE&gt;. Вместе с языком, придумали огромную кучу правил для разных задач — чем сложнее задача, тем сложнее правила. Порой, при взгляде на код, кажется что зелёные букашки посходили с ума. Взгляните сами:</p>
+            <p>&lt;/P&gt;</p>
+            <p>&lt;FIGURE CLASS="illustration"&gt;</p>
+            <p class="span1">&lt;FIGCAPTION&gt;</p>
+            <p class="span2">Пример сложной задачи: Четверть одного кадра из юпитерской трансляции</p>
+            <p class="span1">&lt;/FIGCAPTION&gt;</p>
+        </div>
     </blockquote>
     <style>
+
         .scene--about-this-world {
             min-height: 100vh;
             padding-bottom: 10vh;
@@ -439,6 +473,10 @@
             z-index: 1;
             padding: 1em 0;
         }
+        .character--matrix-browser {
+            grid-column: prefix;
+        }
+
 
     </style>
 </section>
