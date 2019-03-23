@@ -1,6 +1,5 @@
 # plan
 
-- sakura content
 - vue src
 - tween lite lib
 
@@ -13,3 +12,4 @@
 - scss base
 - article layout
 - scetches
+- sakura content
