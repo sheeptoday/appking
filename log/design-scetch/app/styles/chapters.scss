@@ -1,0 +1,68 @@
+/* story chapters */
+/* 2019.2.16 36week37 */
+
+$one-space: 4*$dim;
+
+// ------------------------------- color palette
+$color-FunnyLikeTheSpace: hsla(201, 65%, 6%, 1); /* Funny Like the Space */
+$color-MatrixText: limegreen;
+
+.is-invisible {
+    opacity: 0;
+}
+.zetka blockquote {
+    @extend .zetka-overmain;
+}
+
+.mother-scene {
+    @extend .has-v-slices;
+    padding-bottom: 4em;
+}
+
+        .el-dialog {
+            padding:       1em;
+            border-radius: 0.5em;
+            background-color: hsla(80,54%,52%,1);
+            max-width: 64%;
+            margin-right: auto;
+        }
+        .el-dialog--universe {
+            justify-self: end;
+            margin-right: 0;
+            margin-left: auto;
+            background-color: hsla(260,54%,72%,1);
+        }
+        .el-dialog--author {
+            background-color: hsla(200,64%,62%,1);
+        }
+
+
+.matrix-code-layer {
+
+    @extend .zetka-layer;
+    @extend .has-v-slices;
+
+    padding-top:    20vh;
+    padding-bottom: 20vh;
+    margin-top:     20vh;
+    margin-bottom:  40vh;
+
+    background-color: $color-FunnyLikeTheSpace;
+    color:            $color-MatrixText;
+    @extend .has-sans-text;
+    font-size:   1em;
+    line-height: 1.5;
+
+    .span1 { padding-left: 1em; }
+    .span2 { padding-left: 2em; }
+    .span3 { padding-left: 3em; }
+}
+
+// -----------------------------------------------
+
+/* shaped top and bottom */
+/*clip-path: polygon( 0 2em, 10% 1em, 36% 2em, 55% 0, 100% 2em, 100% 100%, 55% calc( 100% - 2em ), 36% 100%, 10% calc( 100% - 1em ), 0 100% );*/
+
+// -----------------------------------------------
+
+
