@@ -1,6 +1,6 @@
 # plan
 
-- vue src
+- waypoints
 - tween lite lib
 - zzz
 
@@ -14,3 +14,4 @@
 - article layout
 - scetches
 - sakura content
+- vue src
