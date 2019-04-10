@@ -35,7 +35,7 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
 /* ------------------------------------ avoid visual errors */
 
 
-img, svg { max-width: 100% }
+img, svg { max-width: 100%; height: auto; }
 canvas   { display: inline-block; }
 
 
