@@ -58,10 +58,9 @@ $color-AppkingWelcomeText: white;
         align-self: center;
         font-size: 1.2em;
     }
-    header {
-        align-self: end;
-        h1  { font-size: 2.5em; }
-        &>p { @extend %text-as-active-message; }
+    .text>header {
+        &>h1 { font-size: 2.5em; }
+        &>p  { @extend %text-as-active-message; }
     }
 
     // has bottom decoration
@@ -82,11 +81,16 @@ $color-AppkingWelcomeText: white;
         background-size: auto 100%;
         background-image: url(../../art/decor/welcome-bottom-border.svg);
         background-image: url(../../art/decor/wave-line.svg);
+        background-position: center center;
     }
 
     // mobile
 
     @media ($screenForTablet) {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 29em)
+            minmax(0, 1fr);
         grid-template-rows:
             minmax(0, 1fr)
             min-content
@@ -94,21 +98,43 @@ $color-AppkingWelcomeText: white;
             min-content
             minmax(0, 1fr);
         grid-template-areas:
-            't t t t'
-            'l k k r'
-            'l c c r'
-            'l f f r'
-            'b b b b';
-        header { text-align: center; }
-        h1     { font-size: 2em; }
-        .text  { font-size: 0.8em; }
+            't t t'
+            'l k r'
+            'l c r'
+            'l f r'
+            'b b b';
+        background-image: none;
+        font-size: 0.8em;
+        .text  { font-size: 1em; }
+        .text>header {
+            min-height: 20vh;
+            text-align: center;
+            &>h1 {
+                font-size: 2em;
+            }
+            &>p {
+                font-size: 1em;
+                margin: 0 auto;
+            }
+        }
         .image {
+            padding-top: 20vh;
             figure, img {
                 display: block;
-                height:  30vh;
+                height:  40vh;
                 width:   auto;
                 margin:  0 auto;
             }
+            /* shadow silueth of the cat */
+            background-size:     contain;
+            background-repeat:   no-repeat;
+            background-position: bottom center;
+            background-image:
+                url(../../art/illustrations/welcome-background.svg);
+        }
+        .arrow {
+            padding-top:    10vh;
+            padding-bottom: 10vh;
         }
     }
 
@@ -146,6 +172,22 @@ $color-AppkingWelcomeText: white;
         opacity: 1;
         transform: translateY(0);
         transition: all 400ms ease-in;
+    }
+
+    @media ($screenForTablet) {
+        margin: 0 auto;
+        &::before {
+            top: auto;
+            bottom: calc( 100% + 4vh );
+            left:50%;
+            width: 80vw;
+            height: 8vw;
+            max-height: 6vh;
+            transform: translateY(-50%) translateX(-50%);
+        }
+        &:focus::before {
+            transform: translateY(0) translateX(-50%);
+        }
     }
 
 }

@@ -315,7 +315,7 @@ body {
   grid-template-columns: auto;
 }
 
-.chapter-welcome-appking header > p, .text-as-active-message {
+.chapter-welcome-appking .text > header > p, .text-as-active-message {
   display: inline-block;
   padding: 0.2em 0.5em;
   margin-left: -0.5em;
@@ -377,10 +377,7 @@ body {
   align-self: center;
   font-size: 1.2em;
 }
-.chapter-welcome-appking header {
-  align-self: end;
-}
-.chapter-welcome-appking header h1 {
+.chapter-welcome-appking .text > header > h1 {
   font-size: 2.5em;
 }
 .chapter-welcome-appking::after {
@@ -397,26 +394,47 @@ body {
   background-size: auto 100%;
   background-image: url(../../art/decor/welcome-bottom-border.svg);
   background-image: url(../../art/decor/wave-line.svg);
+  background-position: center center;
 }
 @media (max-width: 900px) {
   .chapter-welcome-appking {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 23em) minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr) min-content min-content min-content minmax(0, 1fr);
-    grid-template-areas: "t t t t" "l k k r" "l c c r" "l f f r" "b b b b";
-  }
-  .chapter-welcome-appking header {
-    text-align: center;
-  }
-  .chapter-welcome-appking h1 {
-    font-size: 2em;
+    grid-template-areas: "t t t" "l k r" "l c r" "l f r" "b b b";
+    background-image: none;
+    font-size: 0.8em;
   }
   .chapter-welcome-appking .text {
-    font-size: 0.8em;
+    font-size: 1em;
+  }
+  .chapter-welcome-appking .text > header {
+    min-height: 20vh;
+    text-align: center;
+  }
+  .chapter-welcome-appking .text > header > h1 {
+    font-size: 2em;
+  }
+  .chapter-welcome-appking .text > header > p {
+    font-size: 1em;
+    margin: 0 auto;
+  }
+  .chapter-welcome-appking .image {
+    padding-top: 20vh;
+    /* shadow silueth of the cat */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-image: url(../../art/illustrations/welcome-background.svg);
   }
   .chapter-welcome-appking .image figure, .chapter-welcome-appking .image img {
     display: block;
-    height: 30vh;
+    height: 40vh;
     width: auto;
     margin: 0 auto;
+  }
+  .chapter-welcome-appking .arrow {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
   }
 }
 
@@ -449,6 +467,23 @@ body {
   opacity: 1;
   transform: translateY(0);
   transition: all 400ms ease-in;
+}
+@media (max-width: 900px) {
+  .character--NinaTheArrow {
+    margin: 0 auto;
+  }
+  .character--NinaTheArrow::before {
+    top: auto;
+    bottom: calc( 100% + 4vh );
+    left: 50%;
+    width: 80vw;
+    height: 8vw;
+    max-height: 6vh;
+    transform: translateY(-50%) translateX(-50%);
+  }
+  .character--NinaTheArrow:focus::before {
+    transform: translateY(0) translateX(-50%);
+  }
 }
 
 #NinaTheArrow {
