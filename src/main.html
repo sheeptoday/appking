@@ -10,7 +10,7 @@
     <title>ʕ⊙ᴥ⊙ʔ</title>
 
 
-    <!-- ========================================= APP MAIN -->
+    <!-- ========================================= DESIGN -->
 
     <link
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
@@ -19,10 +19,59 @@
         href="app/styles/main.css"
         rel="stylesheet" type="text/css">
 
+    <!-- ========================================= APP MAIN -->
+
+
+    <script src="app/script/app-core.js"></script>
+    <script>app.log('... Wake Up, App!')</script>
+
+    <!-- ========================================= APP LIBS -->
+
+    <script src="app/script/components/class-mutator.js"></script>
+    <script>app.take({name:'mutate', f:el_class_mutator})</script>
+
+    <script src="app/script/components/image-zoom.js"></script>
+    <script>
+        const queenImageZoomer = function Ribosome (dna) {
+            if( typeof(ActivateImageZoom)!=='function' ) return false
+            ActivateImageZoom()
+            return true
+        }
+        app.take({name:'zzzimg', f:queenImageZoomer})
+        app.onload(queenImageZoomer)
+    </script>
+
+    <script src="app/script/components/scroll-follower.js"></script>
+    <script>
+        const queenScrollFollower = function Ribosome (dna) {
+            const rna = dna
+            const instance = basicScroll.create(rna)
+            instance.start()
+            return instance
+        }
+        app.take({name:'wayway', f:queenScrollFollower})
+    </script>
+
+    <script src="app/script/components/scroll-trigger.js"></script>
+    <script>
+        const queenScrollTrigger = function Ribosome (dna) {
+            const rna = dna
+            const instance = new Waypoint(rna)
+        }
+        app.take({name:'waydot', f:queenScrollTrigger})
+    </script>
+
 
     <!-- ========================================= APP CUSTOM -->
 
+    <script>
+        window.onload = function Run() {
 
+            app.Welcome()
+            app.log('App, welcome!')
+
+        }
+    </script>
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
@@ -142,12 +191,11 @@
 
 <article id="CrownStory" class="el-chapter chapter-crown-legend">
 
+    <code id="el-logo-sunrise" class="el-logo-sunrise"></code>
+
     <section storyblock>
 
         <header>
-            <figure class="character--KingCrown">
-                <img src="art/characters/king-crown.svg" alt="Crown">
-            </figure>
             <h2>Легенда о короне</h2>
             <p>24500 лет до н.э.</p>
         </header>
@@ -161,7 +209,9 @@
         <section class="illustration">
             <figure>
                 <div class="zzz-image-hover">
-                    <img src="art/illustrations/crown-legend-landscape.jpg" alt="Taupo, New Zealand">
+                    <img class="zzz"
+                         src="art/illustrations/crown-legend-landscape.jpg"
+                         alt="Taupo, New Zealand">
                 </div>
                 <figcaption>
                     Встреча на фоне извержения вулкана Таупо
@@ -181,13 +231,50 @@
              alt="Crown formula">
     </figure>
 
+    <script>
+        app.wayway({
+            elem: document.querySelector('.formula-image'),
+            from: 'top-bottom',
+            to:   'bottom-middle',
+            direct:  true,
+            props: {
+                '--opacity': { from: 0.25, to: 1 },
+                '--scale':  { from: 0.5, to: 1 }
+            }
+        })/**/
+    </script>
+
 </article>
 
-<nav class="el-logo">
+<nav id="el-logo" class="el-logo">
     <figure class="character--KingCrown">
         <img src="art/characters/king-crown.svg" alt="Crown">
     </figure>
 </nav>
+
+    <script>
+        app.wayway({
+            elem: document.getElementById('el-logo-sunrise'),
+            from: 'top-bottom',
+            to:   'top-top',
+            props: {
+                '--el-logo-top':  { from: '100vh',to: '0vh' },
+                '--el-logo-left': { from: '20vw', to: '0vw' },
+                '--el-logo-size': { from: '18vw', to: '6vw' },
+                '--el-logo-angle':{ from: '720deg', to: '0deg' },
+            }
+        })/**/
+        app.waydot({
+            element: document.getElementById('el-logo-sunrise'),
+            offset: '50%',
+            handler: function (direction) {
+                const el   = document.getElementById('el-logo')
+                const toggleClass = 'in-travel'
+                app.mutate({el,toggleClass})
+                app.log('travel!')
+            }
+        })
+    </script>
 
 </main>
 </body>

@@ -138,6 +138,7 @@ $color-AppkingWelcomeText: white;
 
     &::before {
         content: '';
+        pointer-events: 0;
 
         position: absolute;
         left:  10rem;
@@ -210,6 +211,12 @@ $color-AppkingWelcomeText: white;
     padding-top:   20vh;
     padding-bottom: 20vh;
 
+        /* shadow silueth of the cat */
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: url(../../art/decor/catground-crown.svg);
+        background-attachment: fixed;
 
     &>[storyblock] {
         grid-gap: 1em 5vw;
@@ -265,28 +272,24 @@ $color-AppkingWelcomeText: white;
     .formula {
         padding: 2em 10vw;
         .formula-image {
+            --opacity: 0.25;
+            --scale:   0.5;
             width:  100%;
             height: auto;
-            transform: scale(0.5);
+            transform: scale(var(--scale));
             transform-origin: top center;
-            opacity:   0.25;
+            opacity: var(--opacity);
+            will-change: transform, opacity;
         }
     }
     /**/
-
-    .character--KingCrown {
-        position: absolute;
-        z-index:  1;
-        transform: translateX(-150%) translateY(-50%);
-        padding:    0.75em;
-    }
 
 }
 .character--KingCrown {
 
     position: relative;
-    width:      8em;
-    height:     8em;
+    width:      10em;
+    height:     10em;
     max-width:  100%;
     max-height: 100%;
     padding:    0.25em;
@@ -309,12 +312,28 @@ $color-AppkingWelcomeText: white;
 
 }
 
+:root {
+    --el-logo-top:  100vh;
+    --el-logo-left: 10vw;
+    --el-logo-size: 12vw;
+}
 .el-logo {
+    top:    var(--el-logo-top);
+    left:   10vw;
+    width:  12vw;
+    height: 12vw;
+
+    &.in-travel {
+        left:   var(--el-logo-left);
+        width:  var(--el-logo-size);
+        height: var(--el-logo-size);
+        transition: left, top 100ms;
+    }
+
     position: fixed;
     z-index: 2;
-    top:  0;
-    left: 0em;
-    padding-left: 0.5em;
-    width:  4.5em;
-    height: 4em;
+    padding: 0.5em;
+}
+.el-logo-sunrise {
+    height: 5vw;
 }
