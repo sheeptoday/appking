@@ -413,7 +413,6 @@ body {
   height: 4rem;
   background-repeat: repeat-x;
   background-size: auto 100%;
-  background-image: url(../../art/decor/welcome-bottom-border.svg);
   background-image: url(../../art/decor/wave-line.svg);
   background-position: center center;
 }
@@ -543,6 +542,7 @@ body {
   /**/
 }
 .chapter-crown-legend > [storyblock] {
+  padding-bottom: 10vw;
   grid-gap: 1em 5vw;
   grid-template-columns: [full-start side-w] 20vw [main] 50vw [side-e] 20vw [full-end];
 }
@@ -559,10 +559,12 @@ body {
   font-weight: bolder;
   vertical-align: baseline;
   line-height: 1;
+  padding-right: 2px;
 }
 .chapter-crown-legend .illustration {
   grid-column: side-e;
   position: relative;
+  z-index: 1;
 }
 .chapter-crown-legend .illustration > figure {
   position: absolute;
@@ -637,4 +639,134 @@ body {
 
 .el-logo-sunrise {
   height: 5vw;
+}
+
+/*
+.el-hamburger {
+
+    top:    0;
+    right:  0;
+    width:  6vw;
+    height: 6vw;
+
+    &.in-friendly-mode {
+        top:    var(--el-hamburger-top);
+        right:  0;
+        width:  var(--el-hamburger-size);
+        height: var(--el-hamburger-size);
+    }
+
+    transition: width 200ms;
+
+    position: fixed;
+    z-index: 2;
+    padding: 0.5em;
+    &>img { width: 100%; max-width: 50vw; }
+}
+.el-hamburger-warsign { height: 20vh; }
+*/
+.chapter-logo {
+  padding-top: 20vh;
+  padding-bottom: 20vh;
+  background-color: #0b476a;
+  color: white;
+  /* color silueth of the crown */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(../../art/decor/king-crown-featured.svg);
+  background-attachment: fixed;
+  position: relative;
+  z-index: 1;
+}
+.chapter-logo::before, .chapter-logo::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 4rem;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-image: url(../../art/decor/wave-line.svg);
+  background-position: left center;
+}
+.chapter-logo::before {
+  top: -2rem;
+}
+.chapter-logo::after {
+  bottom: -2rem;
+}
+.chapter-logo .logo-features {
+  grid-column: side-w;
+}
+.chapter-logo .text {
+  background-color: rgba(3, 41, 63, 0.8);
+  transition: background 400ms ease-in;
+  padding: 0.5em;
+  font-size: 1.4em;
+}
+.chapter-logo .text:hover {
+  background-color: rgba(3, 41, 63, 0.95);
+  transition-timing-function: ease-out;
+}
+
+.chapter-hamburger {
+  padding-top: 30vh;
+  padding-bottom: 30vh;
+  background-color: #863013;
+  color: white;
+  /* shadow silueth of the cat */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(../../art/decor/catground-crown.svg);
+  background-attachment: fixed;
+  /* drammatic colors */
+}
+.chapter-hamburger > [storyblock] {
+  grid-gap: 1em 5vw;
+  grid-template-columns: [full-start side-w] 20vw [main] 50vw [side-e] 20vw [full-end];
+}
+@media (min-width: 1301px) {
+  .chapter-hamburger > [storyblock] {
+    font-size: 1.2em;
+  }
+  .chapter-hamburger > [storyblock] > p {
+    max-width: 27em;
+  }
+}
+.chapter-hamburger .character--vonHamburger {
+  grid-column: side-e;
+  position: relative;
+  width: 20vw;
+  transform: translateX(-2.5vw);
+}
+.chapter-hamburger .character--vonHamburger > img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+.chapter-hamburger .drammatic {
+  font-size: 1.25em;
+}
+.chapter-hamburger .colors {
+  font-weight: bolder;
+}
+.chapter-hamburger .colors > i {
+  font-style: normal;
+}
+.chapter-hamburger .colors > i:nth-child(1) {
+  color: cyan;
+}
+.chapter-hamburger .colors > i:nth-child(2) {
+  color: yellow;
+}
+.chapter-hamburger .colors > i:nth-child(3) {
+  color: greenyellow;
+}
+.chapter-hamburger .colors > i:nth-child(4) {
+  color: lightpink;
 }

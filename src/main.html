@@ -23,7 +23,10 @@
 
 
     <script src="app/script/app-core.js"></script>
-    <script>app.log('... Wake Up, App!')</script>
+    <script>
+        app.workers = {}
+        app.log('... Wake Up, App!')
+    </script>
 
     <!-- ========================================= APP LIBS -->
 
@@ -37,7 +40,6 @@
             ActivateImageZoom()
             return true
         }
-        app.take({name:'zzzimg', f:queenImageZoomer})
         app.onload(queenImageZoomer)
     </script>
 
@@ -47,7 +49,8 @@
             const rna = dna
             const instance = basicScroll.create(rna)
             instance.start()
-            return instance
+            if (rna.name) app.workers[rna.name] = instance
+            return true
         }
         app.take({name:'wayway', f:queenScrollFollower})
     </script>
@@ -57,6 +60,7 @@
         const queenScrollTrigger = function Ribosome (dna) {
             const rna = dna
             const instance = new Waypoint(rna)
+            return true
         }
         app.take({name:'waydot', f:queenScrollTrigger})
     </script>
@@ -214,7 +218,7 @@
                          alt="Taupo, New Zealand">
                 </div>
                 <figcaption>
-                    Встреча на фоне извержения вулкана Таупо
+                    Встреча на фоне извержения вулкана Таупо, иллюстрация к легенде.
                 </figcaption>
             </figure>
         </section>
@@ -234,7 +238,7 @@
     <script>
         app.wayway({
             elem: document.querySelector('.formula-image'),
-            from: 'top-bottom',
+            from: 'bottom-bottom',
             to:   'bottom-middle',
             direct:  true,
             props: {
@@ -245,37 +249,111 @@
     </script>
 
 </article>
-
 <nav id="el-logo" class="el-logo">
     <figure class="character--KingCrown">
         <img src="art/characters/king-crown.svg" alt="Crown">
     </figure>
 </nav>
+<script>
+    app.wayway({
+        elem: document.getElementById('el-logo-sunrise'),
+        from: 'top-bottom',
+        to:   'top-top',
+        props: {
+            '--el-logo-top':  { from: '100vh',to: '0vh' },
+            '--el-logo-left': { from: '20vw', to: '0vw' },
+            '--el-logo-size': { from: '18vw', to: '6vw' }
+        }
+    })/**/
+    app.waydot({
+        element: document.getElementById('el-logo-sunrise'),
+        offset: '50%',
+        handler: function (direction) {
+            const el   = document.getElementById('el-logo')
+            const toggleClass = 'in-travel'
+            app.mutate({el,toggleClass})
+            app.log('travel!')
+        }
+    })
+</script>
 
-    <script>
-        app.wayway({
-            elem: document.getElementById('el-logo-sunrise'),
-            from: 'top-bottom',
-            to:   'top-top',
-            props: {
-                '--el-logo-top':  { from: '100vh',to: '0vh' },
-                '--el-logo-left': { from: '20vw', to: '0vw' },
-                '--el-logo-size': { from: '18vw', to: '6vw' },
-                '--el-logo-angle':{ from: '720deg', to: '0deg' },
-            }
-        })/**/
-        app.waydot({
-            element: document.getElementById('el-logo-sunrise'),
-            offset: '50%',
-            handler: function (direction) {
-                const el   = document.getElementById('el-logo')
-                const toggleClass = 'in-travel'
-                app.mutate({el,toggleClass})
-                app.log('travel!')
-            }
-        })
-    </script>
 
+<article id="Logo" class="el-chapter chapter-logo">
+
+    <section storyblock>
+
+        <figure class="logo-features">
+            <img src="art/illustrations/logo-features.svg" alt="Logo`s Pros and Cons">
+        </figure>
+
+        <section class="text">
+            <p>Красивая легенда прославила корону среди прочих символов. А крепкие связи с королём, помогли получить должность <i>главного логотипа</i>.</p>
+        </section>
+
+    </section>
+
+
+</article>
+
+<article id="Hamburger" class="el-chapter chapter-hamburger">
+
+<!--
+    <code id="el-hamburger-warsign" class="el-hamburger-warsign"></code>
+-->
+
+    <section storyblock>
+
+        <p>Получив должность, логотип отправился в угол экрана — это почётное место традиционно отдаётся главному символу. По дороге в новые владения логотип встретил и захватил <em>навигационное меню</em>.</p>
+
+        <p class="drammatic">Такой внезапный поступок, одобренный королём, изрядно рассердил другой уважаемый символ — иконку по прозвищу Гамбургер, чьи предки долгое время контролировали меню. Гамбургер поднял восстание, но сил хватило только на завоевание небольшой области на востоке.</p>
+
+        <figure class="character--vonHamburger">
+            <img class="zzz"
+                 src="art/characters/hamburger.svg"
+                 alt="Hamburger icon">
+        </figure>
+
+        <p>Смирившись со своим положением, Гамбургер поселился на завоёванных землях и занялся производством <em>драмы</em> для повествования.</p>
+
+        <p>Драма удерживает внимание, что весьма кстати при больших объёмах информации. Героем конфликтной ситуации может стать кто угодно — король, банкир или иконка. Даже
+        <span class="colors"><i>ц</i><i>в</i><i>е</i><i>т</i></span>
+        может бросить дерзкий вызов контрастному окружению, чтобы добавить острых ощущений.
+        </p>
+        <p>В перерывах между драматическими набегами, барон Гамбургер занимался наукой и составлял описание мира.</p>
+
+    </section>
+
+</article>
+
+<!--
+<nav id="el-hamburger" class="el-hamburger in-friendly-mode">
+    <img class="el-hamburger-image"
+         src="art/characters/hamburger.svg"
+         alt="Hamburger icon">
+</nav>
+<script>
+    app.wayway({
+        name: 'hamburger-friendy-mode',
+        elem: document.getElementById('el-hamburger-warsign'),
+        from: 'bottom-bottom',
+        to:   'bottom-top',
+        props: {
+            '--el-hamburger-top':  { from: '100vh',to:  '0vh' }
+        }
+    })/**/
+    app.waydot({
+        element: document.getElementById('el-hamburger-warsign'),
+        offset: '-20%',
+        handler: function (direction) {
+            const el   = document.getElementById('el-hamburger')
+            const toggleClass = 'in-friendly-mode'
+            app.mutate({el,toggleClass})
+            //app.workers['hamburger-friendy-mode'].destroy()
+        }
+    })
+</script>
+-->
+<div style="height: 150vh"></div>
 </main>
 </body>
 </html>

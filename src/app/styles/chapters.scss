@@ -1,6 +1,9 @@
 $color-AppkingWelcomeBackground: hsl(202, 81%, 23%);
 $color-AppkingWelcomeText: white;
 
+$color-AppkingBattleBackground: hsl(15, 75%, 30%);
+$color-AppkingBattleText: white;
+
 .chapter-welcome-appking {
 
     min-height:     100vh;
@@ -70,7 +73,6 @@ $color-AppkingWelcomeText: white;
         height: 4rem;
         background-repeat: repeat-x;
         background-size: auto 100%;
-        background-image: url(../../art/decor/welcome-bottom-border.svg);
         background-image: url(../../art/decor/wave-line.svg);
         background-position: center center;
     }
@@ -203,22 +205,20 @@ $color-AppkingWelcomeText: white;
 }
 
 
-
-
-
 .chapter-crown-legend {
 
     padding-top:   20vh;
     padding-bottom: 20vh;
 
-        /* shadow silueth of the cat */
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-image: url(../../art/decor/catground-crown.svg);
-        background-attachment: fixed;
+    /* shadow silueth of the cat */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(../../art/decor/catground-crown.svg);
+    background-attachment: fixed;
 
     &>[storyblock] {
+        padding-bottom: 10vw;
         grid-gap: 1em 5vw;
         grid-template-columns:
             [full-start side-w]
@@ -243,6 +243,7 @@ $color-AppkingWelcomeText: white;
             font-weight:    bolder;
             vertical-align: baseline;
             line-height:    1;
+            padding-right:  2px;
         }
     }
     /**/
@@ -251,6 +252,7 @@ $color-AppkingWelcomeText: white;
     .illustration {
         grid-column: side-e;
         position:  relative;
+        z-index: 1;
         &>figure {
 
             position: absolute;
@@ -316,6 +318,8 @@ $color-AppkingWelcomeText: white;
     --el-logo-top:  100vh;
     --el-logo-left: 10vw;
     --el-logo-size: 12vw;
+    //--el-hamburger-top:  100vh;
+    //--el-hamburger-size: 25vw;
 }
 .el-logo {
     top:    var(--el-logo-top);
@@ -334,6 +338,141 @@ $color-AppkingWelcomeText: white;
     z-index: 2;
     padding: 0.5em;
 }
-.el-logo-sunrise {
-    height: 5vw;
+.el-logo-sunrise { height: 5vw; }
+/*
+.el-hamburger {
+
+    top:    0;
+    right:  0;
+    width:  6vw;
+    height: 6vw;
+
+    &.in-friendly-mode {
+        top:    var(--el-hamburger-top);
+        right:  0;
+        width:  var(--el-hamburger-size);
+        height: var(--el-hamburger-size);
+    }
+
+    transition: width 200ms;
+
+    position: fixed;
+    z-index: 2;
+    padding: 0.5em;
+    &>img { width: 100%; max-width: 50vw; }
 }
+.el-hamburger-warsign { height: 20vh; }
+*/
+.chapter-logo {
+
+    padding-top:    20vh;
+    padding-bottom: 20vh;
+    background-color: $color-AppkingWelcomeBackground;
+    color:            $color-AppkingWelcomeText;
+
+    /* color silueth of the crown */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(../../art/decor/king-crown-featured.svg);
+    background-attachment: fixed;
+
+    // has top decoration
+
+    position: relative;
+    z-index: 1;
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 4rem;
+        background-repeat: repeat-x;
+        background-size: auto 100%;
+        background-image: url(../../art/decor/wave-line.svg);
+        background-position: left center;
+    }
+    &::before { top:    -2rem;}
+    &::after  { bottom: -2rem;}
+
+    .logo-features {
+        grid-column: side-w;
+    }
+    .text {
+        background-color: hsla(202, 91%, 13%, 0.8);
+        transition: background 400ms ease-in;
+        padding:   0.5em;
+        font-size: 1.4em;
+        &:hover {
+            background-color: hsla(202, 91%, 13%, 0.95);
+            transition-timing-function: ease-out;
+        }
+    }
+}
+
+.chapter-hamburger {
+    padding-top:    30vh;
+    padding-bottom: 30vh;
+
+    background-color: $color-AppkingBattleBackground;
+    color:            $color-AppkingBattleText;
+
+    /* shadow silueth of the cat */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(../../art/decor/catground-crown.svg);
+    background-attachment: fixed;
+
+    &>[storyblock] {
+        grid-gap: 1em 5vw;
+        grid-template-columns:
+            [full-start side-w]
+                20vw
+            [main]
+                50vw
+            [side-e]
+                20vw
+            [full-end];
+        @media ($screenNotS) {
+            font-size: 1.2em;
+            &>p {
+                max-width: 27em;
+            }
+        }
+    }
+
+    .character--vonHamburger {
+        grid-column: side-e;
+        position:    relative;
+        width:       20vw;
+        transform:   translateX(-2.5vw);
+        &>img {
+            position: absolute;
+            width:    100%;
+            height:   auto;
+        }
+    }
+
+    .drammatic {
+        font-size: 1.25em;
+    }
+
+    /* drammatic colors */
+
+    .colors {
+        font-weight: bolder;
+        &>i { font-style: normal; }
+        &>i:nth-child(1) { color: cyan; }
+        &>i:nth-child(2) { color: yellow; }
+        &>i:nth-child(3) { color: greenyellow; }
+        &>i:nth-child(4) { color: lightpink; }
+    }
+}
+
+
+
