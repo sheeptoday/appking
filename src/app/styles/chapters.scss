@@ -207,20 +207,29 @@ $color-AppkingWelcomeText: white;
 
 .chapter-crown-legend {
 
-    padding-top:   100vh;
-    padding-bottom: 10vh;
+    padding-top:   20vh;
+    padding-bottom: 20vh;
 
-    @media ($screenNotS) {
-        font-size: 1.2em;
+
+    &>[storyblock] {
+        grid-gap: 1em 5vw;
+        grid-template-columns:
+            [full-start side-w]
+                20vw
+            [main]
+                50vw
+            [side-e]
+                20vw
+            [full-end];
+        @media ($screenNotS) {
+            font-size: 1.2em;
+            &>p {
+                max-width: 27em;
+            }
+        }
     }
 
-    /* has background */
-    background-image: url(../../art/illustrations/crown-legend-landscape.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: right center;
-
+    /* first letters */
     &>[storyblock] {
         &>p:first-letter {
             font-size:      2.4em;
@@ -229,8 +238,83 @@ $color-AppkingWelcomeText: white;
             line-height:    1;
         }
     }
+    /**/
+
+    /* illustration */
+    .illustration {
+        grid-column: side-e;
+        position:  relative;
+        &>figure {
+
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            padding: 1rem;
+
+            background-color: $color_main_shadow;
+
+            &>figcaption {
+                display: block;
+                @extend .has-sans-text;
+                max-width: 18em;
+            }
+
+        }
+    }
+    /* formula */
+    .formula {
+        padding: 2em 10vw;
+        .formula-image {
+            width:  100%;
+            height: auto;
+            transform: scale(0.5);
+            transform-origin: top center;
+            opacity:   0.25;
+        }
+    }
+    /**/
+
+    .character--KingCrown {
+        position: absolute;
+        z-index:  1;
+        transform: translateX(-150%) translateY(-50%);
+        padding:    0.75em;
+    }
+
+}
+.character--KingCrown {
+
+    position: relative;
+    width:      8em;
+    height:     8em;
+    max-width:  100%;
+    max-height: 100%;
+    padding:    0.25em;
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 40%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: hsl(155, 21%, 82%);
+        border-radius: 50%;
+        transition: top 400ms;
+    }
+    &:hover::before {
+        top: 60%;
+    }
 
 }
 
-
-
+.el-logo {
+    position: fixed;
+    z-index: 2;
+    top:  0;
+    left: 0em;
+    padding-left: 0.5em;
+    width:  4.5em;
+    height: 4em;
+}

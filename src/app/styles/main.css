@@ -220,7 +220,7 @@ td {
   line-height: 1.714285;
 }
 
-.has-sans-text {
+.has-sans-text, .chapter-crown-legend .illustration > figure > figcaption {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   letter-spacing: 0.03em;
   /* 14/24 */
@@ -312,6 +312,9 @@ body {
 [storyblock], .storyblock, .grid-as-article {
   display: grid;
   grid-gap: 1em 1em;
+  align-items: start;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
   grid-template-columns: [full-start side-w] minmax(0, auto) [main] minmax(min-content, 28em) [side-e] minmax(0, auto) [full-end];
 }
 [storyblock] > *, .storyblock > *, .grid-as-article > * {
@@ -343,6 +346,11 @@ body {
   border: 0;
   outline: 0;
   background: transparent;
+}
+
+.content-area {
+  overflow: hidden;
+  width: 100%;
 }
 
 .chapter-welcome-appking {
@@ -515,18 +523,24 @@ body {
 }
 
 .chapter-crown-legend {
-  padding-top: 100vh;
-  padding-bottom: 10vh;
-  /* has background */
-  background-image: url(../../art/illustrations/crown-legend-landscape.jpg);
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: right center;
+  padding-top: 20vh;
+  padding-bottom: 20vh;
+  /* first letters */
+  /**/
+  /* illustration */
+  /* formula */
+  /**/
+}
+.chapter-crown-legend > [storyblock] {
+  grid-gap: 1em 5vw;
+  grid-template-columns: [full-start side-w] 20vw [main] 50vw [side-e] 20vw [full-end];
 }
 @media (min-width: 1301px) {
-  .chapter-crown-legend {
+  .chapter-crown-legend > [storyblock] {
     font-size: 1.2em;
+  }
+  .chapter-crown-legend > [storyblock] > p {
+    max-width: 27em;
   }
 }
 .chapter-crown-legend > [storyblock] > p:first-letter {
@@ -534,4 +548,69 @@ body {
   font-weight: bolder;
   vertical-align: baseline;
   line-height: 1;
+}
+.chapter-crown-legend .illustration {
+  grid-column: side-e;
+  position: relative;
+}
+.chapter-crown-legend .illustration > figure {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.chapter-crown-legend .illustration > figure > figcaption {
+  display: block;
+  max-width: 18em;
+}
+.chapter-crown-legend .formula {
+  padding: 2em 10vw;
+}
+.chapter-crown-legend .formula .formula-image {
+  width: 100%;
+  height: auto;
+  transform: scale(0.5);
+  transform-origin: top center;
+  opacity: 0.25;
+}
+.chapter-crown-legend .character--KingCrown {
+  position: absolute;
+  z-index: 1;
+  transform: translateX(-150%) translateY(-50%);
+  padding: 0.75em;
+}
+
+.character--KingCrown {
+  position: relative;
+  width: 8em;
+  height: 8em;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 0.25em;
+}
+.character--KingCrown::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 40%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #c7dbd3;
+  border-radius: 50%;
+  transition: top 400ms;
+}
+.character--KingCrown:hover::before {
+  top: 60%;
+}
+
+.el-logo {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0em;
+  padding-left: 0.5em;
+  width: 4.5em;
+  height: 4em;
 }
