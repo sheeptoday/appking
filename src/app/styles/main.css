@@ -253,6 +253,29 @@ body {
 }
 
 /* eof typography */
+@keyframes keyframes--SimpleRotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@keyframes keyframes--TudaSudaRotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(359deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.tudasuda {
+  animation: keyframes--TudaSudaRotation 4s infinite ease-out;
+}
+
 /*
  * source - animate.css, http://daneden.me/animate
 
@@ -384,7 +407,7 @@ body {
   color: var(--color-main-text);
 }
 
-[storyblock], .storyblock, .grid-as-article {
+[storyblock], .konigo-sorgen-soitie, .storyblock, .grid-as-article {
   display: grid;
   grid-gap: 1em 1em;
   align-items: start;
@@ -392,7 +415,7 @@ body {
   grid-auto-rows: min-content;
   grid-template-columns: [full-start side-w] minmax(0, auto) [main] minmax(min-content, 28em) [side-e] minmax(0, auto) [full-end];
 }
-[storyblock] > *, .storyblock > *, .grid-as-article > * {
+[storyblock] > *, .konigo-sorgen-soitie > *, .storyblock > *, .grid-as-article > * {
   grid-column: main;
 }
 
@@ -426,6 +449,21 @@ body {
 .content-area {
   overflow: hidden;
   width: 100%;
+}
+
+.nicely-zoomed-illustration {
+  grid-column: full;
+  padding: 2em 10vw;
+}
+.nicely-zoomed-illustration > img {
+  --opacity: 0.25;
+  --scale: 0.5;
+  width: 100%;
+  height: auto;
+  opacity: var(--opacity);
+  transform: scale(var(--scale));
+  transform-origin: top center;
+  will-change: transform, opacity;
 }
 
 .chapter-welcome-appking {
@@ -609,23 +647,21 @@ body {
   /* first letters */
   /**/
   /* illustration */
-  /* formula */
-  /**/
 }
-.chapter-crown-legend > [storyblock] {
+.chapter-crown-legend > [storyblock], .chapter-crown-legend > .konigo-sorgen-soitie {
   padding-bottom: 10vw;
   grid-gap: 1em 5vw;
   grid-template-columns: [full-start side-w] 20vw [main] 50vw [side-e] 20vw [full-end];
 }
 @media (min-width: 1301px) {
-  .chapter-crown-legend > [storyblock] {
+  .chapter-crown-legend > [storyblock], .chapter-crown-legend > .konigo-sorgen-soitie {
     font-size: 1.2em;
   }
-  .chapter-crown-legend > [storyblock] > p {
+  .chapter-crown-legend > [storyblock] > p, .chapter-crown-legend > .konigo-sorgen-soitie > p {
     max-width: 27em;
   }
 }
-.chapter-crown-legend > [storyblock] > p:first-letter {
+.chapter-crown-legend > [storyblock] > p:first-letter, .chapter-crown-legend > .konigo-sorgen-soitie > p:first-letter {
   font-size: 2.4em;
   font-weight: bolder;
   vertical-align: baseline;
@@ -647,19 +683,6 @@ body {
 .chapter-crown-legend .illustration > figure > figcaption {
   display: block;
   max-width: 18em;
-}
-.chapter-crown-legend .formula {
-  padding: 2em 10vw;
-}
-.chapter-crown-legend .formula .formula-image {
-  --opacity: 0.25;
-  --scale: 0.5;
-  width: 100%;
-  height: auto;
-  transform: scale(var(--scale));
-  transform-origin: top center;
-  opacity: var(--opacity);
-  will-change: transform, opacity;
 }
 
 .character--KingCrown {
@@ -827,15 +850,15 @@ body {
   background-attachment: fixed;
   /* drammatic colors */
 }
-.chapter-hamburger > [storyblock] {
+.chapter-hamburger > [storyblock], .chapter-hamburger > .konigo-sorgen-soitie {
   grid-gap: 1em 5vw;
   grid-template-columns: [full-start side-w] 20vw [main] 50vw [side-e] 20vw [full-end];
 }
 @media (min-width: 1301px) {
-  .chapter-hamburger > [storyblock] {
+  .chapter-hamburger > [storyblock], .chapter-hamburger > .konigo-sorgen-soitie {
     font-size: 1.2em;
   }
-  .chapter-hamburger > [storyblock] > p {
+  .chapter-hamburger > [storyblock] > p, .chapter-hamburger > .konigo-sorgen-soitie > p {
     max-width: 27em;
   }
 }
@@ -889,4 +912,49 @@ body {
 }
 .list-of-chapters > ul > li > a:hover {
   text-decoration: underline;
+}
+
+.chapter-world-description {
+  padding-top: 20vw;
+  padding-bottom: 20vw;
+}
+.chapter-world-description > [storyblock], .chapter-world-description > .konigo-sorgen-soitie {
+  grid-gap: 1em 5vw;
+  grid-template-columns: [full-start side-w] 20vw [main] 50vw [side-e] 20vw [full-end];
+}
+@media (min-width: 1301px) {
+  .chapter-world-description > [storyblock], .chapter-world-description > .konigo-sorgen-soitie {
+    font-size: 1.2em;
+  }
+  .chapter-world-description > [storyblock] > p, .chapter-world-description > .konigo-sorgen-soitie > p {
+    max-width: 27em;
+  }
+}
+.konigo-sorgen-soitie {
+  grid-column: full;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+  background-color: rgba(11, 71, 106, 0.25);
+}
+.konigo-sorgen-soitie .highlighted-paragraph {
+  align-self: center;
+  font-size: 1.25em;
+  padding: 2em 0;
+}
+.konigo-sorgen-soitie .highlighted-soitie {
+  align-self: center;
+  grid-column: side-e;
+  max-width: 10em;
+}
+
+.quote-of-hamburger {
+  grid-column: 2/span 2;
+  padding: 3em 1em 3em 5em;
+}
+.quote-of-hamburger .text {
+  font-style: italic;
+  max-width: 27em;
+}
+.quote-of-hamburger .author {
+  padding-top: 0.5em;
 }

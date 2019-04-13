@@ -1,5 +1,16 @@
 @charset "UTF-8";
 
+@keyframes keyframes--SimpleRotation {
+    from {transform: rotate(0deg);}
+    to   {transform: rotate(359deg);}
+}
+@keyframes keyframes--TudaSudaRotation {
+    0%   {transform: rotate(0deg);}
+    50%  {transform: rotate(359deg);}
+    100% {transform: rotate(0deg);}
+}
+.tudasuda { animation: keyframes--TudaSudaRotation 4s infinite ease-out; }
+
 /*
  * source - animate.css, http://daneden.me/animate
 

@@ -270,22 +270,6 @@ $color-AppkingBattleText: white;
 
         }
     }
-    /* formula */
-    .formula {
-        padding: 2em 10vw;
-        .formula-image {
-            --opacity: 0.25;
-            --scale:   0.5;
-            width:  100%;
-            height: auto;
-            transform: scale(var(--scale));
-            transform-origin: top center;
-            opacity: var(--opacity);
-            will-change: transform, opacity;
-        }
-    }
-    /**/
-
 }
 .character--KingCrown {
 
@@ -530,3 +514,58 @@ $color-AppkingBattleText: white;
     }
 }
 
+.chapter-world-description {
+
+    padding-top:    20vw;
+    padding-bottom: 20vw;
+
+    &>[storyblock] {
+        grid-gap: 1em 5vw;
+        grid-template-columns:
+            [full-start side-w]
+                20vw
+            [main]
+                50vw
+            [side-e]
+                20vw
+            [full-end];
+        @media ($screenNotS) {
+            font-size: 1.2em;
+            &>p {
+                max-width: 27em;
+            }
+        }
+    }
+
+    &>header {
+        
+    }
+}
+.konigo-sorgen-soitie {
+    @extend [storyblock];
+    grid-column:   full;
+    margin-top:    2.5em;
+    margin-bottom: 2.5em;
+    background-color: hsla(202, 81%, 23%, 0.25);
+    .highlighted-paragraph {
+        align-self: center;
+        font-size:  1.25em;
+        padding:    2em 0;
+    }
+    .highlighted-soitie {
+        align-self:  center;
+        grid-column: side-e;
+        max-width: 10em;
+    }
+}
+.quote-of-hamburger {
+    grid-column: 2 / span 2;
+    padding: 3em 1em 3em 5em;
+    .text {
+        font-style: italic;
+        max-width:  27em;
+    }
+    .author {
+        padding-top: 0.5em;
+    }
+}

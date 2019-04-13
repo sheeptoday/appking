@@ -74,3 +74,18 @@ body {
     overflow: hidden;
     width: 100%;
 }
+
+.nicely-zoomed-illustration {
+    grid-column: full;
+    padding: 2em 10vw;
+    &>img {
+        --opacity: 0.25;
+        --scale:   0.5;
+        width:  100%;
+        height: auto;
+        opacity:   var(--opacity);
+        transform: scale(var(--scale));
+        transform-origin: top center;
+        will-change: transform, opacity;
+    }
+}

@@ -6,7 +6,7 @@
 
 //* ------------------------------------------- PRELOAD
 
-var zzzClassname = "zzz"
+var zzzClassname = "zzzoom"
 var zzz = zzz || {};
 
 (function ( o ) {
