@@ -249,7 +249,7 @@
     </script>
 
 </article>
-<nav id="el-logo" class="el-logo">
+<nav id="el-logo" class="el-logo in-travel">
     <figure class="character--KingCrown">
         <img src="art/characters/king-crown.svg" alt="Crown">
     </figure>
@@ -272,7 +272,6 @@
             const el   = document.getElementById('el-logo')
             const toggleClass = 'in-travel'
             app.mutate({el,toggleClass})
-            app.log('travel!')
         }
     })
 </script>
@@ -294,12 +293,55 @@
 
 
 </article>
+<nav id="el-navigation-menu" class="sidebar-chapters close-chapterbar">
+    <section class="list-of-chapters">
+        <ul>
+            <li><a href="#WelcomeAppKing">Король Апп</a></li>
+            <li><a href="#CrownStory">Легенда о короне</a></li>
+            <li><a href="#Logo">Рождение логотипа</a></li>
+        </ul>
+    </section>
+    <script>
+        function ChapterBarActivator () {
 
+            const bar = document.getElementById('el-navigation-menu')
+            const ico = document.getElementById('el-logo')
+            const mom = document.querySelector('html')
+            const toggleClass = 'is-active'
+
+            function setShadowOverlay (commander) {
+                function checkStateForMom(elem, className) {
+                  return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+                }
+                if (checkStateForMom(commander,'is-active'))
+                    app.mutate({el:mom, addClass:'has-shadow-overlay' })
+                else
+                    app.mutate({el:mom, removeClass:'has-shadow-overlay' })
+            }
+            app.workers.ShadowOverlayToggler = setShadowOverlay
+
+            function toggleChapterBar (e) {
+                app.mutate({el:bar, toggleClass})
+                app.mutate({el:ico, toggleClass})
+                setShadowOverlay(bar)
+            }
+            app.workers.ChapterBarToggler = toggleChapterBar
+            ico.addEventListener('click',   toggleChapterBar)
+
+            const closer = document.querySelector('.close-chapterbar')
+            function closeChapterBar (e) {
+                app.mutate({el:bar, removeClass: toggleClass})
+                app.mutate({el:ico, removeClass: toggleClass})
+                app.mutate({el:mom, removeClass:'has-shadow-overlay' })
+            }
+            app.workers.ChapterBarCloser =   closeChapterBar
+            closer.addEventListener('click', closeChapterBar)
+
+        }
+        app.onload(ChapterBarActivator)
+    </script>
+</nav>
 <article id="Hamburger" class="el-chapter chapter-hamburger">
-
-<!--
-    <code id="el-hamburger-warsign" class="el-hamburger-warsign"></code>
--->
 
     <section storyblock>
 
@@ -319,11 +361,35 @@
         <span class="colors"><i>ц</i><i>в</i><i>е</i><i>т</i></span>
         может бросить дерзкий вызов контрастному окружению, чтобы добавить острых ощущений.
         </p>
+
         <p>В перерывах между драматическими набегами, барон Гамбургер занимался наукой и составлял описание мира.</p>
 
     </section>
 
 </article>
+<script>
+    app.waydot({
+        element: document.getElementById('Hamburger'),
+        handler: function (direction) {
+            if (direction=='down') {
+                const bar = document.getElementById('el-navigation-menu')
+                const ico = document.getElementById('el-logo')
+                const addClass =   'is-active'
+                app.mutate({el:bar, addClass})
+                app.mutate({el:ico, addClass})
+            }
+            else app.workers.ChapterBarCloser()
+        }
+    })
+    app.waydot({
+        element: document.getElementById('Hamburger'),
+        offset: '-100%',
+        handler: function (direction) {
+            app.workers.ChapterBarCloser()
+        }
+    })
+</script>
+
 
 <!--
 <nav id="el-hamburger" class="el-hamburger in-friendly-mode">
@@ -355,5 +421,6 @@
 -->
 <div style="height: 150vh"></div>
 </main>
+<div class="screen-shadow-overlay close-chapterbar"></div>
 </body>
 </html>

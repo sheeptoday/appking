@@ -41,12 +41,6 @@ canvas   { display: inline-block; }
 
 /* ----------------- use semantic markup without browser`s design */
 
-
-nav ul, nav ol, ul.nav, ol.nav {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-}
 figure, figcaption, fieldset, legend {
     display: block;
     margin:  0;
@@ -57,7 +51,14 @@ figure, figcaption, fieldset, legend {
 article, section, header, footer, main, aside, nav, details { display: block; }
 summary { display: list-item; }
 code    { display: block; }
-
+nav ul, nav ol, ul.nav, ol.nav {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+nav a {
+    text-decoration: none;
+}
 
 //* ------------------------------------ html standarts
 

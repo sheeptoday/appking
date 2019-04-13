@@ -305,6 +305,7 @@ $color-AppkingBattleText: white;
         bottom: 0;
         left: 0;
         background-color: hsl(155, 21%, 82%);
+        border: 4px solid white;
         border-radius: 50%;
         transition: top 400ms;
     }
@@ -313,7 +314,6 @@ $color-AppkingBattleText: white;
     }
 
 }
-
 :root {
     --el-logo-top:  100vh;
     --el-logo-left: 10vw;
@@ -322,21 +322,57 @@ $color-AppkingBattleText: white;
     //--el-hamburger-size: 25vw;
 }
 .el-logo {
+
+    position:   fixed;
+    z-index:    4;
+    padding:    0.5em;
+    transition: left, top 100ms;
+
     top:    var(--el-logo-top);
-    left:   10vw;
-    width:  12vw;
-    height: 12vw;
+    left:   var(--el-logo-left);
+    width:  var(--el-logo-size);
+    height: var(--el-logo-size);
 
     &.in-travel {
-        left:   var(--el-logo-left);
-        width:  var(--el-logo-size);
-        height: var(--el-logo-size);
-        transition: left, top 100ms;
+        left:   10vw;
+        width:  12vw;
+        height: 12vw;
     }
 
-    position: fixed;
-    z-index: 2;
-    padding: 0.5em;
+    &.is-active {
+        top:    0;
+        left:   0;
+        width:  10vw;
+        height: 10vw;
+    }
+
+    &::after {
+        content:  '';
+        position: absolute;
+        top:    10%;
+        left:   100%;
+        width:  50%;
+        height: 50%;
+
+        transform: scale(0);
+        transform-origin: top left;
+        will-change: transform;
+        transition:  transform 200ms ease-in;
+
+        /* icon-close */
+        background-size:   cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: url(../../art/characters/icon-close.svg);
+
+        opacity: 0;
+
+    }
+    &.is-active::after {
+        opacity: 1;
+        transform: scale(1);
+        transition-timing-function: ease-out;
+    }
 }
 .el-logo-sunrise { height: 5vw; }
 /*
@@ -413,7 +449,6 @@ $color-AppkingBattleText: white;
         }
     }
 }
-
 .chapter-hamburger {
     padding-top:    30vh;
     padding-bottom: 30vh;
@@ -473,6 +508,25 @@ $color-AppkingBattleText: white;
         &>i:nth-child(4) { color: lightpink; }
     }
 }
+.sidebar-chapters {
+    @extend .sidebar;
+    @extend .sidebar-westside;
 
+    width:       24vw;
+    padding-top: 12vw;
 
+    background-color: #80BCA3;
+
+}
+
+.list-of-chapters {
+    &>ul>li>a {
+        display: block;
+        background-color: hsla(0,0%,100%,0.25);
+        transition: background 100ms ease;
+        padding: 0.5em 1em;
+        &:hover { background-color: hsla(0,0%,100%,0.5); }
+        &:hover { text-decoration: underline; }
+    }
+}
 

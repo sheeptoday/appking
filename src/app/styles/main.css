@@ -58,12 +58,6 @@ canvas {
 }
 
 /* ----------------- use semantic markup without browser`s design */
-nav ul, nav ol, ul.nav, ol.nav {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
 figure, figcaption, fieldset, legend {
   display: block;
   margin: 0;
@@ -82,6 +76,16 @@ summary {
 
 code {
   display: block;
+}
+
+nav ul, nav ol, ul.nav, ol.nav {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+nav a {
+  text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol {
@@ -303,6 +307,73 @@ body {
   animation-name: pulse;
 }
 
+/* ==============================================================
+    fixed sidebar with visible and hidden states
+    2019.4.13
+============================================================== */
+/* USE CASE
+    <nav class="sidebar is-active">
+        xoxox
+    </nav>
+*/
+.sidebar, .sidebar-chapters {
+  background-color: black;
+  /* is screen fixed */
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  /* has width */
+  width: 100%;
+  /* has unpredictable content */
+  overflow: auto;
+  /* closed state */
+  transform: translateX(0);
+  transition: transform 200ms ease-in;
+  /* open state */
+}
+@media screen and (min-width: 44rem) {
+  .sidebar, .sidebar-chapters {
+    max-width: 38rem;
+  }
+}
+.sidebar.is-active, .is-active.sidebar-chapters, .has-active-sidebar .sidebar, .has-active-sidebar .sidebar-chapters {
+  transition-timing-function: ease-out;
+  transform: translateX(-100%);
+}
+
+.sidebar-westside, .sidebar-chapters {
+  left: auto;
+  right: 100%;
+}
+.sidebar-westside.is-active, .is-active.sidebar-chapters, .has-active-sidebar .sidebar-westside, .has-active-sidebar .sidebar-chapters {
+  transition-timing-function: ease-out;
+  transform: translateX(100%);
+}
+
+.has-active-sidebar, .has-shadow-overlay {
+  overflow: hidden;
+}
+.has-active-sidebar .screen-shadow-overlay, .has-shadow-overlay .screen-shadow-overlay {
+  opacity: 0.8;
+  pointer-events: auto;
+}
+
+.screen-shadow-overlay {
+  background-color: black;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/**/
+/* eof sidebar */
 :root {
   --color-main-bg: hsl(0,0%,98%);
   --color-main-text: hsl(0,0%,24%);
@@ -608,6 +679,7 @@ body {
   bottom: 0;
   left: 0;
   background-color: #c7dbd3;
+  border: 4px solid white;
   border-radius: 50%;
   transition: top 400ms;
 }
@@ -622,19 +694,48 @@ body {
 }
 
 .el-logo {
-  top: var(--el-logo-top);
-  left: 10vw;
-  width: 12vw;
-  height: 12vw;
   position: fixed;
-  z-index: 2;
+  z-index: 4;
   padding: 0.5em;
-}
-.el-logo.in-travel {
+  transition: left, top 100ms;
+  top: var(--el-logo-top);
   left: var(--el-logo-left);
   width: var(--el-logo-size);
   height: var(--el-logo-size);
-  transition: left, top 100ms;
+}
+.el-logo.in-travel {
+  left: 10vw;
+  width: 12vw;
+  height: 12vw;
+}
+.el-logo.is-active {
+  top: 0;
+  left: 0;
+  width: 10vw;
+  height: 10vw;
+}
+.el-logo::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 100%;
+  width: 50%;
+  height: 50%;
+  transform: scale(0);
+  transform-origin: top left;
+  will-change: transform;
+  transition: transform 200ms ease-in;
+  /* icon-close */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(../../art/characters/icon-close.svg);
+  opacity: 0;
+}
+.el-logo.is-active::after {
+  opacity: 1;
+  transform: scale(1);
+  transition-timing-function: ease-out;
 }
 
 .el-logo-sunrise {
@@ -769,4 +870,23 @@ body {
 }
 .chapter-hamburger .colors > i:nth-child(4) {
   color: lightpink;
+}
+
+.sidebar-chapters {
+  width: 24vw;
+  padding-top: 12vw;
+  background-color: #80BCA3;
+}
+
+.list-of-chapters > ul > li > a {
+  display: block;
+  background-color: rgba(255, 255, 255, 0.25);
+  transition: background 100ms ease;
+  padding: 0.5em 1em;
+}
+.list-of-chapters > ul > li > a:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.list-of-chapters > ul > li > a:hover {
+  text-decoration: underline;
 }

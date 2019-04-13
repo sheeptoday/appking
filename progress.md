@@ -1,17 +1,21 @@
 # plan
 
-- waypoints
-- tween lite lib
-- zzz
+- css avangarde
+- side menu
+- hamburger attacks side battle
+
 
 # future
 
+- tween lite lib
 - deploy web https://www.netlify.com/
 
-# plan done
+# done log ↓
 
 - scss base
 - article layout
 - scetches
 - sakura content
-- vue src
+- vue src - FAILED
+- waypoints
+- zzzoom
