@@ -1,7 +1,7 @@
 # AppKing
 Fairy tale about web-development
 
-Current state view:
-https://sheeptoday.github.io/appking/src/content.html
+Current dev state:
+https://sheeptoday.github.io/appking/src/main.html
 
 zl 2019

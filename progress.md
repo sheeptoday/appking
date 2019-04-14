@@ -1,7 +1,8 @@
-# plan
+# tech plan
+
+- svg cat-browse fix
 
 - css avangarde
-- side menu
 - hamburger attacks side battle
 
 
@@ -10,7 +11,7 @@
 - tween lite lib
 - deploy web https://www.netlify.com/
 
-# done log ↓
+# tech plan done ↓
 
 - scss base
 - article layout
@@ -19,3 +20,4 @@
 - vue src - FAILED
 - waypoints
 - zzzoom
+- side menu

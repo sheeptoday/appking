@@ -4,17 +4,30 @@ $color-AppkingWelcomeText: white;
 $color-AppkingBattleBackground: hsl(15, 75%, 30%);
 $color-AppkingBattleText: white;
 
+$clip-bottom-line: polygon(
+    0 -1px, 100% -1px,
+    100% 100%, 55% calc( 100% - 2em ), 30% 100%, 14% calc( 100% - 1em ), 6% 100%, 0 calc( 100% - 2em ) );
+$clip-top-line: polygon(
+    0 2em, 20% 0, 25% 1em, 40% 0, 60% 2em, 80% 0, 100% 1em,
+    100% 100%, 0 100% );
+$clip-top-bottom-line: polygon(
+    0 2em, 20% 0, 25% 1em, 40% 0, 60% 2em, 80% 0, 100% 1em,
+    100% 100%, 55% calc( 100% - 2em ), 30% 100%, 14% calc( 100% - 1em ), 6% 100%, 0 calc( 100% - 2em ) );
+
+
+
 .chapter-welcome-appking {
 
-    min-height:     100vh;
+    min-height:       100vh;
     background-color: $color-AppkingWelcomeBackground;
     color:            $color-AppkingWelcomeText;
 
     /* shadow silueth of the cat */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-image: url(../../art/illustrations/welcome-background.svg);
+
+    background-image:  url(../../art/illustrations/welcome-background.svg);
+    background-size:       contain;
+    background-position:   center center;
+    background-repeat:     no-repeat;
     background-attachment: fixed;
 
     /* has unique grid */
@@ -130,15 +143,17 @@ $color-AppkingBattleText: white;
             padding-bottom: 10vh;
         }
     }
-
 }
 .character--NinaTheArrow {
+
     @extend %focus-as-button;
     position: relative;
     z-index: 2;
+
     width: 8rem;
 
     &::before {
+
         content: '';
         pointer-events: 0;
 
@@ -147,7 +162,6 @@ $color-AppkingBattleText: white;
         top:   0;
         width: 40rem;
         height: 4rem;
-
         @media (max-width:50rem) {
             width: 20rem;
             height: 2rem;
@@ -157,86 +171,67 @@ $color-AppkingBattleText: white;
         background-size:   contain;
         background-repeat: no-repeat;
 
-        transform: translateY(-50%);
         opacity: 0;
+        transform:   translateY(-50%);
         will-change: transform, opacity;
 
     }
     &:focus::before {
         opacity: 1;
-        transform: translateY(0);
+        transform:  translateY(0);
         transition: all 400ms ease-in;
     }
 
     @media ($screenForTablet) {
+
         margin: 0 auto;
+
         &::before {
-            top: auto;
+            top:    auto;
             bottom: calc( 100% + 4vh );
-            left:50%;
-            width: 80vw;
-            height: 8vw;
+            left:   50%;
+            width:  80vw;
+            height:  8vw;
             max-height: 6vh;
-            transform: translateY(-50%) translateX(-50%);
+            transform:  translateY(-50%) translateX(-50%);
         }
         &:focus::before {
-            transform: translateY(0) translateX(-50%);
+            transform:  translateY(0) translateX(-50%);
         }
     }
-
 }
 #NinaTheArrow {
-    transform:  rotate(180deg);
-    transition: transform 200ms ease-out;
+
+    transform:   rotate(180deg);
+    transition:  transform 200ms ease-out;
     will-change: transform;
-    .her-face,
-    .her-hands {
+
+    .her-face, .her-hands {
         opacity: 0;
         transition:  opacity 300ms ease-in;
         will-change: opacity;
     }
     .character--NinaTheArrow:focus & {
         transform:  rotate(360deg) scale(1.5);
-        .her-face,
-        .her-hands {
-            opacity: 1;
-        }
+        .her-face, .her-hands { opacity: 1; }
     }
 }
-
-
 .chapter-crown-legend {
 
-    padding-top:   20vh;
+    padding-top:    20vh;
     padding-bottom: 20vh;
 
-    /* shadow silueth of the cat */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-image: url(../../art/decor/catground-crown.svg);
+    /* shadow silueth of the crown */
+
+    background-image:  url(../../art/decor/catground-crown.svg);
+    background-size:       contain;
+    background-position:   center center;
+    background-repeat:     no-repeat;
     background-attachment: fixed;
 
-    &>[storyblock] {
-        padding-bottom: 10vw;
-        grid-gap: 1em 5vw;
-        grid-template-columns:
-            [full-start side-w]
-                20vw
-            [main]
-                50vw
-            [side-e]
-                20vw
-            [full-end];
-        @media ($screenNotS) {
-            font-size: 1.2em;
-            &>p {
-                max-width: 27em;
-            }
-        }
-    }
 
     /* first letters */
+
     &>[storyblock] {
         &>p:first-letter {
             font-size:      2.4em;
@@ -246,9 +241,9 @@ $color-AppkingBattleText: white;
             padding-right:  2px;
         }
     }
-    /**/
 
-    /* illustration */
+    /* side illustration */
+
     .illustration {
         grid-column: side-e;
         position:  relative;
@@ -269,6 +264,12 @@ $color-AppkingBattleText: white;
             }
 
         }
+    }
+
+    /* ending illustration */
+
+    .legend-formula {
+        margin-top: 10vw;
     }
 }
 .character--KingCrown {
@@ -302,8 +303,6 @@ $color-AppkingBattleText: white;
     --el-logo-top:  100vh;
     --el-logo-left: 10vw;
     --el-logo-size: 12vw;
-    //--el-hamburger-top:  100vh;
-    //--el-hamburger-size: 25vw;
 }
 .el-logo {
 
@@ -359,45 +358,36 @@ $color-AppkingBattleText: white;
     }
 }
 .el-logo-sunrise { height: 5vw; }
-/*
-.el-hamburger {
-
-    top:    0;
-    right:  0;
-    width:  6vw;
-    height: 6vw;
-
-    &.in-friendly-mode {
-        top:    var(--el-hamburger-top);
-        right:  0;
-        width:  var(--el-hamburger-size);
-        height: var(--el-hamburger-size);
-    }
-
-    transition: width 200ms;
-
-    position: fixed;
-    z-index: 2;
-    padding: 0.5em;
-    &>img { width: 100%; max-width: 50vw; }
-}
-.el-hamburger-warsign { height: 20vh; }
-*/
 .chapter-logo {
 
-    padding-top:    20vh;
-    padding-bottom: 20vh;
+    padding-top:      20vh;
+    padding-bottom:   20vh;
     background-color: $color-AppkingWelcomeBackground;
     color:            $color-AppkingWelcomeText;
 
-    /* color silueth of the crown */
+    /* has special grid */
+
+    &>[storyblock] {
+        grid-gap: 1em 1em;
+        grid-template-columns:
+            [full-start side-w]
+                minmax(0, auto)
+            [main]
+                minmax(min-content, 28em)
+            [side-e]
+                minmax(0, auto)
+            [full-end];
+    }
+
+    /* has color silueth of the crown */
+
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
     background-image: url(../../art/decor/king-crown-featured.svg);
     background-attachment: fixed;
 
-    // has top decoration
+    /* has top+bottom decoration */
 
     position: relative;
     z-index: 1;
@@ -419,14 +409,17 @@ $color-AppkingBattleText: white;
     &::before { top:    -2rem;}
     &::after  { bottom: -2rem;}
 
+    // components
+
     .logo-features {
         grid-column: side-w;
     }
     .text {
-        background-color: hsla(202, 91%, 13%, 0.8);
-        transition: background 400ms ease-in;
         padding:   0.5em;
         font-size: 1.4em;
+
+        background-color: hsla(202, 91%, 13%, 0.8);
+        transition: background 400ms ease-in;
         &:hover {
             background-color: hsla(202, 91%, 13%, 0.95);
             transition-timing-function: ease-out;
@@ -434,36 +427,21 @@ $color-AppkingBattleText: white;
     }
 }
 .chapter-hamburger {
-    padding-top:    30vh;
-    padding-bottom: 30vh;
 
+    padding-top:      30vh;
+    padding-bottom:   30vh;
     background-color: $color-AppkingBattleBackground;
     color:            $color-AppkingBattleText;
 
-    /* shadow silueth of the cat */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-image: url(../../art/decor/catground-crown.svg);
+    /* shadow silueth of the crown */
+
+    background-image:  url(../../art/decor/catground-crown.svg);
+    background-size:       contain;
+    background-position:   center center;
+    background-repeat:     no-repeat;
     background-attachment: fixed;
 
-    &>[storyblock] {
-        grid-gap: 1em 5vw;
-        grid-template-columns:
-            [full-start side-w]
-                20vw
-            [main]
-                50vw
-            [side-e]
-                20vw
-            [full-end];
-        @media ($screenNotS) {
-            font-size: 1.2em;
-            &>p {
-                max-width: 27em;
-            }
-        }
-    }
+    // components
 
     .character--vonHamburger {
         grid-column: side-e;
@@ -476,13 +454,9 @@ $color-AppkingBattleText: white;
             height:   auto;
         }
     }
-
     .drammatic {
         font-size: 1.25em;
     }
-
-    /* drammatic colors */
-
     .colors {
         font-weight: bolder;
         &>i { font-style: normal; }
@@ -493,6 +467,7 @@ $color-AppkingBattleText: white;
     }
 }
 .sidebar-chapters {
+
     @extend .sidebar;
     @extend .sidebar-westside;
 
@@ -500,67 +475,54 @@ $color-AppkingBattleText: white;
     padding-top: 12vw;
 
     background-color: #80BCA3;
-
 }
-
 .list-of-chapters {
     &>ul>li>a {
         display: block;
-        background-color: hsla(0,0%,100%,0.25);
-        transition: background 100ms ease;
         padding: 0.5em 1em;
+
+        background-color: hsla(0,0%,100%,0.25);
+        transition:       background 100ms ease;
         &:hover { background-color: hsla(0,0%,100%,0.5); }
-        &:hover { text-decoration: underline; }
+        &:hover { text-decoration:  underline; }
     }
 }
-
 .chapter-world-description {
 
-    padding-top:    20vw;
-    padding-bottom: 20vw;
+    padding-top:    10vw;
+    padding-bottom: 10vw;
 
-    &>[storyblock] {
-        grid-gap: 1em 5vw;
-        grid-template-columns:
-            [full-start side-w]
-                20vw
-            [main]
-                50vw
-            [side-e]
-                20vw
-            [full-end];
-        @media ($screenNotS) {
-            font-size: 1.2em;
-            &>p {
-                max-width: 27em;
-            }
-        }
-    }
+    .bergamot-welcome { z-index: 1; }
 
-    &>header {
-        
-    }
 }
 .konigo-sorgen-soitie {
+
     @extend [storyblock];
     grid-column:   full;
-    margin-top:    2.5em;
-    margin-bottom: 2.5em;
+
+    margin-top:       2.5em;
+    margin-bottom:    2.5em;
+    padding:          2em 0;
     background-color: hsla(202, 81%, 23%, 0.25);
+    clip-path: $clip-top-bottom-line;
+
     .highlighted-paragraph {
-        align-self: center;
-        font-size:  1.25em;
-        padding:    2em 0;
+        align-self:  center;
+        font-size:   1.25em;
+        padding:     2em 0;
+        &>p { max-width: 27em; }
     }
     .highlighted-soitie {
         align-self:  center;
         grid-column: side-e;
-        max-width: 10em;
+        max-width:   10em;
     }
 }
 .quote-of-hamburger {
+
     grid-column: 2 / span 2;
     padding: 3em 1em 3em 5em;
+
     .text {
         font-style: italic;
         max-width:  27em;
@@ -568,4 +530,112 @@ $color-AppkingBattleText: white;
     .author {
         padding-top: 0.5em;
     }
+}
+.bergamot-just-browse-here {
+    .nicely-zoomed-illustration>& { transform-origin: bottom center; }
+}
+.chapter-header {
+
+    @extend .storyblock;
+    padding-bottom: 1.5em;
+    padding-top:    0.5em;
+    align-content:  center;
+
+    clip-path: $clip-bottom-line;
+    background-color: transparent;
+
+    /* is sticky */
+    &.is-sticky {
+        z-index:  1;
+        position: fixed;
+        top:   0;
+        left:  0;
+        right: 0;
+
+        background-color: pink;
+        transition: background 400ms ease;
+
+        font-size:  0.75em;
+
+        &+.chapter-header-placeholder {
+            height: 6em;
+        }
+
+        &>section {
+
+        }
+    }
+
+    &.has-matrix {
+        background-color: limegreen;
+    }
+
+    // components
+
+    &>section {
+        grid-column: 2 / span 2;
+    }
+
+    .title {
+        font-size: 2em;
+        line-height: 1.5;
+        white-space: nowrap;
+    }
+    .subtitle {
+        font-size: 1em;
+        line-height: 1;
+        white-space: nowrap;
+    }
+}
+.chapter-world-code {
+
+    padding-top:    20vw;
+    padding-bottom:  0vw;
+
+    background-color: hsla(201, 65%, 6%, 1); /* Funny Like the Space */
+    color:            limegreen;
+    clip-path: $clip-top-line;
+    @extend .has-sans-text;
+
+
+    .illustration {
+        grid-column: side-w;
+        position: relative;
+        &>img {
+            position: absolute;
+            width:  100%;
+            height: auto;
+        }
+    }
+
+    .span1 { padding-left: 1em; }
+    .span2 { padding-left: 2em; }
+    .span3 { padding-left: 3em; }
+}
+:root {
+    --matrix-bottom: 0vh;
+    --matrix-coat:   0vh;
+}
+.character--AppkingInsideCode {
+
+    position:   absolute;
+    pointer-events: none;
+    overflow:    visible;
+    left:  0;
+    right: 0;
+
+    &>.appking, &>.coat {
+        position: absolute;
+        z-index:  1;
+        bottom:   0;
+        left:     80vw;
+        width:    12vw;
+        height:   auto;
+    }
+    &.is-active {
+        &>.appking, &>.coat { position: fixed; }
+        &>.appking { transform: translateY(var(--matrix-bottom)); }
+        &>.coat    { transform: translateY(calc( var(--matrix-bottom) + var(--matrix-coat) )); }
+    }
+
 }

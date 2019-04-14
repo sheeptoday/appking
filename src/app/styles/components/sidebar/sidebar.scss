@@ -80,6 +80,7 @@ $z-index-shadowOverlay: 2;
     .screen-shadow-overlay {
         opacity:0.8;
         pointer-events: auto;
+        transition: opacity 400ms ease-in;
     }
 }
 .has-shadow-overlay { @extend %screen-has-shadow-overlay; }
