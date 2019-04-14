@@ -497,7 +497,7 @@ $clip-top-bottom-line: polygon(
 }
 .konigo-sorgen-soitie {
 
-    @extend [storyblock];
+    @extend %grid-as-article;
     grid-column:   full;
 
     margin-top:       2.5em;
@@ -536,7 +536,7 @@ $clip-top-bottom-line: polygon(
 }
 .chapter-header {
 
-    @extend .storyblock;
+    @extend %grid-as-article;
     padding-bottom: 1.5em;
     padding-top:    0.5em;
     align-content:  center;
@@ -559,6 +559,7 @@ $clip-top-bottom-line: polygon(
 
         &+.chapter-header-placeholder {
             height: 6em;
+            @media ($screenNotS) { font-size: 1.2em; }
         }
 
         &>section {
@@ -597,15 +598,30 @@ $clip-top-bottom-line: polygon(
     clip-path: $clip-top-line;
     @extend .has-sans-text;
 
+    p { max-width: 27em; }
+
+    .highlight { color: hsl(120, 41%, 65%); }
 
     .illustration {
         grid-column: side-w;
+        align-self:  center;
         position: relative;
         &>img {
             position: absolute;
             width:  100%;
             height: auto;
         }
+    }
+
+    .pytagorus-rule {
+        font-size: 1.2em;
+    }
+
+    .pytagorus-illustration,
+    .illustration {
+        opacity: 0.25;
+        transition: opacity 200ms ease;
+        &:hover { opacity: 0.75; }
     }
 
     .span1 { padding-left: 1em; }
@@ -632,10 +648,31 @@ $clip-top-bottom-line: polygon(
         width:    12vw;
         height:   auto;
     }
+    &>.coat { opacity: 0; }
     &.is-active {
         &>.appking, &>.coat { position: fixed; }
         &>.appking { transform: translateY(var(--matrix-bottom)); }
         &>.coat    { transform: translateY(calc( var(--matrix-bottom) + var(--matrix-coat) )); }
+        &>.coat { opacity: 1; }
     }
+}
+.hardcode-matrix {
+    word-break: break-all;
+    padding: 1rem;
+}
+.stop-that>p {  font-size: 4em; }
+.this-is-silly {
+    transition: transform 400ms ease;
+    &:hover   { transform: scale(1.5); }
+}
+.chapter-content-lover {
 
+    padding-top:    20vw;
+    padding-bottom: 20vw;
+
+    background-color: white;
+
+    &>[storyblock] {
+        grid-row-gap: 3em;
+    }
 }

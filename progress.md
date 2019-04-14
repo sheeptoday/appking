@@ -1,6 +1,7 @@
 # tech plan
 
-- svg cat-browse fix
+- pytagorus video
+- cat size slider
 
 - css avangarde
 - hamburger attacks side battle
@@ -21,3 +22,4 @@
 - waypoints
 - zzzoom
 - side menu
+- svg cat-browse fix
