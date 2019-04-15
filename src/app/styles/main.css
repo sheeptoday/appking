@@ -427,6 +427,12 @@ body {
     max-width: 27em;
   }
 }
+@media (max-width: 900px) {
+  .chapter-header, .konigo-sorgen-soitie, [storyblock], .storyblock, .grid-as-article {
+    grid-gap: 1em 0;
+    grid-template-columns: [full-start] 1rem [main-start side-w side-e] auto [main-end] 1rem [full-end];
+  }
+}
 
 .chapter-welcome-appking .text, [textblock], .textblock, .grid-as-text {
   display: grid;
@@ -663,20 +669,27 @@ body {
   padding-right: 2px;
 }
 .chapter-crown-legend .illustration {
-  grid-column: side-e;
-  position: relative;
-  z-index: 1;
+  grid-column: full;
 }
 .chapter-crown-legend .illustration > figure {
-  position: absolute;
-  z-index: 0;
-  width: 100%;
-  padding: 1rem;
   background-color: rgba(0, 0, 0, 0.1);
+  padding: 1rem;
 }
 .chapter-crown-legend .illustration > figure > figcaption {
   display: block;
   max-width: 18em;
+}
+@media (min-width: 901px) {
+  .chapter-crown-legend .illustration {
+    grid-column: side-e;
+    position: relative;
+    z-index: 1;
+  }
+  .chapter-crown-legend .illustration > figure {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+  }
 }
 .chapter-crown-legend .legend-formula {
   margin-top: 10vw;
@@ -718,6 +731,7 @@ body {
   z-index: 4;
   padding: 0.5em;
   transition: left, top 100ms;
+  transition: left 100ms;
   top: var(--el-logo-top);
   left: var(--el-logo-left);
   width: var(--el-logo-size);
@@ -733,6 +747,22 @@ body {
   left: 0;
   width: 10vw;
   height: 10vw;
+}
+@media (max-width: 900px) {
+  .el-logo {
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0;
+  }
+  .el-logo.in-travel {
+    width: 2.5em;
+    height: 2.5em;
+  }
+  .el-logo.is-active {
+    width: 5em;
+    height: 5em;
+    padding: 0.5em;
+  }
 }
 .el-logo::after {
   content: "";
@@ -760,6 +790,11 @@ body {
 
 .el-logo-sunrise {
   height: 5vw;
+}
+@media (max-width: 900px) {
+  .el-logo-sunrise {
+    height: 2.5em;
+  }
 }
 
 .chapter-logo {
@@ -805,15 +840,28 @@ body {
 .chapter-logo .logo-features {
   grid-column: side-w;
 }
-.chapter-logo .text {
-  padding: 0.5em;
-  font-size: 1.4em;
-  background-color: rgba(3, 41, 63, 0.8);
-  transition: background 400ms ease-in;
+@media (min-width: 901px) {
+  .chapter-logo .text {
+    padding: 0.5em;
+    font-size: 1.4em;
+    background-color: rgba(3, 41, 63, 0.8);
+    transition: background 400ms ease-in;
+  }
+  .chapter-logo .text:hover {
+    background-color: rgba(3, 41, 63, 0.95);
+    transition-timing-function: ease-out;
+  }
 }
-.chapter-logo .text:hover {
-  background-color: rgba(3, 41, 63, 0.95);
-  transition-timing-function: ease-out;
+@media (max-width: 900px) {
+  .chapter-logo {
+    padding-top: 150vw;
+    background-position: top center;
+    background-attachment: local;
+  }
+  .chapter-logo > [storyblock] {
+    grid-gap: 1em 0;
+    grid-template-columns: [full-start] 1rem [main-start side-w side-e] auto [main-end] 1rem [full-end];
+  }
 }
 
 .chapter-hamburger {
@@ -830,14 +878,18 @@ body {
 }
 .chapter-hamburger .character--vonHamburger {
   grid-column: side-e;
-  position: relative;
-  width: 20vw;
-  transform: translateX(-2.5vw);
 }
-.chapter-hamburger .character--vonHamburger > img {
-  position: absolute;
-  width: 100%;
-  height: auto;
+@media (min-width: 901px) {
+  .chapter-hamburger .character--vonHamburger {
+    position: relative;
+    width: 20vw;
+    transform: translateX(-2.5vw);
+  }
+  .chapter-hamburger .character--vonHamburger > img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+  }
 }
 .chapter-hamburger .drammatic {
   font-size: 1.25em;
@@ -862,14 +914,27 @@ body {
 }
 
 .sidebar-chapters {
-  width: 24vw;
-  padding-top: 12vw;
   background-color: #80BCA3;
 }
+@media (min-width: 901px) {
+  .sidebar-chapters {
+    width: 24vw;
+    padding-top: 12vw;
+  }
+}
+@media (max-width: 900px) {
+  .sidebar-chapters {
+    width: 100%;
+    padding-top: 5em;
+  }
+}
 
+.list-of-chapters > h3 {
+  padding: 0 1rem;
+}
 .list-of-chapters > ul > li > a {
   display: block;
-  padding: 0.5em 1em;
+  padding: 0.5em 1rem;
   background-color: rgba(255, 255, 255, 0.25);
   transition: background 100ms ease;
 }
@@ -913,6 +978,12 @@ body {
 .quote-of-hamburger {
   grid-column: 2/span 2;
   padding: 3em 1em 3em 5em;
+}
+@media (max-width: 900px) {
+  .quote-of-hamburger {
+    grid-column: 2/span 1;
+    padding: 2em 1em 2em 2em;
+  }
 }
 .quote-of-hamburger .text {
   font-style: italic;
@@ -968,6 +1039,11 @@ body {
   line-height: 1;
   white-space: nowrap;
 }
+@media (max-width: 900px) {
+  .chapter-header.is-sticky > section {
+    padding-left: 3em;
+  }
+}
 
 .chapter-world-code {
   padding-top: 20vw;
@@ -1014,6 +1090,14 @@ body {
 .chapter-world-code .span3 {
   padding-left: 3em;
 }
+.chapter-world-code #WordlDescriptionHeaderKiller {
+  height: 10vh;
+}
+@media (max-width: 900px) {
+  .chapter-world-code #WordlDescriptionHeaderKiller {
+    height: 40vw;
+  }
+}
 
 :root {
   --matrix-bottom: 0vh;
@@ -1050,6 +1134,12 @@ body {
 .character--AppkingInsideCode.is-active > .coat {
   opacity: 1;
 }
+@media (max-width: 900px) {
+  .character--AppkingInsideCode > .appking, .character--AppkingInsideCode > .coat {
+    width: 25vw;
+    left: 75vw;
+  }
+}
 
 .hardcode-matrix {
   word-break: break-all;
@@ -1058,6 +1148,11 @@ body {
 
 .stop-that > p {
   font-size: 4em;
+}
+@media (max-width: 900px) {
+  .stop-that > p {
+    line-height: 1.25;
+  }
 }
 
 .this-is-silly {

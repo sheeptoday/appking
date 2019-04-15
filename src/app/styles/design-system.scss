@@ -40,6 +40,22 @@ body {
             max-width: 27em;
         }
     }
+
+    // mobile
+
+    @media ($screenForTablet) {
+
+        grid-gap: 1em 0;
+        grid-template-columns:
+            [full-start]
+                1rem
+            [main-start side-w side-e]
+                auto
+            [main-end]
+                1rem
+            [full-end];
+
+    }
 }
 .grid-as-article     { @extend %grid-as-article; }
 .storyblock          { @extend %grid-as-article; }

@@ -1,5 +1,6 @@
 # tech plan
 
+- current menu item
 - pytagorus video
 - cat size slider
 

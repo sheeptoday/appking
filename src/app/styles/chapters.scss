@@ -245,24 +245,26 @@ $clip-top-bottom-line: polygon(
     /* side illustration */
 
     .illustration {
-        grid-column: side-e;
-        position:  relative;
-        z-index: 1;
+        grid-column: full;
         &>figure {
-
-            position: absolute;
-            z-index: 0;
-            width: 100%;
-            padding: 1rem;
-
             background-color: $color_main_shadow;
-
+            padding: 1rem;
             &>figcaption {
                 display: block;
                 @extend .has-sans-text;
                 max-width: 18em;
             }
+        }
 
+        @media ($screenNotTablet) {
+            grid-column: side-e;
+            position:  relative;
+            z-index: 1;
+            &>figure {
+                position: absolute;
+                z-index: 0;
+                width: 100%;
+            }
         }
     }
 
@@ -310,6 +312,7 @@ $clip-top-bottom-line: polygon(
     z-index:    4;
     padding:    0.5em;
     transition: left, top 100ms;
+    transition: left 100ms;
 
     top:    var(--el-logo-top);
     left:   var(--el-logo-left);
@@ -328,6 +331,32 @@ $clip-top-bottom-line: polygon(
         width:  10vw;
         height: 10vw;
     }
+
+    // mobile setup
+
+    @media ($screenForTablet) {
+        width:  2.5em;
+        height: 2.5em;
+        padding:  0;
+        //left: calc( var(--el-logo-left) * 2 );
+        //transition: left, transform 100ms;
+        &.in-travel {
+            width:  2.5em;
+            height: 2.5em;
+            //left:  20vw;
+            //transform-origin: left bottom;
+            //transform: translateY(-50%) scale(3);
+        }
+        &.is-active {
+            width:   5em;
+            height:  5em;
+            padding: 0.5em;
+        }
+    }
+
+
+    // x - for menu close
+
 
     &::after {
         content:  '';
@@ -357,7 +386,12 @@ $clip-top-bottom-line: polygon(
         transition-timing-function: ease-out;
     }
 }
-.el-logo-sunrise { height: 5vw; }
+.el-logo-sunrise {
+    height: 5vw;
+    @media ($screenForTablet) {
+        height: 2.5em;
+    }
+}
 .chapter-logo {
 
     padding-top:      20vh;
@@ -415,16 +449,40 @@ $clip-top-bottom-line: polygon(
         grid-column: side-w;
     }
     .text {
-        padding:   0.5em;
-        font-size: 1.4em;
+        @media ($screenNotTablet) {
+            padding:   0.5em;
+            font-size: 1.4em;
 
-        background-color: hsla(202, 91%, 13%, 0.8);
-        transition: background 400ms ease-in;
-        &:hover {
-            background-color: hsla(202, 91%, 13%, 0.95);
-            transition-timing-function: ease-out;
+            background-color: hsla(202, 91%, 13%, 0.8);
+            transition: background 400ms ease-in;
+            &:hover {
+                background-color: hsla(202, 91%, 13%, 0.95);
+                transition-timing-function: ease-out;
+            }
         }
     }
+
+    // mobile
+
+    @media ($screenForTablet) {
+        padding-top:      150vw;
+        background-position: top center;
+        background-attachment: local;
+
+        &>[storyblock] {
+            grid-gap: 1em 0;
+            grid-template-columns:
+                [full-start]
+                    1rem
+                [main-start side-w side-e]
+                    auto
+                [main-end]
+                    1rem
+                [full-end];
+        }
+
+    }
+
 }
 .chapter-hamburger {
 
@@ -445,13 +503,15 @@ $clip-top-bottom-line: polygon(
 
     .character--vonHamburger {
         grid-column: side-e;
-        position:    relative;
-        width:       20vw;
-        transform:   translateX(-2.5vw);
-        &>img {
-            position: absolute;
-            width:    100%;
-            height:   auto;
+        @media ($screenNotTablet) {
+            position:    relative;
+            width:       20vw;
+            transform:   translateX(-2.5vw);
+            &>img {
+                position: absolute;
+                width:    100%;
+                height:   auto;
+            }
         }
     }
     .drammatic {
@@ -471,15 +531,24 @@ $clip-top-bottom-line: polygon(
     @extend .sidebar;
     @extend .sidebar-westside;
 
-    width:       24vw;
-    padding-top: 12vw;
+    @media ($screenNotTablet) {
+        width:       24vw;
+        padding-top: 12vw;
+    }
+    @media ($screenForTablet) {
+        width:       100%;
+        padding-top: 5em;
+    }
 
     background-color: #80BCA3;
 }
 .list-of-chapters {
+    &>h3{
+        padding: 0 1rem;
+    }
     &>ul>li>a {
         display: block;
-        padding: 0.5em 1em;
+        padding: 0.5em 1rem;
 
         background-color: hsla(0,0%,100%,0.25);
         transition:       background 100ms ease;
@@ -522,6 +591,10 @@ $clip-top-bottom-line: polygon(
 
     grid-column: 2 / span 2;
     padding: 3em 1em 3em 5em;
+    @media ($screenForTablet) {
+        grid-column: 2 / span 1;
+        padding: 2em 1em 2em 2em;
+    }
 
     .text {
         font-style: italic;
@@ -587,6 +660,12 @@ $clip-top-bottom-line: polygon(
         line-height: 1;
         white-space: nowrap;
     }
+
+    // mobile
+
+    @media ($screenForTablet) {
+        &.is-sticky>section { padding-left: 3em; }
+    }
 }
 .chapter-world-code {
 
@@ -627,6 +706,16 @@ $clip-top-bottom-line: polygon(
     .span1 { padding-left: 1em; }
     .span2 { padding-left: 2em; }
     .span3 { padding-left: 3em; }
+
+    #WordlDescriptionHeaderKiller {
+        height: 10vh;
+    }
+
+    @media ($screenForTablet) {
+        #WordlDescriptionHeaderKiller {
+            height: 40vw;
+        }
+    }
 }
 :root {
     --matrix-bottom: 0vh;
@@ -655,12 +744,24 @@ $clip-top-bottom-line: polygon(
         &>.coat    { transform: translateY(calc( var(--matrix-bottom) + var(--matrix-coat) )); }
         &>.coat { opacity: 1; }
     }
+
+    @media ($screenForTablet) {
+        &>.appking, &>.coat {
+            width: 25vw;
+            left:  75vw;
+        }
+    }
 }
 .hardcode-matrix {
     word-break: break-all;
     padding: 1rem;
 }
-.stop-that>p {  font-size: 4em; }
+.stop-that>p {
+    font-size: 4em;
+    @media ($screenForTablet) {
+        line-height: 1.25;
+    }
+}
 .this-is-silly {
     transition: transform 400ms ease;
     &:hover   { transform: scale(1.5); }

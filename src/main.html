@@ -297,6 +297,7 @@
 </article>
 <nav id="el-navigation-menu" class="sidebar-chapters close-chapterbar">
     <section class="list-of-chapters">
+        <h3>Содержание</h3>
         <ul>
             <li><a href="#WelcomeAppKing">Король Апп</a></li>
             <li><a href="#CrownStory">Легенда о короне</a></li>
@@ -568,7 +569,6 @@
         })
         app.waydot({
             element: killer,
-            offset: '50%',
             handler: function (direction) {
                 if (direction=='down')
                     app.mutate({el:header, removeClass:'is-sticky'})
