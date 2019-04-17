@@ -1,15 +1,19 @@
 # tech plan
 
-- current menu item
+
 - pytagorus video
 - cat size slider
+- current menu item
+- keyboard focus follow story line
 
+- reduce font size
 - css avangarde
 - hamburger attacks side battle
 
 
 # future
 
+- web components
 - tween lite lib
 - deploy web https://www.netlify.com/
 
