@@ -37,3 +37,4 @@
 2019.7.4    chapter 3, гетера и сетера
 2019.6.30   chapter 3, intro text
 2019.7.6    trailer alpha II, dev
+            content markup, dev

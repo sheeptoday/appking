@@ -1,18 +1,38 @@
 @charset "UTF-8"; /* i'm the root */
 
-// html wrap
+// -------------------------------------------- Core
 
     @import "components/html-core/_settings";
+    @import "components/html-core/sass-workers";
+    @import "components/html-core/css-workers";
+
+// -------------------------------------------- HTML Setup
+
     @import "components/html-core/html-wrap";
     @import "components/html-core/html-typography";
+    @import "components/html-core/form-minimal";
 
-// components
+// -------------------------------------------- Components
 
-    @import "components/animate-css/required-animations";
-	@import "components/sidebar/sidebar";
+  //@import "components/animate-css/required-animations";
+  //@import "components/sidebar/sidebar";
+  //@import "components/layout-fullscreen/layout-fullscreen";
+  //@import "components/group/group";
+  //@import "components/data-table/data-table";
 
-// content
+    @import "components/article-grid/article-grid";
 
-    @import "design-system";
-    @import "chapters";
+  //@import "components/design-sakura/design-sakura";
 
+    @import "components/icons/svg-icons";
+    @import "components/icons/data-icon";
+
+
+// -------------------------------------------- Book content
+
+  //@import "design-system";
+  //@import "chapters";
+
+    @import "chapters/general";
+
+/* EOF root */

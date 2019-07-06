@@ -1,9 +1,93 @@
 /* i'm the root */
 /* ==============================================================
-    required settings app6011
-    2019.3.31
+    required settings app7001
+    2019.4.17
 ============================================================== */
 /* eof required settings */
+/* ==============================================================
+    app sass constructor - mixins and/or copy-paste templates
+    2019.6.26
+============================================================== */
+/* eof app scss constructor */
+/* ==============================================================
+    universal markup helpers
+    2019.7.17
+============================================================== */
+/* ------------------------------------------ univeral helpers */
+.is-centered {
+  text-align: center;
+  justify-content: center;
+}
+
+.is-v-centered {
+  align-self: center;
+}
+
+.has-v-centered > * {
+  align-self: center;
+}
+
+.is-v-equal {
+  align-self: stretch;
+}
+
+.has-v-equal > * {
+  align-self: stretch;
+}
+
+.has-v-slices {
+  grid-row-gap: 0;
+}
+
+.is-v-spaced {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+.is-v-padded {
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+}
+
+.is-box {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.layer {
+  display: block;
+  grid-column: full;
+}
+.zetka .layer {
+  grid-column: full;
+}
+
+.text-is-smaller {
+  font-size: 0.75em;
+}
+
+.text-is-larger {
+  font-size: 1.25em;
+}
+
+.text-is-bigger {
+  font-size: 1.33333em;
+}
+
+.has-paddings {
+  padding: 1em;
+}
+
+/* ------------------------------------------ compact mode helpers */
+@media (max-width: 600px) {
+  .compact-mode--is-centered {
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* eof univeral markup helpers */
 /* ==============================================================
     html wrap & base markup
     2019.3.31
@@ -25,11 +109,11 @@ html, body {
 
 /* ------------------------------------ basic unit & font sizes */
 html {
-  font-size: 10px;
+  /*font-size: 10px;*/
 }
 
 body {
-  font-size: 20px;
+  /*font-size: 16px;*/
   line-height: 1.5;
 }
 
@@ -119,15 +203,13 @@ figure {
 }
 
 img {
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
   border: none;
   max-width: 100%;
 }
 
 svg {
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
   border: none;
   max-width: 100%;
 }
@@ -148,24 +230,51 @@ table td {
 /* eof html wrap */
 /* ==============================================================
     all about font-sizes and line-heights
-    2019.3.31
+    2019.7.1
 ============================================================== */
 /* font source
 @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic');
 */
 body {
-  /* 16/28 */
-  font-size: 20px;
   line-height: 1.5;
   font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   font-weight: 400;
 }
 
-h1, h2, h3, h4, h5, h6, p, blockquote {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  font-weight: inherit;
+.big-title {
+  /* 40/48 */
+  font-size: 2.5em;
+  line-height: 1.2;
+}
+
+.title {
+  /* 32/40 */
+  font-size: 2em;
+  line-height: 1.25;
+}
+
+.min-title {
+  /* 24/32 */
+  font-size: 1.5em;
+  line-height: 1.333333;
+}
+
+.text-as-bigger, .subtitle {
+  /* 20/24 */
+  font-size: 1.25em;
+  line-height: 1.2;
+}
+
+.text-as-regular {
+  /* 16/24 */
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+td, .text-as-smaller {
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714286;
 }
 
 .big-title *,
@@ -178,41 +287,15 @@ h1, h2, h3, h4, h5, h6, p, blockquote {
   font-weight: inherit;
 }
 
-h1, .big-title {
-  /* 40/48 */
-  font-size: 2.5em;
-  line-height: 1.2;
-}
-
-h2, .title {
-  /* 32/40 */
-  font-size: 2em;
-  line-height: 1.25;
-}
-
-h3, .min-title {
-  /* 24/32 */
-  font-size: 1.5em;
-  line-height: 1.333333;
-}
-
-.subtitle {
-  /* 20/24 */
-  font-size: 1.25em;
-  line-height: 1.2;
-}
-
-small {
-  /* 14/28 */
-  font-size: 0.875em;
-  line-height: 2;
+h1, h2, h3, h4, h5, h6, blockquote, p {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
 }
 
 td {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  /* 14/24 */
-  font-size: 0.875em;
-  line-height: 1.714285;
 }
 
 .has-text-accent {
@@ -228,7 +311,7 @@ td {
   line-height: 1.714285;
 }
 
-.has-sans-text, .chapter-world-code, .chapter-crown-legend .illustration > figure > figcaption, .app-prefix {
+.has-sans-text {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   letter-spacing: 0.03em;
   /* 14/24 */
@@ -253,982 +336,430 @@ body {
 }
 
 /* eof typography */
-@keyframes keyframes--SimpleRotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
+.form-submit, .form-textarea, .form-item {
+  /* has rows */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: center;
 }
-@keyframes keyframes--TudaSudaRotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(359deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
+.form-submit > *, .form-textarea > *, .form-item > * {
+  order: 3;
 }
-.tudasuda {
-  animation: keyframes--TudaSudaRotation 4s infinite ease-out;
+.form-submit > label, .form-textarea > label, .form-item > label, .form-submit > .label, .form-textarea > .label, .form-item > .label {
+  order: 1;
+}
+.form-submit > input, .form-textarea > input, .form-item > input, .form-submit > .input, .form-textarea > .input, .form-item > .input {
+  order: 2;
 }
 
-/*
- * source - animate.css, http://daneden.me/animate
-
-2019.4.4
-
-- pulse
-
-
- */
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+label {
+  display: block;
+  padding: 0 0.25em;
 }
 
-.animated.infinite {
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-}
-
-@-webkit-keyframes pulse {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-  50% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-    transform: scale3d(1.05, 1.05, 1.05);
-  }
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-}
-@keyframes pulse {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-  50% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-    transform: scale3d(1.05, 1.05, 1.05);
-  }
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-}
-.pulse {
-  -webkit-animation-name: pulse;
-  animation-name: pulse;
-}
-
-/* ==============================================================
-    fixed sidebar with visible and hidden states
-    2019.4.13
-============================================================== */
-/* USE CASE
-    <nav class="sidebar is-active">
-        xoxox
-    </nav>
-*/
-.sidebar, .sidebar-chapters {
-  background-color: black;
-  /* is screen fixed */
-  position: fixed;
-  z-index: 3;
-  top: 0;
-  bottom: 0;
-  left: 100%;
-  /* has width */
+input {
+  display: block;
   width: 100%;
-  /* has unpredictable content */
-  overflow: auto;
-  /* closed state */
-  transform: translateX(0);
-  transition: transform 200ms ease-in;
-  /* open state */
-}
-@media screen and (min-width: 44rem) {
-  .sidebar, .sidebar-chapters {
-    max-width: 38rem;
-  }
-}
-.sidebar.is-active, .is-active.sidebar-chapters, .has-active-sidebar .sidebar, .has-active-sidebar .sidebar-chapters {
-  transition-timing-function: ease-out;
-  transform: translateX(-100%);
+  padding: 0.25em 0.25em;
+  /* default font */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
 }
 
-.sidebar-westside, .sidebar-chapters {
-  left: auto;
-  right: 100%;
-}
-.sidebar-westside.is-active, .is-active.sidebar-chapters, .has-active-sidebar .sidebar-westside, .has-active-sidebar .sidebar-chapters {
-  transition-timing-function: ease-out;
-  transform: translateX(100%);
-}
-
-.has-active-sidebar, .has-shadow-overlay {
-  overflow: hidden;
-}
-.has-active-sidebar .screen-shadow-overlay, .has-shadow-overlay .screen-shadow-overlay {
-  opacity: 0.8;
-  pointer-events: auto;
-  transition: opacity 400ms ease-in;
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.25em;
+  resize: vertical;
+  /* default font */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
 }
 
-.screen-shadow-overlay {
-  background-color: black;
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  pointer-events: none;
-  opacity: 0;
+button, .button, .is-button {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0.25em 0.25em;
+  /* default font */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
 }
 
-/**/
-/* eof sidebar */
+/* EOF: minimal form-item */
+/* -------------------------------------------------------
+ * ZETKA v2
+ * 2019.7.1
+ * -------------------------------------------------------
+ */
 :root {
-  --color-main-bg: hsl(0,0%,98%);
-  --color-main-text: hsl(0,0%,24%);
+  --grid-base--column-gap: 1em;
+  --grid-base--row-gap: 1em;
+  --grid-base--sidenote-width: 16em;
+  --grid-base--contenta-width: 35em;
 }
 
-body {
-  background-color: var(--color-main-bg);
-  color: var(--color-main-text);
-}
-
-.chapter-header, .konigo-sorgen-soitie, [storyblock], .storyblock, .grid-as-article {
+.content-block, .zetka-third-merge-tri, .zetka-third-merge-one, .zetka-third-tri, .zetka-third-two, .zetka-third-one, .zetka-half-two, .zetka-half-one, .article-block, .zetka-overhalf-two, .zetka-overhalf-one, .zetka-half-screen-two, .zetka-half-screen-one, .zetka-side-screen, .zetka-menu-screen, .zetka-merge-side,
+.zetka-merge-side-screen, .zetka-merge-menu,
+.zetka-merge-menu-screen, .zetka-block, .zetka-overmain, .article-grid, .zetka-merge, .zetka-layer, .zetka {
   display: grid;
-  grid-gap: 1em 5vw;
   align-items: start;
   grid-auto-flow: row;
   grid-auto-rows: min-content;
-  grid-template-columns: [full-start side-w] 20vw [main] 50vw [side-e] 20vw [full-end];
+  grid-column-gap: var(--grid-base--column-gap);
+  grid-row-gap: var(--grid-base--row-gap);
 }
-.chapter-header > *, .konigo-sorgen-soitie > *, [storyblock] > *, .storyblock > *, .grid-as-article > * {
+.has-paddings.content-block, .has-paddings.zetka-third-merge-tri, .has-paddings.zetka-third-merge-one, .has-paddings.zetka-third-tri, .has-paddings.zetka-third-two, .has-paddings.zetka-third-one, .has-paddings.zetka-half-two, .has-paddings.zetka-half-one, .has-paddings.article-block, .has-paddings.zetka-overhalf-two, .has-paddings.zetka-overhalf-one, .has-paddings.zetka-half-screen-two, .has-paddings.zetka-half-screen-one, .has-paddings.zetka-side-screen, .has-paddings.zetka-menu-screen, .has-paddings.zetka-merge-side,
+.has-paddings.zetka-merge-side-screen, .has-paddings.zetka-merge-menu,
+.has-paddings.zetka-merge-menu-screen, .has-paddings.zetka-block, .has-paddings.zetka-overmain, .has-paddings.article-grid, .has-paddings.zetka-merge, .has-paddings.zetka-layer, .has-paddings.zetka {
+  padding: var(--grid-base--row-gap) 0;
+}
+
+.article-grid, .zetka-merge, .zetka-layer, .zetka {
+  grid-template-columns:  [ full-start  overmain-start  ] 0 [  before-start main-start after-start  ] repeat( 6, 1fr ) [  before-end main-end after-end  ] 0 [  overmain-end  full-end ] ;
+}
+@media (min-width: 37em) {
+  .article-grid, .zetka-merge, .zetka-layer, .zetka {
+    grid-template-columns:  [ full-start  overmain-start  ] minmax(0, auto) [  before-start main-start after-start  ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [  before-end main-end after-end  ] minmax(0, auto) [  overmain-end  full-end ] ;
+  }
+}
+@media (min-width: 64em) {
+  .article-grid, .zetka-merge, .zetka-layer, .zetka {
+    grid-template-columns:  [ full-start   ] minmax(0, auto) [  before-start  ] minmax( auto, var(--grid-base--sidenote-width) ) [  before-end overmain-start  ] 0 [  main-start  ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [  main-end  ] 0 [  overmain-end after-start  ] minmax( auto, var(--grid-base--sidenote-width) ) [  after-end  ] minmax(0, auto) [   full-end ] ;
+  }
+}
+
+.article-block, .zetka-overhalf-two, .zetka-overhalf-one, .zetka-half-screen-two, .zetka-half-screen-one, .zetka-side-screen, .zetka-menu-screen, .zetka-merge-side,
+.zetka-merge-side-screen, .zetka-merge-menu,
+.zetka-merge-menu-screen, .zetka-block, .zetka-overmain {
+  grid-template-columns:  [ full-start  overmain-start  ] 0 [  before-start main-start after-start  ] repeat( 6, 1fr ) [  before-end main-end after-end  ] 0 [  overmain-end  full-end ] ;
+}
+
+.content-block, .zetka-third-merge-tri, .zetka-third-merge-one, .zetka-third-tri, .zetka-third-two, .zetka-third-one, .zetka-half-two, .zetka-half-one {
+  grid-template-columns: [full-start before-start overmain-start main-start after-start] auto [full-end before-end overmain-end main-end after-end];
+}
+
+.article-grid *, .zetka-merge *, .zetka-layer *, .zetka * {
   grid-column: main;
 }
-@media (min-width: 1301px) {
-  .chapter-header, .konigo-sorgen-soitie, [storyblock], .storyblock, .grid-as-article {
-    font-size: 1.2em;
-  }
-  .chapter-header > p, .konigo-sorgen-soitie > p, [storyblock] > p, .storyblock > p, .grid-as-article > p {
-    max-width: 27em;
-  }
-}
-@media (max-width: 900px) {
-  .chapter-header, .konigo-sorgen-soitie, [storyblock], .storyblock, .grid-as-article {
-    grid-gap: 1em 0;
-    grid-template-columns: [full-start] 1rem [main-start side-w side-e] auto [main-end] 1rem [full-end];
-  }
-}
 
-.chapter-welcome-appking .text, [textblock], .textblock, .grid-as-text {
-  display: grid;
-  grid-gap: 1em 0;
-  grid-template-columns: auto;
-}
-
-.chapter-welcome-appking .text > header > p, .text-as-active-message {
-  display: inline-block;
-  padding: 0.2em 0.5em;
-  margin-left: -0.5em;
-  background-color: #BF4D28;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 0.6em;
-  line-height: 1.75;
-  letter-spacing: 0.03em;
-}
-
-.character--NinaTheArrow {
-  display: block;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  outline: 0;
-  background: transparent;
-}
-
-.content-area {
-  overflow: hidden;
-  width: 100%;
-}
-
-.nicely-zoomed-illustration {
-  grid-column: full;
-  padding: 2em 10vw;
-}
-.nicely-zoomed-illustration > img {
-  --opacity: 0.25;
-  --scale: 0.5;
-  width: 100%;
-  height: auto;
-  opacity: var(--opacity);
-  transform: scale(var(--scale));
-  transform-origin: top center;
-  will-change: transform, opacity;
-}
-
-.chapter-welcome-appking {
-  min-height: 100vh;
-  background-color: #0b476a;
-  color: white;
-  /* shadow silueth of the cat */
-  background-image: url(../../art/illustrations/welcome-background.svg);
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  /* has unique grid */
-  display: grid;
-  grid-gap: 1em;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 23em) 20vw minmax(0, 1fr);
-  grid-template-rows: minmax(0, auto) max-content 8rem minmax(0, auto);
-  grid-template-areas: "i h h j" "l c k r" "l f f r" "b b b b";
-  position: relative;
-  z-index: 1;
-}
-.chapter-welcome-appking > .image {
-  grid-area: k;
-}
-.chapter-welcome-appking > .text {
-  grid-area: c;
-}
-.chapter-welcome-appking > .arrow {
-  grid-area: f;
-}
-.chapter-welcome-appking > .app-prefix {
-  grid-area: h;
-}
-.chapter-welcome-appking .image {
-  align-self: end;
-}
-.chapter-welcome-appking .image figure {
-  width: 100%;
-}
-.chapter-welcome-appking .image img {
-  max-height: 60vh;
-}
-.chapter-welcome-appking .text {
-  align-self: center;
-  font-size: 1.2em;
-}
-.chapter-welcome-appking .text > header > h1 {
-  font-size: 2.5em;
-}
-.chapter-welcome-appking::after {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: 0;
-  bottom: -2rem;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 4rem;
-  background-repeat: repeat-x;
-  background-size: auto 100%;
-  background-image: url(../../art/decor/wave-line.svg);
-  background-position: center center;
-}
-@media (max-width: 900px) {
-  .chapter-welcome-appking {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 29em) minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) min-content min-content min-content minmax(0, 1fr);
-    grid-template-areas: "t t t" "l k r" "l c r" "l f r" "b b b";
-    background-image: none;
-    font-size: 0.8em;
-  }
-  .chapter-welcome-appking .text {
-    font-size: 1em;
-  }
-  .chapter-welcome-appking .text > header {
-    min-height: 20vh;
-    text-align: center;
-  }
-  .chapter-welcome-appking .text > header > h1 {
-    font-size: 2em;
-  }
-  .chapter-welcome-appking .text > header > p {
-    font-size: 1em;
-    margin: 0 auto;
-  }
-  .chapter-welcome-appking .image {
-    padding-top: 20vh;
-    /* shadow silueth of the cat */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    background-image: url(../../art/illustrations/welcome-background.svg);
-  }
-  .chapter-welcome-appking .image figure, .chapter-welcome-appking .image img {
-    display: block;
-    height: 40vh;
-    width: auto;
-    margin: 0 auto;
-  }
-  .chapter-welcome-appking .arrow {
-    padding-top: 10vh;
-    padding-bottom: 10vh;
-  }
-}
-
-.app-prefix {
-  font-size: 0.75em;
-  line-height: 2;
-}
-
-.character--NinaTheArrow {
-  position: relative;
-  z-index: 2;
-  width: 8rem;
-}
-.character--NinaTheArrow::before {
-  content: "";
-  pointer-events: 0;
-  position: absolute;
-  left: 10rem;
-  top: 0;
-  width: 40rem;
-  height: 4rem;
-  background-image: url(../../art/decor/text-scroll-down.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transform: translateY(-50%);
-  will-change: transform, opacity;
-}
-@media (max-width: 50rem) {
-  .character--NinaTheArrow::before {
-    width: 20rem;
-    height: 2rem;
-  }
-}
-.character--NinaTheArrow:focus::before {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 400ms ease-in;
-}
-@media (max-width: 900px) {
-  .character--NinaTheArrow {
-    margin: 0 auto;
-  }
-  .character--NinaTheArrow::before {
-    top: auto;
-    bottom: calc( 100% + 4vh );
-    left: 50%;
-    width: 80vw;
-    height: 8vw;
-    max-height: 6vh;
-    transform: translateY(-50%) translateX(-50%);
-  }
-  .character--NinaTheArrow:focus::before {
-    transform: translateY(0) translateX(-50%);
-  }
-}
-
-#NinaTheArrow {
-  transform: rotate(180deg);
-  transition: transform 200ms ease-out;
-  will-change: transform;
-}
-#NinaTheArrow .her-face, #NinaTheArrow .her-hands {
-  opacity: 0;
-  transition: opacity 300ms ease-in;
-  will-change: opacity;
-}
-.character--NinaTheArrow:focus #NinaTheArrow {
-  transform: rotate(360deg) scale(1.5);
-}
-.character--NinaTheArrow:focus #NinaTheArrow .her-face, .character--NinaTheArrow:focus #NinaTheArrow .her-hands {
-  opacity: 1;
-}
-
-.chapter-crown-legend {
-  padding-top: 20vh;
-  padding-bottom: 20vh;
-  /* shadow silueth of the crown */
-  background-image: url(../../art/decor/catground-crown.svg);
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  /* first letters */
-  /* side illustration */
-  /* ending illustration */
-}
-.chapter-crown-legend > [storyblock] > p:first-letter {
-  font-size: 2.4em;
-  font-weight: bolder;
-  vertical-align: baseline;
-  line-height: 1;
-  padding-right: 2px;
-}
-.chapter-crown-legend .illustration {
+.article-grid, .zetka-merge, .zetka-layer, .zetka {
   grid-column: full;
 }
-.chapter-crown-legend .illustration > figure {
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-}
-.chapter-crown-legend .illustration > figure > figcaption {
-  display: block;
-  max-width: 18em;
-}
-@media (min-width: 901px) {
-  .chapter-crown-legend .illustration {
-    grid-column: side-e;
-    position: relative;
-    z-index: 1;
-  }
-  .chapter-crown-legend .illustration > figure {
-    position: absolute;
-    z-index: 0;
-    width: 100%;
-  }
-}
-.chapter-crown-legend .legend-formula {
-  margin-top: 10vw;
+
+.article-block, .zetka-overhalf-two, .zetka-overhalf-one, .zetka-half-screen-two, .zetka-half-screen-one, .zetka-side-screen, .zetka-menu-screen, .zetka-merge-side,
+.zetka-merge-side-screen, .zetka-merge-menu,
+.zetka-merge-menu-screen, .zetka-block, .zetka-overmain {
+  grid-column: overmain;
 }
 
-.character--KingCrown {
-  position: relative;
-  width: 10em;
-  height: 10em;
-  max-width: 100%;
-  max-height: 100%;
-  padding: 0.25em;
-}
-.character--KingCrown::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 40%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #c7dbd3;
-  border: 4px solid white;
-  border-radius: 50%;
-  transition: top 400ms;
-}
-.character--KingCrown:hover::before {
-  top: 60%;
+.westnote, .zetka-menu {
+  grid-column: before;
+  min-width: 10em;
 }
 
-:root {
-  --el-logo-top: 100vh;
-  --el-logo-left: 10vw;
-  --el-logo-size: 12vw;
+.eastnote, .zetka-side {
+  grid-column: after;
+  min-width: 10em;
 }
 
-.el-logo {
-  position: fixed;
-  z-index: 4;
-  padding: 0.5em;
-  transition: left, top 100ms;
-  transition: left 100ms;
-  top: var(--el-logo-top);
-  left: var(--el-logo-left);
-  width: var(--el-logo-size);
-  height: var(--el-logo-size);
-}
-.el-logo.in-travel {
-  left: 10vw;
-  width: 12vw;
-  height: 12vw;
-}
-.el-logo.is-active {
-  top: 0;
-  left: 0;
-  width: 10vw;
-  height: 10vw;
-}
-@media (max-width: 900px) {
-  .el-logo {
-    width: 2.5em;
-    height: 2.5em;
-    padding: 0;
-  }
-  .el-logo.in-travel {
-    width: 2.5em;
-    height: 2.5em;
-  }
-  .el-logo.is-active {
-    width: 5em;
-    height: 5em;
-    padding: 0.5em;
-  }
-}
-.el-logo::after {
-  content: "";
-  position: absolute;
-  top: 10%;
-  left: 100%;
-  width: 50%;
-  height: 50%;
-  transform: scale(0);
-  transform-origin: top left;
-  will-change: transform;
-  transition: transform 200ms ease-in;
-  /* icon-close */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-image: url(../../art/characters/icon-close.svg);
-  opacity: 0;
-}
-.el-logo.is-active::after {
-  opacity: 1;
-  transform: scale(1);
-  transition-timing-function: ease-out;
-}
-
-.el-logo-sunrise {
-  height: 5vw;
-}
-@media (max-width: 900px) {
-  .el-logo-sunrise {
-    height: 2.5em;
-  }
-}
-
-.chapter-logo {
-  padding-top: 20vh;
-  padding-bottom: 20vh;
-  background-color: #0b476a;
-  color: white;
-  /* has special grid */
-  /* has color silueth of the crown */
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-image: url(../../art/decor/king-crown-featured.svg);
-  background-attachment: fixed;
-  /* has top+bottom decoration */
-  position: relative;
-  z-index: 1;
-}
-.chapter-logo > [storyblock] {
-  grid-gap: 1em 1em;
-  grid-template-columns: [full-start side-w] minmax(0, auto) [main] minmax(min-content, 28em) [side-e] minmax(0, auto) [full-end];
-}
-.chapter-logo::before, .chapter-logo::after {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 4rem;
-  background-repeat: repeat-x;
-  background-size: auto 100%;
-  background-image: url(../../art/decor/wave-line.svg);
-  background-position: left center;
-}
-.chapter-logo::before {
-  top: -2rem;
-}
-.chapter-logo::after {
-  bottom: -2rem;
-}
-.chapter-logo .logo-features {
-  grid-column: side-w;
-}
-@media (min-width: 901px) {
-  .chapter-logo .text {
-    padding: 0.5em;
-    font-size: 1.4em;
-    background-color: rgba(3, 41, 63, 0.8);
-    transition: background 400ms ease-in;
-  }
-  .chapter-logo .text:hover {
-    background-color: rgba(3, 41, 63, 0.95);
-    transition-timing-function: ease-out;
-  }
-}
-@media (max-width: 900px) {
-  .chapter-logo {
-    padding-top: 150vw;
-    background-position: top center;
-    background-attachment: local;
-  }
-  .chapter-logo > [storyblock] {
-    grid-gap: 1em 0;
-    grid-template-columns: [full-start] 1rem [main-start side-w side-e] auto [main-end] 1rem [full-end];
-  }
-}
-
-.chapter-hamburger {
-  padding-top: 30vh;
-  padding-bottom: 30vh;
-  background-color: #863013;
-  color: white;
-  /* shadow silueth of the crown */
-  background-image: url(../../art/decor/catground-crown.svg);
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-.chapter-hamburger .character--vonHamburger {
-  grid-column: side-e;
-}
-@media (min-width: 901px) {
-  .chapter-hamburger .character--vonHamburger {
-    position: relative;
-    width: 20vw;
-    transform: translateX(-2.5vw);
-  }
-  .chapter-hamburger .character--vonHamburger > img {
-    position: absolute;
-    width: 100%;
-    height: auto;
-  }
-}
-.chapter-hamburger .drammatic {
-  font-size: 1.25em;
-}
-.chapter-hamburger .colors {
-  font-weight: bolder;
-}
-.chapter-hamburger .colors > i {
-  font-style: normal;
-}
-.chapter-hamburger .colors > i:nth-child(1) {
-  color: cyan;
-}
-.chapter-hamburger .colors > i:nth-child(2) {
-  color: yellow;
-}
-.chapter-hamburger .colors > i:nth-child(3) {
-  color: greenyellow;
-}
-.chapter-hamburger .colors > i:nth-child(4) {
-  color: lightpink;
-}
-
-.sidebar-chapters {
-  background-color: #80BCA3;
-}
-@media (min-width: 901px) {
-  .sidebar-chapters {
-    width: 24vw;
-    padding-top: 12vw;
-  }
-}
-@media (max-width: 900px) {
-  .sidebar-chapters {
-    width: 100%;
-    padding-top: 5em;
-  }
-}
-
-.list-of-chapters > h3 {
-  padding: 0 1rem;
-}
-.list-of-chapters > ul > li > a {
-  display: block;
-  padding: 0.5em 1rem;
-  background-color: rgba(255, 255, 255, 0.25);
-  transition: background 100ms ease;
-}
-.list-of-chapters > ul > li > a:hover {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-.list-of-chapters > ul > li > a:hover {
-  text-decoration: underline;
-}
-
-.chapter-world-description {
-  padding-top: 10vw;
-  padding-bottom: 10vw;
-}
-.chapter-world-description .bergamot-welcome {
-  z-index: 1;
-}
-
-.konigo-sorgen-soitie {
+.layer {
   grid-column: full;
-  margin-top: 2.5em;
-  margin-bottom: 2.5em;
-  padding: 2em 0;
-  background-color: rgba(11, 71, 106, 0.25);
-  clip-path: polygon(0 2em, 20% 0, 25% 1em, 40% 0, 60% 2em, 80% 0, 100% 1em, 100% 100%, 55% calc( 100% - 2em ), 30% 100%, 14% calc( 100% - 1em ), 6% 100%, 0 calc( 100% - 2em ));
-}
-.konigo-sorgen-soitie .highlighted-paragraph {
-  align-self: center;
-  font-size: 1.25em;
-  padding: 2em 0;
-}
-.konigo-sorgen-soitie .highlighted-paragraph > p {
-  max-width: 27em;
-}
-.konigo-sorgen-soitie .highlighted-soitie {
-  align-self: center;
-  grid-column: side-e;
-  max-width: 10em;
 }
 
-.quote-of-hamburger {
-  grid-column: 2/span 2;
-  padding: 3em 1em 3em 5em;
+.zetka-merge-menu,
+.zetka-merge-menu-screen {
+  grid-column: full-start/overmain-end;
 }
-@media (max-width: 900px) {
-  .quote-of-hamburger {
-    grid-column: 2/span 1;
-    padding: 2em 1em 2em 2em;
+@media (min-width: 64em) {
+  .zetka-merge-menu,
+.zetka-merge-menu-screen {
+    grid-template-columns:  [ full-start   ] minmax(0, auto) [  before-start  ] minmax( auto, var(--grid-base--sidenote-width) ) [  before-end overmain-start  ] 0 [  main-start after-start  ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [  main-end after-end  ] 0 [  overmain-end  full-end ] ;
   }
 }
-.quote-of-hamburger .text {
-  font-style: italic;
-  max-width: 27em;
+
+.zetka-merge-side,
+.zetka-merge-side-screen {
+  grid-column: overmain-start/full-end;
 }
-.quote-of-hamburger .author {
-  padding-top: 0.5em;
+@media (min-width: 64em) {
+  .zetka-merge-side,
+.zetka-merge-side-screen {
+    grid-template-columns:  [ full-start  overmain-start  ] 0 [  main-start before-start  ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [  main-end before-end  ] 0 [  overmain-end after-start  ] minmax( auto, var(--grid-base--sidenote-width) ) [  after-end  ] minmax(0, auto) [   full-end ] ;
+  }
 }
 
-.nicely-zoomed-illustration > .bergamot-just-browse-here {
-  transform-origin: bottom center;
+.zetka-menu-screen {
+  grid-column: full-start/before-end;
 }
 
-.chapter-header {
-  padding-bottom: 1.5em;
-  padding-top: 0.5em;
+.zetka-side-screen {
+  grid-column: after-start/full-end;
+}
+
+@media (min-width: 64em) {
+  .zetka-half-screen-one {
+    grid-column: full-start/span 6;
+  }
+}
+
+@media (min-width: 64em) {
+  .zetka-half-screen-two {
+    grid-column: 7/full-end;
+  }
+}
+
+@media (min-width: 64em) {
+  .zetka-overhalf-one {
+    grid-column: overmain-start/span 4;
+  }
+}
+
+@media (min-width: 64em) {
+  .zetka-overhalf-two {
+    grid-column: 7/overmain-end;
+  }
+}
+
+@media (min-width: 64em) {
+  .zetka-half-one {
+    grid-column: main-start/span 3;
+  }
+}
+
+@media (min-width: 64em) {
+  .zetka-half-two {
+    grid-column: 7/main-end;
+  }
+}
+
+@media (min-width: 64em) {
+  .zetka-third-one {
+    grid-column: 4/span 2;
+  }
+}
+
+@media (min-width: 64em) {
+  .zetka-third-two {
+    grid-column: 6/span 2;
+  }
+}
+
+@media (min-width: 64em) {
+  .zetka-third-tri {
+    grid-column: 8/span 2;
+  }
+}
+
+@media (min-width: 64em) {
+  .zetka-third-merge-one {
+    grid-column: 4/span 4;
+  }
+}
+
+@media (min-width: 64em) {
+  .zetka-third-merge-tri {
+    grid-column: 6/span 4;
+  }
+}
+
+/* ==============================================================
+    Regular Inline Icons
+    2019.6.27
+============================================================== */
+.svg-icon {
+  --base-line-height: 1.5;
+  display: inline-flex;
+  justify-content: center;
   align-content: center;
-  clip-path: polygon(0 -1px, 100% -1px, 100% 100%, 55% calc( 100% - 2em ), 30% 100%, 14% calc( 100% - 1em ), 6% 100%, 0 calc( 100% - 2em ));
-  background-color: transparent;
-  /* is sticky */
+  align-items: center;
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
 }
-.chapter-header.is-sticky {
-  z-index: 1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: pink;
-  transition: background 400ms ease;
-  font-size: 0.75em;
+.svg-icon:not(.base-size) {
+  margin-right: calc( var(--base-line-height)*1em - 1em );
+  transform: scale(var(--base-line-height));
+  transform-origin: left center;
 }
-.chapter-header.is-sticky + .chapter-header-placeholder {
-  height: 6em;
-}
-@media (min-width: 1301px) {
-  .chapter-header.is-sticky + .chapter-header-placeholder {
-    font-size: 1.2em;
-  }
-}
-.chapter-header.has-matrix {
-  background-color: limegreen;
-}
-.chapter-header > section {
-  grid-column: 2/span 2;
-}
-.chapter-header .title {
-  font-size: 2em;
-  line-height: 1.5;
-  white-space: nowrap;
-}
-.chapter-header .subtitle {
-  font-size: 1em;
-  line-height: 1;
-  white-space: nowrap;
-}
-@media (max-width: 900px) {
-  .chapter-header.is-sticky > section {
-    padding-left: 3em;
-  }
-}
-
-.chapter-world-code {
-  padding-top: 20vw;
-  padding-bottom: 0vw;
-  background-color: #051219;
-  /* Funny Like the Space */
-  color: limegreen;
-  clip-path: polygon(0 2em, 20% 0, 25% 1em, 40% 0, 60% 2em, 80% 0, 100% 1em, 100% 100%, 0 100%);
-}
-.chapter-world-code p {
-  max-width: 27em;
-}
-.chapter-world-code .highlight {
-  color: #81ca81;
-}
-.chapter-world-code .illustration {
-  grid-column: side-w;
-  align-self: center;
-  position: relative;
-}
-.chapter-world-code .illustration > img {
-  position: absolute;
+.svg-icon > svg {
   width: 100%;
-  height: auto;
-}
-.chapter-world-code .pytagorus-rule {
-  font-size: 1.2em;
-}
-.chapter-world-code .pytagorus-illustration,
-.chapter-world-code .illustration {
-  opacity: 0.25;
-  transition: opacity 200ms ease;
-}
-.chapter-world-code .pytagorus-illustration:hover,
-.chapter-world-code .illustration:hover {
-  opacity: 0.75;
-}
-.chapter-world-code .span1 {
-  padding-left: 1em;
-}
-.chapter-world-code .span2 {
-  padding-left: 2em;
-}
-.chapter-world-code .span3 {
-  padding-left: 3em;
-}
-.chapter-world-code #WordlDescriptionHeaderKiller {
-  height: 10vh;
-}
-@media (max-width: 900px) {
-  .chapter-world-code #WordlDescriptionHeaderKiller {
-    height: 40vw;
-  }
+  height: 100%;
+  fill: currentColor;
 }
 
-:root {
-  --matrix-bottom: 0vh;
-  --matrix-coat: 0vh;
-}
+/* ------------------------------------------------ basic icon set
 
-.character--AppkingInsideCode {
-  position: absolute;
-  pointer-events: none;
-  overflow: visible;
-  left: 0;
-  right: 0;
-}
-.character--AppkingInsideCode > .appking, .character--AppkingInsideCode > .coat {
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  left: 80vw;
-  width: 12vw;
-  height: auto;
-}
-.character--AppkingInsideCode > .coat {
-  opacity: 0;
-}
-.character--AppkingInsideCode.is-active > .appking, .character--AppkingInsideCode.is-active > .coat {
-  position: fixed;
-}
-.character--AppkingInsideCode.is-active > .appking {
-  transform: translateY(var(--matrix-bottom));
-}
-.character--AppkingInsideCode.is-active > .coat {
-  transform: translateY(calc( var(--matrix-bottom) + var(--matrix-coat) ));
-}
-.character--AppkingInsideCode.is-active > .coat {
-  opacity: 1;
-}
-@media (max-width: 900px) {
-  .character--AppkingInsideCode > .appking, .character--AppkingInsideCode > .coat {
-    width: 25vw;
-    left: 75vw;
-  }
-}
+<figure class="svg-icon"><svg><use xlink:href="#svg-email"></use></svg></figure>
 
-.hardcode-matrix {
-  word-break: break-all;
-  padding: 1rem;
-}
+<svg xmlns="http://www.w3.org/2000/svg">
 
-.stop-that > p {
-  font-size: 4em;
-}
-@media (max-width: 900px) {
-  .stop-that > p {
-    line-height: 1.25;
-  }
-}
+    <symbol id="svg-next" viewBox="0 0 24 24">
+        <title>Arrow Next, material icons</title>
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+    </symbol>
+    <symbol id="svg-back" viewBox="0 0 24 24">
+        <title>Arrow Back, material icons</title>
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M0 0h24v24H0z" fill="none"/><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+    </symbol>
+    <symbol id="svg-down" viewBox="0 0 24 24">
+        <title>Chevron Down, material icons</title>
+        <path d="M0-.75h24v24H0z" fill="none"/>
+        <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+    </symbol>
+    <symbol id="svg-menu" viewBox="0 0 24 24">
+        <title>Hamburger, material icons</title>
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </symbol>
+    <symbol id="svg-check" viewBox="0 0 24 24">
+        <title>Check, material icons</title>
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+    </symbol>
+    <symbol id="svg-close" viewBox="0 0 24 24">
+        <title>Close X, material icons</title>
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+    </symbol>
 
-.this-is-silly {
-  transition: transform 400ms ease;
-}
-.this-is-silly:hover {
-  transform: scale(1.5);
-}
+    <symbol id="svg-email" viewBox="0 0 24 24">
+        <title>Email, material icons</title>
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+    </symbol>
+    <symbol id="svg-phone" viewBox="0 0 24 24">
+        <title>Phone, material icons</title>
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+    </symbol>
+    <symbol id="svg-skype" viewBox="-12 -12 88 88">
+        <title>Skype, custom 2019.6.27</title>
+        <path d="M61.7 37.3v.3l-.1-.6.1.3A29.3 29.3 0 0 0 60 20a29.7 29.7 0 0 0-16-16A29.5 29.5 0 0 0 32 1.6a32.1 32.1 0 0 0-5.7.5s.2 0 .3.2l-.7-.1.4-.1A18 18 0 0 0 5.2 5.3a17.8 17.8 0 0 0-3 21.3s0-.2.2-.3v.7l-.1-.4a31 31 0 0 0 2 17 29.7 29.7 0 0 0 16 16C23.8 61.2 27.8 62 32 62a28.2 28.2 0 0 0 5.3-.5l-.3-.2.6.1h-.3A17.2 17.2 0 0 0 46 64a17.9 17.9 0 0 0 15.6-26.6zm-29.6 13c-10.8 0-15.6-5.3-15.6-9.2 0-2 1.6-3.5 3.6-3.5 4.6 0 3.4 6.7 12 6.7 4.3 0 6.8-2.4 6.8-4.8 0-1.5-.8-3.1-3.6-3.8l-9.6-2.4c-7.7-1.9-9-6-9-10 0-8.1 7.6-11.1 14.7-11.1 6.6 0 14.4 3.6 14.4 8.5 0 2-1.8 3.2-3.9 3.2-4 0-3.2-5.4-11-5.4-4 0-6.1 1.7-6.1 4.3s3 3.3 5.8 4l7 1.5c7.8 1.8 9.8 6.2 9.8 10.5 0 6.6-5 11.5-15.3 11.5zm4.9 11c0 .2.1.2.3.3l.3-.1zm24.6-23.7l.1-.3-.1-.4zM2.3 26.3l-.1.3.2.4zm24.3-24l-.3-.1H26z"/>
+    </symbol>
+    <symbol id="svg-telegram" viewBox="-48 -48 624 624">
+        <title>Telegram Square, custom 2019.6.27</title>
+        <path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/>
+    </symbol>
+    <symbol id="svg-chat" viewBox="-48 -48 624 624">
+        <title>Chat Bubble, font-awesome</title>
+        <path fill="currentColor" d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/>
+    </symbol>
 
-.chapter-content-lover {
-  padding-top: 20vw;
-  padding-bottom: 20vw;
-  background-color: white;
-}
-.chapter-content-lover > [storyblock] {
-  grid-row-gap: 3em;
-}
+    <symbol id="svg-linkedin" viewBox="0 0 448 512">
+        <title>Linkedin Square, font-awesome</title>
+        <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/>
+    </symbol>
+    <symbol id="svg-twitter" viewBox="0 0 448 512">
+        <title>Twitter Square, font-awesome</title>
+        <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/>
+    </symbol>
+    <symbol id="svg-facebook" viewBox="0 0 448 512">
+        <title>Facebook Square, font-awesome</title>
+        <path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/>
+    </symbol>
+    <symbol id="svg-youtube" viewBox="0 0 448 512">
+        <title>Youtube Square, font-awesome</title>
+        <path d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"/>
+    </symbol>
+    <symbol id="svg-instagram" viewBox="0 0 448 512">
+        <title>Instagram, font-awesome</title>
+        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+    </symbol>
+    <symbol id="svg-github" viewBox="0 0 448 512">
+        <title>Github Square, font-awesome</title>
+        <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/>
+    </symbol>
+</svg>
 
-.chapter-lorem-ipsum {
-  padding-top: 4em;
-  /* has top decoration */
-  position: relative;
-  z-index: 1;
+*/
+/* EOF Regular Icons */
+/* ==============================================================
+    data:image icons
+    Icons as :before with data:image in background
+    2019.6.26
+============================================================== */
+.data-icon {
+  vertical-align: middle;
 }
-.chapter-lorem-ipsum::before {
+.data-icon::before {
   content: "";
-  display: block;
-  position: absolute;
-  z-index: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 4rem;
-  background-repeat: repeat-x;
-  background-size: auto 100%;
-  background-image: url(../../art/decor/wave-line.svg);
-  background-position: left center;
+  display: inline-flex;
+  line-height: inherit;
+  vertical-align: middle;
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 0.25em;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: contain;
+  background-image: var(--icon-image);
 }
-.chapter-lorem-ipsum::before {
-  top: -2rem;
+.data-icon:empty {
+  height: 1.5em;
 }
-
-.lorem-grid {
-  font-size: 0.75em;
-  padding: 1rem;
-  grid-gap: 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
-  grid-auto-flow: dense;
-}
-.lorem-grid > div {
-  display: flex;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: stretch;
-}
-.lorem-grid > div {
-  padding: 1rem;
-}
-.lorem-grid > div:not(.caption) {
-  background-color: rgba(0, 0, 0, 0.15);
-}
-.lorem-grid > .inversed {
-  background: darkgray;
-  color: white;
+.data-icon:empty::before {
+  margin-right: 0;
 }
 
-.chapter-take-the-mission {
-  padding-top: 10vw;
-  padding-bottom: 10vw;
+.data-icon {
+  --icon-image: none;
 }
+.data-icon.email {
+  --icon-image:
+      url("data:image/svg+xml,%3Csvg fill='white' width='24' height='24' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z'/%3E%3C/svg%3E");
+}
+.data-icon.phone {
+  --icon-image:
+      url("data:image/svg+xml,%3Csvg fill='white' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z'/%3E%3C/svg%3E");
+}
+.data-icon.skype {
+  --icon-image:
+      url("data:image/svg+xml,%3Csvg fill='white' xmlns='http://www.w3.org/2000/svg' width='88' height='88' viewBox='-12 -12 88 88'%3E%3Cpath d='M61.732 37.29c0 .084 0 .252-.084.336l-.084-.588c0 .084.084.168.168.252.336-1.764.504-3.612.504-5.46 0-4.115-.84-8.063-2.352-11.76-1.512-3.612-3.696-6.803-6.467-9.575s-5.963-4.955-9.575-6.467C40.147 2.436 36.2 1.68 32.084 1.68a32.1 32.1 0 0 0-5.711.504c.084.084.252.084.336.168l-.672-.084c.084 0 .252-.084.336-.084C23.685.84 20.83.084 17.9.084c-4.787 0-9.24 1.848-12.682 5.207C1.848 8.65 0 13.186 0 17.974c0 3.024.756 6.047 2.268 8.65 0-.084 0-.252.084-.336l.084.672c-.084-.084-.084-.168-.168-.336-.336 1.68-.42 3.444-.42 5.207 0 4.115.84 8.063 2.352 11.76 1.512 3.612 3.696 6.803 6.467 9.575s5.963 4.955 9.575 6.467c3.696 1.596 7.643 2.352 11.76 2.352a28.22 28.22 0 0 0 5.291-.504c-.084-.084-.168-.084-.336-.168l.672.084c-.084 0-.252 0-.336.084a17.22 17.22 0 0 0 8.819 2.436c4.787 0 9.24-1.848 12.682-5.207C62.152 55.35 64 50.814 64 46.026c0-3.024-.84-6.047-2.268-8.735zM32.084 50.3c-10.75 0-15.538-5.29-15.538-9.24 0-2.016 1.512-3.444 3.528-3.444 4.62 0 3.444 6.635 12 6.635 4.367 0 6.803-2.352 6.803-4.787 0-1.428-.756-3.108-3.612-3.78L25.7 33.344c-7.727-1.932-9.07-6.047-9.07-9.995 0-8.147 7.643-11.17 14.782-11.17 6.635 0 14.362 3.612 14.362 8.483 0 2.1-1.764 3.276-3.864 3.276-3.948 0-3.192-5.46-11.087-5.46-3.948 0-6.047 1.764-6.047 4.283s3.108 3.36 5.795 3.948l7.055 1.596c7.727 1.764 9.743 6.215 9.743 10.5 0 6.635-5.04 11.507-15.286 11.507zm4.87 11.087c.084.084.168.084.336.168.084 0 .252 0 .336-.084zm24.693-23.77c0-.084 0-.252.084-.336-.084-.084-.084-.168-.168-.336zM2.268 26.29c0 .084 0 .252-.084.336.084.084.084.168.168.336zM26.625 2.352c-.084-.084-.168-.084-.336-.168-.084 0-.252.084-.336.084z'/%3E%3C/svg%3E%0A");
+}
+.data-icon.linkedin {
+  --icon-image:
+      url("data:image/svg+xml,%3Csvg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z'%3E%3C/path%3E%3C/svg%3E");
+}
+.data-icon.twitter {
+  --icon-image:
+      url("data:image/svg+xml,%3Csvg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z'%3E%3C/path%3E%3C/svg%3E");
+}
+.data-icon.facebook {
+  --icon-image:
+      url("data:image/svg+xml,%3Csvg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z'%3E%3C/path%3E%3C/svg%3E");
+}
+.data-icon.instagram {
+  --icon-image:
+      url("data:image/svg+xml,%3Csvg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z'%3E%3C/path%3E%3C/svg%3E");
+}
+.data-icon.youtube {
+  --icon-image:
+      url("data:image/svg+xml,%3Csvg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z'%3E%3C/path%3E%3C/svg%3E");
+}
+.data-icon.github {
+  --icon-image:
+      url("data:image/svg+xml,%3Csvg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/*
+@function function-replace-in-string($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + function-replace-in-string(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+*/
+/* EOF data:image icons */
+/* EOF root */

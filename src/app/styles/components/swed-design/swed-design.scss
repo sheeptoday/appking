@@ -1,0 +1,787 @@
+$hslSwed-NobleBlack:            240, 15%, 12%;
+$hslSwed-NobleBlue:             212, 34%, 29%;
+$hslSwed-AccentBlue:            204, 22%, 55%;
+$hslSwed-AccentBlux:            226, 17%, 20%;
+$hslSwed-NobleWhite:            226, 27%, 90%;
+
+$hslEg-Dark:                    220, 56%, 24%;
+$hslEg-Light:                   207, 57%, 75%;
+$hslEg-Highlight:               206, 57%, 95%;
+$hslEg-Accent:                   11, 86%, 63%;
+$hslEg-Reaccent:                207, 57%, 51%;
+$hslEg-Black:                   240, 15%, 12%;
+
+
+$colorSwedAccent:               hsl(212, 34%, 29%);
+$colorSwedAccent--text:         white;
+
+$colorSwedDark:                 hsl(240, 15%, 12%);
+$colorSwedDark--text:           hsla(0,0%,100%,0.75);
+$colorSwedLight:                hsl(204, 22%, 55%);
+$colorSwedMedium:               hsl(226, 17%, 20%);
+
+$timing-function--easeInBack:  cubic-bezier(0.600, -0.280, 0.735, 0.045);
+$timing-function--easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+$timing-function--focusZoom:   cubic-bezier(0.165, 0.84, 0.44, 1);
+$timing-function--jumpClose:   $timing-function--easeInBack;
+$timing-function--jumpOpen:    $timing-function--easeOutBack;
+
+
+:root {
+    --hsl-MainBackground: #{$hslSwed-NobleBlack};
+    --hsl-CardBackground: #{$hslSwed-NobleBlue};
+    --hsl-ItemBackground: #{$hslSwed-AccentBlue};
+}
+
+/* ------------------------------------- current-easing model */
+
+:root {
+  --timing-function--focusZoom: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --timing-function--openJump:  cubic-bezier(0.175, 0.885, 0.320, 1.275);
+  --timing-function--closeJump: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+}
+
+/* ------------------------------------- current-color model */
+
+:root {
+    --current-color--front:      white;
+    --current-color--back:       hsl(var(--hsl-MainBackground));
+    --current-color--card-front: var(--current-color--front);
+    --current-color--card-back:  hsl(var(--hsl-CardBackground));
+    --current-color--active:     hsl(2, 45%, 75%);
+    --current-color--shadow:     hsla(0, 0%, 0%, 0.32);
+}
+.color-model--classic {
+    --current-color--front:      black;
+    --current-color--back:       white;
+    --current-color--card-front: black;
+    --current-color--card-back:  lightgray;
+    --current-color--active:     firebrick;
+    --current-color--shadow:     hsla(0, 0%, 0%, 0.32);
+}
+.use-color-model {
+    color:            var(--current-color--front);
+    background-color: var(--current-color--back);
+}
+
+/* ------------------------------------- pending color model */
+
+/* skup palette */
+
+:root {
+    --hsl-NobleBlack:            240, 15%, 12%;
+    --hsl-NobleBlue:             212, 34%, 29%;
+    --hsl-AccentBlue:            204, 22%, 55%;
+    --hsl-AccentBlux:            226, 17%, 20%;
+    --hsl-NobleWhite:            226, 27%, 90%;
+    --hsl-NobleHighWhite:        226, 32%, 75%;
+}
+
+/* color models */
+
+:root,
+.colors-as-primary {
+    --background-color:          hsl(var(--hsl-NobleBlack));
+    --color:                     hsl(var(--hsl-NobleWhite));
+    --mark-text-color:           hsl(var(--hsl-NobleHighWhite));
+    --mark-background-color:     hsl(var(--hsl-AccentBlux));
+}
+.colors-as-secondary {
+    --background-color:          hsl(var(--hsl-NobleBlue));
+    --color:                     hsl(var(--hsl-NobleWhite));
+    --mark-text-color:           hsl(var(--hsl-NobleHighWhite));
+}
+.colors-as-highlight {
+    --background-color:          hsl(var(--hsl-AccentBlux));
+    --color:                     hsl(var(--hsl-NobleWhite));
+    --mark-text-color:           hsl(var(--hsl-NobleHighWhite));
+}
+.colors-as-alternative {
+    --background-color:          hsl(var(--hsl-AccentBlue));
+    --color:                     hsl(204,  0%,  0%);
+    --mark-text-color:           hsl(204,  0%,  0%);
+}
+.colors-as-special {
+    --background-color:          white;
+    --color:                     black;
+    --mark-text-color:           firebrick;
+    --mark-background-color:     lightgray;
+}
+
+/* color workers */
+
+.color-box {
+    background-color:   var(--background-color);
+    color:              var(--color);
+}
+
+/* ------------------------------------- universal components */
+
+.albatross {
+  --albatross-full-min-width: 60em;
+  --albatross-item-min-width: 25%;
+
+    display:        flex;
+    flex-direction: row;
+    flex-wrap:      wrap;
+
+    &>* {
+        min-width: var(--albatross-item-min-width);
+        max-width: 100%;
+        flex-grow: 1;
+
+        // must be less than min-width
+        //   or greater than max-width
+        flex-basis: calc( var(--albatross-full-min-width) * 999 - 100% * 999 );
+    }
+}
+
+.jellyground {
+    position: relative;
+    &::after {
+        content:  "";
+        pointer-events: none;
+        position: absolute;
+        z-index: -1;
+        top:    0;
+        left:   0;
+        width:  100%;
+        height: 100%;
+
+        background-color: var(--mark-background-color);
+        transition: all 800ms;
+        transition-timing-function: var(--timing-function--openJump);
+        will-change: transform;
+    }
+    &:hover::after {
+        transform: scale(0.9, 1.2) translate(-15%,-10%);
+    }
+}
+
+
+/* ------------------------------------- unsorted components */
+
+
+.bg-aaa {
+    --hsl-background: #{$hslSwed-NobleBlack};
+}
+.bg-bbb {
+    --hsl-background: #{$hslSwed-NobleBlue};
+}
+.bg-ccc {
+    --hsl-background: #{$hslSwed-AccentBlue};
+}
+.bg-ddd {
+    --hsl-background: #{$hslSwed-AccentBlux};
+}
+
+.bg-aaa, .bg-bbb, .bg-ccc, .bg-ddd {
+    background-color: hsl( var(--hsl-background) );
+}
+
+.swd-section .title+.title { color: black; }
+
+.design-template--swed {
+
+    background-color: $colorSwedDark;
+    color:            $colorSwedDark--text;
+
+    .big-title {
+        display:    block;
+    }
+    .title {
+        display:    block;
+    }
+    .subtitle {
+        @extend .has-sans-text;
+    }
+}
+
+.swd-section {
+    width:          100%;
+    padding-top:    10vh;
+    padding-bottom: 10vh;
+
+    display:         flex;
+    flex-direction:  column;
+    justify-content: center;
+    align-content:   center;
+    align-items:     center;
+}
+.swed-screen {
+    min-height: 100vh;
+    width:      100%;
+
+    display:         flex;
+    flex-direction:  column;
+    justify-content: center;
+    align-content:   center;
+    align-items:     center;
+}
+.swed-welcome {
+
+    min-height: 100vh;
+
+    // grid system
+    display: grid;
+    grid-template-columns:
+        auto
+        minmax(32vw, min-content);
+    grid-template-rows:
+        minmax(75vh, max-content)
+        auto;
+    grid-template-areas:
+        'w e'
+        's s';
+    &>.main { grid-area: w; }
+    &>.side { grid-area: e; }
+    &>.foot { grid-area: s; }
+
+
+    @media ($screenForMobile) {
+        grid-template-columns: auto;
+        grid-template-rows:    auto;
+        grid-template-areas:  'w' 'e' 's';
+    }
+
+
+    .head, .foot, .main, .side {
+        display:         flex;
+        flex-direction:  column;
+        justify-content: center;
+        align-content:   center;
+        align-items:     center;
+    }
+    .head { background-color: $colorSwedLight; }
+    .foot { background-color: $colorSwedMedium; }
+    .side { background-color: $colorSwedAccent; }
+
+}
+.swed-button {
+
+    // design
+
+    & ,&:link, &:visited, &:active, &:focus, &:hover {
+        background-color: white;
+        color:            black;
+        text-decoration:   none;
+        cursor:         default;
+    }
+    padding: 0.5em 1em;
+
+    // layout
+
+    display: block;
+    line-height: 1;
+    &>a {
+        @extend %link-style-as-inherit;
+        cursor: default;
+    }
+
+    &::after {
+      content:  "";
+      position: absolute;
+      z-index:  -1;
+      top:       0;
+      left:      0;
+      width:  100%;
+      height: 100%;
+
+      opacity: 0;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+      transition: inherit;
+    }
+
+    // hover effect
+
+    position:    relative;
+    will-change: transform;
+    transition:  all 0.6s $timing-function--focusZoom;
+    &:hover {
+        transform: scale(1.25, 1.25);
+        z-index: 1;
+        &::after { opacity: 1; }
+    }
+}
+.swed-dropdown {
+
+    & {
+        position: relative;
+        z-index: 0;
+    }
+
+    .label {
+        position: relative;
+        z-index:  1;
+
+        line-height: 1.5;
+        padding:
+            0.25em 0.5em;
+
+        // has marker
+
+        display:     flex;
+        align-items: center;
+
+        &::after {
+            content: '';
+            display: block;
+            width:   1.5em;
+            height:  1.5em;
+            background-size:  100%;
+            background-image: url("data:image/svg+xml,%3Csvg fill%3D%22white%22 width%3D%2224%22 height%3D%2224%22 viewBox%3D%220 0 24 24%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E %3Cpath d%3D%22M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z%22%2F%3E %3C%2Fsvg%3E");
+            transition: transform 240ms;
+            transform-origin: center center;
+        }
+    }
+    .droplist {
+        pointer-events: none;
+
+        position: absolute;
+        z-index:  0;
+        top:     -0.25em;
+        left:    -0.25em;
+        min-width: 100%;
+
+        // background
+
+        &::after {
+            background-color: rgba(255,255,255,0.1);
+
+            content:  '';
+            position: absolute;
+            z-index: -1;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0;
+
+            transform:  scale(0);
+            transform-origin: 1em 1em;
+            transition: transform 240ms;
+            transition-timing-function: $timing-function--easeInBack;
+        }
+
+        // content
+
+        &>ul {
+            opacity: 0;
+
+            list-style: none;
+            margin:     0;
+            padding:    0;
+            margin-top: 2.5em;
+            padding-bottom: 0.5em;
+
+            transition: opacity 240ms ease-out;
+
+            &>li {
+                white-space: nowrap;
+                padding: 0.25em 0.75em;
+                &:hover { background-color: rgba(0,0,0,0.25); }
+                &:hover>span,
+                &:hover>a {
+                    display: block;
+                    transform:  translateX(0.25em);
+                    transition: transform 240ms ease-in;
+                    transition-timing-function: $timing-function--easeOutBack;
+                }
+            }
+        }
+    }
+
+    /* display action */
+
+    &.has-hover-action:hover,
+    &.is-active {
+        .label            { color: hsl(2,45%,65%); }
+        .label::after     { transform: rotate(180deg); }
+        .droplist         { pointer-events: all; }
+        .droplist::after {
+            transform: scale(1);
+            transition-timing-function: $timing-function--easeOutBack;
+        }
+        .droplist>ul {
+            opacity: 1;
+            transition: opacity 240ms ease-in;
+        }
+    }
+
+    /* usability */
+
+    // transparent hover area around
+    &.has-hover-action {
+        .droplist::before {
+            display:  none;
+            content:  '';
+            position: absolute;
+            z-index: -2;
+            top:     -2em;
+            right:   -2em;
+            bottom:  -2em;
+            left:    -2em;
+        }
+        &:hover .droplist::before { display: block; }
+    }
+
+}
+
+.swd-menu-row {
+    display:   flex;
+    flex-wrap: nowrap;
+    position: relative;
+    z-index: 3;
+    //.swd-dropmenu { z-index: 1; }
+}
+.swd-button {
+
+    --color-front:     var(--current-color--front);
+    --color-back:      var(--current-color--card-back);
+    --color-active:    var(--current-color--active);
+    --color-shadow:    var(--current-color--shadow);
+
+    // design
+
+    background-color: transparent;
+    color:            var(--color-front);
+    text-decoration:  none;
+    cursor:           default;
+
+    // layout
+
+    display:       block;
+    padding:       0.5em;
+    line-height:   1;
+    white-space:   nowrap;
+    text-overflow: ellipsis;
+
+    &>a {
+
+        display: block;
+        margin: -0.5em -0.5em;
+        padding: 0.5em  0.5em;
+
+        color:           inherit;
+        text-decoration: inherit;
+        cursor:          inherit;
+    }
+
+    &::after {
+        content:  "";
+        position: absolute;
+        z-index:  -1;
+        top:       0;
+        left:      0;
+        width:  100%;
+        height: 100%;
+
+        opacity: 0;
+        background-color: var(--color-back);
+        //box-shadow: 0 0.5rem 1rem var(--color-shadow);
+
+        will-change: transform;
+        transition:  transform 240ms, opacity 240ms;
+        transition-timing-function: $timing-function--jumpOpen;
+    }
+
+    /* -------------------------------- hover effect */
+
+    position:    relative;
+    &:hover {
+        z-index: 1;
+        color: var(--color-active);
+        &::after {
+            opacity:   1;
+            transform: scale(1.25, 1.25);
+        }
+    }
+
+}
+.swd-dropmenu {
+
+    --color-front:     var(--current-color--front);
+    --color-back:      var(--current-color--card-back);
+    --color-active:    var(--current-color--active);
+    --color-shadow:    var(--current-color--shadow);
+
+    & {
+        position: relative;
+        //z-index:  0; // stand alone
+        color:    var(--color-front);
+    }
+
+    /* ----------------------------------------- label */
+
+    .label {
+        position: relative;
+        z-index:  2;
+
+        font-size:   1em;
+        line-height: 1.5;
+        padding:     0.25em 0.5em;
+
+        // remove button styles
+
+        color:     inherit;
+        background-color: transparent;
+        border: 0;
+
+        // is invisible button
+
+        white-space:   nowrap;
+        text-overflow: ellipsis;
+
+        // has marker
+
+        display:     flex;
+        align-items: center;
+        padding-right: 0.25em;
+
+        &::after {
+            content: '';
+            display: block;
+            width:   1.5em;
+            height:  1.5em;
+            transition:       transform 240ms;
+            transform-origin: center center;
+            background-size:  100%;
+            background-image: url("data:image/svg+xml,%3Csvg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z'/%3E%3C/svg%3E%0A");
+        }
+    }
+
+    // label display action
+
+    &:not(.no-hover):hover .label, // on hover
+    &.is-active .label,            // on demand
+    .label:focus                   // has focus
+    {
+        color: var(--color-active);
+        &::after { transform: scaleY(-1); }
+    }
+
+    /* ----------------------------------------- droplist */
+
+    .droplist {
+        pointer-events: none;
+        position:  absolute;
+        z-index:   1;
+        top:      -0.25em;
+        left:     -0.25em;
+        min-width: calc(100% + 0.5em);
+
+        // background layer
+
+        &::after {
+            background-color: var(--color-back);
+
+            content:  '';
+            position: absolute;
+            z-index: -1;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0;
+
+            transform:  scale(0);
+            transform-origin: 1em 1em;
+            transition: transform 240ms;
+            transition-timing-function: $timing-function--easeInBack;
+        }
+    }
+
+    // droplist content menu
+
+    .droplist>ul {
+        opacity: 0;
+
+        list-style: none;
+        margin:     0;
+        padding:    0;
+        margin-top: 2.5em;
+        padding-bottom: 0.5em;
+
+        transition: opacity 240ms ease-out;
+
+        &>li {
+            white-space: nowrap;
+            padding: 0.25em 0.75em;
+            &:hover { background-color: var(--color-shadow); }
+            &:hover>span,
+            &:hover>a {
+                display: block;
+                transform:  translateX(0.25em);
+                transition: transform 240ms;
+                transition-timing-function: $timing-function--easeOutBack;
+            }
+        }
+    }
+
+    // droplist display action
+
+    &:not(.no-hover):hover,
+    &.is-active {
+        z-index: 2;
+    }
+
+    &:not(.no-hover):hover .label, // on hover
+    &.is-active .label,            // on demand
+    .label:focus                   // has focus
+    {
+        &+.droplist  {
+            pointer-events: all;
+        }
+        &+.droplist::after {
+            transform: scale(1);
+            transition-timing-function: $timing-function--easeOutBack;
+        }
+        &+.droplist>ul {
+            opacity: 1;
+            transition: opacity 240ms ease-in;
+        }
+    }
+
+    /* ----------------------------------------- usability */
+
+    // transparent layer, to expand hover area
+
+    &:not(.no-hover) {
+        .droplist::before {
+            display:  none;
+            content:  '';
+            position: absolute;
+            z-index: -2;
+            top:     -2em;
+            right:   -2em;
+            bottom:  -2em;
+            left:    -2em;
+        }
+        &:hover .droplist::before { display: block; }
+    }
+}
+
+.swed-group {
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: center;
+    align-items:     center;
+    align-content:   center;
+    &, &>* { margin: 0.5rem; }
+}
+.focus-group {
+    &>* { transition: opacity 320ms ease-out; }
+    &:hover>*       { opacity: 0.25; }
+    &:hover>*:hover { opacity: 1; z-index: 1; transition-duration: 120ms; }
+}
+.swed-message {
+    font-size:    1.5em;
+    max-width:     28em;
+    margin-left:   auto;
+    margin-right:  auto;
+    padding-left:  1rem;
+    padding-right: 1rem;
+}
+
+
+
+.box {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.box::after {
+  content: "";
+  border-radius: 5px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.box:hover {
+  -webkit-transform: scale(1.25, 1.25);
+  transform: scale(1.25, 1.25);
+}
+
+.box:hover::after {
+    opacity: 1;
+}
+
+
+
+.swed-double-sticker-wrap {
+
+    --middle-gap-size: 8em;
+
+    display:    grid;
+    margin:   0 auto;
+    padding:  0 1rem;
+    grid-gap: 0 var(--middle-gap-size);
+    grid-template-columns: repeat(2, minmax( 12em, max-content ) );
+
+    &>.swed-sticker {
+        align-self: center;
+        &::after {
+            width: calc( 100% + 0.75*var(--middle-gap-size) );
+        }
+        &:nth-child(1)::after {
+            transform-origin: center right;
+        }
+        &:nth-child(2)::after {
+            transform-origin: center left;
+            left:  auto;
+            right: 0;
+        }
+        &:hover {
+            &:nth-child(1)::after {
+                transform:
+                    scale(1, 1.2)
+                    translate( calc( 0.25 * var(--middle-gap-size) * (-1) ), -1em);
+            }
+            &:nth-child(2)::after {
+                transform:
+                    scale(0.9, 1.2)
+                    translate( calc( 0.25 * var(--middle-gap-size) ), -1em);
+            }
+        }
+    }
+}
+.swed-sticker {
+
+    padding: 1em;
+    position: relative;
+
+    &::after {
+        content:  "";
+        pointer-events: none;
+        position: absolute;
+        z-index: -1;
+        top:    0;
+        left:   0;
+        width:  100%;
+        height: 100%;
+
+        background-color: $colorSwedAccent;
+        opacity: 0.25;
+        will-change: transform;
+        transition: all 800ms $timing-function--jumpOpen;
+    }
+
+    &:hover::after {
+        transform: scale(0.9, 1.2) translate(-15%,-10%);
+    }
+}

@@ -1,6 +1,6 @@
 /* ==============================================================
-    required settings app6011
-    2019.3.31
+    required settings app7001
+    2019.4.17
 ============================================================== */
 
 
@@ -22,11 +22,10 @@ $color_main_shadow:    rgba(0,0,0,0.1);
 
 //* ------------------------------------ font-depended variables
 
-
-$fontSize:     20px;
-$fontRegular:  400;
-$fontSemibold: 400;
-$fontBolder:   700;
+$fontSize:     1em;
+$fontRegular:  normal;
+$fontSemibold: normal;
+$fontBolder:   bolder;
 
 //* ------------------------------------ screen sizes
 

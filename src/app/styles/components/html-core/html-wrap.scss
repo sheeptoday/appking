@@ -16,8 +16,8 @@ html, body               { margin: 0; padding: 0;  }
 /* ------------------------------------ basic unit & font sizes */
 
 
-html { font-size: 10px; }
-body { font-size: 20px; line-height: 1.5; }
+html { /*font-size: 10px;*/ }
+body { /*font-size: 16px;*/ line-height: 1.5; }
 
 
 /* ------------------------------------ improve design & UX */
@@ -90,14 +90,12 @@ figure {
     margin:  0;
 }
 img {
-    display: inline-block;
-    vertical-align: middle;
+    display:  block;
     border:    none;
     max-width: 100%;
 }
 svg {
-    display: inline-block;
-    vertical-align: middle;
+    display:  block;
     border:    none;
     max-width: 100%;
 }
