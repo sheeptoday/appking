@@ -547,7 +547,7 @@ body {
   .chapter-welcome-appking {
     grid-template-columns: minmax(0, 1fr) minmax(0, 29em) minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr) min-content min-content min-content minmax(0, 1fr);
-    grid-template-areas: "t t t" "l k r" "l c r" "l f r" "b b b";
+    grid-template-areas: "i h j" "l k r" "l c r" "l f r" "b b b";
     background-image: none;
     font-size: 0.8em;
   }
@@ -1145,7 +1145,8 @@ body {
 @media (max-width: 900px) {
   .character--AppkingInsideCode > .appking, .character--AppkingInsideCode > .coat {
     width: 25vw;
-    left: 75vw;
+    left: auto;
+    right: 0;
   }
 }
 
@@ -1210,6 +1211,12 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
   grid-auto-flow: dense;
+}
+@media (max-width: 900px) {
+  .lorem-grid {
+    font-size: 0.5em;
+    grid-template-columns: repeat(auto-fit, minmax(22vw, 1fr));
+  }
 }
 .lorem-grid > div {
   display: flex;
