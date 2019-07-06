@@ -1,0 +1,225 @@
+/* King Style Sheet, KSS, 2019.3.14 */
+/* Last revision: 2019.3.14 */
+/* KSS base html markup */
+/* ------------------------------------ scale model */
+:root {
+  --rem-unit: 10px;
+  --em-unit: 24px;
+}
+
+html {
+  font-size: var(--rem-unit);
+}
+
+body {
+  font-size: var(--em-unit);
+  line-height: 1.25;
+}
+
+/* ------------------------------------ minimal box model */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ------------------------------------ improve design & UX */
+html {
+  cursor: default;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+a, area, button, input, label, select, summary, textarea, [tabindex] {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+@supports (hanging-punctuation: first) {
+  * {
+    hanging-punctuation: first;
+  }
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  max-width: 26em;
+  margin-right: auto;
+}
+
+p + p {
+  padding-top: 1em;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* ------------------------------------ avoid rendering errors */
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+canvas {
+  display: inline-block;
+}
+
+/* ----------------- use semantic markup without browser`s design */
+blockquote, figure, figcaption {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  white-space: normal;
+}
+
+article, section, header, footer, main, aside, nav {
+  display: block;
+}
+
+nav ul, nav ol {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+/* KSS base design */
+body {
+  font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+}
+
+/* KSS interface workers */
+/*
+ * source - animate.css, http://daneden.me/animate
+ */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+
+.animated.flipOutX,
+.animated.flipOutY,
+.animated.bounceIn,
+.animated.bounceOut {
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+}
+
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+}
+
+/* font alternative */
+.has-sans-text, .matrix-code-layer {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  letter-spacing: 0.03em;
+}
+
+/* common layout for text content */
+.text-grid, .matrix-code-layer {
+  display: grid;
+  grid-gap: 0 1em;
+  grid-template-columns: [full-start] minmax(0, auto) [prefix-start] 6em [prefix-end main-start] minmax(auto, 26em) [suffix-start main-end] 6em [suffix-end] minmax(0, auto) [full-end];
+}
+.text-grid *, .matrix-code-layer * {
+  grid-column: main;
+}
+@media (max-width:800px) {
+  .text-grid, .matrix-code-layer {
+    grid-gap: 0;
+    grid-template-columns: [full-start] minmax(1rem, auto) [prefix-start suffix-start main-start] minmax(auto, 26em) [prefix-end suffix-end main-end] minmax(1rem, auto) [full-end];
+  }
+}
+
+/* KSS screens */
+/* matrix mode */
+.matrix-code-layer {
+  padding-top: 20vh;
+  padding-bottom: 20vh;
+  margin-top: 20vh;
+  margin-bottom: 40vh;
+  background-color: #051219;
+  /* Funny Like the Space */
+  color: limegreen;
+}
+.matrix-code-layer .span1 {
+  padding-left: 1em;
+}
+.matrix-code-layer .span2 {
+  padding-left: 2em;
+}
+.matrix-code-layer .span3 {
+  padding-left: 3em;
+}
+
+/* EOF KSS Style Sheet */

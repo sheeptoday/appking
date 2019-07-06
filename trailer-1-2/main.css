@@ -1,0 +1,404 @@
+/* i'm the root */
+/* ==============================================================
+    required settings app6011
+    2019.3.31
+============================================================== */
+/* eof required settings */
+/* ==============================================================
+    html wrap & base markup
+    2019.3.31
+============================================================== */
+/* ------------------------------------ minimal box model */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ------------------------------------ basic unit & font sizes */
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* ------------------------------------ improve design & UX */
+html {
+  cursor: default;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+a, area, button, input, label, select, summary, textarea, [tabindex] {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+/* ------------------------------------ avoid visual errors */
+img, svg {
+  max-width: 100%;
+}
+
+canvas {
+  display: inline-block;
+}
+
+/* ----------------- use semantic markup without browser`s design */
+nav ul, nav ol, ul.nav, ol.nav {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+figure, figcaption, fieldset, legend {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  white-space: normal;
+}
+
+article, section, header, footer, main, aside, nav, details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  background-color: transparent;
+}
+
+ul, ol {
+  margin-left: 1.5em;
+}
+
+hr {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  /* use as visual spacer */
+  display: block;
+  font-size: inherit;
+  min-height: 1.5em;
+}
+
+figure {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  max-width: 100%;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  max-width: 100%;
+}
+
+table * {
+  text-align: left;
+  vertical-align: top;
+}
+table td {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
+
+[hidden], .hidden {
+  display: none !important;
+}
+
+/* eof html wrap */
+/* ==============================================================
+    all about font-sizes and line-heights
+    2019.3.31
+============================================================== */
+/* font source
+@import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic');
+*/
+body {
+  /* 16/28 */
+  font-size: 20px;
+  line-height: 1.5;
+  font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+.big-title *,
+.title *,
+.min-title *,
+.subtitle * {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, .big-title {
+  /* 40/48 */
+  font-size: 2.5em;
+  line-height: 1.2;
+}
+
+h2, .title {
+  /* 32/40 */
+  font-size: 2em;
+  line-height: 1.25;
+}
+
+h3, .min-title {
+  /* 24/32 */
+  font-size: 1.5em;
+  line-height: 1.333333;
+}
+
+.subtitle {
+  /* 20/24 */
+  font-size: 1.25em;
+  line-height: 1.2;
+}
+
+small {
+  /* 14/28 */
+  font-size: 0.875em;
+  line-height: 2;
+}
+
+td {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714285;
+}
+
+.has-text-accent {
+  font-weight: 400;
+  /* 24/36 */
+  font-size: 1.5em;
+  line-height: 1.5;
+}
+
+.has-small-text {
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714285;
+}
+
+.has-sans-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  letter-spacing: 0.03em;
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714285;
+}
+
+@supports (hanging-punctuation: first) {
+  * {
+    hanging-punctuation: first;
+  }
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* eof typography */
+/*
+ * source - animate.css, http://daneden.me/animate
+
+2019.4.4
+
+- pulse
+
+
+ */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+}
+
+:root {
+  --color-main-bg: hsl(0,0%,98%);
+  --color-main-text: hsl(0,0%,24%);
+}
+
+body {
+  background-color: var(--color-main-bg);
+  color: var(--color-main-text);
+}
+
+.chapter-welcome-appking {
+  background-color: #0b476a;
+  color: white;
+  /* shadow silueth of the cat */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' width='1000' height='1000' viewBox='0 0 1000 1000'%3E%3Cpath style='opacity:0.08;' d='M617.8,210.4c24-10.9,59.5-68.6,77.9-71.2c31.9-4.6, 110.3, 138.6,125.3,163.7c14.6, 24.4,58.7,106.3,53.7,141.6 c-3.4,24.4-12.8,54.2-21.7,74.8c-14.5,33-28.4,68.9-29.5,105.4c-1.3, 44.4-26.1,78.1-32.8,116c-11.3,63.3-75.1,99.9-135.9,111.4 c-123.9,23.3-236.1,30.4-359.6-5.6c-50.3-14.6-120.8-35.1-153.6-79.9c-32.7-44.6-24.4-101.5-8-150.8 c27.5-82.6,97.3-172.3,158.9-235c12.4-12.6, 24.7-25.8,37.5-38.6c14.9-14.9,30.4-39,35.3-54.5c5.6-17.9,7.9-58.8, 13.8-73.9 c8.3-21.1,17.6-44, 28.6-64c3.6-6.6,20.4-42.6,30-32.5c16.5,17.5, 28.6,33.4,46.6, 49.8c16.8, 15.3,91.7, 35.5,123.6,42.7 C610.3,210.4, 615.6,211.5,617.8, 210.4z'/%3E%3C/svg%3E%0A");
+  min-height: 110vh;
+  padding-bottom: 10vh;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: minmax(1rem, 1fr) minmax(0, 23em) 20vw minmax(1rem, 1fr);
+  grid-template-rows: 1fr max-content min-content 1fr;
+  grid-template-areas: "t t t t" "l c k r" "l f f r";
+  position: relative;
+  z-index: 1;
+}
+.chapter-welcome-appking > header {
+  grid-area: h;
+}
+.chapter-welcome-appking > .illustration {
+  grid-area: k;
+}
+.chapter-welcome-appking > .text {
+  grid-area: c;
+}
+.chapter-welcome-appking > footer {
+  grid-area: f;
+}
+.chapter-welcome-appking header {
+  align-self: end;
+}
+.chapter-welcome-appking header > p {
+  background-color: #BF4D28;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  letter-spacing: 0.03em;
+  font-size: 0.6em;
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  margin-left: -0.5em;
+}
+.chapter-welcome-appking .illustration {
+  align-self: end;
+}
+.chapter-welcome-appking .illustration figure {
+  width: 100%;
+}
+.chapter-welcome-appking .illustration img {
+  max-height: 60vh;
+}
+.chapter-welcome-appking .text {
+  align-self: center;
+  font-size: 1.2em;
+}
+.chapter-welcome-appking::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 0;
+  bottom: -2rem;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 4rem;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  /* bottom wave divider */
+  background-image: url("data:image/svg+xml,%3Csvg width='1000' height='50' viewBox='0 0 1000 50' version='1.1' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath  d='M1000,0v35.9c0,0-57.3,7-79.2,10.6c-8.2,1.4-18.4-1.4-25.2-5c-11.6-6-25.9,5.7-38.2,3c-9.6-2-21.1-2.9-30.2-5.8 c-10.9-3.4-20.7-2.3-32.2-2.8c-12.7-0.5-25.4,4.7-37.9,4.4c-7.9-0.2-20.1,1.4-27.5,3.2c-9.8,2.3-21.8,3.2-32,4.4 c-5.3,0.6-10.5,1.5-15.8,1.9c-6.4,0.6-12.5-1.2-18.6-0.9c-8.6,0.4-16.7-5.1-25-5.7c-7.2-0.5-16.6-3.7-23.6-5.5 c-9.6-2.3-27.8-1.2-37,1.6c-5.1,1.5-11.1,2.1-16.4,3.1c-2.7,0.5-6.2,1.1-8.9,1.8c-3.9,0.9-8.8-1.4-12.5-0.3 c-5.7-1.5-12.3-1.2-18.3-1.8c-5.3-0.6-11.7-1.9-17-2C493.2,40.2,478,39,467.1,37c-23.6-4.3-51.8-0.7-75.6,1.3 c-11.7,1-23.8,0.6-35.4,1.9c-13.4,1.5-28.4,2.9-42,3.1c-8.9,0.1-21.5,0.9-29.9,2.9c-11.8,2.9-18.4-0.7-29.3-2.9 c-10.3-2.1-20.7-5.1-31.1-6.9c-10.7-1.9-22.7-6-33.8-1.7c-3.4,1.3-12.2,3.4-15.9,3.4c-6.8,0.1-12.2-2.1-18.8-2.7 c-11.4-0.9-19.6,1-31,2.3c-4.3,0.5-9,0.7-13.1,1.7c-6.3,1.6-9.4-1.3-14.9-2.5c-9.1-1.9-20.8-8-31-6.3c-11.6,1.8-24.1,0.1-35.5,2.5 c-2.8,0.6-9.1,0.9-12.2,0.8C12.3,34.1,0,35.9,0,35.9V0H1000z'/%3E%3Cpath fill-rule='evenodd' fill='hsl(202, 81%, 23%)' d='M1000,0v25.4c0,0-51.9,6.4-75.3,8.3c-10.3,0.8-19.8,2.7-28.5-2.3c-11.1-6.5-18.3-0.7-28.8,3.4 c-8.7,3.3-21.2-1.6-29.9-3.1c-9.7-1.7-20.5-7-30.2-7.1c-12-0.1-26,3.1-37.8,4.7c-11.7,1.6-23.5,2.6-35.1,4.2 c-12.6,1.8-26.1,1.7-38.4,4.4c-5.7,1.2-11.9,1.6-17.8,2c-6.9,0.5-12.4-0.8-19.1-0.9c-8.6-0.2-17-5.3-25.5-6c-10-0.9-19.4-6-29.4-7.2 c-6.2-0.8-13.8,2.9-19.8,3.4c-3.7,0.3-9.1,1.1-12.3,2.3c-7.1,2.6-24.7,4.2-32.2,3.2c-20-2.8-41-2.8-61-5.6c-6-0.9-12.5-1-18.3-2.3 c-3.8-0.8-10.1-2.5-13.9-1.8c-5.4,1-12.2-0.1-18,0.9c-6,1-15.1,2.3-21.2,2.1c-23.8-0.6-48.8,3.8-72.6,5.1c-23.7,1.3-52.8,7-75.7,2.1 c-9.5-2-19.5-4-28.7-6.8c-7.3-2.2-26.1-9.5-33.8-5.3c-8.9,4.7-24.7,6.3-34.8,4.5c-3.3-0.6-8.9-1.1-11.7-2.3 c-5.8-2.5-15.6,1.8-21.7,1.9c-7.2,0.1-15.4,2.1-22.5,2.9C98.9,31,86,24,81.4,20.9c-0.9-0.2,0.7,0.5,0,0c-4.3-1.1-13.1,0.4-17.4,1 c-6.1,0.8-12.5,0.5-18.6,1C33.7,23.6,0,25.4,0,25.4V0H1000z'/%3E%3C/svg%3E%0A");
+}
+@media (max-width: 900px) {
+  .chapter-welcome-appking {
+    grid-template-rows: max-content max-content min-content min-content;
+    grid-template-areas: "l k k r" "l h h r" "l c c r" "l f f r";
+  }
+  .chapter-welcome-appking header {
+    text-align: center;
+  }
+  .chapter-welcome-appking h1 {
+    font-size: 2em;
+  }
+  .chapter-welcome-appking .text {
+    font-size: 0.8em;
+  }
+  .chapter-welcome-appking .illustration {
+    padding-top: 1rem;
+  }
+  .chapter-welcome-appking .illustration figure, .chapter-welcome-appking .illustration img {
+    height: 30vh;
+    width: auto;
+    margin: 0 auto;
+  }
+}

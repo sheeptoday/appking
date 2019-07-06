@@ -1,0 +1,1102 @@
+<!doctype html><!-- app7000-Zapp -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>AppKing Alpha II</title>
+    <meta name="description" content="This is a first scetch. Like a trailer into the future web-book — a web-page telling its own story." />
+    <meta name="author"      content="zl, July 2019" />
+
+    <!-- ## MICRODATA -->
+    <meta property="og:title"        content="AppKing, web-book trailer" />
+    <meta property="og:description"  content="The web-page telling its own story" />
+    <meta property="og:url"          content="https://sheeptoday.github.io/appking/trailer-1-2/" />
+    <meta property="og:image"        content="https://sheeptoday.github.io/appking/trailer-1-2/trailer-alpha-2.jpg" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:type"         content="article" />
+    <meta property="og:locale"       content="ru_ru" />
+    <!-- / -->
+
+
+    <!-- ========================================= DESIGN -->
+
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        href="app/styles/main.css"
+        rel="stylesheet" type="text/css">
+
+    <!-- FAVICON -->
+    <!-- 2019.1, best favicon service: https://realfavicongenerator.net/ -->
+    <link rel="apple-touch-icon" sizes="180x180" href="app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="app/favicons/favicon-16x16.png">
+    <link rel="manifest" href="app/favicons/site.webmanifest">
+    <link rel="mask-icon" href="app/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="app/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="msapplication-config" content="app/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- ========================================= APP MAIN -->
+
+
+    <script src="app/script/app-core.js"></script>
+    <script>
+        app.workers = {}
+        app.log('... Wake Up, App!')
+    </script>
+
+    <!-- ========================================= APP LIBS -->
+
+    <script src="app/script/components/class-mutator.js"></script>
+    <script>app.take({name:'mutate', f:el_class_mutator})</script>
+
+    <script src="app/script/components/image-zoom.js"></script>
+    <script>
+        const queenImageZoomer = function Ribosome (dna) {
+            if( typeof(ActivateImageZoom)!=='function' ) return false
+            ActivateImageZoom()
+            return true
+        }
+        app.onload(queenImageZoomer)
+    </script>
+
+    <script src="app/script/components/scroll-follower.js"></script>
+    <script>
+        const queenScrollFollower = function Ribosome (dna) {
+            const rna = dna
+            const instance = basicScroll.create(rna)
+            instance.start()
+            if (rna.name) app.workers[rna.name] = instance
+            return true
+        }
+        app.take({name:'wayway', f:queenScrollFollower})
+    </script>
+
+    <script src="app/script/components/scroll-trigger.js"></script>
+    <script>
+        const queenScrollTrigger = function Ribosome (dna) {
+            const rna = dna
+            const instance = new Waypoint(rna)
+            return true
+        }
+        app.take({name:'waydot', f:queenScrollTrigger})
+    </script>
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <script>
+        window.onload = function Run() {
+
+            app.Welcome()
+            app.log('App, welcome!')
+
+        }
+    </script>
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template">
+<main class="content-area">
+
+<!-- Знакомство с королём -->
+
+<article id="WelcomeAppKing" class="el-chapter chapter-welcome-appking">
+
+    <div class="app-prefix">
+        <p>Трейлер <a href="https://sheeptoday.github.io/appking/">веб-книги</a>, Июль 2019.</p>
+    </div>
+
+    <section class="image">
+        <figure><img src="art/characters/appking-screen.svg" alt="App King"></figure>
+    </section>
+
+    <section class="text">
+
+        <header>
+            <h1>Это король Апп</h1>
+            <p>Версия Альфа Второй</p>
+            <span class="has-sans-text"></span>
+        </header>
+
+        <p>Он выглядит картинкой, работает как функция и ведёт себя как литературный персонаж. Надо заметить, что в каждом случае, король Апп служит эталоном доблести и благородства.<br>На то он и король.</p>
+
+        <p>Королевская корона слегка повреждена, об этом рассказывает легенда...</p>
+
+    </section>
+
+    <footer class="arrow">
+        <button class="character--NinaTheArrow">
+            <svg
+                id="NinaTheArrow"
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+                width="1000" height="1000"
+                viewBox="0 0 1000 1000">
+                <style type="text/css">
+                <![CDATA[
+                    .st0{fill-rule:evenodd;clip-rule:evenodd;}
+                    .st1{fill-rule:evenodd;clip-rule:evenodd;fill:#BF4D28;}
+                    .st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+                    .her-hands,.her-face { opacity:0; }
+                ]]>
+                </style>
+            <path class="st0 her-hands" d="M193.6,677c-12.7-17.9-31.7-32.2-46-48.9c-10.7-12.3-22.6-23.7-32.2-36.9c-5.6-7.6-15.9-24.4-23.7-29.5
+                c-16.3-10.5-21.5-47-26.6-64.5c-7.7-26.5-13.2-53.6-19-80.6c-3.6-16.8-8.1-18.8-21.6-27.1c-6.5-4-23.8-9.9-24.3-19.3
+                c-1.1-20,4.8-43.1,26-48.4c7.5-1.9,31.3-5.6,37.6,0.7c4,4,19,18.4-0.8,15.8c-43.4-5.7-20.1,30.5-6.5,22c-13.4-21.1,54-17.4,19,14.6
+                c-25.5,23.4-15.8,65.5-4,94.5c13.1,32.3,21.8,61.8,48.9,82.7c26.3,20.2,63.2,35.8,95.7,39.8c26.8,3.3,25.1-52.5,38.8-69.5
+                c13.9-17.3,29.4-71.6,6.3-84.8c-26-14.9-58.5-21-88.1-19.1c-14.3,0.9-71.5,18.8-63.3-13.3c4.5-17.6,28.5-25.8,40.2-36.7
+                c10.9-10.2,22.7-20.4,35.3-28.1c26.2-16,45.1-45.8,66.9-67.3c43.7-43.1,81.3-91.3,125.2-134.4c10.7-10.5,17.9-23.6,29-34.4
+                c13.1-12.6,25.6-28,36.4-42.8c9.9-13.5,21.4-26.2,30.7-40c3.4-5.1,22.9-32.8,27.3-16.4c13.6,50.7,46.8,103.4,83.3,140.5
+                c38.5,39.2,72.4,86.1,115.6,120c27.6,21.6,50.8,49,78.9,70.6c14,10.8,28.2,20.5,42.7,30.5c5.1,3.5,34.7,18.6,34.9,26.7
+                c0.5,23.9-59.2,17.9-73.4,20.2c-39.6,6.4-62.6,24.7-52.8,70.6c3.6,16.8,4.5,34.5,8.3,51.5c3.5,15.5,12.3,15.9,27.7,16.2
+                c34.7,0.6,72.7,15.4,105.2,27c11.5,4.1,38.5,7.5,47.6,15.3c9,7.8,8,23,10,33.9c2.9,15.8,8.9,31.1,12.6,46.8
+                c2.6,10.8,9.3,42.9,18.8,49c21.5,13.8,48,47.8,37.4,75.8c-7.4,19.6-15.7,10.1-20.3-2.8c-5.8-16.2-9.8-39.2-24.8-48.4
+                c-4.5-2.8-5.5,15.7,0.2,19c4.5,2.6,20.4,24,5,21c-7.4-1.4-30.4-7.4-28.5-17.6c3.3-17.6,14.1-39.2,5.9-56.8
+                c-13.4-28.7-22.3-74.5-48.6-94.1c-10.9-8.2-38.3,0.9-50.9,2.9c-22.4,3.6-43.8,10.9-65.1,18.9c-18,6.7-0.9,57.1,2.6,73.3
+                c7.1,32.9,21.3,67,26.7,99.4c4.6,27.6,7.7,57.2,16.5,83.5c5.5,16.3,8.7,32.4,16.9,47.5c3.6,6.7,13,31,8.2,37.7
+                c-16.1,23.1-50.8-6.2-66.4-14.9c-25.9-14.3-49.6-32.4-78.9-41.3c-68.4-20.8-136.8-30.4-208.1-27.1c-31.3,1.5-66.4-2.1-96.8,5.6
+                c-35.9,9.1-74.9,16.2-111.6,21.9c-20.9,3.3-61.8,9.8-78.9,22.8c-13.3,10.1-32.4,15.6-47.4,22.5c-8.4,3.8-32.5,29.2-40.9,27
+                c-19-4.9-2.9-75.3-0.2-89.6c2.7-14,9.5-31.9,8.9-46c-0.3-7.1,8.9-37.8,12.9-43.2c6.6-8.7,10.1-23.7,13.3-34.1
+                c3.5-11.5,12-22.9,13.4-34.9C164.3,724.5,188.4,703.7,193.6,677C193.3,676.5,192.1,684.7,193.6,677z"/>
+            <path class="st0" d="M773.2,715.2c7.1,32.9,21.3,67,26.7,99.4c4.6,27.6,7.7,57.2,16.5,83.5c5.5,16.3,8.7,32.4,16.9,47.5
+                c3.6,6.7,13,31,8.2,37.7c-16.1,23.1-50.8-6.2-66.4-14.9c-25.9-14.3-49.6-32.4-78.9-41.3c-68.4-20.8-136.8-30.4-208.1-27.1
+                c-31.3,1.5-66.4-2.1-96.8,5.6c-35.9,9.1-74.9,16.2-111.6,21.9c-20.9,3.3-61.8,9.8-78.9,22.8c-13.3,10.1-32.4,15.6-47.4,22.5
+                c-8.4,3.8-32.5,29.2-40.9,27c-19-4.9-2.9-75.3-0.2-89.6c2.7-14,9.5-31.9,8.9-46c-0.3-7.1,8.9-37.8,12.9-43.2
+                c6.6-8.7,10.1-23.7,13.3-34.1c3.5-11.5,12-22.9,13.4-34.9c3.4-27.6,27.5-48.4,32.7-75.1c-0.3-0.5-1.5,7.8,0,0l61.2-154.5
+                c13.9-17.3,29.4-71.6,6.3-84.8c-26-14.9-58.5-21-88.1-19.1c-14.3,0.9-71.5,18.8-63.3-13.3c4.5-17.6,28.5-25.8,40.2-36.7
+                c10.9-10.2,22.7-20.4,35.3-28.1c26.2-16,45.1-45.8,66.9-67.3c43.7-43.1,81.3-91.3,125.2-134.4c10.7-10.5,17.9-23.6,29-34.4
+                c13.1-12.6,25.6-28,36.4-42.8c9.9-13.5,21.4-26.2,30.7-40c3.4-5.1,22.9-32.8,27.3-16.4c13.6,50.7,46.8,103.4,83.3,140.5
+                c38.5,39.2,72.4,86.1,115.6,120c27.6,21.6,50.8,49,78.9,70.6c14,10.8,28.2,20.5,42.7,30.5c5.1,3.5,34.7,18.6,34.9,26.7
+                c0.5,23.9-59.2,17.9-73.4,20.2c-39.6,6.4-62.6,24.7-52.8,70.6c3.6,16.8,4.5,34.5,8.3,51.5L773.2,715.2z"/>
+            <path class="st1" d="M807.8,962.5c-27.7-12.8-54.1-24.9-81.6-37.5c-14.1-6.4-28.4-10.7-42.2-18c-14.9-7.9-35.1-4.4-50.8-9.9
+                c-59-20.8-132.2-20-193.2-13.2c-68.7,7.7-135.6,24.3-202.5,42.1c-33.1,8.8-65.1,19-97.9,29c-23.1,7.1-12.8-5.5-12.8-21.2
+                c-0.1-20.7,7.6-41,12-60.9c14.8-66.4,42.1-129,66.9-191.9c11.7-29.6,22.7-60,35.9-89c6.8-14.9,13.8-31.9,18.5-47.7
+                c4.1-13.8,18.5-28.8,20.4-42.4c2.3-17.2,10.7-32,16.5-48c6.8-18.6,13-26.8-7.9-32.6c-31.8-8.9-61.2-18.5-94.7-22.4
+                c-3.7-0.4-54.1-3.1-41.8-13.4c11.6-9.7,27.3-29.2,42.2-32.7c5.4-1.3,17.9-16.9,22.2-21.1c13.4-13.3,24.9-28.8,39.3-41.1
+                c24-20.6,41.8-50.1,64.6-72.5c11.1-10.9,22.6-22.7,32.5-34.7c5.5-6.6,24.5-26.2,26.1-33.2c2.5-10.7,20.1-23.4,27.1-31.5
+                c12.4-14.3,24.7-28.7,36.9-43.2c9.8-11.7,18.1-24.9,27.9-36.4c11.9-14,13.8-2.8,22.9,10c16.6,23.3,34.3,47.1,51.3,69.6
+                c15.2,20.2,34.2,36.4,50.6,55.8c44.2,52.4,92.6,107,146.9,148.2c23.1,17.5,44.8,37.6,66.8,56.4c8.4,7.2-62.8,22.7-68.8,24.1
+                c-15.3,3.5-30.7,5.4-46.2,8.3c-15.9,3-1.9,29.8,0.2,37.5c9.7,36,18.9,72.5,27.5,108.8c7.8,33,17.9,65,25.1,98.2
+                c6.7,30.9,11.5,64.4,21.5,93.8c9.8,28.8,15.1,66.3,18.5,96.7C791.6,883,812.1,926.2,807.8,962.5C800.6,959.2,808.6,956,807.8,962.5z
+                "/>
+            <g class="her-face">
+                <path class="st0" d="M250.2,638.3c15-45.6,47.9-78,85.9-102.9c37-24.2,84.1-28.5,125.6-37.4c48.8-10.5,101-2.5,147.1,14.1
+                    c13.6,4.9,37.7,20,52.1,19.7c11.6-0.2,23.7,30.6,30.1,37.8c11.1,12.7,21.2,18.8,17.7,37.2c-2.7,13.9-44.6-0.4-54.9-1
+                    c-50.3-2.6-100.2-0.7-150.2,3.1c-48.3,3.6-98.5,9.5-145.4,21.7C343.5,634.5,249.8,674.6,250.2,638.3
+                    C250.7,636.8,250.2,642.2,250.2,638.3z"/>
+                <path class="st2" d="M542.8,594.2c0,0-60.1,10.9-71.8,2.4c-23-16.7-16.4-56-6.1-78.2c9.5-20.4,58-13.3,76.7-11.1
+                    c15.3,1.7,1.6,86.1,1.6,86.1L542.8,594.2z"/>
+                <path class="st2" d="M451,603.1c-24.9,1.9-48.6,7.7-72.9,12.6c-15.1,3-1.8-65.6,0.2-72c7.2-22.8,43.8-30.3,64.6-29
+                    C447.1,515,449.2,592.6,451,603.1C446.7,603.4,450.5,600.6,451,603.1z"/>
+                <path class="st2" d="M633.8,590c-15.2,1.3-30.6,0.7-45.8,0.8c-3.4,0-23,3.7-25.9,0.6c-12.5-12.9-6.7-64,6.4-75.6
+                    c10.4-9.2,56.4,17.6,63.5,28.5c5.4,8.3,18.7,21.5,17.3,32.8C648.7,582,634,596,633.8,590C630.6,590.3,633.8,590.1,633.8,590z"/>
+                <path class="st2" d="M275.7,630c7.6-24.7,21.3-43.2,40.4-60.3c9.9-8.9,21.8-20.3,34-25.6c14.1-6.1,16.7-11.2,15.1,8.2
+                    c-1.4,15.9-2.3,31.6-2.4,47.6c-0.1,14.2,3.1,17.9-12.5,19.8C337,621.2,283.8,639.7,275.7,630C277.4,624.4,277.9,632.7,275.7,630z"
+                    />
+
+                <path class="st0" d="M510.8,306.4c0,0,5.5-50,17.7-71.1c8.1-14.1,12.3-50.9,33.7-48.5c18.8,2.1,34.6,39.6,44.6,53.1
+                    c14,18.8,30.2,36.3,47.6,52.3c12.4,11.5,42.8,24.6,21.8,42.1c-22.9,19-38.5,35.8-66.7,46.9c-24.4,9.6-42.6,13.6-67.3-1.6
+                    c-7-4.3-32.1-67-32.1-67L510.8,306.4z"/>
+                <path class="st0" d="M446.1,312.8c3.2,45.2-30.8,85.9-73,63.3C350.5,364,327,356.6,305,342.7c-17.9-11.3-40.6-40.7-13.5-58.2
+                    c25.6-16.6,47.2-46,68.1-68.3c10.9-11.6,31-48,48.6-29.6c6.9,7.2,14.9,20.6,19.8,29.4c4.5,8,4.8,20.6,11.3,27.4
+                    C444.5,248.7,445,312.9,446.1,312.8C446.6,319.2,446.4,312.8,446.1,312.8z"/>
+                <path class="st2" d="M592.8,370.5c-42.1,4.6-68.4-18.9-70.2-63.3c-0.7-16.3,5.5-32.4,15.2-44.9c4.8-6.2,24-34.3,32.4-23.7
+                    c22.1,27.7,54.6,51.9,82.3,73.8C692.4,344.2,592.5,368.2,592.8,370.5C591.3,370.7,592.8,370.6,592.8,370.5z"/>
+                <path class="st2" d="M306.8,321.1c2-35.7,30.3-66.8,54-90.5c14.7-14.6,20.3-22.9,37.9-12.8c16.1,9.3,23,36.5,29.1,52.7
+                    c11.8,31.2,12.7,87-26.7,97.7C385,372.5,304.7,339.3,306.8,321.1C307.2,314.9,306.7,322,306.8,321.1z"/>
+                <path class="st0" d="M591.3,294c-6,15.9-13.3,27.9-30.6,32.2c-15.4,3.8-27-12.4-25.7-26.9c1-11.7,18.4-18.3,27.5-21.6
+                    C578.4,272,585.9,278.8,591.3,294C590.4,296.5,590.3,291,591.3,294z"/>
+                <path class="st0" d="M419.9,295.7c-5.2,29.4-55.9,38.4-50.3,2.6C375,263.3,412.1,264.2,419.9,295.7
+                    C418.5,303.7,418.4,289.5,419.9,295.7z"/>
+            </g>
+            </svg>
+        </button>
+    </footer>
+
+</article>
+
+<!-- Легенда короны -->
+
+<article id="CrownStory" class="el-chapter chapter-crown-legend">
+
+    <code id="el-logo-sunrise" class="el-logo-sunrise"></code>
+
+    <section storyblock>
+
+        <header>
+            <h2>Легенда о короне</h2>
+            <p>24500 лет до н.э.</p>
+        </header>
+
+        <p>Супервулканами называют большие извержения. Такие, что могут повлиять на климат и изменить мир. Рождаются супервулканы раз в сто тысяч лет. Последнего называли именем Таупо, он жил неподалёку от Новой Зеландии почти 30 тысяч лет назад.</p>
+
+        <p>Король прогуливался вокруг вулкана, чтобы написать о нём в энциклопедии. На прогулке встретил Чёрного Орла.</p>
+
+        <p>Орёл был чёрен от мрачных мыслей и шёл прыгать в жерло вулкана. Причиной был недавний спор с дятлом у кого клюв крепче. Хитрый дятел предложил испытание в котором орёл проиграл да ещё и клюв сломал. Вместе с клювом, орёл потерял всякую надежду на счастливую жизнь.</p>
+
+        <section class="illustration">
+            <figure>
+                <div class="zzz-image-hover">
+                    <img class="zzzoom"
+                         src="art/illustrations/crown-legend-landscape.jpg"
+                         alt="Taupo, New Zealand">
+                </div>
+                <figcaption>
+                    Встреча на фоне извержения вулкана Таупо, иллюстрация к легенде.
+                </figcaption>
+            </figure>
+        </section>
+
+        <p>Король выслушал беду и смахнул слезу, потому что птичку жалко. Отломал кусок своей королевской короны, и смастерил из куска новый орлиный клюв. Хороший получился клюв — <nobr>¹) красивый,</nobr> <nobr>²) удобный,</nobr> <nobr>³) прочный.</nobr></p>
+
+        <p>Орёл обрадовался, и жили они долго и счастливо.</p>
+
+    </section>
+
+    <figure  class="legend-formula nicely-zoomed-illustration">
+        <img class="legend-formula-image"
+             src="art/illustrations/crown-legend-formula.svg"
+             alt="Crown formula">
+    </figure>
+
+</article>
+<nav id="el-logo" class="el-logo in-travel">
+    <figure class="character--KingCrown">
+        <img src="art/characters/king-crown.svg" alt="Crown">
+    </figure>
+</nav>
+<script>
+    app.wayway({
+        elem: document.querySelector('.legend-formula-image'),
+        from: 'bottom-bottom',
+        to:   'bottom-middle',
+        direct:  true,
+        props: {
+            '--opacity': { from: 0.25, to: 1 },
+            '--scale':   { from: 0.5,  to: 1 }
+        }
+    })/**/
+    app.wayway({
+        elem: document.getElementById('el-logo-sunrise'),
+        from: 'top-bottom',
+        to:   'top-top',
+        props: {
+            '--el-logo-top':  { from: '100vh',to: '0vh' },
+            '--el-logo-left': { from: '20vw', to: '0vw' },
+            '--el-logo-size': { from: '18vw', to: '6vw' }
+        }
+    })/**/
+    app.waydot({
+        element: document.getElementById('el-logo-sunrise'),
+        offset: '50%',
+        handler: function (direction) {
+            const el   = document.getElementById('el-logo')
+            const toggleClass = 'in-travel'
+            app.mutate({el,toggleClass})
+        }
+    })
+</script>
+
+<!-- Рождение логотипа -->
+
+<article id="Logo" class="el-chapter chapter-logo">
+
+    <section storyblock>
+
+        <figure class="logo-features">
+            <img src="art/illustrations/logo-features.svg" alt="Logo`s Pros and Cons">
+        </figure>
+
+        <section class="text">
+            <p>Красивая легенда прославила корону среди прочих символов. А крепкие связи с королём, помогли получить должность <i>главного логотипа</i>.</p>
+        </section>
+
+    </section>
+
+
+</article>
+<nav id="el-navigation-menu" class="sidebar-chapters close-chapterbar">
+    <section class="list-of-chapters">
+        <h3>Содержание</h3>
+        <ul>
+            <li><a href="#WelcomeAppKing">Король Апп</a></li>
+            <li><a href="#CrownStory">Легенда о короне</a></li>
+            <li><a href="#Logo">Логотип</a></li>
+            <li><a href="#Hamburger">Навигационное меню</a></li>
+            <li><a href="#WorldDescription">Описание мира</a></li>
+            <li><a href="#WorldCode">Мир изнутри</a></li>
+            <li><a href="#ContentLover">Ценитель содержания</a></li>
+            <li><a href="#LoremIpsum">Lorem Ipsum</a></li>
+            
+        </ul>
+    </section>
+    <script>
+        function ChapterBarActivator () {
+
+            const bar = document.getElementById('el-navigation-menu')
+            const ico = document.getElementById('el-logo')
+            const mom = document.querySelector('html')
+            const toggleClass = 'is-active'
+
+            function setShadowOverlay (commander) {
+                function checkStateForMom(elem, className) {
+                  return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+                }
+                if (checkStateForMom(commander,'is-active'))
+                    app.mutate({el:mom, addClass:'has-shadow-overlay' })
+                else
+                    app.mutate({el:mom, removeClass:'has-shadow-overlay' })
+            }
+            app.workers.ShadowOverlayToggler = setShadowOverlay
+
+            function toggleChapterBar (e) {
+                app.mutate({el:bar, toggleClass})
+                app.mutate({el:ico, toggleClass})
+                setShadowOverlay(bar)
+            }
+            app.workers.ChapterBarToggler = toggleChapterBar
+            ico.addEventListener('click',   toggleChapterBar)
+
+            const closer = document.querySelectorAll('.close-chapterbar')
+            function closeChapterBar (e) {
+                app.mutate({el:bar, removeClass: toggleClass})
+                app.mutate({el:ico, removeClass: toggleClass})
+                app.mutate({el:mom, removeClass:'has-shadow-overlay' })
+            }
+            app.workers.ChapterBarCloser =   closeChapterBar
+            closer.forEach((el)=>el.addEventListener('click', closeChapterBar))
+        }
+        app.onload(ChapterBarActivator)
+    </script>
+</nav>
+<article id="Hamburger" class="el-chapter chapter-hamburger">
+
+    <section storyblock>
+
+        <p>Получив должность, логотип отправился в угол экрана — это почётное место традиционно отдаётся главному символу. По дороге в новые владения логотип встретил и захватил <em>навигационное меню</em>.</p>
+
+        <p class="drammatic">Такой внезапный поступок, одобренный королём, изрядно рассердил другой уважаемый символ — иконку по прозвищу Гамбургер, чьи предки долгое время контролировали меню. Гамбургер поднял восстание, но сил хватило только на завоевание небольшой области на востоке.</p>
+
+        <figure class="character--vonHamburger">
+            <img
+                 src="art/characters/hamburger.svg"
+                 alt="Hamburger icon">
+        </figure>
+
+        <p>Смирившись со своим положением, Гамбургер поселился на завоёванных землях и занялся производством <em>драмы</em> для повествования.</p>
+
+        <p>Драма удерживает внимание, что весьма кстати при больших объёмах информации. Героем конфликтной ситуации может стать кто угодно — король, банкир или иконка. Даже
+        <span class="colors"><i>ц</i><i>в</i><i>е</i><i>т</i></span>
+        может бросить дерзкий вызов контрастному окружению, чтобы добавить острых ощущений.
+        </p>
+
+        <p>В перерывах между драматическими набегами, барон Гамбургер занимался науками и составлял описание мира.</p>
+
+    </section>
+
+</article>
+<script>
+    app.waydot({
+        element: document.getElementById('Hamburger'),
+        handler: function (direction) {
+            if (direction=='down') {
+                const bar = document.getElementById('el-navigation-menu')
+                const ico = document.getElementById('el-logo')
+                const addClass =   'is-active'
+                app.mutate({el:bar, addClass})
+                app.mutate({el:ico, addClass})
+            }
+            else app.workers.ChapterBarCloser()
+        }
+    })
+    app.waydot({
+        element: document.getElementById('Hamburger'),
+        offset: '-100%',
+        handler: function (direction) {
+            app.workers.ChapterBarCloser()
+        }
+    })
+</script>
+
+
+<!-- Описание мира -->
+
+<article id="WorldDescription" class="el-chapter chapter-world-description">
+
+    <code id="WordlDescriptionHeaderActivator"></code>
+    <header id="WordlDescriptionHeader" class="chapter-header">
+        <section>
+            <h2 class="title">Описание мира</h2>
+            <p  class="subtitle">Наши дни</p>
+        </section>
+    </header>
+    <div class="chapter-header-placeholder"></div>
+
+    <section storyblock>
+
+        <blockquote class="quote-of-hamburger">
+            <p class="text">Данный труд не может достоверно описывать все факты мира в котором мы живём. Боюсь, нам не суждено знать всех тайн и объяснений. В одном можем быть уверены, — извержение Таупо изменило наш мир. Спустя время, мы наблюдаем следы этих изменений в мастере.</p>
+            <p class="author">
+                <strong>Барон Фридрих Гамбургер</strong><br>
+                Германия, Гамбург, Лето 2014
+            </p>
+        </blockquote>
+
+        <p>В мире живут разные задачи <em>что-то</em> сделать или <em>что-то</em> получить. Про задачи все знают, но мало кому известно, как они выглядят. Возможно, у них большие глаза и цепкие лапки.</p>
+
+        <figure  class="nicely-zoomed-illustration">
+            <img class="sorgens-different-types"
+                 src="art/illustrations/sorgens-different-types.svg"
+                 alt="Different types of sorgens">
+        </figure>
+
+        <p>Задач очень много и все разного размера. От крохотных задачек — эти совсем не опасные, вот только назойливо летают вокруг и пищат: «Сделай меня! Сделай меня сейчас, потом опять забудешь...» До огромных супер-сверх-важных задач, которые могут внезапно нависнуть сверху и раздавить своей тяжестью.</p>
+
+        <p>С самого рождения задачи скитаются по миру в поисках решений.</p>
+
+        <figure  class="nicely-zoomed-illustration">
+            <img class="konigo-different-types"
+                 src="art/illustrations/konigo-different-types.svg"
+                 alt="Different types of konigo">
+        </figure>
+
+        <p>Решения буквально бегают под ногами, но найти подходящее не просто. Поиски могут продолжатся часами, когда ни одно решение не подходит к сложной задаче. Если задача сдаётся и прекращает поиски, то погибает от одиночества.</p>
+
+        <p>Когда же поиски приводят к успеху, задача объединяется с решением. Счастливая пара сливается в красивом танце создания.</p>
+
+        <h3>Все жители этого мира — дети танцующих задач и решений.</h3>
+
+    </section>
+
+    <section storyblock class="konigo-sorgen-soitie">
+
+        <blockquote class="highlighted-paragraph">
+            <p>Буквально только что, произошёл такой случай: одна молодая задачка по имени «Объяснить слияние задач с решениями» затанцевала с красивым решением по имени «Придумать и создать пару примеров». Вскоре, на свет появились этот параграф текста и его вертящаяся сестрёнка неподалёку.</p>
+        </blockquote>
+
+        <figure class="highlighted-soitie">
+            <img class="tudasuda"
+                src="art/illustrations/konigo-sorgen-soitie.svg"
+                alt="Konigo-sorgen result">
+        </figure>
+
+    </section>
+
+    <section storyblock>
+
+        <h3>Чтобы вырасти, надо кушать новые задачи и решения.</h3>
+
+        <p>Очень вкусная задача называется <em>«Визуальный образ»</em>. Все жители обожают. Потому что, кто съест такую задачу и закусит подходящим решением, тот появляется на экране.</p>
+
+        <p>Вот, например, здравствуйте...</p>
+
+        <figure  class="bergamot-welcome nicely-zoomed-illustration">
+            <img class="bergamot-just-browse-here"
+                 src="art/characters/bergamot-just-browse-here.svg"
+                 alt="Bergamot the Cat just browse here">
+        </figure>
+
+        <p>Это визуальный образ браузера. Настоящего. Если сейчас что-то сломается, — это он будет виноват. Полное имя:</p>
+
+        <div>
+            <script>
+                function WhatIsYourNameBrowser () {
+                    var nVer = navigator.appVersion;
+                    var nAgt = navigator.userAgent;
+                    var browserName  = navigator.appName;
+                    var fullVersion  = ''+parseFloat(navigator.appVersion);
+                    var majorVersion = parseInt(navigator.appVersion,10);
+                    var nameOffset,verOffset,ix;
+
+                    // In Opera, the true version is after "Opera" or after "Version"
+                    if ((verOffset=nAgt.indexOf("Opera"))!=-1) {
+                       browserName = "Opera";
+                       fullVersion = nAgt.substring(verOffset+6);
+                       if ((verOffset=nAgt.indexOf("Version"))!=-1)
+                         fullVersion = nAgt.substring(verOffset+8);
+                    }
+                    // In MSIE, the true version is after "MSIE" in userAgent
+                    else if ((verOffset=nAgt.indexOf("MSIE"))!=-1) {
+                       browserName = "Microsoft Internet Explorer";
+                       fullVersion = nAgt.substring(verOffset+5);
+                    }
+                    // In Chrome, the true version is after "Chrome" 
+                    else if ((verOffset=nAgt.indexOf("Chrome"))!=-1) {
+                       browserName = "Chrome";
+                       fullVersion = nAgt.substring(verOffset+7);
+                    }
+                    // In Safari, the true version is after "Safari" or after "Version" 
+                    else if ((verOffset=nAgt.indexOf("Safari"))!=-1) {
+                       browserName = "Safari";
+                       fullVersion = nAgt.substring(verOffset+7);
+                       if ((verOffset=nAgt.indexOf("Version"))!=-1)
+                         fullVersion = nAgt.substring(verOffset+8);
+                    }
+                    // In Firefox, the true version is after "Firefox"
+                    else if ((verOffset=nAgt.indexOf("Firefox"))!=-1) {
+                        browserName = "Firefox";
+                        fullVersion = nAgt.substring(verOffset+8);
+                    }
+                    // In most other browsers, "name/version" is at the end of userAgent 
+                    else if ( (nameOffset=nAgt.lastIndexOf(' ')+1) < (verOffset=nAgt.lastIndexOf('/')) ) {
+                        browserName = nAgt.substring(nameOffset,verOffset);
+                        fullVersion = nAgt.substring(verOffset+1);
+                        if (browserName.toLowerCase()==browserName.toUpperCase()) {
+                           browserName = navigator.appName;
+                        }
+                    }
+                    // trim the fullVersion string at semicolon/space if present
+                    if ((ix=fullVersion.indexOf(";"))!=-1)
+                        fullVersion=fullVersion.substring(0,ix);
+                    if ((ix=fullVersion.indexOf(" "))!=-1)
+                        fullVersion=fullVersion.substring(0,ix);
+
+                    majorVersion = parseInt(''+fullVersion,10);
+                    if (isNaN(majorVersion)) {
+                        fullVersion  = ''+parseFloat(navigator.appVersion); 
+                        majorVersion = parseInt(navigator.appVersion,10);
+                    }
+
+                    document.write(''
+                        +'Browser name  = '+browserName+'<br>'
+                        +'Full version  = '+fullVersion+'<br>');
+                }
+                WhatIsYourNameBrowser()
+            </script>
+        </div>
+
+        <p>Этот браузер очень похож на кота. Настолько похож, что, <em>скорее всего</em>, он кот.</p>
+        <p>Взгляд у этого кота настолько выразителен, что, <em>скорее всего</em>, он что-то выражает. <em>Возможно</em>, кот что-то хочет сказать.</p>
+
+        <h3>Чтобы понимать кота и других жителей, стоит взглянуть на мир изнутри...</h3>
+
+    </section>
+
+</article>
+<script>
+
+    // chapter header
+
+    function WordlDescriptionHeaderActivator () {
+        const header    = document.getElementById('WordlDescriptionHeader')
+        const activator = document.getElementById('WordlDescriptionHeaderActivator')
+        const killer    = document.getElementById('WordlDescriptionHeaderKiller')
+        app.waydot({
+            element: activator,
+            handler: function (direction) {
+                if (direction=='down')
+                    app.mutate({el:header, addClass:'is-sticky'})
+                else
+                    app.mutate({el:header, removeClass:'is-sticky'})
+            }
+        })
+        app.waydot({
+            element: killer,
+            handler: function (direction) {
+                if (direction=='down')
+                    app.mutate({el:header, removeClass:'is-sticky'})
+                else
+                    app.mutate({el:header, addClass:'is-sticky'})
+            }
+        })
+    }
+    app.onload(WordlDescriptionHeaderActivator)
+
+    // illustrations
+
+    app.onload(function () {
+        app.wayway({
+            elem: document.querySelector('.sorgens-different-types'),
+            from: 'bottom-bottom',
+            to:   'bottom-middle',
+            direct:  true,
+            props: {
+                '--opacity': { from: 0.25, to: 1 },
+                '--scale':   { from: 0.5,  to: 1 }
+            }
+        })
+    })
+    app.onload(function () {
+        app.wayway({
+            elem: document.querySelector('.konigo-different-types'),
+            from: 'bottom-bottom',
+            to:   'bottom-middle',
+            direct:  true,
+            props: {
+                '--opacity': { from: 0.25, to: 1 },
+                '--scale':   { from: 0.5,  to: 1 }
+            }
+        })
+    })
+    app.onload(function () {
+        app.wayway({
+            elem: document.querySelector('.bergamot-just-browse-here'),
+            from: 'top-bottom',
+            to:   'bottom-middle',
+            direct:  true,
+            props: {
+                '--opacity': { from: 1, to: 1 },
+                '--scale':   { from: 1, to: 0.25 }
+            }
+        })
+    })
+</script>
+
+<!-- Мир изнутри -->
+
+<figure id="KingInsideCode" class="character--AppkingInsideCode">
+    <img src="art/characters/appking-screen.svg" alt="App King" class="appking">
+    <img src="art/characters/appking-screen-matrix.svg" alt="King`s Coat" class="coat">
+</figure>
+<article id="WorldCode" class="el-chapter chapter-world-code">
+
+    <section storyblock>
+
+        <div>
+        <p>&lt;H1&gt;</p>
+        <div class="span1"><h2>Примерно так мир выглядит изнутри</h2></div>
+        <p>&lt;/H1&gt;</p>
+        </div>
+
+        <div>
+        <p>&lt;H2&gt;</p>
+            <div class="span1"><h3>Со временем можно привыкнуть</h3></div>
+        <p>&lt;/H2&gt;</p>
+        </div>
+
+        <div>
+        <p>&lt;P&gt;</p>
+            <div class="span1"><p>Зелёные буквы и символы это местный планктон, — крохотные организмы, которые служат пищей для всех остальных. Кто прочёл символ — тот его съел.</p></div>
+        <p>&lt;/P&gt;</p>
+        </div>
+
+        <div>
+        <p>&lt;P&gt;</p>
+            <div class="span1"><p>Многие буквы выстраиваются в обычный текст, который прочитает человек.</p></div>
+        <p>&lt;/P&gt;</p>
+        </div>
+
+        <div>
+        <p>&lt;P&gt;</p>
+            <div class="span1"><p>Рядом с ними  встречаются странные комбинации символов. Их читает множество других существ: разные браузеры, в том числе телефонные, поисковые роботы, шпионы секретных агенств и даже один очень умный холодильник. <span>&lt;EM&gt;</span><em>Скорее всего</em><span>&lt;/EM&gt;</span>, читают даже коты...</p></div>
+        <p>&lt;/P&gt;</p>
+        </div>
+
+        <div>
+        <p>&lt;P&gt;</p>
+            <div class="span1"><p>...Кстати, этот опять здесь. Огромный какой! Наверное, у него не написаны размеры.</p></div>
+        <p>&lt;/P&gt;</p>
+        </div>
+
+        <div>
+        <p>&lt;FIGURE&gt;</p>
+            <div class="span1"><p>&lt;IMG SRC="art/characters/this-cat.svg" ALT="Кот. Просто смотрит."&gt;</p></div>
+        <p>&lt;/FIGURE&gt;</p>
+        </div>
+
+        <figure class="this-cat"><img src="art/characters/this-cat.svg" alt="Bergamot is here again"></figure>
+
+        <figure class="illustration"><img src="art/illustrations/rules-grammar.svg" alt="Grammar rule"></figure>
+
+        <div>
+        <p>&lt;P&gt;</p>
+            <div class="span1"><p>Чтобы не было путаницы и чтобы разные читатели не воевали друг с другом, у зелёных букв появились правила-пастухи. Правила выглядят как задачи, только зелёные и в подчинении у настоящих задач. Живут племенами, и каждое племя контролирует собственные пастбища.</p></div>
+        <p>&lt;/P&gt;</p>
+        </div>
+
+        <div>
+        <p>&lt;UL&gt;</p>
+            <div class="span1 textblock">
+                <p><span>&lt;LI&gt;</span>∗ Грамматические правила пасут текст.<span>&lt;/LI&gt;</span></p>
+                <p><span>&lt;LI&gt;</span>∗ Правила вёрстки любят вот такие угловатые символы в больших количествах — &lt;/&gt;.<span>&lt;/LI&gt;</span></p>
+                <p><span>&lt;LI&gt;</span>∗ Знаменитое правило Пифагора, просто так поселилось здесь на правах древнего аристократического рода. Позволяет быстро проверить перпендикулярность стен если в руках только линейка:<span>&lt;/LI&gt;</span></p>
+            </div>
+        <p>&lt;/UL&gt;</p>
+        </div>
+
+        <div>
+        <p>&lt;BLOCKQUOTE&gt;</p>
+        <p class="span1">&lt;P&gt;</p>
+        <blockquote class="pytagorus-rule">
+            <div class="span2"><p>Достаточно от точки в углу отмерить два отрезка — вдоль пола и вверх по стене. Длина одного 3, другого 4. Существует только один треугольник со сторонами 3/4/5 и он прямоугольный. Если расстояние между отмеренными отрезками равно 5, то угол прямой. А если нет, то нет. Хоба! Ваш Пифагор.</p></div>
+        </blockquote>
+        <p class="span1">&lt;/P&gt;</p>
+        <p>&lt;/BLOCKQUOTE&gt;</p>
+        </div>
+
+        <figure class="pytagorus-illustration">
+            <img  src="art/illustrations/rules-pytagorus.svg"
+                  alt="Pytagorus Rule explained by rules">
+        </figure>
+
+        <div>
+        <p>&lt;P&gt;</p>
+            <div class="span1"><p>Свои пастбища с символами называют кодом, словно это секретный шифр. Возможно его и сложно прочесть как текст, зато браузеры могут прочитать картинки, анимацию, видео и много другое.</p></div>
+        <p>&lt;/P&gt;</p>
+        </div>
+
+        <div>
+        <p>&lt;P&gt;</p>
+            <div class="span1"><p>Можно прочитать даже видеотрансляцию с Юпитера в прямом эфире с космическими тюленями и с субтитрами клинописью. Только выглядит это...</p></div>
+        <p>&lt;/P&gt;</p>
+        </div>
+
+    </section>
+
+    <div class="hardcode-matrix">
+    <span>&lt;svg id="LiveTranslation" xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"&gt;
+    &lt;path d="M162.4,398.9c-0.4-8.2-1.2-18.2-6.1-27.1c-1-1.9-2-3.1-4.1-3c-4.1,0.2-8.1,0.4-12.2,0.6
+	c-1.3,0.1-2.7,0.1-3.9-0.1c-5.4-0.9-5.8-1.5-4.9-7.3c0.4-2.8-0.1-5.4-0.4-8c-1.1-9.4-5.4-17.2-10.2-24.8c-2.2-3.6-2.8-7.9-4.4-11.7
+	c-4.4-10.2-5.3-21.3-6.6-32.1c-0.9-7.7-2.7-15.4-2-23.4c0.4-4.8,0-9.8,0-14.6c0-0.8-0.2-1.8,0.2-2.3c5-6.2,7.1-14.6,14.1-19.7
+	c5.1-3.6,9.2-9,13.1-14.2c5-6.7,11.3-11.4,17.9-15.8c9.3-6.1,18.5-12.4,29.2-15.7c4-1.2,7.9-3.2,12.2-3.3c1.6,0,2.3-1.2,3.5-2.2
+	c7.4-6.6,6.3-15.9,6.4-24.3c0.1-14.1,1.8-28,2.5-41.9c0.2-3.9,0.3-7.2-3.4-10c-3.4-2.5-2.5-7.2-1.5-11.1c1-3.6,2.3-6.8,6.4-7.4
+	c4.7-0.6,9.3-1.4,12.4,4.2c1.4,2.6,1.7,4.7,0.2,7.1c-0.9,1.4-1.8,2.8-3,3.9c-2.4,2.3-3.3,5-4.1,8.5c-1.8,8.4-1.8,17-3,25.5
+	c-1.5,10.6-1.8,21.2-1.2,31.9c0.2,3.8,2.6,6.9,3.1,10.6c0.2,1.3,1.3,1.2,2.3,1c8.7-1.7,17.4-1.1,26.2-0.7c3.5,0.2,7,0.4,10.4,0.6
+	c6.4,0.4,11.8,3,17.4,6.3c4.3,2.6,7.9,6.2,12.5,8.5c5,2.5,9.5,6,11.7,12c0.9,2.4,2.7,4.4,4.1,6.6c1.8,2.7,3,5.8,4.7,8.6
+	c3.6,6,3.7,12.6,3.3,19.4c-0.3,4.2-0.8,8.5,0,12.7c0.5,2.5-0.5,4.8-1.5,7c-0.4,1.1-1.2,2-1,3.2c0.9,9.5-2.4,18.4-3.4,27.7
+	c-0.8,7.5-2.6,15-2.7,22.5c-0.1,6.1,0.5,12.3,0.6,18.4c0.1,9.1-1.3,18.2-0.4,27.4c0.5,5-3.4,9.1-8.2,9.9c-8.1,1.4-9.3,2.4-6.5,10.6
+	c2.9,8.4,4.7,17.2,9.3,25.1c6.1,10.6,9.7,22.5,9.8,35.2c0,4.3,0.4,8.4,1.9,12.5c1.4,3.9-0.4,9.2-3.9,11.1
+	c-9.2,5.2-16.7,13-25.4,19.1c-6.1,4.3-12.1,8.8-16.7,15c-4,5.4-6.3,11.8-6.1,18.4c0.2,5,2.6,9.8,6.4,13.6
+	c6.7,6.7,14.6,10.9,22.5,15.4c8.7,5,18.2,6.1,27.4,8.8c8.5,2.5,15.5-1.3,22.9-4.1c3.5-1.4,6.7-3.6,10.1-5
+	c11.6-4.8,23.7-7.3,35.4-0.7c6.1,3.4,10.7,9.1,13.2,16.2c0.4,1.1,0.9,2.1,1.5,3.1c1.7,3.2,0.1,6.3-3.4,6.4c-1.9,0-3.9-0.1-5.8-0.4
+	c-11.9-1.8-21.9,2.8-31,10.2c-3.7,3-7.1,6.3-9.2,11c-2.3,5-2.7,9.8-0.8,15.1c2.4,6.6,5.7,12.2,12.6,14.1c1.5,0.4,2.2,1.9,2.2,3.6
+	c0,1.6-0.9,2.2-2.2,2.7c-3.1,1.2-4.8,4.5-7.9,5.9c-7.2,3.2-14.7,6.2-22.4,6.6c-9,0.4-17.8-2-24.6-8.9c-3.8-3.9-5.6-9.2-6.8-14.6
+	c-1.4-6.2-3.2-12.3-3.5-18.7c-0.2-3.6-2.6-6-5.6-7.9c-5.7-3.6-11.6-6.8-18.1-8.5c-2.2-0.6-4.3-1.4-6.7-0.8c-1.5,0.4-3.1,0-4.6-0.6
+	c-2.8-1.1-5.7-1.1-8.5-0.5c-9.7,2-19.3,2.5-29.2,2.2c-11-0.3-21.5-2.5-31.5-6.9c-7.1-3.2-13.7-7.3-18.8-14.2
+	c-3.7-4.9-7.2-9.9-10.8-14.8c-2.9-4-4.2-9.4-6.3-14c-3.8-8.2-5.6-17.2-8.7-25.6c-1.5-4-4.8-6.7-7.6-9.5c-2.5-2.5-5.1-4.7-6.8-8.2
+	c-6.1-12-14.1-22.9-18.3-35.9c-2.1-6.4-4.8-12.6-7-19c-1.6-4.6-0.3-6.2,4.3-6c7.4,0.4,14,3,20.5,6.6c1,0.5,2.1,1.4,3,1.2
+	c3.3-0.9,6.3,0.7,9.5,0.9C151.7,428.4,162.6,417.9,162.4,398.9z M269.3,387.1c-0.3-4.2,1-8.8-1.4-12.8c-2-3.4-4.7-7.3-8.2-7.2
+	c-10.3,0.5-20.7-0.3-30.8,2.3c-3.3,0.8-6.6,1.4-10,1.6c-14.3,0.8-28.6,0.5-42.9-0.7c-7.7-0.7-8-0.3-7.4,7.8c0,0.3,0,0.5,0,0.8
+	c0.2,10,0.5,19.9-1.1,29.9c-1.2,7.5-3.6,14.5-5.5,21.8c-1.2,4.7-4.3,8.7-6,13.4c-2.6,6.9-5.7,13.6-7.1,20.9c-0.7,4-3,7.7-3.3,11.4
+	c-0.5,6.5-0.7,13.1-0.1,19.8c0.9,10.2,4.9,19,8.7,27.8c3.6,8.3,8.7,15.8,14.4,22.9c5,6.1,10.9,10.7,17.8,13.1
+	c16.9,5.9,34.2,7.6,51.8,4.1c3.8-0.8,7.8-2.1,11.8-1.2c6.5,1.5,13.3,0.8,19.8,3c2.5,0.9,4.7,2.8,7.3,3c8.3,0.5,16.6,1,24.6-2.1
+	c2.3-0.9,2.5-2.1,1.6-4c-0.9-2-2.2-3.8-2.7-5.8c-1.2-4.6-4.2-6.6-8.3-7.1c-2.3-0.3-4.6-0.3-6.7-1.5c-6.5-3.7-13.6-6.1-19.9-10.5
+	c-6.1-4.3-11.7-8.8-16.3-14.8c-6.4-8.3-7.4-17.4-3-26.7c5.1-10.5,12.8-18.9,21.9-25.5c1.7-1.3,3.4-2.5,4.5-4.3
+	c1.6-2.7,3.7-4.7,6.1-6.4c2.1-1.5,4.1-3.3,5.6-5.4c0.8-1.1,2.7-2,1.9-3.8c-0.7-1.6-2.5-1.2-3.9-1.4c-7.5-1.2-15.1-1.8-22.3-4
+	c-9.5-2.8-19.2-4-28.9-5.7c-3.3-0.6-6.6-1.5-9.8-2.5c-1.8-0.5-2.9-2-2.6-4.1c0.2-1.9,1.5-2.4,3.1-2.5c1.8-0.1,3.5-0.9,5.2-1.4
+	c7.1-2,13.5-5.5,19.2-10.2c5.2-4.3,11.4-6.9,16-12.3C267.4,401.1,270.9,395.2,269.3,387.1z M229.6,177.6c0-0.2,0-0.3,0-0.5
+	c-0.7,0-1.4,0-2.2,0c-11.4,0.4-22.7,2.8-33.9,4.8c-7.1,1.3-13.8,4.3-20.3,7.5c-5.1,2.6-9.7,6-14.6,9c-6,3.6-11.8,7.3-16.7,12.7
+	c-2.4,2.6-4.1,5.7-6.5,8.2c-13.5,14.7-19.2,32.8-20.8,52.8c-0.3,3.3-1.3,6.6-0.7,10c2,12.1,2.7,24.5,7.2,36c2.5,6.4,5.4,12.6,9.5,18
+	c2.2,2.9,4.8,5.5,6.2,8.9c2.5,6,7.1,8.9,12.7,10.1c4.1,0.9,8.3,1.4,12.5,1.7c5.9,0.5,11.5,2.6,17.5,2.2c3.6-0.2,7.2-0.3,10.8,0.1
+	c6.7,0.7,13.3,0.6,20-0.7c5.1-1,10-3.2,15.2-3.8c7.4-0.7,14.9,0.2,22.3-1.1c9-1.5,18-2.9,26.5-6.7c4.5-2,9.4-4.3,11.1-9.2
+	c2.3-6.9,3.8-14.2,4.4-21.6c0.6-7.2,0-14.4,1.7-21.5c3.1-12.4,3.2-25.2,3.7-37.8c0.4-9.9-0.4-19.9-2.4-29.8
+	c-1.3-6.3-3.5-12.2-5.5-18.2c-2-6.2-5.2-11.9-9.5-16.5c-3-3.3-7.2-4.9-11-7.1c-6.7-3.9-13.3-7.9-21.4-7.6
+	C240.1,177.8,234.9,177.6,229.6,177.6z"/&gt;</span>
+
+    <span class="highlight">
+        &lt;!-- Не пугайтесь, они не кусаются. Просто идите дальше. --&gt;
+    </span>
+
+    <span>
+    &lt;path d="M760.3,400.6c1.1-4.2-2.3-8.2-5.1-12.5c-0.6-0.9-1.4-0.8-2.2-0.9c-2.2-0.2-4.3,0.6-6.4,1.1
+	c-3.2,0.8-4.9-0.2-5.7-3.8c-1.6-6.5-1.8-13.3-3.5-19.6c-1.9-7.2-3-14.7-6-21.7c-3.5-8-5.7-16.6-7.9-25.1
+	c-2.7-10.5-6.6-20.7-7.7-31.6c-0.7-6.9-0.2-13.9-1-20.8c-0.6-5.1-2-10.1-1.2-15.3c1.6-10.6,0.9-21.5,2.7-32.1
+	c1.5-8.7,4-17.1,6.9-25.4c3.7-10.5,9.7-19.5,16.3-27.9c3.4-4.4,7.9-7.9,12.1-11.5c0.9-0.8,1.9-1.5,2.7-2.5
+	c4.8-6.1,11.1-9.6,17.8-12.5c3.6-1.6,7.5-3,10.9-4.7c2.8-1.4,5.5-3.8,8.3-5.7c2.1-1.4,4.3-2.4,6.5-3.2c5.3-2,7.3-6.5,7.3-11.7
+	c-0.1-13.8,0.6-27.5,2.1-41.2c0.3-2.6-1.3-3.6-3.1-4.6c-5.1-2.9-6.4-6.4-4.2-11.2c2.4-5.2,8.1-7.7,12.3-5.5
+	c4.6,2.4,7.8,9.8,4.7,13.2c-7.7,8.4-5.8,18.8-6.4,28.5c-0.6,9.3-1.7,18.7-0.4,28.1c0.7,4.5,2.3,6,6.6,6.3
+	c13.5,0.9,27.1,0.8,40.2,5.4c3.2,1.1,6.8,0.6,10,2.5c9.1,5.4,19.7,7.4,28.6,13.3c5,3.3,9,8.1,13.9,11.6c12.5,9,19.3,22.2,24.7,36.5
+	c1.6,4.1,4.1,7.5,6.3,11.2c5.4,9,8.1,18.7,8.5,29.3c0.1,2.5-0.5,4.8-1,7.2c-1.9,9.5-4.3,18.8-8.6,27.6c-1.9,4-1.9,8.9-3.4,13.3
+	c-4.1,11.9-8.5,23.7-13.7,35.1c-3.3,7.2-8,13.5-11.4,20.6c-4,8.2-9.9,15.3-12.5,24.4c-1.3,4.6-1.9,9.3-2.6,13.9
+	c-0.4,3.2-1.4,5.1-4.9,4c-2.8-0.8-4.5,0.5-5.5,3.8c-2.1,6.9-1.5,14-1.4,21c0.1,3.5,2.5,5.4,5.6,4.8c8.8-1.9,16.9-5.8,24.9-10.2
+	c8.9-4.9,16.6-11.7,25.4-16.7c1.6-0.9,3.1-2,4.2-3.6c0.8-1.2,1.5-3.1,3.3-2.2c1.8,0.9,3,2.5,3,4.9c0,0.3,0,0.5-0.1,0.8
+	c-2.3,7-4,14.4-7.2,20.9c-3,6.1-6.1,12.2-10,17.8c-4.8,6.8-7.9,15.2-13.7,21.2c-7.5,7.7-14.2,16.6-23.5,21.9
+	c-5.5,3.1-9.3,8.7-14.9,11.2c-6,2.7-9.4,7.7-12.7,13.3c-5,8.5-13.1,13.6-20.2,19.8c-6.1,5.3-12.8,8.8-20.5,11.5
+	c-9.9,3.4-20,6.6-30.1,8.7c-8.3,1.7-15.1,5.7-21.7,10.4c-4.7,3.3-9.1,7-12.8,11.7c-3.4,4.3-7.8,7.7-10.1,12.7
+	c-1.6,3.4-3.9,6.3-5.1,9.6c-2.7,7.4-7.4,13.7-9.8,21.3c-0.4,1.2-1.4,1.7-2.2,2.5c-1.6,1.5-3.5,2.9-3.7,5.5c0,0.1,0,0.3-0.1,0.4
+	c-5.5,3.3-6.7,11.3-13.1,13.7c-1.4,0.5-2.5,1.6-3.3,2.9c-3.3,5.6-8.6,8.1-14,10.4c-2.9,1.2-5,3.5-7,6.2c-3.6,4.9-6.1,10.3-8.7,15.8
+	c-4,8.5-6.1,17.6-8.3,26.7c-0.7,3-1.2,6-1.8,9c-1.5,7.3-4.6,13.4-11.3,16.7c-1.4,0.7-2.5,1.5-3,3c-1.2,3.2-3.6,3.1-6,2.2
+	c-2.1-0.8-3-1.9-1.4-4.6c5.9-10.2,6.6-20.7,2-31.9c-3.5-8.4-9.8-12.5-17.4-15.3c-4.8-1.8-9.5-3.4-14.7-2.9c-6,0.6-11.1,3.8-16.5,6.1
+	c-1.2,0.5-2.5,1-3.8,1.2c-1.1,0.2-2.2,0.1-2.9-1c-0.9-1.3-0.1-2.1,0.8-2.9c0.9-0.8,1.3-2.1,1.1-3.2c-0.7-4.1,1.7-7.4,2.3-11.1
+	c0.3-1.6,0.9-3.2,1-4.8c0.4-5.7,2.8-10.6,5-15.6c1.6-3.5,5-5.2,8.6-6c7.1-1.6,14.3-2.8,21.4-5.2c6.9-2.3,14.2-3.7,21.6-3.3
+	c0.4,0,0.8,0.3,1.1,0.2c8.4-2.7,17.3-4.7,22.5-13.6c0.1-0.1,0.2-0.2,0.2-0.3c-0.1-6.4,5-9.3,8.3-13.1c5.7-6.6,8.3-14.6,11-22.7
+	c3.4-10,3.3-20.7,4.2-31.1c0.5-4.9,2.1-9.5,3.3-14.1c2.9-11.4,5.9-22.9,13.4-32.2c1.6-2,1.4-4.3,0-6.4c-0.7-1-1.7-1.8-2.2-3
+	c-1.5-4.4-2.9-8.8-7.3-11.3c-2.2-1.2-3.6-3.5-3.9-6.6c-0.1-1.6-1.3-3.1-2.5-4.2c-7.5-6.6-14.2-14.1-19.9-22.6
+	c-1.2-1.8-1.6-3.9-0.6-5.8c1.1-2.1,2.9-3.3,4.6-1c3.1,4.3,7.5,5,12,6.6c11.9,4,24,3.6,36.1,3.8c1,0,1.9,0.1,2.9,0
+	c7.9-0.4,9.7-2,11.3-10.4C757.9,416.4,760.1,409.6,760.3,400.6z M673.8,661.8c3.4-5.8,5.9-11.4,9.5-16.4c2.3-3.2,4.5-6.5,6.6-9.9
+	c2-3.2,4.2-6.2,7.2-8.2c6.1-4,12.2-8,17.6-13c4.9-4.5,9-9.7,13-15.1c2.8-3.7,4.9-7.9,7.6-11.5c1.5-1.9,0.3-4.2,1.9-6.3
+	c3.2-4.2,4.9-9.6,7.2-14.4c1.9-3.9,2.3-8.3,5.9-11.6c4.5-4.1,7.8-9.9,13.1-12.9c3.1-1.8,5-4.9,8.2-6.7c4.7-2.6,9.8-4.3,14.1-7.6
+	c1-0.7,1.9-1.6,3.2-1.7c5.4-0.5,10.6-2.1,15.8-3.6c6.9-2,14.4-1.3,20.8-5.6c1.3-0.9,2.8-2.1,4.2-2c6.3,0.3,10.4-4.5,14.7-7.7
+	c7.5-5.4,14-12.2,19.8-20.1c6.9-9.5,9.4-20.6,12.6-31.6c2.9-9.8,2.4-20.1,3-30.2c0.4-6.9-1-13.6-1.9-20.2c-1.1-8-5.3-15-9-21.9
+	c-0.6-1.2-1.6-1.6-2.7-1.6c-3.2,0-6.4-0.6-9.7-0.2c-9,1.2-18.1,3.3-27.1,2.4c-8.4-0.8-16.6,1.1-25,0.3c-8.8-0.8-17.7,1.7-26.6,1.4
+	c-1.2,0-2.2,0.2-2.5,1.6c-0.5,2.2-1.2,4.5-1.4,6.7c-1.1,9.7-4.9,18.4-8.1,27.3c-1.8,4.9-5.8,8.9-4.8,14.9c0.2,1.5-0.6,3.1-1.8,4.1
+	c-2.4,2.1-3.9,4.9-5.1,7.8c-3.2,7.8-8.9,13.7-13.1,20.7c-2.6,4.2-3,9.4-6.2,13.3c-2.6,3.2-4.7,6.8-7,10.3
+	c-4.1,6.4-6.5,13.5-8.5,20.5c-3.5,12.2-5.8,24.8-6.5,37.7c-0.5,8.5-3.7,16.3-6.1,24.4c-0.4,1.2-0.9,2.5-1.7,3.4
+	c-5.5,6.5-9.5,14.2-15.7,20.3c-8.9,8.8-13.7,20.6-18,32.5c-0.4,1-0.4,2.3-0.3,3.4c1,6.4,1,12.8,1.7,19.2
+	C673,656.3,672.3,659,673.8,661.8z M939.7,244.1c-0.4-4.1-0.8-8.2-1.1-12.3c-0.5-6.5-1.7-13-4.7-18.4c-5.5-10-10.4-20.5-17.3-29.6
+	c-5.4-7.2-9.9-15.4-18.4-19.3c-1-0.4-1.7-1.4-2.4-2.2c-4.6-5-10-9.6-16-11.5c-4.9-1.6-8.3-4.5-11.6-7.6c-5.3-4.9-11.7-7.1-18.1-8.5
+	c-9.4-2.1-18.9-3.2-28.6-3.3c-5-0.1-10.1-0.1-14.9,1.2c-8.7,2.3-17.7,3.3-26.1,7.1c-6.7,3-13.7,5.7-19.4,10.6
+	c-4.3,3.8-8.2,8.2-12.4,12.2c-6.6,6.5-11.7,14.4-16.2,22.9c-7,13.5-10.7,27.8-11.7,43.1c-0.8,11.9-1.5,23.8-0.5,35.8
+	c0.9,10.3,0,20.8,2.7,30.9c3.1,11.7,5.7,23.6,9.9,35c2.6,6.9,5.8,13.5,6.9,21c0.8,5.8,4.4,10.2,6.9,15.1c0.4,0.8,0.9,1.5,1.9,1.6
+	c9.2,1.4,18.3,3.8,27.7,2.9c2.3-0.2,4.6-1.2,6.8-0.9c7.3,0.9,14.6,1,21.9,0.7c2.8-0.1,5.6-0.4,8.3,0c6.2,1.1,12.4,1.7,18.6,0
+	c6.1-1.8,12.4-0.5,18.6-1.7c5.8-1.1,11.8-0.2,17.8-1.4c6-1.2,11.5-4.5,17.8-4.3c2.3,0,4.5-1.9,6.2-4.2c2.9-4.2,4.4-9.1,6.8-13.5
+	c4.3-8.1,10.7-14.7,14.6-23.3c4.2-9.2,10.1-17.7,12.4-27.7c1.9-8.1,5.5-15.3,7.9-23C936.7,262.5,940.6,253.8,939.7,244.1z"/&gt;
+    &lt;path d="M513.8,339.2c-8.1,1.1-16.3-0.7-24.6-1.2c-3.9-0.3-7.9,0.1-11.8-0.6c-10.7-1.8-20.8-4.9-28.5-13.9
+	c-2.8-3.3-7-4.8-10.6-7c-8.1-4.9-14.3-11.3-18.3-20c-3.5-7.6-7.8-14.8-10.1-23c-2.8-9.9-7.2-19-11.4-28.2c-1.6-3.6-1.5-7.4-1-11
+	c1.3-10.2-0.4-20.5,1.1-30.7c0.8-5.7,0.8-11.6,1.9-17.2c0.9-4.6,2.5-9.2,4.6-13.3c4-7.7,7.6-15.7,11.2-23.6
+	c3.1-6.8,7.2-13,11.3-19.2c4.6-6.8,9.9-13,15.7-18.4c5.7-5.3,12.1-9.7,18.4-14.2c12-8.6,24.8-15.6,38.2-21.5
+	c5.6-2.5,11.9-1.6,17.6-3.8c15.2-5.9,31.2-6.6,47.1-8.2c2.7-0.3,4.8-2.9,8.1-2.4c2.6,0.4,5,0.9,7.1,2.5c9,6.9,17.5,14.5,26.9,20.6
+	c10,6.5,16.2,16.3,23,25.9c3.1,4.3,6,8.6,9.1,12.8c2.2,2.9,3.6,6.3,5.1,9.6c9.1,19.8,11.5,41.4,15.1,62.7c0.9,5.7,2.2,11.3,3.1,17
+	c1,6.8,2.3,13.8,1.4,20.9c-0.8,7.1-1.2,14.3-1.9,21.4c-0.6,6.4-2.8,12.2-4.7,18.1c-1.6,5.1-4.4,9.7-6.3,14.7
+	c-2.7,7.1-9.1,9.5-14.2,13.3c-11.3,8.5-23.9,14.8-36.5,20.6c-9.9,4.6-20.6,7.3-31.5,9c-6.1,0.9-12.4,1.9-18.4,3.6
+	C538.2,337.9,526.2,339.7,513.8,339.2z M405.1,218.8c-0.7,10.4,1.9,21.2,4,32c1.1,5.7,4.2,10.4,5.7,15.8c1.7,6.1,4,11.6,7.8,16.6
+	c7.4,9.9,15.2,19.4,24.1,27.9c5.4,5.1,11.4,9.2,18.1,12.1c6.8,2.9,14,3.7,20.9,5.5c4.3,1.1,8.6,3.8,13,2.9
+	c7.9-1.6,15.5,0.4,23.3,0.3c9.1-0.2,17.9-2.4,26.5-5c2.3-0.7,4.6-1.6,6.9-1.3c8.5,1,16.6-1.2,24.3-4.3c11.2-4.6,22.7-8.5,32.8-15.5
+	c7.3-5.1,15.1-9.5,20.8-16.9c2.7-3.5,4.2-7.8,7.6-10.7c3.6-3.1,6.1-7.4,8.4-11.5c4.8-8.8,6.2-19,6.2-28.8c0-14.2-0.8-28.4-3-42.5
+	c-2.1-13.3-3.5-26.8-7.5-39.6c-4-12.5-8.8-24.5-17-34.9c-5.9-7.5-12-14.8-18-22.2c-7.5-9.3-18.3-12.9-28.1-18
+	c-6.7-3.5-14-5.1-21.1-7.7c-2.7-1-5.6-2.2-8.4-1.8c-12.8,1.6-25.4,4.3-37.8,7.9c-8.7,2.5-17.5,5.3-25.7,9.8
+	c-5.9,3.2-11.9,5.9-17.5,9.8c-6.1,4.2-11.4,9.5-17.5,13.6c-11.9,7.9-21.2,18.3-28.2,31.2c-5.5,10.2-10.6,20.7-14.4,31.8
+	c-2.4,7-4.7,14-5.8,21.3C404.7,203.4,404.6,210.8,405.1,218.8z"/&gt;
+    </span>
+
+    </div>
+
+    <section storyblock>
+
+        <div>
+        <p>&lt;DIV CLASS="stop-that this-is-silly"&gt;</p>
+        <p class="span1">&lt;P&gt;</p>
+        <div class="span2 stop-that this-is-silly">
+            <p>— Хватит уже!</p>
+        </div>
+        <p class="span1">&lt;/P&gt;</p>
+        <p>&lt;/DIV&gt;</p>
+        </div>
+
+        <div>
+        <p>&lt;P&gt;</p>
+            <div class="span1"><p>— Что вы себе позволяете? Уберите с экрана эти джунгли.</p></div>
+        <p>&lt;/P&gt;</p>
+        </div>
+
+        <div>
+        <p>&lt;P&gt;</p>
+            <div class="span1"><p>Король возмутился зелёным букашкам. Захватил самых непонятных и отправил в ссылку. <span>&lt;A HREF="art/illustrations/jupiter-report-part0001.svg"&gt;</span>Прочь из этого текста<span>&lt;/A&gt;</span></p></div>
+        <p>&lt;/P&gt;</p>
+        </div>
+
+        <div>
+        <p>&lt;P&gt;</p>
+            <div class="span1"><p>Чтобы не мешали наслаждаться содержанием.</p></div>
+        <p>&lt;/P&gt;</p>
+        </div>
+
+        <hr>
+
+    </section>
+
+    <div id="WordlDescriptionHeaderKiller"></div>
+    <div id="KingInsideCodeKiller"></div>
+
+</article>
+<script>
+    function KingInMatrix () {
+        const king      = document.getElementById('KingInsideCode')
+        const activator = king
+        const killer    = document.getElementById('KingInsideCodeKiller')
+        app.waydot({
+            element: activator,
+            offset: '100%',
+            handler: function (direction) {
+                if (direction=='down')
+                    app.mutate({el:king, addClass:'is-active'})
+                else
+                    app.mutate({el:king, removeClass:'is-active'})
+            }
+        })
+        app.waydot({
+            element: killer,
+            handler: function (direction) {
+                if (direction=='down')
+                    app.mutate({el:king, removeClass:'is-active'})
+                else
+                    app.mutate({el:king, addClass:'is-active'})
+            }
+        })
+        app.wayway({
+            elem: activator,
+            from: 'top-bottom',
+            to:   'top-top',
+            direct:  true,
+            props: {
+                '--matrix-coat': { from: '-100vh', to: '0vh' }
+            }
+        })
+        app.wayway({
+            elem: killer,
+            from: 'top-bottom',
+            to:   'top-top',
+            props: {
+                '--matrix-bottom': { from: '0vh', to: '-100vh' }
+            }
+        })
+    }
+    app.onload(KingInMatrix)
+
+    function MatrixHeader () {
+        const header    = document.getElementById('WordlDescriptionHeader')
+        const activator = document.getElementById('WorldCode')
+        app.waydot({
+            element: activator,
+            handler: function (direction) {
+                if (direction=='down')
+                    app.mutate({el:header, addClass:'has-matrix'})
+                else
+                    app.mutate({el:header, removeClass:'has-matrix'})
+            }
+        })
+    }
+    app.onload(MatrixHeader)
+</script>
+
+
+<!-- Известный ценитель содержания -->
+
+<article id="ContentLover" class="el-chapter chapter-content-lover">
+
+    <section storyblock>
+
+        <header>
+            <h2>Король Апп — известный ценитель содержания</h2>
+        </header>
+
+        <p>Ах, побывать бы в королевских родных краях! Там содержание выращивают на горных склонах под светом ярких идей. Весной сеют добро и к осени пожинают плоды. Крохотные летающие феи — контенты — тщательно собирают содержание в шёлковые мешочки и относят в редакцию. Где большие, как бегемоты, редакторы переваривают содержание объективным взглядом.</p>
+
+        <p>Готовое содержание складывают для просушки на солнечном пляже. Где под шелест волн суетятся крабы. Небольшими стайками они бегают по песку и с деловым видом перекладывают содержание из кучки в кучку — форматируют, как сами это называют. Отформатированные кучки подписываются и погружаются на сервера.</p>
+
+        <p>Огромные плавучие сервера, с серьёзными капитанами и с трубами густого чёрного дыма, наполняют трюмы содержанием и уходят к горизонту. Уже на серверах, сотни функций оптимизируют содержание и упаковывают к выдаче.</p>
+
+        <p>На экран свежее содержание подаётся распакованным и очищенным от ошибок. Когда наблюдаешь интересное содержание, наполненное смыслом и лёгким ароматом творчества, то каждый раз влюбляешься...</p>
+
+        <p>* * *</p>
+
+        <figure><img class="zzzoom" src="art/illustrations/kingland-content-story.png" alt="Content from Kinglands"></figure>
+
+    </section>
+
+
+
+</article>
+
+
+<!-- Lorem ipsum -->
+
+<article id="LoremIpsum" class="el-chapter chapter-lorem-ipsum">
+
+    <section storyblock>
+
+        <p>Но это было давно, в сказочной королевской стране. В этом мире уже редко выращивают содержание. Чаще копируют или генерируют. А есть такие задачи, которые питаются только содержанием под названием <em>Lorem ipsum</em>.</p>
+
+        <p>Lorem ipsum родились в философском трактате Цицерона «О пределах добра и зла», написанного на латинском языке в 45 году до нашей эры. В XVI веке их засушили и стали использовать в каждом случае, когда внешний вид содержания важнее смысла. Привет красивые символы!</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
+
+    </section>
+
+    <section class="lorem-grid">
+
+        <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac tincidunt vitae semper quis lectus nulla. Tempus egestas sed sed risus pretium quam. Turpis in eu mi bibendum neque egestas congue. Nisl tincidunt eget nullam non nisi est sit amet facilisis.</p></div>
+
+        <div><p>Semper risus in hendrerit gravida rutrum quisque. Lobortis scelerisque fermentum dui faucibus in ornare. Mauris pharetra et ultrices neque. Eget aliquet nibh praesent tristique magna sit amet. In iaculis nunc sed augue lacus viverra vitae congue.</p></div>
+
+        <div style="grid-column: span 3;"><p>Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Ut lectus arcu bibendum at varius vel pharetra vel turpis. Aliquam purus sit amet luctus. Cras adipiscing enim eu turpis egestas pretium aenean pharetra. Vivamus at augue eget arcu dictum varius duis. Praesent tristique magna sit amet purus gravida quis. Et tortor consequat id porta. Eget aliquet nibh praesent tristique magna.<br><br>Cursus sit amet dictum sit amet justo. Habitant morbi tristique senectus et. Quisque non tellus orci ac auctor augue mauris. Sagittis purus sit amet volutpat. Viverra accumsan in nisl nisi. Vulputate dignissim suspendisse in est ante in nibh mauris cursus. Proin fermentum leo vel orci porta. Donec enim diam vulputate ut. Rutrum tellus pellentesque eu tincidunt tortor. Massa tincidunt nunc pulvinar sapien. Semper auctor neque vitae tempus quam pellentesque. Tincidunt tortor aliquam nulla facilisi cras fermentum odio. Amet mattis vulputate enim nulla aliquet porttitor.</p></div>
+
+        <div style="grid-row: span 2;"><p>Vitae auctor eu augue ut. Morbi tincidunt augue interdum velit euismod in pellentesque massa placerat. Vitae ultricies leo integer malesuada nunc vel. Vulputate enim nulla aliquet porttitor lacus. Arcu non odio euismod lacinia at quis risus sed. Ultricies integer quis auctor elit sed vulputate mi sit amet.<br><br>Ac placerat vestibulum lectus mauris ultrices eros. Volutpat odio facilisis mauris sit. Mauris augue neque gravida in fermentum. Diam in arcu cursus euismod quis viverra nibh. Sit amet risus nullam eget felis eget.</p></div>
+
+        <div><p>Malesuada proin libero nunc consequat interdum varius sit amet mattis. Ipsum a arcu cursus vitae congue. Facilisis gravida neque convallis a cras. Amet dictum sit amet justo donec enim. Amet mattis vulputate enim nulla aliquet.</p></div>
+
+        <div style="grid-column: span 2; font-size: 1.5em;"><p style="align-self: center; padding: 0 1rem;">Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Vel eros donec ac odio. Maecenas volutpat blandit aliquam etiam erat velit. Iaculis at erat pellentesque adipiscing commodo elit. Dui sapien eget mi proin sed libero.</p></div>
+
+        <div class="caption inversed"><p>Vitae sapien pellentesque habitant morbi tristique senectus et. Duis tristique sollicitudin nibh sit amet commodo nulla. Morbi quis commodo odio aenean.</p></div>
+
+        <div style="grid-row: span 2; grid-column: span 2;" ><div><p class="title">Ac placerat vestibulum lectus mauris ultrices eros. Volutpat odio facilisis mauris sit. Mauris augue neque gravida in fermentum. Diam in arcu cursus euismod quis viverra nibh. Sit amet risus nullam eget felis eget.</p><hr><p>Imperdiet proin fermentum leo vel orci porta non. Erat pellentesque adipiscing commodo elit. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis. Nisl nunc mi ipsum faucibus. Sed turpis tincidunt id aliquet risus feugiat in ante metus. Nunc congue nisi vitae suscipit tellus.<br><br>Dictumst quisque sagittis purus sit amet. Euismod nisi porta lorem mollis aliquam ut porttitor. Cursus mattis molestie a iaculis. Sed blandit libero volutpat sed cras ornare arcu dui vivamus. Purus faucibus ornare suspendisse sed nisi lacus sed.</p></div></div>
+
+        <div><p>Ac tortor dignissim convallis aenean et. Arcu vitae elementum curabitur vitae nunc sed velit.</p></div>
+
+        <div style="grid-row: span 2;"><p>Rhoncus dolor purus non enim praesent elementum facilisis leo. Ipsum consequat nisl vel pretium. Etiam non quam lacus suspendisse faucibus interdum. Id porta nibh venenatis cras sed felis. Tincidunt ornare massa eget egestas purus viverra. Etiam dignissim diam quis enim lobortis. Purus sit amet luctus venenatis lectus. Id cursus metus aliquam eleifend mi in nulla posuere sollicitudin. Libero nunc consequat interdum varius sit amet mattis vulputate enim. Sem viverra aliquet eget sit amet tellus cras adipiscing. Sed vulputate odio ut enim blandit volutpat maecenas. Nunc non blandit massa enim nec dui. Gravida dictum fusce ut placerat orci nulla. Facilisi morbi tempus iaculis urna id.</p></div>
+
+        <div class="caption inversed title" style="grid-column: span 2;"><p style="align-self: center; text-align:center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+
+        <div style="grid-row: span 2;"><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat.</p></div>
+
+        <div><p>Ornare suspendisse sed nisi lacus sed viverra tellus in. Nisl nunc mi ipsum faucibus vitae aliquet. Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula. Lectus urna duis convallis convallis tellus id interdum velit. Egestas maecenas pharetra convallis posuere morbi leo urna.</p></div>
+
+        <div><p>Imperdiet proin fermentum leo vel orci porta non. Erat pellentesque adipiscing commodo elit. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis. Nisl nunc mi ipsum faucibus. Sed turpis tincidunt id aliquet risus feugiat in ante metus. Nunc congue nisi vitae suscipit tellus.</p></div>
+
+        <div><p>Dictumst quisque sagittis purus sit amet. Euismod nisi porta lorem mollis aliquam ut porttitor. Cursus mattis molestie a iaculis. Sed blandit libero volutpat sed cras ornare arcu dui vivamus. Purus faucibus ornare suspendisse sed nisi lacus sed.</p></div>
+
+        <div><p>Porttitor rhoncus dolor purus non enim praesent elementum facilisis. Dictum sit amet justo donec enim diam vulputate. Enim nunc faucibus a pellentesque sit amet porttitor. At auctor urna nunc id cursus metus aliquam eleifend mi. Suspendisse in est ante in nibh. Lorem ipsum dolor sit amet consectetur adipiscing elit. Imperdiet proin fermentum leo vel orci porta non pulvinar neque. </p></div>
+
+        <div class="caption big-title" style="grid-column: span 3;"><p style="align-self: center; text-align: center;">Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p></div>
+
+        <div><p>Gravida in fermentum et sollicitudin ac orci. Dolor purus non enim praesent elementum facilisis. Aenean sed adipiscing diam donec. Blandit libero volutpat sed cras ornare arcu dui vivamus. Aliquam nulla facilisi cras fermentum. Et egestas quis ipsum suspendisse ultrices gravida. Ultricies tristique nulla aliquet enim tortor at. Amet porttitor eget dolor morbi non.</p></div>
+
+        <div><p>Odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Tortor dignissim convallis aenean et tortor at risus viverra adipiscing. Erat nam at lectus urna duis convallis. Sit amet commodo nulla facilisi nullam vehicula ipsum a.</p></div>
+
+        <div><p>Volutpat lacus laoreet non curabitur. Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum. Quisque sagittis purus sit amet volutpat consequat mauris. Convallis a cras semper auctor neque vitae tempus quam pellentesque. Vitae et leo duis ut diam. Porttitor leo a diam sollicitudin tempor id eu.</p></div>
+
+        <div style="grid-column: span 2;"><p>Rhoncus dolor purus non enim praesent elementum facilisis leo. Ipsum consequat nisl vel pretium. Etiam non quam lacus suspendisse faucibus interdum. Id porta nibh venenatis cras sed felis. Tincidunt ornare massa eget egestas purus viverra. Etiam dignissim diam quis enim lobortis. Purus sit amet luctus venenatis lectus. Id cursus metus aliquam eleifend mi in nulla posuere sollicitudin. Libero nunc consequat interdum varius sit amet mattis vulputate enim. Sem viverra aliquet eget sit amet tellus cras adipiscing. Sed vulputate odio ut enim blandit volutpat maecenas. Nunc non blandit massa enim nec dui. Gravida dictum fusce ut placerat orci nulla. Facilisi morbi tempus iaculis urna id.</p></div>
+
+        <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac tincidunt vitae semper quis lectus nulla. Tempus egestas sed sed risus pretium quam.</p></div>
+
+        <div class="caption inversed"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+
+    </section>
+
+</article>
+
+<!-- Миссия кота -->
+
+<article id="TakeTheMission" class="el-chapter chapter-take-the-mission">
+
+    <header storyblock>
+        <h2>— Псс! Есть миссия?</h2>
+        <hr>
+    </header>
+
+    <section storyblock>
+
+        <section textblock>
+
+            <p>Пока король Апп рассматривал Lorem ipsum, вернулся кот и шёпотом спросил про миссию. Какая миссия?, — удивился король.</p>
+
+            <p>— Миссия, задание, цель... Что-нибудь, что надо выполнить.</p>
+
+            <p>— Нет. Не знаю никакой миссии.</p>
+
+            <p>— А у меня есть. Пойдём со мной через гиперссылку.</p>
+
+            <div class="last-button">
+                <a href="nomission.html" class="button">Принять миссию</a>
+            </div>
+
+        </section>
+
+        <figure style="grid-column: side-e;">
+            <img class="bergamot-just-browse-here" style="max-width: 50%;"
+                 src="art/characters/bergamot-just-browse-here.svg"
+                 alt="Bergamot the Cat just browse here">
+        </figure>
+
+    </section>
+
+</article>
+
+
+</main>
+<div class="screen-shadow-overlay close-chapterbar"></div>
+
+</body>
+</html>

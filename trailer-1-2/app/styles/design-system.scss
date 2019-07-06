@@ -1,0 +1,125 @@
+$color--KingRed: #BF4D28;
+
+$unitSide: 20vw;
+
+:root {
+    --color-main-bg:   hsl(0,0%,98%);
+    --color-main-text: hsl(0,0%,24%);
+}
+body {
+    background-color:  var(--color-main-bg);
+    color:             var(--color-main-text);
+}
+
+%grid-as-article {
+
+    // grid settings
+
+    display:  grid;
+    grid-gap: 1em 5vw;
+    align-items:     start;
+    grid-auto-flow:  row;
+    grid-auto-rows:  min-content;
+    &>* { grid-column: main; }
+
+    // $unitSide = 20vw
+    grid-template-columns:
+        [full-start side-w]
+            20vw
+        [main]
+            50vw
+        [side-e]
+            20vw
+        [full-end];
+
+    // text settings
+
+    @media ($screenNotS) {
+        font-size: 1.2em;
+        &>p {
+            max-width: 27em;
+        }
+    }
+
+    // mobile
+
+    @media ($screenForTablet) {
+
+        grid-gap: 1em 0;
+        grid-template-columns:
+            [full-start]
+                1rem
+            [main-start side-w side-e]
+                auto
+            [main-end]
+                1rem
+            [full-end];
+
+    }
+}
+.grid-as-article     { @extend %grid-as-article; }
+.storyblock          { @extend %grid-as-article; }
+[storyblock]         { @extend %grid-as-article; }
+
+
+
+%grid-as-text {
+    display: grid;
+    grid-gap: 1em 0;
+    grid-template-columns: auto;
+}
+.grid-as-text { @extend %grid-as-text; }
+.textblock    { @extend %grid-as-text; }
+[textblock]   { @extend %grid-as-text; }
+
+
+
+%text-as-active-message {
+
+    display: inline-block;
+    padding: 0.2em 0.5em;
+
+    margin-left: -0.5em;
+
+    background-color: $color--KingRed;
+    color:            white;
+
+    font-family:    $font-list-sans;
+    font-size:      0.6em;
+    line-height:    1.75;
+    letter-spacing: .03em;
+
+}
+.text-as-active-message { @extend %text-as-active-message; }
+
+
+
+%focus-as-button {
+    display: block;
+    padding: 0;
+    margin:  0;
+    border:  0;
+    outline: 0;
+    background: transparent;
+}
+
+
+.content-area {
+    overflow: hidden;
+    width: 100%;
+}
+
+.nicely-zoomed-illustration {
+    grid-column: full;
+    padding: 2em 10vw;
+    &>img {
+        --opacity: 0.25;
+        --scale:   0.5;
+        width:  100%;
+        height: auto;
+        opacity:   var(--opacity);
+        transform: scale(var(--scale));
+        transform-origin: top center;
+        will-change: transform, opacity;
+    }
+}

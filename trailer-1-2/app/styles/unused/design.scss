@@ -1,0 +1,215 @@
+@charset "UTF-8";
+/* King Style Sheet, KSS, 2019.3.14 */
+/* Last revision: 2019.3.14 */
+
+// ---------------------------------------------------------------
+/* KSS base html markup */
+// ---------------------------------------------------------------
+
+
+/* ------------------------------------ scale model */
+
+
+:root {
+    --rem-unit: 10px;
+    --em-unit:  24px;
+}
+
+html { font-size: var(--rem-unit); }
+body { font-size: var(--em-unit); line-height: 1.25; }
+
+
+
+/* ------------------------------------ minimal box model */
+
+
+*, *:before, *:after     { box-sizing: inherit;    }
+html                     { box-sizing: border-box; height: 100%; }
+html, body               { margin: 0; padding: 0;  }
+
+
+/* ------------------------------------ improve design & UX */
+
+
+html    { cursor: default; }
+body    { overflow-y: scroll; }
+// UX: Single taps are dispatched immediately on clickable elements
+a, area, button, input, label, select, summary, textarea, [tabindex] {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+
+//* ------------------------------------ typography features
+
+
+* {
+    @supports (hanging-punctuation:first) {
+        hanging-punctuation: first;
+    }
+}
+
+// fonts rendering
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+p {
+    max-width:    26em;
+    margin-right: auto;
+}
+p+p {
+    padding-top: 1em;
+}
+
+// native font stack 2018
+
+$font-family-preset--native-sans:
+  // Safari for macOS and iOS (San Francisco)
+  -apple-system,
+  // Chrome < 56 for macOS (San Francisco)
+  BlinkMacSystemFont,
+  // Windows
+  "Segoe UI",
+  // Android
+  "Roboto",
+  // Basic web fallback
+  "Helvetica Neue", Arial, sans-serif,
+  // Emoji fonts
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+body {
+     font-family: $font-family-preset--native-sans;
+}
+
+
+/* ------------------------------------ avoid rendering errors */
+
+
+img, svg { max-width: 100%; display: block; }
+canvas   { display: inline-block; }
+
+
+/* ----------------- use semantic markup without browser`s design */
+
+
+blockquote, figure, figcaption {
+    display: block;
+    margin:  0;
+    padding: 0;
+    border:  0;
+    white-space: normal;
+}
+article, section, header, footer, main, aside, nav { display: block; }
+nav ul, nav ol {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+h1, h2, h3, h4, h5, h6, p, blockquote {
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    margin:  0;
+    padding: 0;
+}
+
+
+// ---------------------------------------------------------------
+/* KSS base design */
+// ---------------------------------------------------------------
+
+$font-family-preset--tufte-serif:
+    Vollkorn,
+    et-book,
+    Palatino,
+    "Palatino Linotype",
+    "Palatino LT STD",
+    "Book Antiqua",
+    Georgia,
+    serif;
+
+body {
+     font-family: $font-family-preset--tufte-serif;
+}
+
+$screenForMobile: 'max-width:800px';
+$screenNotMobile: 'min-width:801px';
+
+
+// ---------------------------------------------------------------
+/* KSS interface workers */
+// ---------------------------------------------------------------
+
+@import "design-animations";
+
+/* font alternative */
+
+.has-sans-text {
+    font-family: $font-family-preset--native-sans;
+    letter-spacing: .03em;
+}
+
+/* common layout for text content */
+
+.text-grid {
+    display: grid;
+    grid-gap: 0 1em;
+    grid-template-columns:
+        [full-start]
+            minmax(0, auto)
+        [prefix-start]
+            6em
+        [prefix-end main-start]
+            minmax(auto, 26em)
+        [suffix-start main-end]
+            6em
+        [suffix-end]
+            minmax(0, auto)
+        [full-end];
+    & * { grid-column: main; }
+    @media ($screenForMobile) {
+        grid-gap: 0;
+        grid-template-columns:
+            [full-start]
+                minmax(1rem, auto)
+            [prefix-start suffix-start main-start]
+                minmax(auto, 26em)
+            [prefix-end suffix-end main-end]
+                minmax(1rem, auto)
+            [full-end];
+    }
+}
+
+// ---------------------------------------------------------------
+/* KSS screens */
+// ---------------------------------------------------------------
+
+/* matrix mode */
+
+.matrix-code-layer {
+
+    @extend .text-grid;
+    @extend .has-sans-text;
+
+    padding-top:    20vh;
+    padding-bottom: 20vh;
+    margin-top:     20vh;
+    margin-bottom:  40vh;
+
+    background-color: hsla(201, 65%, 6%, 1); /* Funny Like the Space */
+    color:            limegreen;
+
+    .span1 { padding-left: 1em; }
+    .span2 { padding-left: 2em; }
+    .span3 { padding-left: 3em; }
+}
+
+// ---------------------------------------------------------------
+/* EOF KSS Style Sheet */
+// ---------------------------------------------------------------

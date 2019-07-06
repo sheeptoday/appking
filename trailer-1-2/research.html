@@ -1,0 +1,301 @@
+<!doctype html><!-- app7000-Zapp -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Research</title>
+
+
+    <!-- ========================================= APP MAIN -->
+
+
+    <!-- design font -->
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
+
+    <link  href="design.css" rel="stylesheet" type="text/css">
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template">
+
+<section class="research-welcome-layout">
+    <style>
+        .research-welcome-layout {
+            position: sticky;
+            top: 0;
+            z-index: -1;
+        }
+        .scene--welcome-appking {
+            position: relative;
+            background-color: hsl(215, 81%, 82%);
+            background-image: linear-gradient( hsl(215, 61%, 42%), hsl(215, 31%, 62%) );
+            /* contentbox */
+            min-height: 100vh;
+            display: flex;
+            flex-direction:  column;
+            justify-content: space-between;
+            align-items:     stretch;
+            align-content:   stretch;
+        }
+        .scene--welcome-appking > header { flex-grow: 2; }
+        .scene--welcome-appking > footer { flex-grow: 0; }
+        @media (max-width:600px) {
+            .scene--welcome-appking > header { flex-grow: 0; }
+            .scene--welcome-appking > footer { flex-grow: 2; }
+        }
+
+        /* sky header */
+
+        .scene--welcome-appking > header {
+            min-height: 30vw;
+            align-content: end;
+        }
+        .scene--welcome-appking > header .caption {
+            /* contentbox */
+            display: flex;
+            justify-content: flex-start;
+            align-items:     flex-end;
+            align-content:   flex-end;
+            /**/
+        }
+        .scene--welcome-appking > header .caption blockquote {
+            padding-bottom: 2em;
+            padding-right:  1em;
+        }
+        .scene--welcome-appking > header h1 {
+            font-size: 1.25em;
+            margin: 0;
+            color:white;
+        }
+        @media (min-width:601px) {
+            .scene--welcome-appking > header h1 {
+                font-size: 2em;
+            }
+        }
+        .scene--welcome-appking > header .subtitle {
+            font-size: 0.75em;
+            margin:  0 0 0 -1rem;
+            padding: 0.75rem 1rem;
+            display: inline-block;
+            background-color: firebrick;
+            color: white;
+        }
+        .scene--welcome-appking > header .character {
+            width: 3em;
+            transform: translateY(1em) rotateY(180grad);
+            z-index: 1;
+        }
+        @media (min-width:601px) {
+            .scene--welcome-appking > header .character {
+                width: 6em;
+                transform: translateY(4em) rotateY(180grad);
+                
+            }
+        }
+
+        /* ground footer */
+
+        .scene--welcome-appking > footer {
+            min-height: 50vh;
+            background-color: hsl(95, 81%, 82%);
+            background-image: linear-gradient(hsl(95, 61%, 62%),hsl(95, 41%, 92%));
+            padding-top:    2em;
+            padding-bottom: 0;
+            clip-path: polygon( 0 2rem, 20% 0, 25% 1rem, 40% 0, 60% 2rem, 80% 0, 100% 1rem, 100% 100%, 0 100%);
+            align-content: start;
+        }
+        .scene--welcome-appking > footer blockquote {
+            font-size:0.75em;
+            max-width:21em;
+        }
+
+        /* Nina the Arrow */
+
+        .scene--welcome-appking > footer .arrow {
+            margin: 0 auto;
+            padding: 1em 0;
+        }
+        .character--welcome-arrow img {
+            width: 4em;
+        }
+        @media (max-width:600px) {
+            .character--welcome-arrow img {
+                width: 3em;
+            }
+        }
+
+    </style>
+    <section class="el-scene scene--welcome-appking">
+        <header class="text-grid">
+            <section class="caption">
+                <blockquote>
+                    <h1>Это король Апп</h1>
+                    <p class="subtitle">Версия Альфа Второй</p>
+                </blockquote>
+                <figure class="character">
+                    <div class="character--welcome-appking"><img src="art/characters/appking-welcome.svg" alt="App King"></div>
+                </figure>
+            </section>
+        </header>
+        <footer class="text-grid">
+            <blockquote>
+                <p>Он выглядит картинкой, ведёт себя как литературный персонаж и работает как функция. Надо заметить, что в каждом случае, король Апп служит эталоном доблести и благородства. На то он и король.</p>
+                <p>Корона слегка повреждена, об этом рассказывает легенда...</p>
+            </blockquote>
+            <figure class="arrow">
+                <div class="character--welcome-arrow animated infinite pulse"><img src="art/characters/arrow-fat-bottom.svg" alt="Welcome!"></div>
+            </figure>
+        </footer>
+    </section>
+</section>
+
+<section class="research-article-grid">
+    <style>
+        .research-article-grid {
+            font-size: 24px;
+        }
+        .research-article-grid .grid {
+            display: grid;
+            grid-column-gap: 2em;
+            grid-template-columns: auto [side-start] minmax(auto, 14em) [side-end main-start] minmax(auto, 26em) [main-end note-start] minmax(auto, 14em) [note-end] auto;
+        }
+        .research-article-grid .grid * {
+            grid-column: main;
+        }
+        .research-article-grid .grid .note {
+            grid-column: note;
+            font-size:16px;
+        }
+        .research-article-grid .grid .side {
+            grid-column: side;
+            font-size:16px;
+        }
+    </style>
+    <div class="grid">
+        <div class="side" style="width:200px;height:60px;background:deeppink;"></div>
+        <p>Огромные плавучие сервера, с серьёзными капитанами и с трубами густого чёрного дыма, подплывают к берегу чтобы загрузить содержание. Уже на серверах, сотни функций оптимизируют содержание и упаковывают к выдаче.</p>
+        <div class="note" style="width:200px;height:60px;background:deeppink;"></div>
+        <p>На экран свежее содержание подаётся распакованным и очищенным от ошибок. Когда видишь на экране интересное содержание, наполненное смыслом и лёгким ароматом элегантного дизайна, то каждый раз влюбляешься...</p>
+        <p>
+            Король Апп удивился разговорам. Кто здесь?
+        </p>
+        <p>
+            — Я создатель<br>
+            — Создатель чего?<br>
+            — Тебя, например, создал
+        </p>
+        <div class="note">
+            Король Апп не любит исчезать с экрана<br><br>
+            Это король Апп, продолжает следить за порядком и ругается на непонятные символы. Интересно, как он замечает всё, что происходит?
+        </div>
+        <p>
+            Король на секунду задумался. Заявление собеседника было похоже на правду, но уточнение никогда не бывает лишним.
+        </p>
+        <p>
+            — Меня создал? Чем докажешь?, — спросил король Апп.
+        </p>
+        <p>
+            — Каждой твоей частичкой. Ты сделан из смеси пустого места и воли создателя. Посмотри на себя внимательно:
+        </p>
+    </div>
+</section>
+
+
+<section class="research-font-sizes">
+    <style>
+        .research-font-sizes {
+            padding: 1em;
+        }
+        .research-font-sizes .result p {
+            margin: 1em auto;
+        }
+        .research-font-sizes .txt {
+            padding: 1em 0;
+        }
+        .research-font-sizes .w1 p { max-width: 26em; }
+        .research-font-sizes .w2 p { max-width: 21em; }
+        .research-font-sizes .w3 p { max-width: 23em; }
+        .research-font-sizes .t1 p { font-size: 24px; }
+        .research-font-sizes .t2 p { font-size: 16px; }
+        .research-font-sizes .t3 p { font-size: 20px; }
+    </style>
+    <div class="content">
+        <p>Ах, побывать бы в королевских родных краях. Там содержание выращивают на горных склонах под светом ярких идей. Сеют добро и к осени пожинают плоды. Крохотные летающие феи — контенты — тщательно собирают содержание в корзинки и относят в редакцию. Где большие, как бегемоты, редакторы перерабатывают содержание объективным взглядом.</p>
+        <p>Переработанное содержание складывают для просушки на солнечном пляже. Под шелест волн суетятся крабы. Стайками бегают между кучками с содержанием и форматируют. Перекладывают содержание из кучки в кучку, готовые кучки подписывают перед загрузкой на сервер.</p>
+        <p>Огромные плавучие сервера, с серьёзными капитанами и с трубами густого чёрного дыма, подплывают к берегу чтобы загрузить содержание. Уже на серверах, сотни функций оптимизируют содержание и упаковывают к выдаче.</p>
+        <p>На экран свежее содержание подаётся распакованным и очищенным от ошибок. Когда видишь на экране интересное содержание, наполненное смыслом и лёгким ароматом элегантного дизайна, то каждый раз влюбляешься...</p>
+        <p>
+            Король Апп удивился разговорам. Кто здесь?
+        </p>
+        <p>
+            — Я создатель<br>
+            — Создатель чего?<br>
+            — Тебя, например, создал
+        </p>
+        <p>
+            Король на секунду задумался. Заявление собеседника было похоже на правду, но уточнение никогда не бывает лишним.
+        </p>
+        <p>
+            — Меня создал? Чем докажешь?, — спросил король Апп.
+        </p>
+        <p>
+            — Каждой твоей частичкой. Ты сделан из смеси пустого места и воли создателя. Посмотри на себя внимательно:
+        </p>
+        <h2>Описание мира</h2>
+
+        <p>Из красивой легенды вышел красивый символ — трезубая корона с оторванным зубцом.</p>
+
+        <p>Символ сразу занялся делом — гордо стоит и запоминается. Такое поведение характерно для местной фауны — в этом мире все заняты выполнением задачи, а рождение показывается наглядно, каждый момент времени.</p>
+
+        <p>Эти буквы стоят тут</p>
+
+        <p>Король Апп стоит где-то рядом</p>
+
+        <p>Надо сказать, что король Апп не любит исчезать с экрана. Там за краями ничего не видно и невыносимо скучно. Куда приятнее занять фиксированное место в углу экрана. Отсюда удобно наблюдать, как снизу появляется что-то новое.</p>
+
+        <p>[ЗАДАЧИ]</p>
+
+        <p>Задачи разбегаются как тараканы, если бы только тараканы были разного размера. Бывают крохотные задачки — эти совсем не опасные, вот только назойливо летают вокруг и пищат: «Сделай меня, сейчас сделай...». А бывают огромные супер-сверх-важные задачи, которые могут внезапно свалиться сверху и раздавить своей тяжестью.</p>
+
+        <p>Все задачи суетятся и разлетаются по миру в поисках решений.</p>
+
+        <p>[РЕШЕНИЯ]</p>
+
+        <p>Когда задача и подходящее решение находят друг-друга, они сливаются в едином танце и порождают результат.</p>
+
+        <p>Буквально только что произошёл такой случай: одна молодая задачка по имени «Объяснить слияние задач с решениями» затанцевала с красивым решением по имени «Придумать и описать пример». Этот параграф текста и его вертящаяся сестрёнка неподалёку — оба родились в чудесном танце слияния.</p>
+    </div>
+    <div class="result"></div>
+    <script>
+        $(function font_size_content () {
+            const txt = $('.research-font-sizes .content').html()
+            const output = $('.research-font-sizes .result')
+
+            for ( let t = 1; t <= 3; t++ )
+                for ( let i = 1; i <= 3; i++ )
+                    $('<div>')
+                        .addClass('txt')
+                        .addClass('w'+i)
+                        .addClass('t'+t)
+                        .html(txt)
+                        .prepend('<span>w'+i+'/t'+t+'</span><hr>')
+                        .appendTo(output)
+        })
+    </script>
+</section>
+
+
+</body>
+</html>
