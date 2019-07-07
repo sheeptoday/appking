@@ -1,0 +1,14 @@
+.article-grid {
+    .is-box {
+        margin-top:    1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.chapter {
+    margin-top:     4rem;
+    margin-bottom:  4rem;
+}
+.textnote {
+    @extend .article-block-after;
+}
