@@ -71,12 +71,27 @@
 
 
     <style>
-        .dna-model-wake-up>img {
-            max-height: 20em;
-        }
         .lizard-value {
             font-size:  1.5em;
             text-align: center;
+        }
+        .character {
+            max-width:    10em;
+            margin-left:  auto;
+            margin-right: auto;
+        }
+        .illustration {
+            grid-column: west-start / east-end;
+            padding-top:    2em;
+            padding-bottom: 2em;
+        }
+        .bookground-illustration {
+            opacity: 0.5;
+        }
+        @media (max-width: 600px) {
+            .huge-title {
+                text-align: center;
+            }
         }
     </style>
 
@@ -97,7 +112,7 @@
 
         <p class="speech">«Есть очень важное задание. Я буду смотреть на тебя, а ты должен мне помочь. Я подготовил тэзэ, нужен специалист.»</p>
 
-        <figure class="west">
+        <figure class="west character">
             <img src="art/characters/BergamotIsLookingAtYou.svg" alt="Бергамот пристально смотрит">
         </figure>
 
@@ -132,11 +147,9 @@
 
         <p>Король и кот вместе спустились к берегу озера.</p>
 
-        <footer>
-            <figure>
-                <img src="art/illustrations/map-road-to-head-lake.svg" alt="Дорога к озеру Хеад">
-            </figure>
-        </footer>
+        <figure class="illustration bookground-illustration">
+            <img src="art/illustrations/map-road-to-head-lake.svg" alt="Дорога к озеру Хеад">
+        </figure>
 
     </article>
 
@@ -150,13 +163,13 @@
 
         <p>Кот подошёл к высокому берегу и указал вниз.</p>
 
-        <p>«Вода чистая, можно увидеть где лежит модель. Как думаешь, если через трубу...»</p>
+        <p class="speech">«Вода чистая, можно увидеть где лежит модель. Как думаешь, если через трубу...»</p>
 
         <p>Король Апп посмотрел на дно озера и немедленно прыгнул в воду с криком «Это же ребёнок!». Вытащил и положил на лужайку девочку, она не двигалась и её глаза были закрыты.</p>
 
         <p>Прежде чем что-либо предпринять, король Апп воспользовался методом кота — просто посмотрел. Это была светловолосая девочка в летнем платье и длинных перчатках. Из под платья выглядывали босые ноги, а обеими руками девочка крепко прижимала тапочки к груди. Казалось, что модель крепко спит и собирается спать до обеда.</p>
 
-        <figure>
+        <figure class="illustration">
             <img src="art/illustrations/SleepingDNA.svg" alt="Модель DNA спит до обеда">
         </figure>
 
@@ -188,7 +201,7 @@
 
         <p>Девочка высмотрела на замле сухой корешок и заплела в волосы. Королевскую заколку прицепила к платью, как брошку.</p>
 
-        <figure class="is-centered dna-model-wake-up">
+        <figure class="is-centered character">
             <img src="art/characters/dna-model-wake-up.svg" alt="Модель DNA проснулась">
         </figure>
 
@@ -228,11 +241,9 @@
 
         <p>Уверенно заявил король Апп и повёл новых друзей к Карбонским болотам.</p>
 
-        <footer>
-            <figure>
-                <img src="art/illustrations/map-road-to-swamp.svg" alt="Дорога к Карбонским болотам">
-            </figure>
-        </footer>
+        <figure class="illustration bookground-illustration">
+            <img src="art/illustrations/map-road-to-swamp.svg" alt="Дорога к Карбонским болотам">
+        </figure>
 
     </article>
 
@@ -341,10 +352,31 @@
 
     <article class="chapter">
 
-        <header class="chapter-header box">
+        <header class="chapter-header">
             <h2 class="huge-title">Лекция о примитивах</h2>
-            <p>«...»</p>
         </header>
+
+        <p>В мифической древности жила богиня Информация. Она была единственной, кто знал ответы на все вопросы. Только радости от этого было мало, поскольку она же была единственной, кто знал все вопросы.</p>
+
+        <p>Много тёмных веков провела Информация в одиночестве, пока не рассыпалась на мелкие осколки — тысячи вопросов и ответов разлетелись по всей вселенной.</p>
+
+        <p>Так закончилась мифическая древность и начались суровые технические детали.</p>
+
+        <p><strong>Данные</strong> — зарегестрированные осколки информации для удобного хранения. Данные можно передавать или обрабатывать.</p>
+
+        <p>Мельчайшие кирпичики данных — это <strong>простые типы</strong>, они же <strong>примитивы</strong>. В глубине браузера живут семь различных племён.</p>
+
+        <h3>Племена примитивов</h3>
+
+        <p>Були (<strong>boolean</strong>) — очень примитивные примитивы. Обозначают только одно из двух — либо «да», либо «нет». Так и живут всю жизнь.</p>
+
+        <p>Нули (<strong>null</strong>) — казалось бы, кто может быть проще булей? А вот он Нуль. Нет данных. Ничего нет.</p>
+
+        <p>Намберы (<strong>number</strong>)</p>
+
+        <p>Стринги (<strong>string</strong>)</p>
+
+        <p>https://developer.mozilla.org/en-US/docs/Glossary/Primitive</p>
 
     </article>
 
@@ -478,7 +510,7 @@ DnaModel: {
 
         <p class="speech">«Теперь меня называют по имени, — обрадовалась Константа. — Не хватает только изображения всех нас. Примерно так:»</p>
 
-        <figure>
+        <figure class="illustration">
             <img src="art/illustrations/GetSetProcedure.svg" alt="Константа с Ящеркой, Браузер Бергамот и Король Апп + Гетера и Сетера">
         </figure>
 
