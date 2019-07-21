@@ -82,6 +82,22 @@
 </head>
 <body>
 
+    <!-- SVG icons -->
+    <div hidden>
+        <svg>
+            <symbol id="svg-menu" viewBox="0 0 24 24">
+                <!--title>Hamburger, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </symbol>
+            <symbol id="svg-close" viewBox="0 0 24 24">
+                <!--title>Close X, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </symbol>
+        </svg>
+    </div>
+
     <!-- Вступление барона фон Гамбургера -->
 
     <section class="el-introduction use-colors colors-as-primary">
@@ -89,7 +105,7 @@
             <p>Мой дорогой друг,</p>
             <p>Я встретил нашего короля на морском побережье. Он выглядел здоровым и счастливым, в рваных одеждах со сломанной королевской короной. На мой вопрос, что случилось, король рассказал чудесную историю. Я перескажу его словами.</p>
             <div class="group-wide">
-            <p class="°align-start">С сердечным поклоном,<br>барон фон Гамбургер.</p>
+            <p class="align-self--start">С сердечным поклоном,<br>барон фон Гамбургер.</p>
             <figure class="character el-hamburger js-for-ChaptersBar">
                 <img src="art/characters/hamburger.svg" alt="Барон фон Гамбургер">
             </figure>
@@ -591,16 +607,17 @@ DnaModel = {
 
     <!-- Содержание -->
 
-    <button class="VonHamburgerOnDuty">
-        <figure class="el-hamburger js-for-ChaptersBar">
-            <img src="art/characters/hamburger.svg" alt="Барон фон Гамбургер">
-        </figure>
-    </button>
     <aside class="ChaptersBar asidebar colors-as-alternative">
         <section class="asidebar-content">
             ASIDE
         </section>
     </aside>
+    <button class="VonHamburgerOnDuty">
+        <figure class="el-hamburger js-for-ChaptersBar">
+            <img class="for-inactive" src="art/characters/hamburger.svg" alt="Барон фон Гамбургер">
+            <div class="for-active svga-icon base-size"><svg><use xlink:href="#svg-close"></use></svg></div>
+        </figure>
+    </button>
     <script>
         function  ActivateChaptersBar () {
 
@@ -638,20 +655,7 @@ DnaModel = {
         (ActivateChaptersBar)()
     </script>
 
-    <!-- SVG icons -->
 
-    <svg>
-        <symbol id="svg-menu" viewBox="0 0 24 24">
-            <!--title>Hamburger, material icons</title-->
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-        </symbol>
-        <symbol id="svg-close" viewBox="0 0 24 24">
-            <!--title>Close X, material icons</title-->
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-        </symbol>
-    </svg>
 
 </body>
 </html>
