@@ -69,40 +69,35 @@
 
     <!-- ========================================= APP CUSTOM -->
 
+    <link
+        href="app/styles/el-chapters.css?v2019.7.21"
+        rel="stylesheet" type="text/css">
 
     <style>
-        .lizard-value {
-            font-size:  1.5em;
-            text-align: center;
-        }
-        .character {
-            max-width:    10em;
-            margin-left:  auto;
-            margin-right: auto;
-        }
-        .illustration {
-            padding-top:    2em;
-            padding-bottom: 2em;
-        }
-        .bookground-illustration {
-            opacity: 0.25;
-        }
-        .chapter-header {
-            grid-column: main-start / east-end;
-            padding-top:    2em;
-            padding-bottom: 2em;
-        }
-        @media (max-width: 600px) {
-            .huge-title {
-                text-align: center;
-            }
-        }
+
     </style>
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
 <body>
+
+    <!-- Вступление барона фон Гамбургера -->
+
+    <section class="el-introduction use-colors colors-as-primary">
+        <article class="chapter">
+            <p>Мой дорогой друг,</p>
+            <p>Я встретил нашего короля на морском побережье. Он выглядел здоровым и счастливым, в рваных одеждах со сломанной королевской короной. На мой вопрос, что случилось, король рассказал чудесную историю. Я перескажу его словами.</p>
+            <div class="group-wide">
+            <p class="°align-start">С сердечным поклоном,<br>барон фон Гамбургер.</p>
+            <figure class="character el-hamburger js-for-ChaptersBar">
+                <img src="art/characters/hamburger.svg" alt="Барон фон Гамбургер">
+            </figure>
+            </div>
+        </article>
+    </section>
+
+    <!-- -------------------------------------------------------------- -->
 
     <!-- Миссия кота -->
 
@@ -384,9 +379,7 @@
 
     </article>
 
-
     <!-- Непослушное имя -->
-
 
     <article class="chapter">
 
@@ -453,7 +446,7 @@ DnaModel = {
 
         <p>Старушка Сетера запрыгнула на камень на счёт раз, и бесцеремонно села на ящерку на счёт два. Ящерка отчаянно сопротивлялась, но выбраться из под старушки не было шансов.</p>
 
-        <p>«Чем беспокоит?», — спросила старушка у <em>Отпусти меня старая ведьма</em>... у девочки, лучше так продолжим её называть пока ящерка не образумится... Девочка попросила, чтобы ящерка не меняла имя «Шонталь» ни на что другое, а то совсем неудобно.</p>
+        <p>«Чем беспокоит?», — спросила старушка у <em>Отпусти меня старая ведьма</em>... спросила у девочки, лучше так продолжим её называть пока ящерка не образумится... Девочка попросила, чтобы ящерка не меняла имя «Шонталь» ни на что другое, а то совсем неудобно.</p>
 
         <p>Старушка пообещала сделать «Шонталь» константой — так называют неизменяемое значение — и слегка надавила на ящерку. Ящерка сперва поддалась давлению:</p>
 
@@ -574,13 +567,12 @@ DnaModel = {
 
     </article>
 
-    <!-- Битва с овцами -->
-
+    <!-- Битва с овечками -->
 
     <article class="chapter article-grid">
 
         <header class="article-header">
-            <h2 class="huge-title">Битва с овцами</h2>
+            <h2 class="huge-title">Битва с овечками</h2>
         </header>
 
 
@@ -594,6 +586,72 @@ DnaModel = {
 
 
     </article>
+
+    <!-- -------------------------------------------------------------- -->
+
+    <!-- Содержание -->
+
+    <button class="VonHamburgerOnDuty">
+        <figure class="el-hamburger js-for-ChaptersBar">
+            <img src="art/characters/hamburger.svg" alt="Барон фон Гамбургер">
+        </figure>
+    </button>
+    <aside class="ChaptersBar asidebar colors-as-alternative">
+        <section class="asidebar-content">
+            ASIDE
+        </section>
+    </aside>
+    <script>
+        function  ActivateChaptersBar () {
+
+            // cast
+            const asidebar = document.querySelector('.ChaptersBar')
+            const htmlwrap = document.querySelector('html')
+            const classActive      = 'is-active'
+            const classOverlayMark = 'has-active-asidebar'
+            const cssTrigger       = '.js-for-ChaptersBar'
+            const doToggleAsidebarActivity = function (e) {
+                asidebar.classList.toggle(classActive)
+                if (asidebar.classList.contains(classActive))
+                    htmlwrap.classList.add(classOverlayMark)
+                else
+                    htmlwrap.classList.remove(classOverlayMark)
+            }
+
+            // find triggers
+            const clickerActivation = (el)=>el.addEventListener('click', doToggleAsidebarActivity)
+
+            // activate triggers
+            document.querySelectorAll(cssTrigger).forEach(clickerActivation)
+
+            // find/create shadow overlay
+            let overlay = asidebar.querySelector('.asidebar-overlay')
+            if(!overlay) {
+                overlay = document.createElement('div')
+                overlay.classList.add('asidebar-overlay')
+                asidebar.prepend(overlay)
+            }
+
+            // activate shadow overlay
+            clickerActivation(overlay)
+        }
+        (ActivateChaptersBar)()
+    </script>
+
+    <!-- SVG icons -->
+
+    <svg>
+        <symbol id="svg-menu" viewBox="0 0 24 24">
+            <!--title>Hamburger, material icons</title-->
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </symbol>
+        <symbol id="svg-close" viewBox="0 0 24 24">
+            <!--title>Close X, material icons</title-->
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </symbol>
+    </svg>
 
 </body>
 </html>
