@@ -47,7 +47,7 @@
 
 
     <link
-        href="app/styles/appart.css"
+        href="app/styles/appart.css?v2019.7.21"
         rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
@@ -81,12 +81,16 @@
             margin-right: auto;
         }
         .illustration {
-            grid-column: west-start / east-end;
             padding-top:    2em;
             padding-bottom: 2em;
         }
         .bookground-illustration {
-            opacity: 0.5;
+            opacity: 0.25;
+        }
+        .chapter-header {
+            grid-column: main-start / east-end;
+            padding-top:    2em;
+            padding-bottom: 2em;
         }
         @media (max-width: 600px) {
             .huge-title {
@@ -284,7 +288,7 @@
 
         <section class="box">
             <figure>
-                <img src="art/illustrations/army-of-fifty-designers.svg" alt="Армия из пятидесяти дизайнеров">
+                <img src="art/placeholders/army-of-fifty-designers.jpg" alt="Армия из пятидесяти дизайнеров">
             </figure>
         </section>
 
