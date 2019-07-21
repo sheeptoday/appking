@@ -51,7 +51,7 @@
     position: fixed;
     z-index:  200;
     top:      0;
-    left:    0;
+    right:    0;
 
     width:    3em;
     margin:   0.25em;
@@ -65,6 +65,10 @@
     background: transparent;
     box-shadow: none;
     font-size:  1em;
+}
+.has-active-asidebar .VonHamburgerOnDuty {
+    right: auto;
+    left:  0;
 }
 .VonHamburgerOnDuty .el-hamburger {
     padding: 0.5em;
@@ -84,6 +88,9 @@
     border-radius: 0;
 }
 
+.asidebar.ChaptersBar {
+  --asidebar--max-width: 24em;
+}
 
 .asidebar-caption {
     margin: -1em -1em 1em -1em;
@@ -101,9 +108,9 @@
     top: -1em;
 }
 .asidebar-caption .title {
-    font-size: 1.5em;
+    font-size:   1.5em;
     line-height: 1;
-    text-align: center;
+    text-align:  left;
 }
 
 .asidebar-list {
