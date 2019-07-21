@@ -10,8 +10,8 @@
 
 .el-introduction .el-hamburger {
     max-width:    12em;
-    margin-left:  auto;
-    margin-right: 0;
+    margin-left:  0;
+    margin-right: auto;
     cursor:       pointer;
 }
 .el-introduction .el-hamburger:hover>img {
@@ -51,29 +51,74 @@
     position: fixed;
     z-index:  200;
     top:      0;
-    right:    0;
+    left:    0;
 
-    width:    4em;
+    width:    3em;
     margin:   0.25em;
+
     cursor:   pointer;
+    outline-color: hsl(var(--hsl-AccentBlue));
 
     /* semantic button */
     padding:    0;
     border:     0;
     background: transparent;
     box-shadow: none;
-    border-radius: 50%;
+    font-size:  1em;
 }
 .VonHamburgerOnDuty .el-hamburger {
-    padding: 0.75em;
+    padding: 0.5em;
 }
 .VonHamburgerOnDuty .svga-icon {
-    font-size: 2.5em;
+    font-size: 2em;
 }
 .VonHamburgerOnDuty .for-active   { display: none; }
 .VonHamburgerOnDuty .for-inactive { display: block; }
 .has-active-asidebar .VonHamburgerOnDuty .for-active   { display: block; }
 .has-active-asidebar .VonHamburgerOnDuty .for-inactive { display: none; }
+
+.VonHamburgerOnDuty.not-yet {
+    display: none;
+}
+.VonHamburgerOnDuty .el-hamburger::before {
+    border-radius: 0;
+}
+
+
+.asidebar-caption {
+    margin: -1em -1em 1em -1em;
+    padding: 1em 3.5em;
+    min-height: 1.5em;
+
+    /* has centered content */
+    display:    flex;
+    flex-direction:  column;
+    justify-content: center;
+    align-content:   stretch;
+
+    position: relative;
+    position: sticky;
+    top: -1em;
+}
+.asidebar-caption .title {
+    font-size: 1.5em;
+    line-height: 1;
+    text-align: center;
+}
+
+.asidebar-list {
+    margin:  0 -1em;
+    padding: 0;
+    list-style: none;
+}
+.asidebar-list>li>a {
+    display: block;
+    padding: 0.5em 3.5em;
+    text-decoration: none;
+}
+.asidebar-list>li>a:hover {
+    background-color: hsla(0,0%,0%,0.25);
+}
 
 
 /* ------------------------------------------------ Workers */
@@ -101,7 +146,7 @@
 }
 @media (max-width: 600px) {
     .huge-title {
-        text-align: center;
+        text-align: left;
     }
 }
 .align-self--start {

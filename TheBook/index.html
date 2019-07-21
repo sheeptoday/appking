@@ -83,6 +83,7 @@
 <body>
 
     <!-- SVG icons -->
+
     <div hidden>
         <svg>
             <symbol id="svg-menu" viewBox="0 0 24 24">
@@ -100,24 +101,24 @@
 
     <!-- Вступление барона фон Гамбургера -->
 
-    <section class="el-introduction use-colors colors-as-primary">
-        <article class="chapter">
+    <article id="Introduction" class="el-introduction use-colors colors-as-primary">
+        <section class="chapter">
             <p>Мой дорогой друг,</p>
             <p>Я встретил нашего короля на морском побережье. Он выглядел здоровым и счастливым, в рваных одеждах со сломанной королевской короной. На мой вопрос, что случилось, король рассказал чудесную историю. Я перескажу его словами.</p>
             <div class="group-wide">
-            <p class="align-self--start">С сердечным поклоном,<br>барон фон Гамбургер.</p>
-            <figure class="character el-hamburger js-for-ChaptersBar">
-                <img src="art/characters/hamburger.svg" alt="Барон фон Гамбургер">
-            </figure>
+                <p class="align-self--start">С сердечным поклоном,<br>барон фон Гамбургер.</p>
+                <figure class="character el-hamburger js-for-ChaptersBar">
+                    <img src="art/characters/hamburger.svg" alt="Барон фон Гамбургер">
+                </figure>
             </div>
-        </article>
-    </section>
+        </section>
+    </article>
 
     <!-- -------------------------------------------------------------- -->
 
     <!-- Миссия кота -->
 
-    <article class="chapter">
+    <article id="BrowserMission" class="chapter">
 
         <header class="chapter-header">
             <h2 class="huge-title">Миссия кота</h2>
@@ -170,7 +171,7 @@
 
     <!-- Спасение модели DNA -->
 
-    <article class="chapter">
+    <article id="DnaRescue" class="chapter">
 
         <header class="chapter-header">
             <h2 class="huge-title">Спасение модели DNA</h2>
@@ -224,7 +225,7 @@
 
     <!-- Асинхронный обед DNA -->
 
-    <article class="chapter">
+    <article id="SyncAsync" class="chapter">
 
         <header class="chapter-header">
             <h2 class="huge-title">Асинхронный обед</h2>
@@ -264,7 +265,7 @@
 
     <!-- Карбонские болота -->
 
-    <article class="chapter">
+    <article id="CarbonSwamp" class="chapter">
 
         <header class="chapter-header">
             <h2 class="huge-title">Карбонские болота</h2>
@@ -365,7 +366,7 @@
 
     <!-- Лекция о примитивах -->
 
-    <article class="chapter">
+    <article id="Primitives" class="chapter">
 
         <header class="chapter-header">
             <h2 class="huge-title">Лекция о примитивах</h2>
@@ -397,11 +398,17 @@
 
     <!-- Непослушное имя -->
 
-    <article class="chapter">
+    <article id="SettersGetters" class="chapter">
 
         <header class="chapter-header">
             <h2 class="huge-title">Непослушное имя</h2>
         </header>
+
+        <section class="article-layer">
+            <figure>
+                <img src="art/illustrations/DNA-looking-for-string-name.jpg" alt="Модель DNA находит имя в карбонских болотах">
+            </figure>
+        </section>
 
         <p>На ветках ближайшего куста сидела небольшая ящерка. По краям глаз у ящерки висели небольшие кавычки из солнечного света, похожие на большие ресницы. Девочка застыла от умиления разглядывая ящерку.</p>
 
@@ -418,12 +425,6 @@ DnaModel = {
     name: "Шонталь"
 }
 </pre>
-        </section>
-
-        <section class="article-layer">
-            <figure>
-                <img src="art/illustrations/DNA-looking-for-string-name.jpg" alt="Модель DNA находит имя в карбонских болотах">
-            </figure>
         </section>
 
         <div class="lizard-value">"Шонталь"</div>
@@ -533,7 +534,7 @@ DnaModel = {
 
     <!-- Волк в шкуре волка -->
 
-    <article class="chapter">
+    <article id="WolfSkin" class="chapter">
 
         <header class="chapter-header">
             <h2 class="huge-title">Волк в шкуре волка</h2>
@@ -585,7 +586,7 @@ DnaModel = {
 
     <!-- Битва с овечками -->
 
-    <article class="chapter article-grid">
+    <article id="BattleSheeps" class="chapter article-grid">
 
         <header class="article-header">
             <h2 class="huge-title">Битва с овечками</h2>
@@ -607,9 +608,19 @@ DnaModel = {
 
     <!-- Содержание -->
 
-    <aside class="ChaptersBar asidebar colors-as-alternative">
+    <aside class="ChaptersBar asidebar from-westside colors-as-secondary use-colors">
         <section class="asidebar-content">
-            ASIDE
+
+            <header class="asidebar-caption colors-as-alternative use-colors">
+                <h2 class="title">Содержание</h2>
+            </header>
+
+            <nav>
+                <ul class="asidebar-list js-for-ChaptersList">
+                    <li><a href="#Introduction" class="js-for-ChaptersBar">Вступление</a></li>
+                </ul>
+            </nav>
+
         </section>
     </aside>
     <button class="VonHamburgerOnDuty">
@@ -618,6 +629,43 @@ DnaModel = {
             <div class="for-active svga-icon base-size"><svg><use xlink:href="#svg-close"></use></svg></div>
         </figure>
     </button>
+
+    <!-- AutofillChaptersList -->
+
+    <script>
+        function AutofillChaptersList () {
+
+            // cast
+            const listwrap = document.querySelector('.js-for-ChaptersList')
+            const chapters = document.querySelectorAll('article.chapter[id]')
+            const cssTitle = '.chapter-header>h2'
+
+            // operations
+            const createChapterLink = function (pointer, caption) {
+                let item = document.createElement('li')
+                let link = document.createElement('a')
+                let text = caption.textContent || 'undefined'
+                link.classList.add('js-for-ChaptersBar')
+                link.href = '#' + pointer
+                link.textContent = text
+                item.appendChild(link)
+                listwrap.appendChild(item)
+            }
+            const doFindAndAddToList = function (el) {
+                const pointer = el.id
+                const caption = el.querySelector(cssTitle)
+
+                if (pointer && caption) createChapterLink(pointer, caption)
+            }
+
+            // autofilling process
+            chapters.forEach(doFindAndAddToList)
+        }
+        (AutofillChaptersList)()
+    </script>
+
+    <!-- ActivateChaptersBar -->
+
     <script>
         function  ActivateChaptersBar () {
 
