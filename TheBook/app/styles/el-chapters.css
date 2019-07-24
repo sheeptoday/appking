@@ -10,18 +10,21 @@
 
 .el-introduction .el-hamburger {
     max-width:    12em;
-    margin-left:  0;
+    margin-left:  calc( 2 * var(--col-space) );
     margin-right: auto;
     cursor:       pointer;
 }
-.el-introduction .el-hamburger:hover>img {
+.el-introduction .el-hamburger>img {
     transition: transform 420ms;
     transition-timing-function: var(--timing-function--focusZoom);
+}
+.el-introduction .el-hamburger:hover>img {
     transform:  rotate(-45deg);
 }
 @media (max-width: 600px) {
     .el-introduction .el-hamburger {
         max-width:    6em;
+        margin-left:  calc( 1 * var(--col-space) );
     }
 }
 
@@ -49,12 +52,12 @@
 
 .VonHamburgerOnDuty {
     position: fixed;
-    z-index:  200;
+    z-index:  90;
     top:      0;
     right:    0;
 
     width:    3em;
-    margin:   0.25em;
+    margin:   0;
 
     cursor:   pointer;
     outline-color: hsl(var(--hsl-AccentBlue));
@@ -86,6 +89,19 @@
 }
 .VonHamburgerOnDuty .el-hamburger::before {
     border-radius: 0;
+}
+
+@media (min-width: 1200px) {
+    .VonHamburgerOnDuty {
+        width: 6em;
+    }
+    .VonHamburgerOnDuty .el-hamburger>img {
+        transition: transform 420ms;
+        transition-timing-function: var(--timing-function--focusZoom);
+    }
+    .VonHamburgerOnDuty .el-hamburger:hover>img {
+        transform:  rotate(-45deg) scale(0.75);
+    }
 }
 
 .asidebar-list {
@@ -120,6 +136,10 @@
 .illustration {
     padding-top:    2em;
     padding-bottom: 2em;
+}
+.illustration.is-centered>img {
+    margin-left:  auto;
+    margin-right: auto;
 }
 .wide-illustration {
     margin-left: auto;
