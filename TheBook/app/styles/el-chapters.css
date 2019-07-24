@@ -88,39 +88,14 @@
     border-radius: 0;
 }
 
-.asidebar.ChaptersBar {
-  --asidebar--max-width: 24em;
-}
-
-.asidebar-caption {
-    margin: -1em -1em 1em -1em;
-    padding: 1em 3.5em;
-    min-height: 1.5em;
-
-    /* has centered content */
-    display:    flex;
-    flex-direction:  column;
-    justify-content: center;
-    align-content:   stretch;
-
-    position: relative;
-    position: sticky;
-    top: -1em;
-}
-.asidebar-caption .title {
-    font-size:   1.5em;
-    line-height: 1;
-    text-align:  left;
-}
-
 .asidebar-list {
-    margin:  0 -1em;
+    margin:  0 calc( (-1) * var(--col-space) );
     padding: 0;
     list-style: none;
 }
 .asidebar-list>li>a {
     display: block;
-    padding: 0.5em 3.5em;
+    padding: 0.5rem var(--col-space);
     text-decoration: none;
 }
 .asidebar-list>li>a:hover {

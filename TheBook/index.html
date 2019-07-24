@@ -608,14 +608,14 @@ DnaModel = {
 
     <!-- Содержание -->
 
-    <aside class="ChaptersBar asidebar from-westside colors-as-secondary use-colors">
-        <section class="asidebar-content">
+    <aside class="ChaptersBar offsidebar from-westside colors-as-secondary">
+        <section class="sidepanel">
 
-            <header class="asidebar-caption colors-as-alternative use-colors">
-                <h2 class="title">Содержание</h2>
+            <header class="sidepanel-header">
+                <h2 class="min-title">Содержание</h2>
             </header>
 
-            <nav>
+            <nav class="sidepanel-content">
                 <ul class="asidebar-list js-for-ChaptersList">
                     <li><a href="#Introduction" class="js-for-ChaptersBar">Вступление</a></li>
                 </ul>
@@ -667,40 +667,53 @@ DnaModel = {
     <!-- ActivateChaptersBar -->
 
     <script>
-        function  ActivateChaptersBar () {
+        function InterfaceOffsideBar (barName) {
 
-            // cast
-            const asidebar = document.querySelector('.ChaptersBar')
+            const asidebar = document.querySelector('.'+barName)
             const htmlwrap = document.querySelector('html')
-            const classActive      = 'is-active'
-            const classOverlayMark = 'has-active-asidebar'
-            const cssTrigger       = '.js-for-ChaptersBar'
-            const doToggleAsidebarActivity = function (e) {
-                asidebar.classList.toggle(classActive)
-                if (asidebar.classList.contains(classActive))
-                    htmlwrap.classList.add(classOverlayMark)
-                else
-                    htmlwrap.classList.remove(classOverlayMark)
+
+            const classActive     = 'is-active'
+            const classHasOverlay = 'has-offsidebar-overlay'
+            const cssBartender    ='.js-for-' + barName
+            const classOverlay    = 'offsidebar-overlay'
+            const classBackground = 'offsidebar-background'
+
+            const doClose  = () => {
+                asidebar.classList.remove(classActive)
+                htmlwrap.classList.remove(classHasOverlay) }
+            const doOpen   = () => {
+                asidebar.classList.add(classActive)
+                htmlwrap.classList.add(classHasOverlay) }
+            const doToggle = () => {
+                if (asidebar.classList.contains(classActive)) doClose()
+                else doOpen()
             }
 
-            // find triggers
-            const clickerActivation = (el)=>el.addEventListener('click', doToggleAsidebarActivity)
+            // find and activate bartenders
+            const bartenderFunction = (el, order) =>
+                  el.addEventListener('click', order === 'close' ? doClose : doToggle )
+            document.querySelectorAll(cssBartender).forEach(bartenderFunction)
 
-            // activate triggers
-            document.querySelectorAll(cssTrigger).forEach(clickerActivation)
+            // find/create background
+            let background = asidebar.querySelector('.'+classBackground)
+            if(!background) {
+                background = document.createElement('div')
+                background.classList.add(classBackground)
+                asidebar.prepend(background)
+            }
 
-            // find/create shadow overlay
-            let overlay = asidebar.querySelector('.asidebar-overlay')
+            // find/create shadow overlay with functionality
+            let overlay = asidebar.querySelector('.'+classOverlay)
             if(!overlay) {
                 overlay = document.createElement('div')
-                overlay.classList.add('asidebar-overlay')
+                overlay.classList.add(classOverlay)
                 asidebar.prepend(overlay)
             }
-
-            // activate shadow overlay
-            clickerActivation(overlay)
+            bartenderFunction(overlay, 'close')
         }
-        (ActivateChaptersBar)()
+
+        // Launch Activation
+        InterfaceOffsideBar('ChaptersBar')
     </script>
 
 

@@ -1,17 +1,7 @@
-@charset "UTF-8";
 /* Appart Styles */
 /*  Default styles index
  *  2019.7.14
  */
-/*  base css settings
- *  2019.7.16
- */
-:root {
-  --line-height: 1.5;
-  --row-space: 1rem;
-  --col-space: 1.25rem; }
-
-/*  EOF base css settings */
 /*  html wrap & base markup
  *  2019.7.14
  */
@@ -217,112 +207,6 @@ body {
   -webkit-font-smoothing: antialiased; }
 
 /*  EOF Typography */
-/*  Universal helpers
- *  2019.7.14
- */
-/* ------------------------------------------ layout */
-.group-wide {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center; }
-
-.group-center {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center; }
-
-.is-chapter:not(.is-on-top), .chapter:not(.is-on-top) {
-  padding-top: calc( 2*var(--row-space, 1rem) ); }
-
-.is-chapter:not(.is-on-bottom), .chapter:not(.is-on-bottom) {
-  padding-bottom: calc( 2*var(--row-space, 1rem) ); }
-
-/* ------------------------------------------ paddings */
-.pb {
-  padding-bottom: var(--row-space, 1rem); }
-
-.pt {
-  padding-top: var(--row-space, 1rem); }
-
-.has-paddings {
-  padding: var(--row-space, 1rem) var(--col-space, 1rem); }
-
-/* ------------------------------------------ univeral helpers */
-.is-centered {
-  text-align: center;
-  justify-content: center;
-  align-self: center; }
-
-.layer {
-  display: block;
-  grid-column: full; }
-
-/*  EOF Universal helpers */
-/*  Default color model
- *  2019.7.14
- */
-/* ------------------------------------- skup palettes */
-/* swed-design 2019 */
-:root {
-  --hsl-NobleBlack: 240, 15%, 12%;
-  --hsl-NobleBlue: 212, 34%, 29%;
-  --hsl-AccentBlue: 204, 22%, 55%;
-  --hsl-AccentBlux: 226, 17%, 20%;
-  --hsl-NobleWhite: 226, 27%, 90%;
-  --hsl-NobleHighWhite: 226, 32%, 75%; }
-
-/* ------------------------------------- color model */
-:root,
-.colors-as-special {
-  --background-color: white;
-  --color: black;
-  --color--mark: firebrick;
-  --background-color--mark: lightgray; }
-
-.colors-as-primary {
-  --background-color: hsl(var(--hsl-NobleBlack));
-  --color: hsl(var(--hsl-NobleWhite));
-  --color--mark: hsl(var(--hsl-NobleHighWhite));
-  --background-color--mark: hsl(var(--hsl-AccentBlux)); }
-
-.colors-as-secondary, .secondary-colors {
-  --background-color: hsl(var(--hsl-NobleBlue));
-  --color: hsl(var(--hsl-NobleWhite));
-  --color--mark: hsl(var(--hsl-NobleHighWhite)); }
-
-.colors-as-highlight {
-  --background-color: hsl(var(--hsl-AccentBlux));
-  --color: hsl(var(--hsl-NobleWhite));
-  --color--mark: hsl(var(--hsl-NobleHighWhite)); }
-
-.colors-as-alternative {
-  --background-color: hsl(var(--hsl-AccentBlue));
-  --color: hsl(204, 0%, 0%);
-  --color--mark: hsl(204, 0%, 0%); }
-
-/* ------------------------------------- workers */
-.use-colors, .secondary-colors {
-  background-color: var(--background-color);
-  color: var(--color); }
-
-.color-box, .box, .westbox, .eastbox {
-  background-color: var(--background-color--mark); }
-
-.color-text {
-  color: var(--color--mark); }
-
-/* ------------------------------------- autorun */
-body {
-  background-color: var(--background-color);
-  color: var(--color); }
-
-/*  EOF Default color model */
 /*  Article grid, v2003 */
 .article-grid, .chapter {
   --grid-base--row-gap: var(--row-space, 1rem);
@@ -458,7 +342,8 @@ body {
 .article-block-east,
 .east,
 .article-block-main,
-.article-block, .article-box-west, .westbox,
+.article-block,
+.rows, .article-box-west, .westbox,
 .article-box-east,
 .eastbox,
 .article-box-main,
@@ -499,14 +384,15 @@ body {
 .article-block-main {
   grid-column: main; }
 
-.article-block {
+.article-block, .rows {
   grid-column: main; }
 
 .article-block-west, .west,
 .article-block-east,
 .east,
 .article-block-main,
-.article-block {
+.article-block,
+.rows {
   grid-template-columns: var(--grid-template--content-block); }
 
 .article-box-west, .westbox {
@@ -615,76 +501,191 @@ body {
     padding-bottom: var(--grid-base--row-gap); }
 
 /*  EOF article-grid */
-/*  asidebar - screen side panel, visible when is-active
- *  2019.7.8
+/*  offsidebar - expandable side menu panel
+ *  v2019.7.23
  */
-.asidebar {
-  --asidebar--background-color: var(--background-color);
-  --asidebar--z-index: 100;
-  --asidebar--left: auto;
-  --asidebar--right: 0;
-  --asidebar--max-width: 38rem;
-  --asidebar--transform: translateX(100%);
-  --asidebar--timing: var(--timing-function--focusZoom);
-  position: fixed;
-  z-index: var(--asidebar--z-index);
-  overflow: visible;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 0; }
-  .asidebar.from-westside {
-    --asidebar--left: 0;
-    --asidebar--right: auto;
-    --asidebar--transform: translateX(-100%); }
-  .asidebar.is-active .asidebar-overlay {
-    pointer-events: all;
-    opacity: 0.8; }
-  .asidebar.is-active .asidebar-content {
-    --asidebar--transform: translateX(0);
-    --asidebar--timing: var(--timing-function--focusZoom); }
+/* -------------------------------- default base settings */
+:root {
+  --background-color: white;
+  --color: black;
+  --color--mark: firebrick;
+  --background-color--mark: lightgray;
+  --row-space: 1rem;
+  --col-space: 1.25rem;
+  --z-index--sidebar: 100; }
 
-.asidebar-overlay {
-  position: fixed;
-  z-index: calc( var(--asidebar--z-index) - 1 );
-  background-color: black;
-  pointer-events: none;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 400ms; }
+/* -------------------------------- offsidebar settings */
+.offsidebar {
+  /* bar is never full width, minimal gap  */
+  --empty-space-offset: 3em;
+  /* open animation with two steps  */
+  --transition-duration--slidein: 240ms;
+  --transition-duration--opacity: 40ms; }
 
-.asidebar-content {
-  /* design */
-  background-color: var(--asidebar--background-color);
-  padding: 1em;
-  /* layout */
+/* -------------------------------- two sides difference */
+.offsidebar {
+  /* default, from-eastside */
+  --left: auto;
+  --right: 0;
+  --close-icon-right: 100%;
+  --transform-origin--horizontal: right;
+  --scroll-overflow-behavoir: scroll; }
+
+.offsidebar.from-westside {
+  /* from-westside */
+  --left: 0;
+  --right: auto;
+  --close-icon-right: calc( -1 * var(--empty-space-offset) );
+  --transform-origin--horizontal: left;
+  --scroll-overflow-behavoir: auto; }
+
+/* -------------------------------- layout & behavior */
+.offsidebar {
   position: fixed;
-  z-index: var(--asidebar--z-index);
+  z-index: var(--z-index--sidebar);
+  max-width: calc( 100% - var(--empty-space-offset) );
   top: 0;
   bottom: 0;
-  left: var(--asidebar--left);
-  right: var(--asidebar--right);
+  right: var(--right);
+  left: var(--left);
+  /* default inactive state */
+  pointer-events: none; }
+
+.offsidebar-background {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
   width: 100%;
-  max-width: var(--asidebar--max-width);
-  /* content behavior */
-  overflow: auto;
-  /* closed/opened state */
-  will-change: transform;
-  transform: var(--asidebar--transform);
-  transition: transform 200ms;
-  transition-timing-function: var(--asidebar--timing); }
-  @media screen and (max-width: 42rem) {
-    .asidebar-content {
-      --asidebar--max-width: 100%; } }
+  height: 100%;
+  /* default inactive state */
+  background-color: var(--background-color);
+  transform: scaleX(0); }
 
-/* «html» worker */
-.has-active-asidebar {
+.offsidebar-overlay {
+  position: fixed;
+  z-index: -2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* default inactive state */
+  background-color: rgba(0, 0, 0, 0.9);
+  opacity: 0; }
+
+/* close icon */
+.offsidebar-background::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: var(--close-icon-right);
+  width: var(--empty-space-offset);
+  height: var(--empty-space-offset);
+  /* click on overlay will force offsidebar to close */
+  pointer-events: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* x-close white svg icon */
+  background-image: url('data:image/svg+xml,%3Csvg fill="%23FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/%3E%3C/svg%3E'); }
+
+/* -------------------------------- content layout */
+.sidepanel {
+  position: relative;
+  max-width: 100%;
+  height: 100%;
+  overflow-x: visible;
+  overflow-y: var(--scroll-overflow-behavoir);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: stretch;
+  color: var(--color); }
+
+.sidepanel-header {
+  margin-top: 0;
+  margin-bottom: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1; }
+
+.sidepanel-footer {
+  margin-top: auto;
+  margin-bottom: 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 1; }
+
+.offsidebar .sidepanel,
+.offsidebar .sidepanel-content,
+.offsidebar .sidepanel-header,
+.offsidebar .sidepanel-footer {
+  /* default inactive state */
+  opacity: 0; }
+
+/* -------------------------------- content design */
+.sidepanel-content {
+  padding: var(--row-space) var(--col-space); }
+
+.sidepanel-header {
+  min-height: var(--empty-space-offset);
+  padding: 0.25em var(--col-space);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: stretch;
+  align-items: stretch;
+  background-color: var(--background-color--mark);
+  color: var(--color--mark); }
+
+.sidepanel-footer {
+  padding: 0.25em var(--col-space);
+  background-color: var(--background-color--mark);
+  color: var(--color--mark); }
+
+/* -------------------------------- disable background scroll */
+/*html*/
+.has-offsidebar-overlay {
   overflow: hidden; }
 
-/*  EOF asidebar */
+/* -------------------------------- active state */
+.offsidebar.is-active {
+  pointer-events: all; }
+
+.offsidebar.is-active .offsidebar-background {
+  transform: scaleX(1); }
+
+.offsidebar.is-active .offsidebar-overlay {
+  opacity: 1; }
+
+.offsidebar.is-active .sidepanel,
+.offsidebar.is-active .sidepanel-content,
+.offsidebar.is-active .sidepanel-header,
+.offsidebar.is-active .sidepanel-footer {
+  opacity: 1; }
+
+/* -------------------------------- animation settings */
+@media screen and (min-width: 800px) {
+  .offsidebar-background {
+    will-change: transform; }
+
+  .offsidebar.is-active .offsidebar-background {
+    transition: transform var(--transition-duration--slidein);
+    transition-timing-function: var(--timing-function--focusZoom);
+    transform-origin: var(--transform-origin--horizontal) center; }
+
+  .offsidebar .sidepanel-content,
+  .offsidebar .sidepanel-header,
+  .offsidebar .sidepanel-footer {
+    will-change: opacity; }
+
+  .offsidebar.is-active .sidepanel-content,
+  .offsidebar.is-active .sidepanel-header,
+  .offsidebar.is-active .sidepanel-footer {
+    transition: opacity var(--transition-duration--opacity);
+    transition-delay: var(--transition-duration--slidein);
+    transition-timing-function: var(--timing-function--Welcome); } }
+/*  EOF offsidebar */
 /*  Data Table - Responsive <table> values
  *  2019.1.17
  */
@@ -784,7 +785,8 @@ body {
 :root {
   --timing-function--focusZoom: cubic-bezier(0.165, 0.84, 0.44, 1);
   --timing-function--openJump: cubic-bezier(0.175, 0.885, 0.320, 1.275);
-  --timing-function--closeJump: cubic-bezier(0.600, -0.280, 0.735, 0.045); }
+  --timing-function--closeJump: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+  --timing-function--Welcome: cubic-bezier(0.6, 0.04, 0.98, 0.335); }
 
 /* ------------------------------------- Animations */
 @keyframes keyframes--SimpleRotation {
@@ -852,6 +854,128 @@ body {
     fill: currentColor; }
 
 /* EOF Regular Icons */
+/*  base css settings
+ *  2019.7.16
+ */
+:root {
+  --line-height: 1.5;
+  /* Default vertical and horizontal spacing.
+     Are different to make equal visual spacing over text.  */
+  --row-space: 1rem;
+  --col-space: 1.25rem;
+  /* z-indexes order */
+  --z-index--sidebar: 100; }
+
+/*  EOF base css settings */
+/*  Default color model
+ *  2019.7.14
+ */
+/* ------------------------------------- skup palettes */
+/* swed-design 2019 */
+:root {
+  --hsl-NobleBlack: 240, 15%, 12%;
+  --hsl-NobleBlue: 212, 34%, 29%;
+  --hsl-AccentBlue: 204, 22%, 55%;
+  --hsl-AccentBlux: 226, 17%, 20%;
+  --hsl-NobleWhite: 226, 27%, 90%;
+  --hsl-NobleHighWhite: 226, 32%, 75%; }
+
+/* ------------------------------------- color model */
+:root,
+.colors-as-special {
+  --background-color: white;
+  --color: black;
+  --color--mark: firebrick;
+  --background-color--mark: lightgray; }
+
+.colors-as-primary {
+  --background-color: hsl(var(--hsl-NobleBlack));
+  --color: hsl(var(--hsl-NobleWhite));
+  --color--mark: hsl(var(--hsl-NobleHighWhite));
+  --background-color--mark: hsl(var(--hsl-AccentBlux)); }
+
+.colors-as-secondary, .secondary-colors {
+  --background-color: hsl(var(--hsl-NobleBlue));
+  --color: hsl(var(--hsl-NobleWhite));
+  --color--mark: hsl(var(--hsl-NobleHighWhite)); }
+
+.colors-as-highlight {
+  --background-color: hsl(var(--hsl-AccentBlux));
+  --color: hsl(var(--hsl-NobleWhite));
+  --color--mark: hsl(var(--hsl-NobleHighWhite)); }
+
+.colors-as-alternative {
+  --background-color: hsl(var(--hsl-AccentBlue));
+  --color: hsl(204, 0%, 0%);
+  --color--mark: hsl(204, 0%, 0%); }
+
+/* ------------------------------------- workers */
+.use-colors, .secondary-colors {
+  background-color: var(--background-color);
+  color: var(--color); }
+
+.color-box, .box, .westbox, .eastbox {
+  background-color: var(--background-color--mark); }
+
+.color-text {
+  color: var(--color--mark); }
+
+/* ------------------------------------- autorun */
+body {
+  background-color: var(--background-color);
+  color: var(--color); }
+
+/*  EOF Default color model */
+/*  Universal helpers
+ *  2019.7.14
+ */
+/* ------------------------------------------ layout */
+.group-wide {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center; }
+
+.group-center {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center; }
+
+.is-chapter:not(.is-on-top), .chapter:not(.is-on-top) {
+  padding-top: calc( 2*var(--row-space, 1rem) ); }
+
+.is-chapter:not(.is-on-bottom), .chapter:not(.is-on-bottom) {
+  padding-bottom: calc( 2*var(--row-space, 1rem) ); }
+
+/* ------------------------------------------ paddings */
+.no-paddings {
+  padding: 0; }
+
+.has-paddings {
+  padding: var(--row-space, 1rem) var(--col-space, 1rem); }
+
+.pb {
+  padding-bottom: var(--row-space, 1rem); }
+
+.pt {
+  padding-top: var(--row-space, 1rem); }
+
+/* ------------------------------------------ univeral helpers */
+.is-centered {
+  text-align: center;
+  justify-content: center;
+  align-self: center; }
+
+.layer {
+  display: block;
+  grid-column: full; }
+
+/*  EOF Universal helpers */
 /*  Article markup
  *  Shortcuts for faster article markup
  *  2019.7.14
