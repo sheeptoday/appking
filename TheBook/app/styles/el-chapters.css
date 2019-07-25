@@ -125,6 +125,13 @@
 }
 
 
+.el-tz-kota {
+    border: 1px solid black;
+    margin: var(--row-space) var(--col-space);
+    background-color: white;
+    page-break-inside: avoid;
+}
+
 /* ------------------------------------------------ Workers */
 
 .lizard-value {
