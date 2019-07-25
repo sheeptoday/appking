@@ -68,6 +68,12 @@
     background: transparent;
     box-shadow: none;
     font-size:  1em;
+
+ /* inactive state */
+    display: none;
+}
+.VonHamburgerOnDuty.is-active {
+    display: block;
 }
 .has-active-asidebar .VonHamburgerOnDuty {
     right: auto;

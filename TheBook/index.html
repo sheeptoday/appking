@@ -811,7 +811,27 @@ DnaModel = {
         InterfaceOffsideBar('ChaptersBar')
     </script>
 
+    <!-- Activate von Hamburger position -->
 
+    <script>
+        function vonHamburgerIsActiveWhenGoesNorth (markerName) {
+            const marker    = document.querySelector('.el-introduction .el-hamburger')
+            const dutyPlace = document.querySelector('.VonHamburgerOnDuty')
+            const doDisplay = () => dutyPlace.classList.add('is-active')
+            const doAway    = () => dutyPlace.classList.remove('is-active')
+
+            if( !window.IntersectionObserver ) return doDisplay()
+
+            const markerFunction = (reports) => {
+                let status = reports[0]
+                if (status.boundingClientRect.bottom>0) doAway()
+                else doDisplay()
+            }
+            const markerObserver = new IntersectionObserver(markerFunction, {threshold:[0]} )
+            markerObserver.observe(marker)
+        }
+        vonHamburgerIsActiveWhenGoesNorth()
+    </script>
 
 </body>
 </html>
