@@ -73,35 +73,318 @@
         href="app/styles/el-chapters.css?v2019.7.21"
         rel="stylesheet" type="text/css">
 
-    <style>
+
+    <style id="journal-grid">
+        .journal-grid {
+            --sx:  1.5rem;
+            --sy:  1.5rem;
+            --syx: var(--sy) var(--sx);
+            --sx-text-correction: 0.25rem;
+
+            --size-ma: 24rem;
+            --size-mb:  8rem;
+            --size-n:  16rem;
+            --size-w:  minmax(0, auto);
+            --size-e:  minmax(0, auto);
+
+            --if-grid-is-tiny: 0;
+            --if-grid-no-tiny: 1;
+
+            --open-main-padding: pm_;
+            --open-main:          m_;
+            --stop-main:          _m;
+            --stop-main-padding: _pm;
+
+            --grid-part--main-content: var(--size-ma) [_ma] var(--sx) [_pma] 0 [pmb_] var(--sx) [mb_] var(--size-mb);
+            --grid-part--note-column:  0 [pn_] var(--sx) [n_] var(--size-n) [_n] var(--sx) [_pn];
+            --grid-part--main-space: 0;
+
+            --grid-part--full-start:   [full-start w_] var(--size-w) [_w] 0;
+            --grid-part--full-end:     0 [e_] var(--size-e) [_e full-end];
+            --grid-part--empty-start:  [full-start w_ e_] 0;
+            --grid-part--empty-end:    0 [_w _e full-end];
+
+
+        }
+
+        @media (max-width:57em) {
+            .journal-grid {
+            --size-ma: 3fr;
+            --size-mb: 1fr;
+            --size-n:  2fr;
+            }
+        }
+        @media (max-width:47em) {
+            .journal-grid {
+            --if-grid-is-tiny: 1;
+            --if-grid-no-tiny: 0;
+
+
+            --open-main-padding: pm_ pn_ pmb_;
+            --open-main:          m_  n_  mb_;
+            --stop-main:          _m  _n  _ma;
+            --stop-main-padding: _pm _pn _pma;
+
+            --grid-part--note-column:  0;
+            --grid-part--main-content: 1fr;
+            }
+        }
+        @media (min-width:65em) {
+            .journal-grid {
+            --size-w:   minmax(0, 4em);
+            --size-e:   minmax(0, 100vw);
+            }
+        }
+
+        .figured,
+        .wide,
+        .note,
+        .box,
+        .block,
+        .keep-grid,
+        .journal-grid {
+
+            display:         grid;
+            align-items:     start;
+            justify-content: start;
+            grid-auto-flow:  row;
+            grid-auto-rows:  min-content;
+            grid-row-gap:    var(--sy);
+            grid-column-gap: 0;
+
+            grid-template-columns:
+                  var(--grid-part--full-start)
+                [ var(--open-main-padding) ]
+                  var(--sx)
+                  var(--grid-part--main-space)
+                [ var(--open-main) ]
+                  var(--grid-part--main-content)
+                [ var(--stop-main) ]
+                  var(--sx)
+                [ var(--stop-main-padding) ]
+                  var(--grid-part--note-column)
+                  var(--grid-part--full-end)
+                ;
+        }
+
+        .journal-grid * { grid-column:   m_ / _m;   }
+        .layer       { grid-column:    full;     }
+        .keep-grid   { grid-column:    full;     }
+        .block       { grid-column:   m_ / _m;   }
+        .box         { grid-column:  pm_ / _pm;  }
+        .wide        { grid-column:  pm_ / _pn;  }
+
+        /*** figured component */
+            .figured {
+                grid-column:  pm_ / _pn;
+                margin-bottom: calc( var(--sy)*var(--if-grid-is-tiny) );
+              --grid-part--full-start: var(--grid-part--empty-start);
+              --grid-part--full-end:   var(--grid-part--empty-end);
+            }
+            .figured>*            { grid-column: m_ / _ma; }
+            .figured>figure,
+            .figured>.figure      { grid-column: pmb_ / _pn; }
+            .figured.card>*       { order: calc( 2*var(--if-grid-is-tiny, 0) ); }
+            .figured.card>figure,
+            .figured.card>.figure { order: calc( 1*var(--if-grid-is-tiny, 0) ); }
+
+        /*** note component */
+            .note {
+                grid-column:  pn_ / _pn;
+              --grid-part--main-space: calc( var(--sx, 1.5em) * var(--if-grid-is-tiny, 0) );
+                /* 14/24 */
+                font-size:    0.875em;
+                line-height: 1.714286;
+            }
+            .note.color-box {
+                margin-top: 0;
+            }
+            .note p {
+                max-width: 16em;
+            }
+
+        /* --------------------------------- empty-start */
+
+        .note,
+        .wide,
+        .box,
+        .block {
+            --grid-part--full-start: var(--grid-part--empty-start);
+            --grid-part--full-end:   var(--grid-part--empty-end);
+        }
+
+        /* --------------------------------- reduce note */
+
+        .note,
+        .wide:not(.keep-grid),
+        .box {
+
+            --open-main-padding: pm_ pn_ pmb_;
+            --open-main:          m_  n_  mb_;
+            --stop-main:          _m  _n  _ma;
+            --stop-main-padding: _pm _pn _pma;
+
+            --grid-part--note-column:  0;
+            --grid-part--main-content: 1fr;
+        }
+
+        /* --------------------------------- reduce content paddings */
+
+        .journal-grid .block { /* +1 level */
+
+            --open-main-padding: pm_ pn_ pmb_ m_  n_  mb_;
+            --open-main:          0;
+            --stop-main:          0;
+            --stop-main-padding: _pm _pn _pma _m  _n  _ma;
+
+            --grid-part--note-column:  0;
+            --grid-part--main-content: 1fr;
+        }
+
+        /* --------------------------------- workers */
+
+        /* -Align Compass: SELF */
+         .c-align { align-self: center; justify-self: center; }
+         .s-align { align-self: end;    justify-self: center; }
+         .n-align { align-self: start;  justify-self: center; }
+         .w-align { align-self: center; justify-self: start;  }
+         .e-align { align-self: center; justify-self: end;    }
+        .se-align { align-self: end;    justify-self: end;    }
+        .ne-align { align-self: start;  justify-self: end;    }
+        .sw-align { align-self: end;    justify-self: start;  }
+        .nw-align { align-self: start;  justify-self: start;  }
+
+        .pt-t, .pv-t {
+          --padding-top:    calc( var(--sx, 0.250em) - 0.250em );
+            padding-top:    var(--padding-top, 1em);
+        }
+        .pb-t, .pv-t {
+          --padding-bottom: calc( var(--sx, 0.250em) - 0.250em );
+            padding-bottom: var(--padding-bottom, 1em);
+        }
+
+    </style>
+
+    <style id="book">
+
+        /* --------------------------------- book layout */
+
+        .book-of-chapters {
+            grid-row-gap: 0;
+        }
+        .book-chapter {
+            padding-top:    20vh;
+            padding-bottom: 20vh;
+        }
+        .book-chapter-header {
+            margin-top:    var(--sy);
+            margin-bottom: var(--sy);
+        }
+        .book-chapter-caption {
+            transform: translateX(calc((-0.75)*var(--sx)));
+        }
+        .book-illustration {
+            margin-top:    var(--sy);
+            margin-bottom: var(--sy);
+        }
+        .book-illustration.wide {
+            padding:     calc( 1 * var(--sx) * var(--if-grid-no-tiny, 1) + var(--sx) ) 0;
+        }
+        .book-illustration.wide>*:not(figcaption):not(.figcaption) {
+            margin-left: calc( 1 * var(--sx) * var(--if-grid-no-tiny, 1) );
+        }
+
+
+        /* --------------------------------- book markup */
+
+        .book-markup p {
+            max-width: 35em;
+        }
+        .book-markup .mini-text-block {
+            max-width: 18em;
+        }
+
+        .book-markup blockquote {
+            background-color: var(--back-color--descent);
+            padding:          calc( var(--sx) - var(--sx-text-correction, 0) ) var(--sx);
+            border-radius:    calc( 0.25*var(--sx) );
+            /* clip-path: Anti-arrow from right side */
+            clip-path: polygon(
+                0                                0,
+                100%                             0,
+                100%                             calc( 1 * var(--sx) ),
+                calc( 100% - 0.4*var(--sx) )     calc( 1.3*var(--sx) ),
+                100%                             calc( 1.6*var(--sx) ),
+                100%                             100%,
+                0                                100%
+            );
+        }
+        .book-markup q {
+            position: relative;
+        }
+        .book-markup q::before {
+            content:   '«';
+            position:  absolute;
+            transform: translateX(-125%);
+        }
+        .book-markup q::after {
+            content:   '»';
+            position:  absolute;
+            transform: translateX(25%);
+            bottom: 0;
+        }
+
+        .book-markup li {
+            min-width: 20em;
+        }
+
+        /* --------------------------------- elements */
+
+        .dialog-avatar.for-voron>img { max-height: 10em; }
+        .dialog-avatar.for-appking>img { max-height: 18em; }
+
+        .the-great-divider {
+            text-align: center;
+            padding: 1em 0;
+            /* 40/48 */
+            font-size:   2.5em;
+            line-height: 1.2;
+            }
+        .the-great-divider::before { content: '* * *'; }
+
+        .codeblock {
+            display: block;
+            background-color: var(--back-color--descent);
+            padding: calc( var(--sx) - 0.25em ) var(--sx);
+        }
+        .codeblock.wrap-lines>pre {
+            white-space: pre-wrap;
+        }
+        .codeblock>pre {
+            margin: 0;
+        }
+
+        .color-box {
+            background-color: var(--back-color--descent);
+        }
+
+        .box {
+            --secondary-background-color: unset;
+        }
+
+
 
     </style>
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
-<body>
+<body class="colors--ivory use-colors">
 
-    <!-- SVG icons -->
-
-    <div hidden>
-        <svg>
-            <symbol id="svg-menu" viewBox="0 0 24 24">
-                <!--title>Hamburger, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-            </symbol>
-            <symbol id="svg-close" viewBox="0 0 24 24">
-                <!--title>Close X, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-            </symbol>
-        </svg>
-    </div>
 
     <!-- Вступление барона фон Гамбургера -->
 
-    <article id="Introduction" class="el-introduction use-colors colors-as-primary chapter-has-bottom-divider">
+    <header id="Introduction" class="el-introduction colors--swed use-colors chapter-has-bottom-divider">
         <section class="chapter">
             <p>Мой дорогой друг,</p>
             <p>Я встретил нашего короля на морском побережье. Он выглядел здоровым и счастливым, в рваных одеждах со сломанной королевской короной. На мой вопрос, что случилось, король рассказал чудесную историю. Я перескажу его словами.</p>
@@ -112,107 +395,200 @@
                 </figure>
             </div>
         </section>
-    </article>
+    </header>
 
-    <!-- -------------------------------------------------------------- -->
+<main class="book-of-chapters -x- journal-grid book-markup">
 
-    <!-- Королевская Корона -->
+    <!-- ---------------------------------------- Королевская Корона -->
 
-    <article id="Chapter1" class="chapter el-crown-story color-mode--ivory-paper use-colors chapter-has-bottom-divider">
+    <article id="Taupo" class="book-chapter -x- layer keep-grid">
 
-        <hr class="the-great-divider">
-
-        <header class="chapter-header">
-            <p  class="mid-title">Глава 1.</p>
-            <h2 class="huge-title">Встреча неподалёку от супервулкана Таупо</h2>
+        <header class="book-chapter-header -x- wide">
+            <p  class="-x- mid-title">Глава 1.</p>
+            <h2 class="book-chapter-caption -x- huge-title">Встреча неподалёку от супервулкана Таупо</h2>
         </header>
-
-        <hr>
 
         <p>Супервулканами называют большие извержения. В отличие от обычных вулканов у них нет высоких конусов, но диаметр отверстия огромен. Извержения такие сильные, что могут повлиять на климат и изменить мир. Самый молодой супервулкан по имени Таупо жил неподалёку от Новой Зеландии почти 30 тысяч лет назад.</p>
 
-        <div class="textnote"><p>24500 лет до нашей эры</p></div>
+        <div class="note"><p>24500 лет до нашей эры</p></div>
 
         <p>В те годы король Апп прогуливался вокруг Таупо и наслаждался видами. По дороге встретил ворона без клюва.</p>
 
         <p>Клюв у ворона был сломан, вид у ворона был нелепый, взгляд у ворона был гордый и целеустремлённый.</p>
 
-        <p class="speech">« Соврешенно очевидно, что клюв ты потерял в нелепой, но геройской ситуации, — отметил король при встрече. »</p>
+        <blockquote cite="appking">
+            <q>Соврешенно очевидно, что клюв ты потерял в нелепой, но геройской ситуации, — отметил король при встрече.</q>
+        </blockquote>
 
-        <p class="speech">« Конечно да, — подтвердил ворон. »</p>
+        <blockquote cite="voron">
+            <q>Конечно да, — подтвердил ворон.</q>
+        </blockquote>
 
-        <p>Накануне вечером, от потоков лавы загорелся лес. Ворон всю ночь летал спасая мелких грызунов. А когда уставшим утром полетел домой, то заснул на лету и клювом врезался в скалу.</p>
+        <figure class="dialog-avatar for-voron -x- note">
+            <img src="art/characters/voron.svg" alt="ворон">
+        </figure>
 
-        <p>Теперь у ворона три медали за храбрость и почётная грамота, но без клюва нет никакой надежды на счастливую жизнь. От отчаяния решил прыгнуть в жерло вулкана.</p>
+        <h3>Дело было так...</h3>
+
+        <p>Накануне вечером, от потоков лавы загорелся лес. Ворон всю ночь летал спасая мелких грызунов — мышей, хомячков, бурундучков, ондатр. А когда уставшим утром полетел домой, то заснул на лету и клювом врезался в скалу.</p>
+
+        <p>Теперь у ворона три медали за храбрость и почётная грамота, но без клюва нет никакой надежды на счастливую жизнь. От отчаяния ворон поставил себе задачу — прыгнуть в жерло вулкана. И в момент встречи с королём, ворон ответственно выполнял поставленную задачу.</p>
 
         <p>Король выслушал беду и смахнул слезу, потому что птичку жалко. Отломал кусок своей королевской короны, и смастерил из куска новый клюв для ворона. Хороший получился клюв — ¹) красивый, ²) удобный, ³) прочный.</p>
 
-        <figure class="illustration is-centered">
-            <img src="art/illustrations/crown-legend-formula.svg" alt="Король и ворон до и после встречи">
+        <p>Ворону понравился клюв. Он поблагодарил и улетел счастливым.</p>
+
+        <figure class="book-illustration -x- wide keep-grid color-box">
+            <img src="art/illustrations/crown-legend-formula.svg" alt="Король с короной и грустный ворон = король без короны и счастливый ворон">
+            <figcaption class="-x- note">
+                <p>Рис. 1. Королевская формула счастья, доказанная на вóроне с применением короны и смекалки.</p>
+            </figcaption>
         </figure>
 
-        <p>Ворону понравился клюв и королевская формула счастья. Он поблагодарил и улетел.</p>
+        <p>Король Апп надел остатки короны на голову. Вид у короля был нелепый, взгляд у короля был гордый и целеустремлённый. Он направился к жерлу вулкана, чтобы прыгнуть вместо ворона.</p>
 
-        <p>Король Апп надел остатки короны и продолжил прогулку.</p>
+        <div class="block">
+            <blockquote cite="appking">
+                <q>Потому что каждая задача должна быть выполнена, — произнёс король Апп вслух.</q>
+            </blockquote>
+            <p>Продемонстрировав строгий палец окружающим камням (а больше никого и не было), король Апп спрыгнул с обрыва.</p>
+        </div>
 
-        <hr class="the-great-divider">
-
-    </article>
-
-    <article id="Dialogs" class="chapter el-crown-dialogs chapter-has-bottom-divider">
-
-        <hr class="the-great-divider">
-
-        <p class="el-dialog">« Красивое место разлома — плавные изящные линии »</p>
-
-        <p class="el-dialog">« Мне нравятся яркие позитивные цвета »</p>
-
-        <p class="el-dialog">« Немного похожа на улитку с глазами-шариками »</p>
-
-        <p class="el-dialog">« Я сделаю эту корону главным логотипом »</p>
-
-        <p class="el-dialog">« Самым главным? »</p>
-
-        <p class="el-dialog">« Да, самым главным логотипом от земли до неба. Это же королевская корона! »</p>
+        <figure class="dialog-avatar for-appking -x- note">
+            <img src="art/characters/appking-avatar.svg" alt="король Апп">
+        </figure>
 
         <hr class="the-great-divider">
 
     </article>
-    <article class="chapter">
+
+    <!-- ---------------------------------------- Диалоги о Короне -->
+
+    <article id="DialogsAboutCrown" class="book-chapter -x- layer keep-grid has-top-divider has-bottom-divider">
+
+        <figure>
+            <img src="art/characters/king-crown.svg" alt="Королевская корона">
+        </figure>
+
+        <blockquote cite="history">
+            <q>На месте разлома изящные линии, и бусинки у нижнего края выглядят очень мило</q>
+        </blockquote>
+
+        <blockquote cite="creator">
+            <q>Мне нравятся яркие позитивные цвета</q>
+        </blockquote>
+
+        <blockquote cite="history">
+            <q>Немного похожа на улитку с глазами-шариками</q>
+        </blockquote>
+
+        <blockquote cite="creator">
+            <q>Я сделаю эту корону главным логотипом</q>
+        </blockquote>
+
+        <blockquote cite="history">
+            <q>Самым главным?</q>
+        </blockquote>
+
+        <blockquote cite="creator">
+            <q>Да, самым главным логотипом от земли до неба. Это же королевская корона с легендарной историей!</q>
+        </blockquote>
 
         <hr class="the-great-divider">
 
-        <p class="speech">« Кто здесь? — удивился король Апп. »</p>
+        <figure class="c-align">
+            <img src="art/illustrations/crown-logo-features.svg" alt="Достоинства короны в качестве логотипа">
+        </figure>
+
+    </article>
+
+    <!-- ---------------------------------------- Диалог с создателем -->
+
+    <article id="DialogWithCreator" class="book-chapter -x- layer keep-grid">
+
+        <header>
+            <q><span class="huge-title">Кто здесь?</span></q>
+            <p>— удивился король Апп.</p>
+        </header>
 
         <p>Кто-то открыто обсуждал королевскую корону, но рядом никого не было. Казалось, что диалоги ведут разговор сами по себе.</p>
 
-        <p class="el-dialog">« Привет, я создатель, — ответил диалог. »</p>
+        <blockquote cite="creator">
+            <q>Привет, я создатель, — ответил диалог.</q>
+        </blockquote>
 
-        <p class="speech">« Создатель чего? »</p>
+        <blockquote cite="appking">
+            <q>Создатель чего?</q>
+        </blockquote>
 
-        <p class="speech">« Тебя, например, создал. »</p>
+        <blockquote cite="creator">
+            <q>Создатель всего...</q>
+        </blockquote>
 
-        <p>Такой ответ смутил короля на секунду. Потом последовал проверочный вопрос:</p>
-
-        <p class="speech">« Чем докажешь? — спросил король Апп. »</p>
-
-        <p class="speech">«Каждой твоей частичкой. Ты сделан на пустом месте, по воле создателя. Посмотри на себя... Посмотри на этого кота...»</p>
-
-
-        <div class="box">
-            <div class="min-title">[...TXT Диалог с создателем...]</div>
-
-            <p>Это описание твоего правого глаза. Кривая линия описана математическими формулами — SVG векторами.</p>
-
-            <div>[SVG CODE]</div>
-
-            <p>Это ты в молодости — забавный скетч в моём блокноте.</p>
-
-            <div>[APP SCETCH]</div>
-
+        <div class="block mid-title">
+            <div>· Этого мира</div>
+            <div>· Этого разговора</div>
+            <div>· Этого списка</div>
+            <div>· ...</div>
+            <div>· Тебя</div>
+            <div>· Этого кота</div>
         </div>
 
+        <figure class="book-illustration -x- wide keep-grid color-box">
+            <img src="art/characters/bergamot-just-browse-here.svg" alt="Браузер Бергамот. Просто смотрит.">
+            <figcaption class="-x- note">
+                <p>Рис. 2. Кот-Браузер, просто смотрит.</p>
+            </figcaption>
+        </figure>
 
+        <p>Ответ смутил короля на секунду. Но в такой ситуации помогает проверочный вопрос:</p>
+
+        <blockquote cite="appking">
+            <q>Чем докажешь? — спросил король Апп.</q>
+        </blockquote>
+
+        <blockquote cite="creator">
+            <q>Каждой твоей частичкой, — ответил диалог...</q>
+        </blockquote>
+
+        <hr class="the-great-divider">
+
+        <div class="-x- wide color-box keep-grid pt pb">
+            <h3 class="huge-title sw-align">... Посмотри же <nobr>на себя ...</nobr></h3>
+            <div class="note">
+                <figure style="--max-width:8em;">
+                    <img src="art/characters/appking-avatar.svg" alt="Король Апп при внимательном рассмотрении">
+                </figure>
+            </div>
+        </div>
+
+        <div class="figured">
+            <div class="block pt">
+                <p>Для начала, взгляни на описание своего правого глаза. Тут цифрами записана формула кривой линии, а в конце можно заметить атрибут <def>author</def>. Совершенно ни на что не влияет, но о многом говорит.</p>
+            </div>
+            <figure class="codeblock wrap-lines">
+                <pre>&lt;path id="right-eye" d="M165.2,675.8c16.1,0.4,20.3-3.5,34.9,7.5c19.4,14.7,5.2,36.2-15.6,37.8C147.7,723.9,139.3,695.8,165.2,675.8  C167.3,675.8,163.6,677.1,165.2,675.8z" author="это я сделал"/&gt;</pre>
+            </figure>
+        </div>
+
+        <div class="figured">
+            <div class="block">
+                <p>Это ты в молодости — забавный скетч в моём блокноте.</p>
+            </div>
+            <figure class="color-box">
+                <div>[APP SCETCH]</div>
+            </figure>
+        </div>
+
+    </article>
+
+</main>
+
+    <!-- -------------------------------------------------------------- -->
+
+
+
+    <article class="chapter">
 
 
 
@@ -220,7 +596,7 @@
 
         <p class="speech">«Нет, сама пришла, — ответил второй собеседник. — Привет, меня зовут История. Я модель вселенной.»</p>
 
-        <div class="box"><div>[...TXT Диалог с моделью вселенной...]</div></div>
+        <div class="color-box"><div>[...TXT Диалог с моделью вселенной...]</div></div>
 
         <p class="speech">«Восхитительная женщина, — восхитился король Апп».</p>
 
@@ -234,7 +610,7 @@
 
         <p>«А у меня есть. Пойдём со мной через гиперссылку.»</p>
 
-        <div class="box title is-centered"><a href="#BrowserMission">Принять миссию</a></div>
+        <div class="color-box title is-centered"><a href="#BrowserMission">Принять миссию</a></div>
 
         
 
@@ -256,7 +632,7 @@
             <img src="art/characters/BergamotIsLookingAtYou.svg" alt="Бергамот пристально смотрит">
         </figure>
 
-        <section class="box el-tz-kota">
+        <section class="el-tz-kota">
             <h3 class="big-title">ТЭЗЭ</h3>
             <p><b>Задача:</b> достать Модель DNA со дна озера</p>
             <p><b>Озеро:</b> рядом</p>
@@ -424,7 +800,7 @@
 
         <p class="speech">«Для гарантированного эффекта. Представь пятьдесят дизайнеров, бегущих на тебя с криком «сейчас поправлю!». Такая сила способна прогнать рептилию размером с Ост-Индийскую компанию.»</p>
 
-        <section class="box">
+        <section class="color-box">
             <figure>
                 <img src="art/placeholders/army-of-fifty-designers.jpg" alt="Армия из пятидесяти дизайнеров">
             </figure>
@@ -452,7 +828,7 @@
 
         <p>Ящерки оживились и бросились задавать много вопросов:</p>
 
-        <ul class="block">
+        <ul>
             <li>Что поменялось?</li>
             <li>Как вы к этому пришли?</li>
             <li>А почему внешне не изменились?</li>
@@ -476,7 +852,7 @@
 
         <p>Ящерки одобрительно зашипели и Массив принял предложение.</p>
 
-        <section class="box primitive-form">
+        <section class="color-box primitive-form">
             <div>
                 <label>
                     <input type="checkbox">
@@ -545,7 +921,7 @@
         <p class="speech">«Бедняжка. Такая хорошенькая, а уже растеряла свои кавычки. Только одна осталась — заколка в волосах. Я позабочусь о бедной сиротке.»</p>
 
 
-        <section class="box">
+        <section class="color-box">
 <pre>
 DnaModel = {
     name: "Шонталь"
@@ -623,7 +999,7 @@ DnaModel = {
 
         <p class="speech">«Вы же хотели Константу?, — спросила старушка Гетера и вернулась к танцам не дожидаясь ответа».</p>
 
-        <section class="box">
+        <section class="color-box">
 <pre>
 DnaModel = {
     name: "Вы меня не остановите!",
@@ -642,7 +1018,7 @@ DnaModel = {
 
         <p>Король Апп запечатлел момент высекая надпись на камне:</p>
 
-        <section class="box">
+        <section class="color-box">
             <figure>
                 <img src="art/illustrations/MessageOnTheStone.svg" alt="Здесь были Константа с Ящеркой, Браузер Бергамот и Король Апп. Ты, который прочитаешь наши имена отпечатанные во времени, веди себя хорошо. Отзывайся на помощь ближнему, береги природу.">
             </figure>
@@ -677,7 +1053,7 @@ DnaModel = {
         <p class="speech">«О какой охоте вы говорите, сударыня. С местными овцами больше беспокоюсь о выживании. Тут ситуация следующая...»</p>
 
 
-        <section class="box">
+        <section class="color-box">
 
             <h3 class="mid-title">Отчёт по овечкам</h3>
 

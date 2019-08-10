@@ -346,13 +346,13 @@ body {
         var(--grid-part--END);
   --grid-template-columns--content-block:
         [full-start overwest-start overeast-start overmain-start main-start west-start east-start]
-            auto
+            1fr
         [full-end overwest-end overeast-end overmain-end main-end west-end east-end];
   --grid-template-columns--content-box:
         [full-start overwest-start overeast-start overmain-start]
             var(--grid-base--col-gap)
         [main-start west-start east-start]
-            auto
+            1fr
         [main-end west-end east-end]
             var(--grid-base--col-gap)
         [full-end overwest-end overeast-end overmain-end]; }
@@ -1297,6 +1297,79 @@ body {
   background-color: var(--third-background-color);
   color: var(--third-color); }
 
+/* ------------------------------------- BTL color model */
+:root,
+.colors--root {
+  --back-color: #FFF;
+  --back-color--accent: var(--back-color);
+  --back-color--descent: var(--back-color);
+  --text-color: #000;
+  --text-color--accent: var(--text-color);
+  --text-color--descent: var(--text-color);
+  --link-color: #00C;
+  --link-color--accent: var(--link-color);
+  --link-color--descent: var(--link-color);
+  --shadow-color: hsla(0, 0%, 0%, 0.3); }
+
+.colors--swed {
+  --back-color: hsl( var(--HSL-NobleBlack) );
+  --back-color--accent: hsl( var(--HSL-NobleBlue) );
+  --back-color--descent: hsl( var(--HSL-AccentBlux) );
+  --text-color: hsl( var(--HSL-NobleWhite) );
+  --text-color--accent: hsl( var(--HSL-NobleHighWhite) );
+  --text-color--descent: hsl( var(--HSL-NobleHighWhite) );
+  --link-color: hsl( 359, 54%, 53% );
+  --link-color--accent: var(--link-color);
+  --link-color--descent: var(--link-color); }
+
+.colors--action {
+  --back-color: hsl( 359, 54%, 53% );
+  --back-color--accent: hsl( 359, 59%, 43% );
+  --back-color--descent: var(--back-color);
+  --text-color: hsl( 359, 0%, 100% );
+  --text-color--accent: hsl( 359, 28%, 82% );
+  --text-color--descent: hsl( 359, 28%, 82% );
+  --link-color: hsl( 359, 0%, 100% );
+  --link-color--accent: var(--link-color);
+  --link-color--descent: var(--link-color);
+  --shadow-color: hsla(0, 0%, 0%, 0.3); }
+
+.colors--ivory {
+  --back-color: hsl( 53, 66%, 80% );
+  --back-color--accent: hsl( 53, 70%, 76% );
+  --back-color--descent: hsla(53, 0%, 0%, 0.05);
+  --text-color: hsl( 204, 4%, 22% );
+  --text-color--accent: hsl( 204, 4%, 42% );
+  --text-color--descent: hsl( 204, 4%, 42% );
+  --link-color: hsl( 359, 54%, 53% );
+  --link-color--accent: hsl( 359, 59%, 43% );
+  --link-color--descent: var(--link-color); }
+
+.use-colors, .secondary-colors {
+  background-color: var(--back-color);
+  color: var(--text-color); }
+
+.text-color-accent {
+  color: var(--text-color--accent); }
+
+.text-color-descent {
+  color: var(--text-color--descent); }
+
+.back-color-accent {
+  background-color: var(--back-color--accent); }
+
+.back-color-descent {
+  background-color: var(--back-color--descent); }
+
+.link-color {
+  color: var(--link-color); }
+
+.link-color-accent {
+  color: var(--link-color--accent); }
+
+.link-color-descent {
+  color: var(--link-color--descent); }
+
 /* ------------------------------------- autorun */
 body {
   background-color: var(--background-color);
@@ -1365,11 +1438,21 @@ body {
 .has-paddings {
   padding: var(--row-space, 1rem) var(--col-space, 1rem); }
 
-.pb {
-  padding-bottom: var(--row-space, 1rem); }
+.pt, .pv {
+  --padding-top: var(--row-space, 1rem);
+  padding-top: var(--padding-top); }
 
-.pt {
-  padding-top: var(--row-space, 1rem); }
+.pb, .pv {
+  --padding-bottom: var(--row-space, 1rem);
+  padding-bottom: var(--padding-bottom); }
+
+.mt, .mv {
+  --margin-top: var(--row-space, 1rem);
+  margin-top: var(--margin-top); }
+
+.mb, .mv {
+  --margin-bottom: var(--row-space, 1rem);
+  margin-bottom: var(--margin-bottom); }
 
 /* ------------------------------------------ univeral helpers */
 .is-centered {
