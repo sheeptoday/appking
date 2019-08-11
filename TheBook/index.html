@@ -75,6 +75,14 @@
 
 
     <style id="journal-grid">
+
+        .box {
+            --secondary-background-color: unset;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+
         .journal-grid {
             --sx:  1.5rem;
             --sy:  1.5rem;
@@ -107,14 +115,14 @@
 
         }
 
-        @media (max-width:57em) {
+        @media (max-width:58rem) {
             .journal-grid {
             --size-ma: 3fr;
             --size-mb: 1fr;
             --size-n:  2fr;
             }
         }
-        @media (max-width:47em) {
+        @media (max-width:47rem) {
             .journal-grid {
             --if-grid-is-tiny: 1;
             --if-grid-no-tiny: 0;
@@ -129,7 +137,7 @@
             --grid-part--main-content: 1fr;
             }
         }
-        @media (min-width:65em) {
+        @media (min-width:65rem) {
             .journal-grid {
             --size-w:   minmax(0, 4em);
             --size-e:   minmax(0, 100vw);
@@ -168,9 +176,9 @@
         }
 
         .journal-grid * { grid-column:   m_ / _m;   }
-        .layer       { grid-column:    full;     }
-        .keep-grid   { grid-column:    full;     }
         .block       { grid-column:   m_ / _m;   }
+        .keep-grid   { grid-column:    full;     }
+        .layer       { grid-column:    full;     }
         .box         { grid-column:  pm_ / _pm;  }
         .wide        { grid-column:  pm_ / _pn;  }
 
@@ -281,7 +289,7 @@
             margin-bottom: var(--sy);
         }
         .book-chapter-caption {
-            transform: translateX(calc((-0.75)*var(--sx)));
+            transform: translateX(calc((-0.75)*var(--sx)*var(--if-grid-no-tiny, 1)));
         }
         .book-illustration {
             margin-top:    var(--sy);
@@ -320,6 +328,7 @@
             );
         }
         .book-markup q {
+            display:  block;
             position: relative;
         }
         .book-markup q::before {
@@ -340,8 +349,10 @@
 
         /* --------------------------------- elements */
 
-        .dialog-avatar.for-voron>img { max-height: 10em; }
-        .dialog-avatar.for-appking>img { max-height: 18em; }
+        .dialog-avatar.for-voron>img {   max-height: 10em; border-bottom: 2px solid var(--back-color--descent); }
+        .dialog-avatar.for-appking>img { max-height: 18em; border-bottom: 2px solid var(--back-color--descent); }
+        .dialog-avatar.for-history>img,
+        .dialog-avatar.for-creator>img { max-height: 5em; }
 
         .the-great-divider {
             text-align: center;
@@ -357,8 +368,12 @@
             background-color: var(--back-color--descent);
             padding: calc( var(--sx) - 0.25em ) var(--sx);
         }
-        .codeblock.wrap-lines>pre {
+        .codeblock>pre {
             white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .codeblock.wrap-lines>pre {
+            word-break: break-all;
         }
         .codeblock>pre {
             margin: 0;
@@ -368,9 +383,7 @@
             background-color: var(--back-color--descent);
         }
 
-        .box {
-            --secondary-background-color: unset;
-        }
+
 
 
 
@@ -410,7 +423,9 @@
 
         <p>Супервулканами называют большие извержения. В отличие от обычных вулканов у них нет высоких конусов, но диаметр отверстия огромен. Извержения такие сильные, что могут повлиять на климат и изменить мир. Самый молодой супервулкан по имени Таупо жил неподалёку от Новой Зеландии почти 30 тысяч лет назад.</p>
 
-        <div class="note"><p>24500 лет до нашей эры</p></div>
+        <div class="note">
+            <p>
+                <a href="https://elementy.ru/novosti_nauki/433354/Stupenchataya_evolyutsiya_magmaticheskikh_ochagov_mozhet_predotvrashchat_superizverzheniya">Извержение Оруануи</a><br>24500 лет до нашей эры</p></div>
 
         <p>В те годы король Апп прогуливался вокруг Таупо и наслаждался видами. По дороге встретил ворона без клюва.</p>
 
@@ -445,13 +460,13 @@
             </figcaption>
         </figure>
 
-        <p>Король Апп надел остатки короны на голову. Вид у короля был нелепый, взгляд у короля был гордый и целеустремлённый. Он направился к жерлу вулкана, чтобы прыгнуть вместо ворона.</p>
+        <p>Король Апп надел остатки короны на голову. Вид у короля был нелепый, взгляд у короля был гордый и целеустремлённый. Он направился к жерлу вулкана, чтобы прыгать вместо ворона.</p>
 
         <div class="block">
             <blockquote cite="appking">
                 <q>Потому что каждая задача должна быть выполнена, — произнёс король Апп вслух.</q>
             </blockquote>
-            <p>Продемонстрировав строгий палец окружающим камням (а больше никого и не было), король Апп спрыгнул с обрыва.</p>
+            <p>Строго показав палец окружающим камням (а больше никого и не было), король Апп спрыгнул с обрыва.</p>
         </div>
 
         <figure class="dialog-avatar for-appking -x- note">
@@ -460,13 +475,19 @@
 
         <hr class="the-great-divider">
 
+        <footer class="el-stones-roger-that -x- layer">
+            <figure>
+                <img src="art/illustrations/stones-roger-that.svg" alt="Вы слышали? Должна быть выполнена, а мы тут лежим, — говорят камни.">
+            </figure>
+        </footer>
+
     </article>
 
     <!-- ---------------------------------------- Диалоги о Короне -->
 
     <article id="DialogsAboutCrown" class="book-chapter -x- layer keep-grid has-top-divider has-bottom-divider">
 
-        <figure>
+        <figure class="book-illustration">
             <img src="art/characters/king-crown.svg" alt="Королевская корона">
         </figure>
 
@@ -474,25 +495,49 @@
             <q>На месте разлома изящные линии, и бусинки у нижнего края выглядят очень мило</q>
         </blockquote>
 
+            <figure class="dialog-avatar for-history -x- note">
+                <img src="art/characters/dialog-woman.svg" alt="неизвестный женский голос">
+            </figure>
+
         <blockquote cite="creator">
             <q>Мне нравятся яркие позитивные цвета</q>
         </blockquote>
+
+            <figure class="dialog-avatar for-creator -x- note">
+                <img src="art/characters/dialog-man.svg" alt="неизвестный мужской голос">
+            </figure>
 
         <blockquote cite="history">
             <q>Немного похожа на улитку с глазами-шариками</q>
         </blockquote>
 
+            <figure class="dialog-avatar for-history -x- note">
+                <img src="art/characters/dialog-woman.svg" alt="неизвестный женский голос">
+            </figure>
+
         <blockquote cite="creator">
             <q>Я сделаю эту корону главным логотипом</q>
         </blockquote>
+
+            <figure class="dialog-avatar for-creator -x- note">
+                <img src="art/characters/dialog-man.svg" alt="неизвестный мужской голос">
+            </figure>
 
         <blockquote cite="history">
             <q>Самым главным?</q>
         </blockquote>
 
+            <figure class="dialog-avatar for-history -x- note">
+                <img src="art/characters/dialog-woman.svg" alt="неизвестный женский голос">
+            </figure>
+
         <blockquote cite="creator">
             <q>Да, самым главным логотипом от земли до неба. Это же королевская корона с легендарной историей!</q>
         </blockquote>
+
+            <figure class="dialog-avatar for-creator -x- note">
+                <img src="art/characters/dialog-man.svg" alt="неизвестный мужской голос">
+            </figure>
 
         <hr class="the-great-divider">
 
@@ -517,6 +562,10 @@
             <q>Привет, я создатель, — ответил диалог.</q>
         </blockquote>
 
+        <figure class="dialog-avatar for-creator -x- note">
+            <img src="art/characters/dialog-man.svg" alt="неизвестный мужской голос">
+        </figure>
+
         <blockquote cite="appking">
             <q>Создатель чего?</q>
         </blockquote>
@@ -526,35 +575,39 @@
         </blockquote>
 
         <div class="block mid-title">
-            <div>· Этого мира</div>
-            <div>· Этого разговора</div>
-            <div>· Этого списка</div>
-            <div>· ...</div>
-            <div>· Тебя</div>
-            <div>· Этого кота</div>
+            <div>— Этого мира</div>
+            <div>— Этого разговора</div>
+            <div>— Этого списка</div>
+            <div>— ...</div>
+            <div>— Тебя</div>
+            <div>— Этого кота</div>
         </div>
 
         <figure class="book-illustration -x- wide keep-grid color-box">
             <img src="art/characters/bergamot-just-browse-here.svg" alt="Браузер Бергамот. Просто смотрит.">
-            <figcaption class="-x- note">
+            <figcaption class="-x- note sw-align">
                 <p>Рис. 2. Кот-Браузер, просто смотрит.</p>
             </figcaption>
         </figure>
 
-        <p>Ответ смутил короля на секунду. Но в такой ситуации помогает проверочный вопрос:</p>
+        <p>Предпоследний пункт в списке насторожил короля. Вроде бы ничего подозрительного, но совершенно непонятно как такое может быть, чтобы у короля был какой-то ещё создатель, помимо отца короля — тоже короля. Но ведь отец уже давно отправился в другой мир, не в этот. Король умер да здравствует король, — говорили такое, сам слышал.</p>
+
+        <p>Да ещё этот кот в последнем пункте списка, который очень похож на отвлекающий манёвр от предпоследнего пункта. Просто смотрит и отвлекает на себя внимание.</p>
+
+        <p>Поэтому, всё подозрительно. А королевская бабушка научила короля вопросам для снятия подозрения:</p>
 
         <blockquote cite="appking">
-            <q>Чем докажешь? — спросил король Апп.</q>
+            <q>Чем докажете? Есть логи или другие задокументированные свидетельства? — спросил король Апп.</q>
         </blockquote>
 
         <blockquote cite="creator">
-            <q>Каждой твоей частичкой, — ответил диалог...</q>
+            <q>Докажу каждой твоей частичкой, — ответил диалог...</q>
         </blockquote>
 
         <hr class="the-great-divider">
 
-        <div class="-x- wide color-box keep-grid pt pb">
-            <h3 class="huge-title sw-align">... Посмотри же <nobr>на себя ...</nobr></h3>
+        <div class="-x- wide keep-grid" noclass="color-box pt pb">
+            <h3 class="huge-title sw-align">Посмотри же <nobr>на себя</nobr></h3>
             <div class="note">
                 <figure style="--max-width:8em;">
                     <img src="art/characters/appking-avatar.svg" alt="Король Апп при внимательном рассмотрении">
@@ -572,15 +625,63 @@
         </div>
 
         <div class="figured">
-            <div class="block">
-                <p>Это ты в молодости — забавный скетч в моём блокноте.</p>
+            <div class="block pt">
+                <p>Выдержка из моего указа в момент твоей коронации. Может быть вспомнишь?</p>
             </div>
-            <figure class="color-box">
-                <div>[APP SCETCH]</div>
+            <figure class="codeblock">
+<pre>
+let  King = this || {}
+King.has  =  {
+     Memory: [],
+     toRemember: (something) =>
+         King.has.Memory.push(something)
+}
+King.has.toRemember('кто твой создатель')
+</pre>
             </figure>
         </div>
 
+        <div class="figured">
+            <div class="block pt">
+                <p>Это ты в молодости — такой крохотный и забавный скетч в моём блокноте.</p>
+            </div>
+            <figure class="note">
+                <img class="box" src="art/illustrations/appking-young-scetches.jpg" alt="Ни правдой, ни хитростью. Ни с козлом, ни под дождём. Ты не сможешь вернуть его себе. (Отжал у малого трубу)">
+                <figcaption>
+                    <p>Рис. 3. Утверждение необратимости королевских решений.</p>
+                    <p>Фломастер, бумага, 2018.</p>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="figured">
+            <p>Это твоя голова, когда отправишься на юг и ...</p>
+        </div>
+
+        <blockquote cite="appking">
+            <q><span class="mid-title">Хватит уже!</span> Перестаньте показывать мои внутренности, пожалуйста, — король Апп прекратил разговор.</q>
+        </blockquote>
+
+        <h2 class="huge-title">И ушёл на север.</h2>
+
+        <hr class="the-great-divider">
+
     </article>
+
+    <section class="book-map -x- book-chapter layer colors--root use-colors has-top-divider has-bottom-divider">
+        <figure class="banner">
+            <img style="width:32em;" src="art/illustrations/map-north.svg" alt="Map: the North">
+        </figure>
+    </section>
+
+    <article id="UniverseModel" class="book-chapter -x- layer">
+
+        <figure class="el-universe-attraction">
+            <img src="art/illustrations/Lola%20Le%20Lann%20-%20Un%20moment%20d%60%C3%A9garement.gif" alt="">
+        </figure>
+
+    </article>
+
 
 </main>
 
