@@ -92,8 +92,8 @@
             --size-ma: 24rem;
             --size-mb:  8rem;
             --size-n:  16rem;
-            --size-w:  minmax(0, auto);
-            --size-e:  minmax(0, auto);
+            --size-w:   minmax(0, 4em);
+            --size-e:   minmax(0, 100vw);
 
             --if-grid-is-tiny: 0;
             --if-grid-no-tiny: 1;
@@ -105,7 +105,8 @@
 
             --grid-part--main-content: var(--size-ma) [_ma] var(--sx) [_pma] 0 [pmb_] var(--sx) [mb_] var(--size-mb);
             --grid-part--note-column:  0 [pn_] var(--sx) [n_] var(--size-n) [_n] var(--sx) [_pn];
-            --grid-part--main-space: 0;
+            --grid-part--main-space:   0;
+            --grid-part--main-gap:     var(--sx);
 
             --grid-part--full-start:   [full-start w_] var(--size-w) [_w] 0;
             --grid-part--full-end:     0 [e_] var(--size-e) [_e full-end];
@@ -115,18 +116,19 @@
 
         }
 
-        @media (max-width:58rem) {
+        @media (max-width:65rem) {
             .journal-grid {
             --size-ma: 3fr;
             --size-mb: 1fr;
             --size-n:  2fr;
+            --size-w:  minmax(0, auto);
+            --size-e:  minmax(0, auto);
             }
         }
         @media (max-width:47rem) {
             .journal-grid {
             --if-grid-is-tiny: 1;
             --if-grid-no-tiny: 0;
-
 
             --open-main-padding: pm_ pn_ pmb_;
             --open-main:          m_  n_  mb_;
@@ -137,12 +139,7 @@
             --grid-part--main-content: 1fr;
             }
         }
-        @media (min-width:65rem) {
-            .journal-grid {
-            --size-w:   minmax(0, 4em);
-            --size-e:   minmax(0, 100vw);
-            }
-        }
+
 
         .figured,
         .wide,
@@ -163,12 +160,12 @@
             grid-template-columns:
                   var(--grid-part--full-start)
                 [ var(--open-main-padding) ]
-                  var(--sx)
+                  var(--grid-part--main-gap)
                   var(--grid-part--main-space)
                 [ var(--open-main) ]
                   var(--grid-part--main-content)
                 [ var(--stop-main) ]
-                  var(--sx)
+                  var(--grid-part--main-gap)
                 [ var(--stop-main-padding) ]
                   var(--grid-part--note-column)
                   var(--grid-part--full-end)
@@ -240,13 +237,14 @@
 
         .journal-grid .block { /* +1 level */
 
-            --open-main-padding: pm_ pn_ pmb_ m_  n_  mb_;
-            --open-main:          0;
-            --stop-main:          0;
-            --stop-main-padding: _pm _pn _pma _m  _n  _ma;
+            --open-main-padding: pm_ pn_ pmb_;
+            --open-main:          m_  n_  mb_;
+            --stop-main:          _m  _n  _ma;
+            --stop-main-padding: _pm _pn _pma;
 
             --grid-part--note-column:  0;
             --grid-part--main-content: 1fr;
+            --grid-part--main-gap: 0;
         }
 
         /* --------------------------------- workers */
@@ -327,6 +325,24 @@
                 0                                100%
             );
         }
+        .book-markup blockquote[cite="appking"] {
+            background-color: rgba(200,150,0,0.1);
+        }
+        .book-markup blockquote[cite="voron"] {
+            background-color: rgba(150,50,0,0.1);
+        }
+        .book-markup blockquote[cite="creator"] {
+            background-color: rgba(50,100,200,0.1);
+        }
+        .book-markup blockquote[cite="history"] {
+            background-color: rgba(100,0,50,0.1);
+        }
+        #DialogsAboutCrown blockquote[cite="creator"] {
+            background-color: rgba(100,100,200,0.25);
+        }
+        #DialogsAboutCrown blockquote[cite="history"] {
+            background-color: rgba(250,50,50,0.25);
+        }
         .book-markup q {
             display:  block;
             position: relative;
@@ -342,26 +358,64 @@
             transform: translateX(25%);
             bottom: 0;
         }
-
-        .book-markup li {
-            min-width: 20em;
+        .book-markup .group-content-rows {
+            grid-template-columns: [full] 1fr;
         }
+        .book-markup .group-content-rows > * {
+            grid-column: full;
+        }
+
 
         /* --------------------------------- elements */
 
-        .dialog-avatar.for-voron>img {   max-height: 10em; border-bottom: 2px solid var(--back-color--descent); }
-        .dialog-avatar.for-appking>img { max-height: 18em; border-bottom: 2px solid var(--back-color--descent); }
+        @media (min-width:65rem) {
+            .prefix-title {
+                position: absolute;
+                transform: translateX(-150%) translateY(-25%);
+                font-size: 1.5em;
+            }
+        }
+        
+        .dialog-avatar {
+            position:relative;
+        }
+        @media (max-width:47rem) {
+            .dialog-avatar {
+                justify-self: end;
+            }
+        }
+        .dialog-avatar.for-appking::after,
+        .dialog-avatar.for-voron::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            background-color: var(--back-color--descent);
+            bottom: 0;
+            left: 0;
+            width: 96%;
+            padding-bottom: 20%;
+            transform: translateY(50%);
+            border-radius: 50%;
+        }
+        .dialog-avatar.for-voron   { width: 12rem; }
+        .dialog-avatar.for-appking { width: 12rem; }
+        .dialog-avatar.for-appking-dialog>img,
         .dialog-avatar.for-history>img,
-        .dialog-avatar.for-creator>img { max-height: 5em; }
+        .dialog-avatar.for-creator>img {
+            width: 5rem;
+            margin-top: calc( -1.5*var(--sy)*var(--if-grid-is-tiny, 0) );
+        }
 
         .the-great-divider {
             text-align: center;
             padding: 1em 0;
+            height: auto;
+            color: var(--text-color--descent, inherit);
             /* 40/48 */
             font-size:   2.5em;
             line-height: 1.2;
             }
-        .the-great-divider::before { content: '* * *'; }
+        .the-great-divider::before { content: '∗ ∗ ∗'; }
 
         .codeblock {
             display: block;
@@ -470,7 +524,7 @@
         </div>
 
         <figure class="dialog-avatar for-appking -x- note">
-            <img src="art/characters/appking-avatar.svg" alt="король Апп">
+            <img src="art/characters/appking-welcome.svg" alt="король Апп">
         </figure>
 
         <hr class="the-great-divider">
@@ -556,7 +610,7 @@
             <p>— удивился король Апп.</p>
         </header>
 
-        <p>Кто-то открыто обсуждал королевскую корону, но рядом никого не было. Казалось, что диалоги ведут разговор сами по себе.</p>
+        <p>Кто-то открыто обсуждал королевскую корону, обсуждая достоинства и недостатки. Но вокруг никого не было — ворон улетел, камни молчат. Казалось, что диалоги ведут разговор сами по себе.</p>
 
         <blockquote cite="creator">
             <q>Привет, я создатель, — ответил диалог.</q>
@@ -570,17 +624,23 @@
             <q>Создатель чего?</q>
         </blockquote>
 
+        <figure class="dialog-avatar for-appking-dialog -x- note">
+            <img src="art/characters/dialog-appking.svg" alt="король ведёт диалог">
+        </figure>
+
         <blockquote cite="creator">
             <q>Создатель всего...</q>
         </blockquote>
 
-        <div class="block mid-title">
-            <div>— Этого мира</div>
-            <div>— Этого разговора</div>
-            <div>— Этого списка</div>
-            <div>— ...</div>
-            <div>— Тебя</div>
-            <div>— Этого кота</div>
+        <div class="block">
+            <ul class="-x- mid-title group-content-rows">
+                <li>Этого мира</li>
+                <li>Этого разговора</li>
+                <li>Этого списка</li>
+                <li>...</li>
+                <li>Тебя</li>
+                <li>Этого кота</li>
+            </ul>
         </div>
 
         <figure class="book-illustration -x- wide keep-grid color-box">
@@ -594,7 +654,7 @@
 
         <p>Да ещё этот кот в последнем пункте списка, который очень похож на отвлекающий манёвр от предпоследнего пункта. Просто смотрит и отвлекает на себя внимание.</p>
 
-        <p>Поэтому, всё подозрительно. А королевская бабушка научила короля вопросам для снятия подозрения:</p>
+        <p>Поэтому, всё подозрительно. А королевская бабушка научила короля нескольким вопросам для эффективного снятия подозрений:</p>
 
         <blockquote cite="appking">
             <q>Чем докажете? Есть логи или другие задокументированные свидетельства? — спросил король Апп.</q>
@@ -606,18 +666,20 @@
 
         <hr class="the-great-divider">
 
-        <div class="-x- wide keep-grid" noclass="color-box pt pb">
-            <h3 class="huge-title sw-align">Посмотри же <nobr>на себя</nobr></h3>
-            <div class="note">
-                <figure style="--max-width:8em;">
-                    <img src="art/characters/appking-avatar.svg" alt="Король Апп при внимательном рассмотрении">
+        <section class="layer keep-grid colors--action use-colors">
+            <div class="wide">
+            <div class="banner catground">
+                <h3 class="huge-title">Взгляни<br>на себя</h3>
+                <figure style="--max-width:12em;">
+                    <img src="art/characters/appking-welcome.svg" alt="Король Апп при внимательном рассмотрении">
                 </figure>
             </div>
-        </div>
+            </div>
+        </section>
 
         <div class="figured">
             <div class="block pt">
-                <p>Для начала, взгляни на описание своего правого глаза. Тут цифрами записана формула кривой линии, а в конце можно заметить атрибут <def>author</def>. Совершенно ни на что не влияет, но о многом говорит.</p>
+                <p><span class="prefix-title">1.</span> Для начала, посмотри описание своего правого глаза. Тут цифрами записана формула кривой линии, а в конце можно заметить атрибут <def>author</def>. Совершенно ни на что не влияет, но о многом говорит.</p>
             </div>
             <figure class="codeblock wrap-lines">
                 <pre>&lt;path id="right-eye" d="M165.2,675.8c16.1,0.4,20.3-3.5,34.9,7.5c19.4,14.7,5.2,36.2-15.6,37.8C147.7,723.9,139.3,695.8,165.2,675.8  C167.3,675.8,163.6,677.1,165.2,675.8z" author="это я сделал"/&gt;</pre>
@@ -626,7 +688,7 @@
 
         <div class="figured">
             <div class="block pt">
-                <p>Выдержка из моего указа в момент твоей коронации. Может быть вспомнишь?</p>
+                <p><span class="prefix-title">2.</span> Вот выдержка из моего указа в момент твоей коронации. Может быть вспомнишь?</p>
             </div>
             <figure class="codeblock">
 <pre>
@@ -643,10 +705,10 @@ King.has.toRemember('кто твой создатель')
 
         <div class="figured">
             <div class="block pt">
-                <p>Это ты в молодости — такой крохотный и забавный скетч в моём блокноте.</p>
+                <p><span class="prefix-title">3.</span> Это ты в молодости — забавный скетч в моём блокноте.</p>
             </div>
             <figure class="note">
-                <img class="box" src="art/illustrations/appking-young-scetches.jpg" alt="Ни правдой, ни хитростью. Ни с козлом, ни под дождём. Ты не сможешь вернуть его себе. (Отжал у малого трубу)">
+                <img class="box" style="min-width: calc(100%*var(--if-grid-is-tiny, 0));" src="art/illustrations/appking-young-scetches.jpg" alt="Ни правдой, ни хитростью. Ни с козлом, ни под дождём. Ты не сможешь вернуть его себе. (Отжал у малого трубу)">
                 <figcaption>
                     <p>Рис. 3. Утверждение необратимости королевских решений.</p>
                     <p>Фломастер, бумага, 2018.</p>
@@ -655,12 +717,20 @@ King.has.toRemember('кто твой создатель')
         </div>
 
         <div class="figured">
-            <p>Это твоя голова, когда отправишься на юг и ...</p>
+            <p><span class="prefix-title">4.</span> Это, когда ты отправишься на юг ...</p>
         </div>
 
+        <hr>
+
         <blockquote cite="appking">
-            <q><span class="mid-title">Хватит уже!</span> Перестаньте показывать мои внутренности, пожалуйста, — король Апп прекратил разговор.</q>
+            <q>Хватит уже! Пожалуйста, прекратите демонстрировать мои внутренности. Может быть, вы действительно создали меня, но стыдить и говорить в каком направлении двигаться не имеете права.</q>
         </blockquote>
+
+            <figure class="dialog-avatar for-appking-dialog -x- note">
+                <img src="art/characters/dialog-appking.svg" alt="король ведёт диалог">
+            </figure>
+
+        <p>Король Апп закончил разговор.</p>
 
         <h2 class="huge-title">И ушёл на север.</h2>
 
@@ -668,16 +738,81 @@ King.has.toRemember('кто твой создатель')
 
     </article>
 
+    <!-- ---------------------------------------- MAP GOES NORTH -->
+
     <section class="book-map -x- book-chapter layer colors--root use-colors has-top-divider has-bottom-divider">
         <figure class="banner">
             <img style="width:32em;" src="art/illustrations/map-north.svg" alt="Map: the North">
         </figure>
     </section>
 
-    <article id="UniverseModel" class="book-chapter -x- layer">
+    <!-- ---------------------------------------- Диалог с моделью -->
 
-        <figure class="el-universe-attraction">
-            <img src="art/illustrations/Lola%20Le%20Lann%20-%20Un%20moment%20d%60%C3%A9garement.gif" alt="">
+    <section id="UniverseModelAppears" class="layer keep-grid">
+        <div class="el-appears-message">
+            <div>
+                <figure class="dialog-avatar for-history">
+                    <img src="art/characters/dialog-woman.svg" alt="неизвестный женский голос">
+                </figure>
+                <div>Не уходи на север</div>
+            </div>
+        </div>
+    </section>
+
+    <article id="DialogWithHistory" class="book-chapter -x- layer keep-grid">
+
+        <aside class="note">
+            <div>
+                <p>Lola Le Lann, Un moment d'égarement.</p>
+                <p>Временно исполняет отвлекающую роль.</p>
+            </div>
+        </aside>
+
+        <header class="book-chapter-header -x- wide">
+            <h2 class="book-chapter-caption -x- huge-title">Появилась женщина удивительной красоты</h2>
+        </header>
+
+        <blockquote cite="appking">
+            <q>Я тебя узнал, — поздоровался король Апп. — Ты была собеседником в диалоге о моей короне. Тебя тоже создали?</q>
+        </blockquote>
+
+            <figure class="dialog-avatar for-appking-dialog -x- note">
+                <img src="art/characters/dialog-appking.svg" alt="король ведёт диалог">
+            </figure>
+
+        <blockquote cite="history">
+            <q>Нет, сама пришла, — ответила женщина. — Привет, меня зовут История. Я модель вселенной.</q>
+        </blockquote>
+
+            <figure class="dialog-avatar for-history -x- note">
+                <img src="art/characters/dialog-woman.svg" alt="История ведёт диалог">
+            </figure>
+
+        <hr>
+
+        <h3>История вот какая...</h3>
+
+        <p>Всем очень нравится характер короля, твёрдость решений и храбрость противоречить создателю. Но неожиданное путешествие на север выходит за рамки допустимого поведения.</p>
+
+        <blockquote cite="history">
+            <q>Мы долго планировали путешествие на юг — там описаны новые места и интересные персонажи. А на севере нет ничего, не ходи туда.</q>
+        </blockquote>
+
+        <blockquote cite="appking">
+            <q>Почему так?</q>
+        </blockquote>
+
+        <p>На то, есть несколько причин...</p>
+
+        <p>Во-первых, любое повествования идёт сверху вниз — многие привыкли скролить экран в этом направлении. Нижняя сторона традиционно считается южной, только если вы не в Австралии, — там всё наоборот.</p>
+
+        <p>Во-вторых, географический фактор. На севере находится озеро Хеад из которого берёт начало великая река Боди. Река извиваясь течёт в южном направлении до самого моря.</p>
+
+        <figure class="book-illustration -x- wide keep-grid color-box">
+            <img src="art/illustrations/map-world-from-history.svg" alt="">
+            <figcaption class="-x- note">
+                <p>Рис. 4. Историческая карта озера Хеад и реки Боди</p>
+            </figcaption>
         </figure>
 
     </article>
