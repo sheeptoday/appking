@@ -134,7 +134,9 @@
     padding-top: var(--sy, 1rem);
 }
 
-
+#BrowserTheCat {
+    padding-bottom: 0;
+}
 
 
 
