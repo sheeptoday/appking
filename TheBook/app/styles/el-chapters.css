@@ -139,6 +139,18 @@
 }
 
 
+/* PART 2 */
+
+#LookingForTheName {
+    padding-top:    10vh;
+    padding-bottom: 10vh;
+}
+#dnaName {
+    padding-top: var(--sy);
+}
+
+#SettersGetters {
+}
 
 
 
