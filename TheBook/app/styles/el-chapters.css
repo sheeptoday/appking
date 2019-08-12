@@ -143,7 +143,7 @@
 
 #LookingForTheName {
     padding-top:    10vh;
-    padding-bottom: 10vh;
+    padding-bottom: 0;
 }
 #dnaName {
     padding-top: calc( 2*var(--sy));
