@@ -47,7 +47,7 @@
 
 
     <link
-        href="app/styles/appart.css?v2019.7.21x2"
+        href="app/styles/appart.css?v2019.8.12"
         rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
@@ -70,387 +70,15 @@
     <!-- ========================================= APP CUSTOM -->
 
     <link
-        href="app/styles/el-chapters.css?v2019.7.21"
+        href="app/styles/el-chapters.css?v2019.8.12"
         rel="stylesheet" type="text/css">
 
 
     <style id="journal-grid">
 
-        .box {
-            --secondary-background-color: unset;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-
-        .journal-grid {
-            --sx:  1.5rem;
-            --sy:  1.5rem;
-            --syx: var(--sy) var(--sx);
-            --sx-text-correction: 0.25rem;
-
-            --size-ma: 24rem;
-            --size-mb:  8rem;
-            --size-n:  16rem;
-            --size-w:   minmax(0, 4em);
-            --size-e:   minmax(0, 100vw);
-
-            --if-grid-is-tiny: 0;
-            --if-grid-no-tiny: 1;
-
-            --open-main-padding: pm_;
-            --open-main:          m_;
-            --stop-main:          _m;
-            --stop-main-padding: _pm;
-
-            --grid-part--main-content: var(--size-ma) [_ma] var(--sx) [_pma] 0 [pmb_] var(--sx) [mb_] var(--size-mb);
-            --grid-part--note-column:  0 [pn_] var(--sx) [n_] var(--size-n) [_n] var(--sx) [_pn];
-            --grid-part--main-space:   0;
-            --grid-part--main-gap:     var(--sx);
-
-            --grid-part--full-start:   [full-start w_] var(--size-w) [_w] 0;
-            --grid-part--full-end:     0 [e_] var(--size-e) [_e full-end];
-            --grid-part--empty-start:  [full-start w_ e_] 0;
-            --grid-part--empty-end:    0 [_w _e full-end];
-
-
-        }
-
-        @media (max-width:65rem) {
-            .journal-grid {
-            --size-ma: 3fr;
-            --size-mb: 1fr;
-            --size-n:  2fr;
-            --size-w:  minmax(0, auto);
-            --size-e:  minmax(0, auto);
-            }
-        }
-        @media (max-width:47rem) {
-            .journal-grid {
-            --if-grid-is-tiny: 1;
-            --if-grid-no-tiny: 0;
-
-            --open-main-padding: pm_ pn_ pmb_;
-            --open-main:          m_  n_  mb_;
-            --stop-main:          _m  _n  _ma;
-            --stop-main-padding: _pm _pn _pma;
-
-            --grid-part--note-column:  0;
-            --grid-part--main-content: 1fr;
-            }
-        }
-
-
-        .figured,
-        .wide,
-        .note,
-        .box,
-        .block,
-        .keep-grid,
-        .journal-grid {
-
-            display:         grid;
-            align-items:     start;
-            justify-content: start;
-            grid-auto-flow:  row;
-            grid-auto-rows:  min-content;
-            grid-row-gap:    var(--sy);
-            grid-column-gap: 0;
-
-            grid-template-columns:
-                  var(--grid-part--full-start)
-                [ var(--open-main-padding) ]
-                  var(--grid-part--main-gap)
-                  var(--grid-part--main-space)
-                [ var(--open-main) ]
-                  var(--grid-part--main-content)
-                [ var(--stop-main) ]
-                  var(--grid-part--main-gap)
-                [ var(--stop-main-padding) ]
-                  var(--grid-part--note-column)
-                  var(--grid-part--full-end)
-                ;
-        }
-
-        .journal-grid * { grid-column:   m_ / _m;   }
-        .block       { grid-column:   m_ / _m;   }
-        .keep-grid   { grid-column:    full;     }
-        .layer       { grid-column:    full;     }
-        .box         { grid-column:  pm_ / _pm;  }
-        .wide        { grid-column:  pm_ / _pn;  }
-
-        /*** figured component */
-            .figured {
-                grid-column:  pm_ / _pn;
-                margin-bottom: calc( var(--sy)*var(--if-grid-is-tiny) );
-              --grid-part--full-start: var(--grid-part--empty-start);
-              --grid-part--full-end:   var(--grid-part--empty-end);
-            }
-            .figured>*            { grid-column: m_ / _ma; }
-            .figured>figure,
-            .figured>.figure      { grid-column: pmb_ / _pn; }
-            .figured.card>*       { order: calc( 2*var(--if-grid-is-tiny, 0) ); }
-            .figured.card>figure,
-            .figured.card>.figure { order: calc( 1*var(--if-grid-is-tiny, 0) ); }
-
-        /*** note component */
-            .note {
-                grid-column:  pn_ / _pn;
-              --grid-part--main-space: calc( var(--sx, 1.5em) * var(--if-grid-is-tiny, 0) );
-                /* 14/24 */
-                font-size:    0.875em;
-                line-height: 1.714286;
-            }
-            .note.color-box {
-                margin-top: 0;
-            }
-            .note p {
-                max-width: 16em;
-            }
-
-        /* --------------------------------- empty-start */
-
-        .note,
-        .wide,
-        .box,
-        .block {
-            --grid-part--full-start: var(--grid-part--empty-start);
-            --grid-part--full-end:   var(--grid-part--empty-end);
-        }
-
-        /* --------------------------------- reduce note */
-
-        .note,
-        .wide:not(.keep-grid),
-        .box {
-
-            --open-main-padding: pm_ pn_ pmb_;
-            --open-main:          m_  n_  mb_;
-            --stop-main:          _m  _n  _ma;
-            --stop-main-padding: _pm _pn _pma;
-
-            --grid-part--note-column:  0;
-            --grid-part--main-content: 1fr;
-        }
-
-        /* --------------------------------- reduce content paddings */
-
-        .journal-grid .block { /* +1 level */
-
-            --open-main-padding: pm_ pn_ pmb_;
-            --open-main:          m_  n_  mb_;
-            --stop-main:          _m  _n  _ma;
-            --stop-main-padding: _pm _pn _pma;
-
-            --grid-part--note-column:  0;
-            --grid-part--main-content: 1fr;
-            --grid-part--main-gap: 0;
-        }
-
-        /* --------------------------------- workers */
-
-        /* -Align Compass: SELF */
-         .c-align { align-self: center; justify-self: center; }
-         .s-align { align-self: end;    justify-self: center; }
-         .n-align { align-self: start;  justify-self: center; }
-         .w-align { align-self: center; justify-self: start;  }
-         .e-align { align-self: center; justify-self: end;    }
-        .se-align { align-self: end;    justify-self: end;    }
-        .ne-align { align-self: start;  justify-self: end;    }
-        .sw-align { align-self: end;    justify-self: start;  }
-        .nw-align { align-self: start;  justify-self: start;  }
-
-        .pt-t, .pv-t {
-          --padding-top:    calc( var(--sx, 0.250em) - 0.250em );
-            padding-top:    var(--padding-top, 1em);
-        }
-        .pb-t, .pv-t {
-          --padding-bottom: calc( var(--sx, 0.250em) - 0.250em );
-            padding-bottom: var(--padding-bottom, 1em);
-        }
-
     </style>
 
     <style id="book">
-
-        /* --------------------------------- book layout */
-
-        .book-of-chapters {
-            grid-row-gap: 0;
-        }
-        .book-chapter {
-            padding-top:    20vh;
-            padding-bottom: 20vh;
-        }
-        .book-chapter-header {
-            margin-top:    var(--sy);
-            margin-bottom: var(--sy);
-        }
-        .book-chapter-caption {
-            transform: translateX(calc((-0.75)*var(--sx)*var(--if-grid-no-tiny, 1)));
-        }
-        .book-illustration {
-            margin-top:    var(--sy);
-            margin-bottom: var(--sy);
-        }
-        .book-illustration.wide {
-            padding:     calc( 1 * var(--sx) * var(--if-grid-no-tiny, 1) + var(--sx) ) 0;
-        }
-        .book-illustration.wide>*:not(figcaption):not(.figcaption) {
-            margin-left: calc( 1 * var(--sx) * var(--if-grid-no-tiny, 1) );
-        }
-
-
-        /* --------------------------------- book markup */
-
-        .book-markup p {
-            max-width: 35em;
-        }
-        .book-markup .mini-text-block {
-            max-width: 18em;
-        }
-
-        .book-markup blockquote {
-            background-color: var(--back-color--descent);
-            padding:          calc( var(--sx) - var(--sx-text-correction, 0) ) var(--sx);
-            border-radius:    calc( 0.25*var(--sx) );
-            /* clip-path: Anti-arrow from right side */
-            clip-path: polygon(
-                0                                0,
-                100%                             0,
-                100%                             calc( 1 * var(--sx) ),
-                calc( 100% - 0.4*var(--sx) )     calc( 1.3*var(--sx) ),
-                100%                             calc( 1.6*var(--sx) ),
-                100%                             100%,
-                0                                100%
-            );
-        }
-        .book-markup blockquote[cite="appking"] {
-            background-color: rgba(200,150,0,0.1);
-        }
-        .book-markup blockquote[cite="voron"] {
-            background-color: rgba(150,50,0,0.1);
-        }
-        .book-markup blockquote[cite="creator"] {
-            background-color: rgba(50,100,200,0.1);
-        }
-        .book-markup blockquote[cite="history"] {
-            background-color: rgba(100,0,50,0.1);
-        }
-        #DialogsAboutCrown blockquote[cite="creator"] {
-            background-color: rgba(100,100,200,0.25);
-        }
-        #DialogsAboutCrown blockquote[cite="history"] {
-            background-color: rgba(250,50,50,0.25);
-        }
-        .book-markup q {
-            display:  block;
-            position: relative;
-        }
-        .book-markup q::before {
-            content:   '«';
-            position:  absolute;
-            transform: translateX(-125%);
-        }
-        .book-markup q::after {
-            content:   '»';
-            position:  absolute;
-            transform: translateX(25%);
-            bottom: 0;
-        }
-        .book-markup .group-content-rows {
-            grid-template-columns: [full] 1fr;
-        }
-        .book-markup .group-content-rows > * {
-            grid-column: full;
-        }
-
-
-        /* --------------------------------- elements */
-
-        @media (min-width:65rem) {
-            .prefix-title {
-                position: absolute;
-                transform: translateX(-150%) translateY(-25%);
-                font-size: 1.5em;
-            }
-        }
-        
-        .dialog-avatar {
-            position:relative;
-        }
-        @media (max-width:47rem) {
-            .dialog-avatar {
-                justify-self: end;
-            }
-        }
-        .dialog-avatar.for-appking::after,
-        .dialog-avatar.for-voron::after {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            background-color: var(--back-color--descent);
-            bottom: 0;
-            left: 0;
-            width: 96%;
-            padding-bottom: 20%;
-            transform: translateY(50%);
-            border-radius: 50%;
-        }
-        .dialog-avatar.for-voron   { width: 12rem; }
-        .dialog-avatar.for-appking { width: 12rem; }
-        .dialog-avatar.for-appking-dialog>img,
-        .dialog-avatar.for-history>img,
-        .dialog-avatar.for-creator>img {
-            width: 5rem;
-            margin-top: calc( -1.5*var(--sy)*var(--if-grid-is-tiny, 0) );
-        }
-
-        .the-great-divider {
-            text-align: center;
-            padding: 1em 0;
-            height: auto;
-            color: var(--text-color--descent, inherit);
-            /* 40/48 */
-            font-size:   2.5em;
-            line-height: 1.2;
-            }
-        .the-great-divider::before { content: '∗ ∗ ∗'; }
-
-        .codeblock {
-            display: block;
-            background-color: var(--back-color--descent);
-            padding: calc( var(--sx) - 0.25em ) var(--sx);
-        }
-        .codeblock>pre {
-            white-space: pre-wrap;
-            word-break: break-word;
-        }
-        .codeblock.wrap-lines>pre {
-            word-break: break-all;
-        }
-        .codeblock>pre {
-            margin: 0;
-        }
-
-        .color-box {
-            background-color: var(--back-color--descent);
-        }
-
-        .expand {
-            background-color: var(--back-color--accent);
-            --p2x: calc( 2 * var(--sx) );
-            --p1x: calc( 1 * var(--sx) );
-            padding-top: var(--p2x);
-            padding-bottom: var(--p2x);
-            margin-top: var(--p1x);
-            margin-bottom: var(--p1x);
-            padding-left: calc( var(--p1x) * var(--if-grid-no-tiny, 1) );
-            padding-right: calc( var(--p1x) * var(--if-grid-no-tiny, 1) );
-            /* 20/24 */
-            font-size:   1.25em;
-            line-height: 1.2;
-        }
 
 
 
@@ -462,7 +90,7 @@
 <body class="colors--ivory use-colors">
 
 
-    <!-- Вступление барона фон Гамбургера -->
+    <!-- ---------------------------------------- Вступление барона фон Гамбургера -->
 
     <header id="Introduction" class="el-introduction colors--swed use-colors chapter-has-bottom-divider">
         <section class="chapter">
@@ -819,9 +447,11 @@ King.has.toRemember('кто твой создатель')
 
         <p>На то, есть несколько причин...</p>
 
-        <p>Во-первых, любое повествования идёт сверху вниз — многие привыкли скролить экран в этом направлении. Нижняя сторона традиционно считается южной. (Только если вы не в Австралии, — там всё наоборот.)</p>
+        <p>Во-первых, на юге теплее.</p>
 
-        <p>Во-вторых, географический фактор. На севере находится озеро Хеад из которого берёт начало великая река Боди. Река, извиваясь, течёт в южном направлении до самого моря. Так нарисовано на исторической карте и переворачивать хлопотно.</p>
+        <p>Во-вторых, любое повествования идёт сверху вниз — многие привыкли скролить экран в этом направлении. Нижняя сторона традиционно считается южной. (Только если вы не в Австралии, — там всё наоборот.)</p>
+
+        <p>В-третьих, географический фактор. Здесь, на севере находится озеро Хеад из которого берёт начало река Боди. Река, извиваясь, течёт в южном направлении до самого моря. Так уже давно нарисовано на исторической карте и переворачивать хлопотно.</p>
 
         <figure class="book-illustration -x- wide keep-grid color-box">
             <img src="art/illustrations/map-world-from-history.svg" alt="">
@@ -882,7 +512,7 @@ King.has.toRemember('кто твой создатель')
 
     <!-- ---------------------------------------- Привлечение кота -->
 
-    <article id="DialogWithHistory" class="book-chapter -x- layer keep-grid">
+    <article id="BrowserTheCat" class="book-chapter -x- layer keep-grid">
 
         <header class="book-chapter-header -x- wide">
             <h2 class="book-chapter-caption -x- huge-title">— Псс! Есть миссия?</h2>
@@ -1010,6 +640,156 @@ King.has.toRemember('кто твой создатель')
     </article>
 
 </main>
+
+
+    <!-- -------------------------------------------------------------- -->
+
+    <!-- Содержание -->
+
+    <aside class="ChaptersBar offsidebar from-eastside colors-as-secondary">
+        <section class="sidepanel">
+
+            <header class="sidepanel-header">
+                <h2 class="min-title">Глава 1.</h2>
+            </header>
+
+            <nav class="sidepanel-content">
+                <ul class="asidebar-list js-for-ChaptersBar">
+                    <li><a href="#Introduction">Вступление</a></li>
+                    <li><a href="#Taupo">Вулкан Таупо</a></li>
+                    <li><a href="#DialogsAboutCrown">Преимущества короны</a></li>
+                    <li><a href="#DialogWithCreator">Создатель</a></li>
+                    <li><a href="#UniverseModelAppears">Модель вселенной</a></li>
+                    <li><a href="#BrowserTheCat">Кот-Браузер</a></li>
+                </ul>
+                <hr>
+            </nav>
+
+            <footer class="sidepanel-footer">
+                <div>
+                    <a href="Chapter-2.html" class="swed-button">Глава 2.</a>
+                </div>
+            </footer>
+
+        </section>
+    </aside>
+
+
+    <button class="VonHamburgerOnDuty">
+        <figure class="el-hamburger js-for-ChaptersBar">
+            <img class="for-inactive" src="art/characters/hamburger.svg" alt="Барон фон Гамбургер">
+            <div class="for-active svga-icon base-size"><svg><use xlink:href="#svg-close"></use></svg></div>
+        </figure>
+    </button>
+
+    <!-- AutofillChaptersList -->
+
+    <script>
+        function AutofillChaptersList () {
+
+            // cast
+            const listwrap = document.querySelector('.js-for-ChaptersList')
+            const chapters = document.querySelectorAll('article.chapter[id]')
+            const cssTitle = '.chapter-header>h2'
+
+            // operations
+            const createChapterLink = function (pointer, caption) {
+                let item = document.createElement('li')
+                let link = document.createElement('a')
+                let text = caption.textContent || 'undefined'
+                link.classList.add('js-for-ChaptersBar')
+                link.href = '#' + pointer
+                link.textContent = text
+                item.appendChild(link)
+                listwrap.appendChild(item)
+            }
+            const doFindAndAddToList = function (el) {
+                const pointer = el.id
+                const caption = el.querySelector(cssTitle)
+
+                if (pointer && caption) createChapterLink(pointer, caption)
+            }
+
+            // autofilling process
+            chapters.forEach(doFindAndAddToList)
+        }
+        //(AutofillChaptersList)()
+    </script>
+
+    <!-- ActivateChaptersBar -->
+
+    <script>
+        function InterfaceOffsideBar (barName) {
+
+            const asidebar = document.querySelector('.'+barName)
+            const htmlwrap = document.querySelector('html')
+
+            const classActive     = 'is-active'
+            const classHasOverlay = 'has-offsidebar-overlay'
+            const cssBartender    ='.js-for-' + barName
+            const classOverlay    = 'offsidebar-overlay'
+            const classBackground = 'offsidebar-background'
+
+            const doClose  = () => {
+                asidebar.classList.remove(classActive)
+                htmlwrap.classList.remove(classHasOverlay) }
+            const doOpen   = () => {
+                asidebar.classList.add(classActive)
+                htmlwrap.classList.add(classHasOverlay) }
+            const doToggle = () => {
+                if (asidebar.classList.contains(classActive)) doClose()
+                else doOpen()
+            }
+
+            // find and activate bartenders
+            const bartenderFunction = (el, order) =>
+                  el.addEventListener('click', order === 'close' ? doClose : doToggle )
+            document.querySelectorAll(cssBartender).forEach(bartenderFunction)
+
+            // find/create background
+            let background = asidebar.querySelector('.'+classBackground)
+            if(!background) {
+                background = document.createElement('div')
+                background.classList.add(classBackground)
+                asidebar.prepend(background)
+            }
+
+            // find/create shadow overlay with functionality
+            let overlay = asidebar.querySelector('.'+classOverlay)
+            if(!overlay) {
+                overlay = document.createElement('div')
+                overlay.classList.add(classOverlay)
+                asidebar.prepend(overlay)
+            }
+            bartenderFunction(overlay, 'close')
+        }
+
+        // Launch Activation
+        InterfaceOffsideBar('ChaptersBar')
+    </script>
+
+    <!-- Activate von Hamburger position -->
+
+    <script>
+        function vonHamburgerIsActiveWhenGoesNorth (markerName) {
+            const marker    = document.querySelector('.el-introduction .el-hamburger')
+            const dutyPlace = document.querySelector('.VonHamburgerOnDuty')
+            const doDisplay = () => dutyPlace.classList.add('is-active')
+            const doAway    = () => dutyPlace.classList.remove('is-active')
+
+            if( !window.IntersectionObserver ) return doDisplay()
+
+            const markerFunction = (reports) => {
+                let status = reports[0]
+                if (status.boundingClientRect.bottom>0) doAway()
+                else doDisplay()
+            }
+            const markerObserver = new IntersectionObserver(markerFunction, {threshold:[0]} )
+            markerObserver.observe(marker)
+        }
+        vonHamburgerIsActiveWhenGoesNorth()
+    </script>
+
 
     <!-- -------------------------------------------------------------- -->
 
