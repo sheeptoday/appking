@@ -660,10 +660,10 @@
             transform: translateX(-125%);
         }
         .book-markup q::after {
-            content:   '»';
-            position:  absolute;
+            content:   ' »';
+          /*position:  absolute;
             transform: translateX(25%);
-            bottom: 0;
+            bottom: 0;*/
         }
         .book-markup .group-content-rows {
             grid-template-columns: [full] 1fr;
