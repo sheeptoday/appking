@@ -1,0 +1,32 @@
+
+/* --------------------- Character von Hamburger */
+
+.el-ham {
+    width: 5em;
+    margin-left:  auto;
+    margin-right: auto;
+    position: relative;
+    z-index:  0;
+}
+.el-ham::before {
+    content:  '';
+
+    /* background circle */
+    position: absolute;
+    z-index: -1;
+    top:    0;
+    left:   0;
+    width:  100%;
+    height: 100%;
+
+    background-color: hsl(var(--HSL-AccentBlue));
+    border-radius:    50%;
+    transform:        scale(1.5);
+    transition:       transform 240ms;
+    transition-timing-function: var(--timing-function--focusZoom, ease-in);
+}
+.el-ham:not(.is-static):hover::before {
+    transform:        scale(1.75);
+}
+
+/*v*/

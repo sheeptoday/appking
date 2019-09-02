@@ -1,0 +1,195 @@
+/** Book Illustration Components
+ *
+ *  compilation shortcuts:
+scss -C --sourcemap=none TheBook/app/styles/dora-style.scss TheBook/app/styles/dora-style.css
+sass --no-source-map TheBook/app/styles/dora-style.scss TheBook/app/styles/dora-style.css
+ *
+ */
+/* ------------------------------------ constructor */
+.colors--hamburg, .elHamburg {
+  --back-color: hsl( var(--HSL-NobleBlack) );
+  --back-color-accent: hsl( var(--HSL-AccentBlux) );
+  --back-color-descent: var(--light-shadow);
+  --text-color: hsl( var(--HSL-NobleWhite) );
+  --text-color-accent: hsl( var(--HSL-NobleHighWhite) );
+  --text-color-descent: var(--text-color);
+  --link-color: hsl( var(--HSL-NobleAction) );
+  --link-color-accent: hsl( var(--HSL-NobleHoverAction) );
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color--for-dark-base);
+  --light-shadow: var(--light-shadow--for-dark-base);
+}
+
+.has-bottom-divider, .elHamburg,
+.has-top-divider {
+  position: relative;
+  --divider-height: 2rem;
+}
+
+.has-top-divider::before,
+.has-bottom-divider::after,
+.elHamburg::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  width: 100%;
+  height: var(--divider-height);
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="1000" height="50" viewBox="0 0 1000 50"%3E%3Cpath d="M0,5c13.93-1.223,28.253-2.917,42.192-3.515c10.75-0.461,23.707-2.859,34.356-0.756C86.795,2.754,101.191,11.55,111.9,9 c21.917-5.345,41.312-0.983,62.9-1.3c9.365,0,17.789-5.249,27.219-5.148c14.291,0.153,29.412,4.815,43.252,8.052 C291.64,21.45,344.78,12.053,392.2,8c47.434-3.986,92.091,1.421,139.263,4.263c40.346,2.43,75.079-10.574,115.696,2.345 c36.718,11.679,85.971,0.434,123.2-5.7c23.956-3.947,43.67-2.741,67.281,1.571c23.316,4.257,44.41-3.207,66.393,3.659 C931.347,22.667,971.971,8.726,1000,5c0,6.187,0,30,0,30s-33.869,5.137-39.656,5.961c-17.478,2.49-38.96,9.395-56.311,3.976 c-21.982-6.865-43.076,0.6-66.393-3.659c-49.234-8.991-98.009,1.084-147.24,7.647c-21.216,2.829-42.943-2.575-63.375-7.837 c-23.286-5.997-41.91-2.532-65.125,1.412c-42.468,7.864-88.719-8.968-131.825-6.975c-28.999,1.341-58.198,3.64-87.098,6.297 c-22.344,2.055-55.746,9.262-77.559,3.93C218.576,34.301,172.687,32.362,125,37.8c-24.634,2.864-45.958-6.731-70.826-6.085 C36.112,32.185,18.061,33.905,0,35C0,24.867,0,15.133,0,5z"/%3E%3C/svg%3E');
+  background-position: center center;
+}
+
+.has-top-divider::before {
+  top: calc( -0.5 * var(--divider-height) );
+}
+
+.has-bottom-divider::after, .elHamburg::after {
+  bottom: calc( -0.5 * var(--divider-height) );
+}
+
+/* ------------------------------------ citizens */
+.elHamburg {
+  /* settings */
+  --divider-height: 4rem;
+  min-height: 90vh;
+  /* description */
+  background-color: var(--back-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: stretch;
+}
+
+.elNinaTheArrow {
+  /* settings */
+  --size: 4rem;
+  --message-width: 40rem;
+  --message-height: 4rem;
+  /* description */
+  /* button without button */
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+  width: var(--size);
+  margin-top: calc( var(--size) * 0.5 );
+  margin-bottom: var(--size);
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 50rem) {
+  .elNinaTheArrow {
+    --message-width: 80vw;
+    --message-height: 8vw;
+  }
+}
+.elNinaTheArrow:focus {
+  pointer-events: none;
+}
+.elNinaTheArrow::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  left: calc( -0.5 * ( var(--message-width) - var(--size) ) );
+  top: 100%;
+  width: var(--message-width);
+  height: var(--message-height);
+  background-image: url(../../art/decor/text-scroll-down.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: translateY(0);
+  will-change: transform, opacity;
+}
+.elNinaTheArrow:focus::before {
+  opacity: 1;
+  transform: translateY(calc( 50% + 0.25 * var(--size) ));
+  transition: all 360ms;
+  transition-timing-function: var(--timing-function--openJump, ease-in);
+}
+.elNinaTheArrow #svg-NinaTheArrow {
+  transform: rotate(180deg);
+  transition: transform 200ms ease-out;
+  will-change: transform;
+}
+.elNinaTheArrow #svg-NinaTheArrow .her-face, .elNinaTheArrow #svg-NinaTheArrow .her-hands {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+  will-change: opacity;
+}
+.elNinaTheArrow:focus #svg-NinaTheArrow {
+  transform: rotate(360deg) scale(1.5);
+}
+.elNinaTheArrow:focus #svg-NinaTheArrow .her-face, .elNinaTheArrow:focus #svg-NinaTheArrow .her-hands {
+  opacity: 1;
+}
+
+.elCodeHolder {
+  /* settings */
+  /* description */
+}
+
+/* ------------------------------------ pending */
+.character--NinaTheArrow {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+.character--NinaTheArrow {
+  position: relative;
+  z-index: 2;
+  width: 8rem;
+  margin: 0 auto;
+}
+.character--NinaTheArrow::before {
+  content: "";
+  pointer-events: 0;
+  position: absolute;
+  left: 10rem;
+  top: 0;
+  width: 40rem;
+  height: 4rem;
+  background-image: url(../../art/decor/text-scroll-down.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: translateY(-50%);
+  will-change: transform, opacity;
+}
+@media (max-width: 50rem) {
+  .character--NinaTheArrow::before {
+    width: 20rem;
+    height: 2rem;
+  }
+}
+.character--NinaTheArrow:focus::before {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 400ms ease-in;
+}
+.character--NinaTheArrow::before {
+  top: auto;
+  bottom: calc( 100% + 4vh );
+  left: 50%;
+  width: 80vw;
+  height: 8vw;
+  max-height: 6vh;
+  transform: translateY(-50%) translateX(-50%);
+}
+.character--NinaTheArrow:focus::before {
+  transform: translateY(0) translateX(-50%);
+}
+
+/*  EOF book illustration */
