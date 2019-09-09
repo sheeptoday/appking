@@ -50,6 +50,11 @@ sass --no-source-map TheBook/app/styles/dora-style.scss TheBook/app/styles/dora-
   bottom: calc( -0.5 * var(--divider-height) );
 }
 
+.reading-pause {
+  --height: 20vh;
+  height: var(--height);
+}
+
 /* ------------------------------------ citizens */
 .elHamburg {
   /* settings */
