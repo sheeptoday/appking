@@ -83,6 +83,11 @@ html {
   --light-shadow: var(--light-shadow--for-dark-base);
 }
 
+.chapter-layer {
+    @extend .layer;
+    @extend .pv;
+}
+
 
 .has-bottom-divider,
 .has-top-divider {
@@ -150,7 +155,9 @@ html {
     @extend .use-colors;
 }
 
+
 /* ------------------------------------ citizens */
+
 
 .elBootScreen {
     @extend .mcScreen;
@@ -165,19 +172,6 @@ html {
     top:      2px;
     left:     2px;
 }
-
-
-.elHamburg {
-    @extend .mcScreen;
-    @extend .colors--hamburg;
-    @extend .has-bottom-divider;
-  --divider-height: 4rem;
-    .link {
-      --color: var(--text-color-accent, inherit);
-        color: var(--color);
-    }
-}
-
 .elNinaTheArrow {
  /* settings */
 
@@ -257,6 +251,22 @@ html {
     }
 
 }
+
+
+.elHamburg {
+    @extend .mcScreen;
+    @extend .colors--hamburg;
+    @extend .has-bottom-divider;
+    padding-top:    var(--big-space);
+    padding-bottom: var(--big-space);
+  --divider-height: 4rem;
+    .link p:first-child,
+    .link h4 {
+      --color: var(--text-color-accent, inherit);
+        color: var(--color);
+    }
+}
+
 
 .elCodeHolder {
  /* settings */

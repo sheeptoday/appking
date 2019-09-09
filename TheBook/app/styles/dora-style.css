@@ -651,7 +651,7 @@ body {
 }
 
 /* Order #3 important */
-.layer {
+.layer, .chapter-layer {
   grid-column: full;
 }
 
@@ -1874,12 +1874,12 @@ body {
   }
 }
 /** -------------------------------- padding shortcuts */
-.pt, .pv {
+.pt, .pv, .chapter-layer {
   --padding-top: var(--row-space, 1rem);
   padding-top: var(--padding-top);
 }
 
-.pb, .pv {
+.pb, .pv, .chapter-layer {
   --padding-bottom: var(--row-space, 1rem);
   padding-bottom: var(--padding-bottom);
 }
@@ -1991,7 +1991,7 @@ body {
   margin-right: var(--margin-right);
 }
 
-.layer {
+.layer, .chapter-layer {
   grid-column: full;
 }
 
@@ -2136,14 +2136,6 @@ html {
   left: 2px;
 }
 
-.elHamburg {
-  --divider-height: 4rem;
-}
-.elHamburg .link {
-  --color: var(--text-color-accent, inherit);
-  color: var(--color);
-}
-
 .elNinaTheArrow {
   /* settings */
   --size: 4rem;
@@ -2210,6 +2202,17 @@ html {
 }
 .elNinaTheArrow:focus #svg-NinaTheArrow .her-face, .elNinaTheArrow:focus #svg-NinaTheArrow .her-hands {
   opacity: 1;
+}
+
+.elHamburg {
+  padding-top: var(--big-space);
+  padding-bottom: var(--big-space);
+  --divider-height: 4rem;
+}
+.elHamburg .link p:first-child,
+.elHamburg .link h4 {
+  --color: var(--text-color-accent, inherit);
+  color: var(--color);
 }
 
 .elCodeHolder {
