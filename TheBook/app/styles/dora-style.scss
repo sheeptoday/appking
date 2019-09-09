@@ -6,6 +6,63 @@ sass --no-source-map TheBook/app/styles/dora-style.scss TheBook/app/styles/dora-
  *
  */
 
+// --------------------------------------------------------------
+// -------------------------------------------- Appart Defaults
+// --------------------------------------------------------------
+
+
+// -------------------------------------------- HTML Setup
+
+
+@import "components/html-core/css-settings";
+@import "components/html-core/css-varriors";
+@import "components/html-core/html-wrap";
+@import "components/html-core/html-typography";
+
+
+// -------------------------------------------- Layout Components
+
+
+@import "components/journal-grid/journal-grid";
+@import "components/offsidebar/offsidebar";
+
+
+// -------------------------------------------- Support Components
+
+
+@import "components/animate-css/required-animations";
+@import "components/svga-icons/svga-icons";
+
+
+// -------------------------------------------- Design Components
+
+
+@import "components/swed-design/swed-banner";
+@import "components/swed-design/swed-button";
+@import "components/swed-design/swed-dropdown";
+@import "components/swed-design/swed-site-head";
+
+@import "components/catgrounds/catgrounds";
+
+
+// --------------------------------------------------------------
+// -------------------------------------------- Higher priority
+// --------------------------------------------------------------
+
+
+@import "components/color-model/color-model";
+@import "components/html-core/css-workers";
+@import "components/article-markup/article-markup";
+
+
+// --------------------------------------------------------------
+// -------------------------------------------- Project
+// --------------------------------------------------------------
+
+html {
+  scroll-behavior: smooth;
+}
+
 /* ------------------------------------ constructor */
 
 
@@ -16,7 +73,7 @@ sass --no-source-map TheBook/app/styles/dora-style.scss TheBook/app/styles/dora-
 
   --text-color:         hsl( var(--HSL-NobleWhite) );
   --text-color-accent:  hsl( var(--HSL-NobleHighWhite) );
-  --text-color-descent: var(--text-color);
+  --text-color-descent: var(--light-shadow);
 
   --link-color:         hsl( var(--HSL-NobleAction) );
   --link-color-accent:  hsl( var(--HSL-NobleHoverAction) );
@@ -54,17 +111,11 @@ sass --no-source-map TheBook/app/styles/dora-style.scss TheBook/app/styles/dora-
     height: var(--height);
 }
 
-
-/* ------------------------------------ citizens */
-
-.elHamburg {
-    @extend .has-bottom-divider;
-    @extend .colors--hamburg;
+.mcScreen {
 
  /* settings */
 
-  --divider-height: 4rem;
-    min-height: 90vh;
+    min-height: 100vh;
 
  /* description */
 
@@ -75,7 +126,56 @@ sass --no-source-map TheBook/app/styles/dora-style.scss TheBook/app/styles/dora-
     flex-direction:  column;
     justify-content: center;
     align-content:   stretch;
+}
+.pseudo-back-color {
+    position: relative;
+    z-index:  0;
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top:     -1em;
+        right:   -1em;
+        bottom:  -1em;
+        left:    -1em;
+        background-color: var(--back-color-descent);
+    }
+}
 
+/* ------------------------------------ master */
+
+
+.el-master {
+    @extend .colors--ivory;
+    @extend .use-colors;
+}
+
+/* ------------------------------------ citizens */
+
+.elBootScreen {
+    @extend .mcScreen;
+    @extend .colors--root;
+    @extend .has-bottom-divider;
+  --divider-height: 4rem;
+}
+.elBootMessage {
+    @extend  .native-sans;
+    @extend  .text-block-smaller;
+    position: absolute;
+    top:      2px;
+    left:     2px;
+}
+
+
+.elHamburg {
+    @extend .mcScreen;
+    @extend .colors--hamburg;
+    @extend .has-bottom-divider;
+  --divider-height: 4rem;
+    .link {
+      --color: var(--text-color-accent, inherit);
+        color: var(--color);
+    }
 }
 
 .elNinaTheArrow {
@@ -231,6 +331,7 @@ sass --no-source-map TheBook/app/styles/dora-style.scss TheBook/app/styles/dora-
     //}
 }
 
+[markup] { display:block; }
 
 
 

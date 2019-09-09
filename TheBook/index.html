@@ -47,9 +47,6 @@
 
 
     <link
-        href="app/styles/appart-dev.css?v2019.8.31"
-        rel="stylesheet" type="text/css">
-    <link
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
         rel="stylesheet">
 
@@ -70,36 +67,32 @@
     <!-- ========================================= APP CUSTOM -->
 
     <link
+        href="app/styles/dora-style.css?v2019.8.31"
+        rel="stylesheet" type="text/css">
+    <link
         href="app/styles/el-chapters.css?v2019.8.31"
         rel="stylesheet" type="text/css">
     <link
         href="app/styles/el-optimized.css?v2019.8.31"
-        rel="stylesheet" type="text/css">
-    <link
-        href="app/styles/dora-style.css?v2019.8.31"
         rel="stylesheet" type="text/css">
 
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
-<body class="colors--ivory use-colors el-master">
+<body class="el-master">
+
+<!-- -------------------------------------------- Выступление стрелки Нины -->
 
 
-<!-- -------------------------------------------- Вступление барона фон Гамбургера -->
+    <section id="BootScreen" class="elBootScreen">
 
-<header id="Introduction" class="elHamburg">
+        <section class="elBootMessage">
+            <p>Content loaded</p>
+            <p>Welcome, Nina the Arrow</p>
+        </section>
 
-    <!-- Baron von Hamburger -->
-
-    <figure hidden class="el-ham">
-        <img src="art/characters/hamburger.svg" alt="Барон фон Гамбургер">
-    </figure>
-
-    <!-- Nina the Arrow -->
-
-    <figure>
-        <button class="elNinaTheArrow">
+        <button class="elNinaTheArrow" role="balerina">
             <svg
                 id="svg-NinaTheArrow"
                 xmlns="http://www.w3.org/2000/svg"
@@ -182,14 +175,90 @@
             </g>
             </svg>
         </button>
+
+    </section>
+
+
+<!-- -------------------------------------------- Вступление барона фон Гамбургера -->
+
+<header id="Introduction" class="elHamburg">
+
+    <!-- Главное меню -->
+
+    <header class="auto-margin">
+        <h1>Король Апп</h1>
+    </header>
+    <section>
+        <ul markup class="group-collisting auto-margin" style="--max-columns: 4;">
+            <li class="pseudo-back-color">
+                <a markup href="#Begin">
+                    <p>Глава О.</p>
+                    <h4>Оптимизация</h4>
+                    <p>Сельский бунт, заветы старой Поговорки и деда Баяна.</p>
+                </a>
+            </li>
+            <li>
+                <a markup href="Chapter-1.html" class="link">
+                    <p>Глава 1.</p>
+                    <h4>Супервулкан</h4>
+                </a>
+                <p>Клюв для Ворона, разговор с Создателем, встреча с Историей, кот.</p>
+            </li>
+            <li>
+                <a markup href="Chapter-2.html" class="link">
+                    <p>Глава 2.</p>
+                    <h4>Миссия</h4>
+                </a>
+                <p>Спасение модели DNA.</p>
+            </li>
+            <li>
+                <a markup href="Chapter-2.html" class="link">
+                    <p>Глава 3.</p>
+                    <h4>Болото</h4>
+                </a>
+                <p>Поиск имени в Карбонских болотах, Сетера и Гетера проводят экзорцизм.</p>
+            </li>
+            <li class="text-color-descent">
+                <span markup href="#">
+                    <p>Глава 4.</p>
+                    <h4>Перевал ошибок</h4>
+                </span>
+                <p>Граница экрана, ловля ошибок покрупнее, появление волка в шкуре волка.</p>
+            </li>
+            <li class="text-color-descent">
+                <span markup href="#">
+                    <p>Глава 5.</p>
+                    <h4>Овечки</h4>
+                </span>
+                <p>Нешуточный волейбольный матч, решение мелких проблем.</p>
+            </li>
+            <li class="text-color-descent">
+                <span markup href="#">
+                    <p>Глава 6.</p>
+                    <h4>Хеадер</h4>
+                </span>
+                <p>Меню в таверне.</p>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Baron von Hamburger -->
+
+    <hr>
+    <figure class="el-ham">
+        <img src="art/characters/hamburger.svg" alt="Барон фон Гамбургер">
     </figure>
+    <hr>
+
+    <p class="auto-margin link-color-descent">2019.9.9</p>
+
 
 </header>
 
 
 <!-- -------------------------------------------- Chapter 0. -->
 
-<main class="book-of-chapters -x- journal-grid book-markup">
+<main id="Begin" class="book-of-chapters -x- journal-grid book-markup">
 
     <figure class="layer has-top-divider has-bottom-divider">
         <img class="width" style="--width:100%" src="art/illustrations/optimization-picture.jpg" alt="Иллюстрация истории. Жители настаивают на оптимизации.">

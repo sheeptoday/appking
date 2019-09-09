@@ -1,0 +1,25 @@
+/** base css settings
+ *  2019.9.9
+ */
+
+
+:root,
+.root-settings {
+
+  --line-height:   1.5;
+
+ /* Default spacing */
+
+  --row-space:     1.5rem;                              /* Vertical */
+  --col-space:     1.5rem;                              /* Horizontal */
+  --big-space:       4rem;                              /* Expanded */
+  --all-space:     var(--row-space) var(--col-space);   /* Shortcode Combined */
+
+ /* z-indexes order */
+
+  --z-index--sidebar: 100;
+
+}
+
+
+/*  EOF base css settings */
