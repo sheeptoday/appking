@@ -265,9 +265,29 @@ html {
       --color: var(--text-color-accent, inherit);
         color: var(--color);
     }
+
+ /* update collisting for mobile */
+    .group-collisting {
+        @media (max-width:32em) {
+            column-width: 10em;
+            column-gap:    3em;
+            /* 13/16 */
+            font-size:   var(--dec-font-size,   calc(13/16*1em) );
+            line-height: var(--dec-line-height, calc(16/13) );
+        }
+    }
 }
 
-
+.elIllustration {
+    @extend .layer;
+    @extend .box;
+    &>img {
+        @extend .auto-margin;
+      --max-height:80vh;
+        max-height: var(--max-height);
+        border:  var(--sx) solid currentColor;
+    }
+}
 .elCodeHolder {
  /* settings */
  /* description */
@@ -342,7 +362,12 @@ html {
 }
 
 [markup] { display:block; }
-
+.book-markup blockquote {
+    @extend .box;
+    @extend .color-box;
+  --background-color: var(--back-color-accent, transparent);
+    border-radius:    calc( 0.25*var(--sx) );
+}
 
 
 /*  EOF book illustration */

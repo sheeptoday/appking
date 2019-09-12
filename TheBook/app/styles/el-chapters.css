@@ -486,9 +486,6 @@
             margin-top:    var(--sy);
             margin-bottom: var(--sy);
         }
-        .book-chapter-caption {
-            transform: translateX(calc((-0.75)*var(--sx)*var(--if-grid-no-tiny, 1)));
-        }
         .book-illustration {
             margin-top:    var(--sy);
             margin-bottom: var(--sy);
@@ -510,7 +507,7 @@
             max-width: 18em;
         }
 
-        .book-markup blockquote {
+        .book-markup blockquote--- {
             background-color: var(--back-color--descent);
             padding:          calc( var(--sx) - var(--sx-text-correction, 0) ) var(--sx);
             border-radius:    calc( 0.25*var(--sx) );

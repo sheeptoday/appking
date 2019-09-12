@@ -589,6 +589,9 @@ body {
   --grid-part--SIDE: 0;
   --grid-part--ROOT: 0 [root-start] 0 [root-end] 0;
   --grid-part--ROOF: 0 [roof-start] 0 [roof-end] 0;
+  /* mobile state */
+  --if-grid-is-tiny: 1;
+  --if-grid-no-tiny: 0;
 }
 
 @media (min-width: 38rem) {
@@ -602,6 +605,9 @@ body {
     --grid-part--SIDE: 0 var(--ns) var(--nb) var(--ne) 0;
     --grid-part--ROOT: 0 [root-start] 0 [root-end] 0;
     --grid-part--ROOF: 0 [roof-start] 0 [roof-end] 0;
+    /* mobile state */
+    --if-grid-is-tiny: 0;
+    --if-grid-no-tiny: 1;
   }
 }
 @media (min-width: 58rem) {
@@ -650,7 +656,7 @@ body {
 /* columns */
 .base,
 .wide,
-.side, .box,
+.side, .box, .book-markup blockquote, .elIllustration,
 .note, .block,
 .keep-layer,
 .keep-base,
@@ -680,7 +686,7 @@ body {
 }
 
 /* Order #2 important */
-.box {
+.box, .book-markup blockquote, .elIllustration {
   grid-column: wrap;
 }
 
@@ -706,7 +712,7 @@ body {
   grid-column: full;
 }
 
-.layer, .chapter-layer {
+.layer, .elIllustration, .chapter-layer {
   grid-column: full;
 }
 
@@ -732,7 +738,7 @@ body {
 .keep-wide,
 .base,
 .wide,
-.side, .box,
+.side, .box, .book-markup blockquote, .elIllustration,
 .note, .block {
   --grid-part--ROOT: 0 [root-start] 0 [root-end] 0;
   --grid-part--ROOF: 0 [roof-start] 0 [roof-end] 0;
@@ -741,7 +747,7 @@ body {
 /* #2 Cut [base] */
 .keep-wide,
 .wide,
-.side, .box,
+.side, .box, .book-markup blockquote, .elIllustration,
 .note, .block {
   --grid-part--BASE-START: 0 [base-start] 0;
   --grid-part--BASE-END: 0 [base-end] 0;
@@ -749,7 +755,7 @@ body {
 
 /* #3 Cut [side] */
 .wide,
-.side, .box,
+.side, .box, .book-markup blockquote, .elIllustration,
 .note, .block {
   --grid-part--WRAP-START: 0 [wrap-start] var(--ns);
   --grid-part--WRAP-END: var(--ne) [wrap-end] 0;
@@ -758,7 +764,7 @@ body {
 
 /* #4 Reset [main] width */
 .wide,
-.side, .box,
+.side, .box, .book-markup blockquote, .elIllustration,
 .note, .block {
   --grid-part--MAIN: 0 [main-start] 1fr [main-end] 0;
 }
@@ -770,11 +776,16 @@ body {
 }
 
 /** -------------------------------- Components */
-/*** note with smaller font */
+/*** note decoration */
 .note:not(.keep-font-size) {
   /* 13/16 */
   font-size: var(--dec-font-size, calc(13/16*1em));
   line-height: var(--dec-line-height, calc(16/13));
+}
+
+.note {
+  --padding: calc( var(--sx)*var(--if-grid-is-tiny,0) );
+  padding: var(--padding);
 }
 
 /*** remove row gap */
@@ -788,12 +799,13 @@ body {
 }
 
 /*** background paddings */
-.color-box, .color-box-accent, .color-box-descent {
+.color-box, .book-markup blockquote, .color-box-accent, .color-box-descent {
   --padding-top: var(--row-space, 1rem);
   --padding-bottom: var(--row-space, 1rem);
+  --background-color: var(--back-color-descent, transparent);
   padding-top: var(--padding-top);
   padding-bottom: var(--padding-bottom);
-  background-color: var(--back-color-descent, transparent);
+  background-color: var(--background-color);
 }
 
 /*  EOF journal-grid */
@@ -2047,14 +2059,14 @@ body {
   align-self: center;
 }
 
-.auto-margin {
+.auto-margin, .elIllustration > img {
   --margin-left: auto;
   --margin-right: auto;
   margin-left: var(--margin-left);
   margin-right: var(--margin-right);
 }
 
-.layer, .chapter-layer {
+.layer, .elIllustration, .chapter-layer {
   grid-column: full;
 }
 
@@ -2341,11 +2353,27 @@ html {
   padding-top: var(--big-space);
   padding-bottom: var(--big-space);
   --divider-height: 4rem;
+  /* update collisting for mobile */
 }
 .elHamburg .link p:first-child,
 .elHamburg .link h4 {
   --color: var(--text-color-accent, inherit);
   color: var(--color);
+}
+@media (max-width: 32em) {
+  .elHamburg .group-collisting {
+    column-width: 10em;
+    column-gap: 3em;
+    /* 13/16 */
+    font-size: var(--dec-font-size, calc(13/16*1em));
+    line-height: var(--dec-line-height, calc(16/13));
+  }
+}
+
+.elIllustration > img {
+  --max-height:80vh;
+  max-height: var(--max-height);
+  border: var(--sx) solid currentColor;
 }
 
 .elCodeHolder {
@@ -2410,6 +2438,11 @@ html {
 
 [markup] {
   display: block;
+}
+
+.book-markup blockquote {
+  --background-color: var(--back-color-accent, transparent);
+  border-radius: calc( 0.25*var(--sx) );
 }
 
 /*  EOF book illustration */
