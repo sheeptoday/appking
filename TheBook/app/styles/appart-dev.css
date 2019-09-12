@@ -478,76 +478,107 @@ body {
 
 /*  EOF Typography */
 /** journal-grid
- *  book-style content layout
- *  2019.8.16
+ *  CSS-grid for articles
+ *  2019.9.12, Dora
  *
  *  CSS
  *
  */
-/** -------------------------------- grid settings */
+/** ----------------------------- grid settings */
 .journal-grid {
-  /* space units */
   --sx: var(--col-space, 1.5rem);
+  /* - space units: x, y, big */
   --sy: var(--row-space, 1.5rem);
-  --syx: var(--sy) var(--sx);
-  /* column sizes — [w] ( [ma+mb] [n] ) [e] */
-  --size-ma: 24rem;
-  --size-mb: 8rem;
-  --size-n: 16rem;
-  --size-w: minmax(0, 4rem);
-  --size-e: minmax(0, 100vw); }
+  --sb: var(--big-space, 4rem);
+  --main-column-max-size: 35rem;
+  /* - column sizes */
+  --note-column-max-size: 16rem;
+  --note-column-min-size: 10rem;
+  /* ----------------------------- NAMING STRUCTURE
+     [full]
+     - [root]                     - not used / reserved for centering
+     - [base]
+       - [wrap]>[main]<[wrap]     - main column with padding around
+       - [side]>[note]<[side]     - note column with padding around
+     - [roof]                     - remaining screen space
+   */
+  /* ----------------------------- RESIZING RULES
+     type A     - one column
+     type B     - two columns [main]+[side]
+     type C     - all columns [main]+[side]+[roof]
+     type CC    - (centered)  [root]+[main]+[side]+[roof]
+   */
+  /* Grid Type A */
+  --grid-part--BASE-START: 0 [base-start] 0;
+  --grid-part--BASE-END: 0 [base-end] 0;
+  --grid-part--WRAP-START: 0 [wrap-start] var(--ns);
+  /* join note */
+  --grid-part--MAIN: 0 [main-start] var(--ma) [main-end] 0;
+  --grid-part--WRAP-END: var(--ne) [wrap-end] 0;
+  --grid-part--SIDE: 0;
+  --grid-part--ROOT: 0 [root-start] 0 [root-end] 0;
+  --grid-part--ROOF: 0 [roof-start] 0 [roof-end] 0; }
 
-/** -------------------------------- grid formula */
+@media (min-width: 38rem) {
+  .journal-grid {
+    /* Grid Type B */
+    --grid-part--BASE-START: 0 [base-start] 0;
+    --grid-part--BASE-END: 0 [base-end] 0;
+    --grid-part--WRAP-START: 0 [wrap-start] var(--sx);
+    --grid-part--MAIN: 0 [main-start] var(--mb) [main-end] 0;
+    --grid-part--WRAP-END: var(--sx) [wrap-end] 0;
+    --grid-part--SIDE: 0 var(--ns) var(--nb) var(--ne) 0;
+    --grid-part--ROOT: 0 [root-start] 0 [root-end] 0;
+    --grid-part--ROOF: 0 [roof-start] 0 [roof-end] 0; } }
+@media (min-width: 58rem) {
+  .journal-grid {
+    /* Grid Type C */
+    --grid-part--BASE-START: 0 [base-start] var(--bp);
+    --grid-part--BASE-END: var(--bp) [base-end] 0;
+    --grid-part--WRAP-START: 0 [wrap-start] var(--sx);
+    --grid-part--MAIN: 0 [main-start] var(--mc) [main-end] 0;
+    --grid-part--WRAP-END: var(--sx) [wrap-end] 0;
+    --grid-part--SIDE: 0 var(--ns) var(--nc) var(--ne) 0;
+    --grid-part--ROOT: 0 [root-start] 0 [root-end] 0;
+    --grid-part--ROOF: 0 [roof-start] 1fr [roof-end] 0; } }
+@media (min-width: 58rem) {
+  .journal-grid.centrale {
+    /* Grid Type CC */
+    --grid-part--ROOT: 0 [root-start] 1fr [root-end] 0;
+    --grid-part--ROOF: 0 [roof-start] 1fr [roof-end] 0; } }
+/** -------------------------------- Formula Shortcuts */
 .journal-grid {
-  /* mobile state multiplyer */
-  --if-grid-is-tiny: 0;
-  --if-grid-no-tiny: 1;
-  /* main text collumn */
-  --open-main-padding: pm_;
-  --open-main: m_;
-  --stop-main: _m;
-  --stop-main-padding: _pm;
-  /* parts in formula */
-  --grid-part--main-content: var(--size-ma) [_ma] var(--sx) [_pma] 0 [pmb_] var(--sx) [mb_] var(--size-mb);
-  --grid-part--note-column: 0 [pn_] var(--sx) [n_] var(--size-n) [_n] var(--sx) [_pn];
-  --grid-part--main-space: 0;
-  --grid-part--main-gap: var(--sx);
-  --grid-part--full-start: [full-start w_] var(--size-w) [_w] 0;
-  --grid-part--full-end: 0 [e_] var(--size-e) [_e full-end];
-  --grid-part--empty-start: [full-start w_ e_] 0;
-  --grid-part--empty-end: 0 [_w _e full-end]; }
+  --bp: minmax( 0, calc( var(--sb) - var(--sx) ) );
+  /* [base] padding size */
+  --ns: 0 [side-start] var(--sx) [note-start] 0;
+  /* [side] opening part */
+  --ne: 0 [note-end] var(--sx) [side-end] 0;
+  /* [side] closing part */
+  --ma: 1fr;
+  /* [main] size type A */
+  --na: 0;
+  /* [note] size type A */
+  --mb: 7fr;
+  /* [main] size type B */
+  --nb: minmax( var(--note-column-min-size), 3fr );
+  /* [note] size type B */
+  --mc: var(--main-column-max-size);
+  /* [main] size type C */
+  --nc: var(--note-column-max-size);
+  /* [note] size type C */ }
 
-/** -------------------------------- mobile state */
-@media (max-width: 65rem) {
-  .journal-grid {
-    /* remove strict column sizes */
-    --size-ma: 3fr;
-    --size-mb: 1fr;
-    --size-n: 2fr;
-    --size-w: minmax(0, auto);
-    --size-e: minmax(0, auto); } }
-@media (max-width: 47rem) {
-  .journal-grid {
-    /* change state */
-    --if-grid-is-tiny: 1;
-    --if-grid-no-tiny: 0;
-    /* note-column appears as main-column */
-    --open-main-padding: pm_ pn_ pmb_;
-    --open-main: m_ n_ mb_;
-    --stop-main: _m _n _ma;
-    --stop-main-padding: _pm _pn _pma;
-    /* mobile layout behavoir */
-    --grid-part--note-column: 0;
-    --grid-part--main-content: 1fr; } }
-/** -------------------------------- define grid */
-/* components */
-.figured,
+/** -------------------------------- Define Grid */
+/* columns */
+.base,
 .wide,
-.note,
-.box,
-.block,
+.side, .box,
+.note, .block,
+.keep-layer,
+.keep-base,
+.keep-wide,
 .keep-grid,
 .journal-grid {
+  /* Grid Seed */
   display: grid;
   align-items: start;
   justify-content: start;
@@ -555,95 +586,113 @@ body {
   grid-auto-rows: min-content;
   grid-row-gap: var(--sy);
   grid-column-gap: 0;
-  grid-template-columns: var(--grid-part--full-start) [var(--open-main-padding)] var(--grid-part--main-gap) var(--grid-part--main-space) [var(--open-main)] var(--grid-part--main-content) [var(--stop-main)] var(--grid-part--main-gap) [var(--stop-main-padding)] var(--grid-part--note-column) var(--grid-part--full-end); }
+  /* Template Dora */
+  grid-template-columns: [full-start] var(--grid-part--ROOT) var(--grid-part--BASE-START) var(--grid-part--WRAP-START) var(--grid-part--MAIN) var(--grid-part--WRAP-END) var(--grid-part--SIDE) var(--grid-part--BASE-END) var(--grid-part--ROOF) [full-end]; }
 
-/* column matrix */
+/** -------------------------------- Define Columns */
 .journal-grid * {
-  grid-column: m_ / _m; }
+  grid-column: main; }
 
 /* Order #1 important */
 .block {
-  grid-column: m_ / _m; }
+  grid-column: main; }
 
 /* Order #2 important */
+.box {
+  grid-column: wrap; }
+
+/* Order #3 important */
 .keep-grid {
   grid-column: full; }
 
-/* Order #3 important */
+/* Order #4 important */
+.keep-layer {
+  grid-column: full; }
+
+.keep-base {
+  grid-column: base; }
+
+.keep-wide {
+  grid-column: wrap-start / side-end; }
+
+.journal-grid {
+  grid-column: full; }
+
 .layer {
   grid-column: full; }
 
-.box {
-  grid-column: pm_ / _pm; }
+.base {
+  grid-column: base; }
 
 .wide {
-  grid-column: pm_ / _pn; }
+  grid-column: wrap-start / side-end; }
 
-/* has empty start */
-.note,
-.wide,
-.box,
-.block {
-  --grid-part--full-start: var(--grid-part--empty-start);
-  --grid-part--full-end: var(--grid-part--empty-end); }
+.side {
+  grid-column: side; }
 
-/* has removed note */
-.note,
-.wide:not(.keep-grid),
-.box {
-  --open-main-padding: pm_ pn_ pmb_;
-  --open-main: m_ n_ mb_;
-  --stop-main: _m _n _ma;
-  --stop-main-padding: _pm _pn _pma;
-  --grid-part--note-column: 0;
-  --grid-part--main-content: 1fr; }
-
-/* has removed content paddings */
-.journal-grid .block {
-  /* +1 level */
-  --open-main-padding: pm_ pn_ pmb_;
-  --open-main: m_ n_ mb_;
-  --stop-main: _m _n _ma;
-  --stop-main-padding: _pm _pn _pma;
-  --grid-part--note-column: 0;
-  --grid-part--main-content: 1fr;
-  --grid-part--main-gap: 0; }
-
-/** -------------------------------- components */
-/*** note component */
 .note {
-  grid-column: pn_ / _pn;
-  --grid-part--main-space: calc( var(--sx)*var(--if-grid-is-tiny, 0) ); }
+  grid-column: note; }
 
+/** -------------------------------- Define Subgrids */
+/* #1 Cut [root]/[roof] */
+.keep-base,
+.keep-wide,
+.base,
+.wide,
+.side, .box,
+.note, .block {
+  --grid-part--ROOT: 0 [root-start] 0 [root-end] 0;
+  --grid-part--ROOF: 0 [roof-start] 0 [roof-end] 0; }
+
+/* #2 Cut [base] */
+.keep-wide,
+.wide,
+.side, .box,
+.note, .block {
+  --grid-part--BASE-START: 0 [base-start] 0;
+  --grid-part--BASE-END: 0 [base-end] 0; }
+
+/* #3 Cut [side] */
+.wide,
+.side, .box,
+.note, .block {
+  --grid-part--WRAP-START: 0 [wrap-start] var(--ns);
+  --grid-part--WRAP-END: var(--ne) [wrap-end] 0;
+  --grid-part--SIDE: 0; }
+
+/* #4 Reset [main] width */
+.wide,
+.side, .box,
+.note, .block {
+  --grid-part--MAIN: 0 [main-start] 1fr [main-end] 0; }
+
+/* #5 Remove wrap-padding */
+.note, .block {
+  --grid-part--WRAP-START: 0 [wrap-start side-start note-start] 0;
+  --grid-part--WRAP-END: 0 [wrap-end side-end note-end] 0; }
+
+/** -------------------------------- Components */
+/*** note with smaller font */
 .note:not(.keep-font-size) {
   /* 13/16 */
   font-size: var(--dec-font-size, calc(13/16*1em));
   line-height: var(--dec-line-height, calc(16/13)); }
 
-/*** figured component + .figured.card */
-.figured {
-  grid-column: pm_ / _pn;
-  margin-bottom: calc( var(--sy)*var(--if-grid-is-tiny) );
-  --grid-part--full-start: var(--grid-part--empty-start);
-  --grid-part--full-end: var(--grid-part--empty-end); }
-
-.figured > * {
-  grid-column: m_ / _ma; }
-
-.figured > figure,
-.figured > .figure {
-  grid-column: pmb_ / _pn; }
-
-.figured.card > * {
-  order: calc( 2*var(--if-grid-is-tiny, 0) ); }
-
-.figured.card > figure,
-.figured.card > .figure {
-  order: calc( 1*var(--if-grid-is-tiny, 0) ); }
-
-/*** remove row gap, use custom layers each row */
+/*** remove row gap */
 .join-layers {
   grid-row-gap: 0; }
+
+/*** centered grid */
+.journal-grid.central {
+  /* descibed in @media section */ }
+
+/*** background paddings */
+.color-box, .color-box-descent, .color-box-accent {
+  --padding-top: var(--row-space, 1rem);
+  --padding-bottom: var(--row-space, 1rem);
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom);
+  background-color: var(--back-color-descent, transparent); }
 
 /*  EOF journal-grid */
 /** === ༼°▽°༽ === Offsidebar  */
@@ -670,13 +719,14 @@ body {
   /* bar is never full width, minimal gap  */
   --empty-space-offset: 3rem;
   /* open animation time  */
-  --transition-duration--slidein: 240ms; }
+  --transition-duration--slidein: 340ms;
+  --transition-duration--overlay: 1.4s; }
 
 /** -------------------------------- two sides difference */
 /* Eastside → default */
 .offsidebar {
   /* bar position */
-  --left: auto;
+  --left: var(--state-width, auto);
   --right: 0;
   --transform-origin--horizontal: right;
   /* close icon position */
@@ -689,7 +739,7 @@ body {
 .offsidebar.from-westside {
   /* bar position */
   --left: 0;
-  --right: auto;
+  --right: var(--state-width, auto);
   --transform-origin--horizontal: left;
   /* close icon position */
   --close-icon-right: calc( -1 * var(--empty-space-offset) );
@@ -700,11 +750,13 @@ body {
 /** -------------------------------- closed/active states */
 .offsidebar {
   --state-event: none;
-  --state-value: 0; }
+  --state-value: 0;
+  --state-width: 0; }
 
 .offsidebar.is-active {
   --state-event: all;
-  --state-value: 1; }
+  --state-value: 1;
+  --state-width: auto; }
 
 /** -------------------------------- layout & behavior */
 .offsidebar {
@@ -825,6 +877,9 @@ body {
 .offsidebar .offsidebar-overlay {
   transition: opacity var(--transition-duration--slidein);
   transition-timing-function: var(--timing-function--focusZoom); }
+
+.offsidebar.is-active .offsidebar-overlay {
+  transition-duration: var(--transition-duration--overlay); }
 
 /* Animate offsidebar */
 .offsidebar-background {
@@ -1422,10 +1477,10 @@ body {
 .back-color {
   background-color: var(--back-color); }
 
-.back-color-accent {
+.back-color-accent, .color-box-accent {
   background-color: var(--back-color-accent); }
 
-.back-color-descent {
+.back-color-descent, .color-box-descent {
   background-color: var(--back-color-descent); }
 
 .link-color {
@@ -1759,18 +1814,18 @@ body {
  *
  */
 /* ----------------------------------- swed-banner alias */
-mark,
-.mark {
+mark, .mark {
   color: var(--text-color-accent, inherit);
-  background-color: transparent; }
+  background-color: transparent;
+  /* remove defaults */ }
 
 .book-of-chapters {
   grid-row-gap: 0; }
 
 .chapter {
-  --padding-top: calc( 4 * var(--row-space, 1rem) );
+  --padding-top: var(--big-space, 4rem);
   padding-top: var(--padding-top);
-  --padding-bottom: calc( 4 * var(--row-space, 1rem) );
+  --padding-bottom: var(--big-space, 4rem);
   padding-bottom: var(--padding-bottom);
   position: relative; }
 
@@ -1787,7 +1842,67 @@ mark,
 .nav-header {
   position: sticky;
   top: 0;
-  background-color: var(--back-color-accent); }
+  z-index: 1;
+  --padding-top: 0.25em;
+  --padding-bottom: 0.25em;
+  --menu-icon-placeholder: 2em;
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom); }
+
+.nav-header > * {
+  padding-right: var(--menu-icon-placeholder); }
+
+.nav-fly {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  --background-color: black;
+  --clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 0% 0%);
+  clip-path: var(--clip-path);
+  cursor: pointer;
+  background-color: var(--background-color);
+  transition: clip-path 240ms var(--timing-function--focusZoom); }
+
+.nav-fly:hover {
+  --clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%, 0% 100%);
+  --background-color: firebrick; }
+
+.has-offsidebar-overlay .nav-fly {
+  opacity: 0; }
+
+/* sidebar menu list */
+.content-menu {
+  margin: 0 calc( (-1) * var(--col-space) );
+  padding: 0;
+  list-style: none; }
+
+.content-menu > li > * {
+  display: block;
+  padding: 0.5rem var(--col-space);
+  text-decoration: none; }
+
+.content-menu > li > *:hover {
+  background-color: rgba(0, 0, 0, 0.25); }
+
+/* link decoration */
+.link-inline {
+  text-decoration: underline;
+  --text-decoration-color: currentColor;
+  text-decoration-color: var(--text-decoration-color); }
+
+.link-inline:hover {
+  --text-decoration-color: var(--link-color-accent, currentColor); }
+
+/* dev tools */
+[txt] {
+  opacity: 0.5; }
 
 /*  EOF Article markup */
 /** Some Project Paletes
@@ -2078,19 +2193,19 @@ mark,
 .use-shadow-background {
   background-color: var(--shadow-color); }
 
-.color-box {
-  background-color: var(--secondary-background-color); }
-
+/*.color-box {
+    background-color: var(--secondary-background-color);
+}*/
 .color-text {
   color: var(--alternative-text-color, var(--secondary-color)); }
 
 .color-text-action {
   color: var(--action-color); }
 
-.color-box-accent {
-  background-color: var(--action-color);
-  color: var(--action-color--text); }
-
+/*.color-box-accent {
+    background-color: var(--action-color);
+    color:            var(--action-color--text);
+}*/
 .color-text-accent {
   color: var(--action-color); }
 
