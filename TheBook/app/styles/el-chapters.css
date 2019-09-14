@@ -155,16 +155,17 @@
     /* woman background */
     background-attachment: fixed;
     background-size:       cover;
-    background-position:   25% 50%;
+    background-position:   50% 50%;
     background-repeat:     no-repeat;
-    background-image: url(../../art/illustrations/Lola%20Le%20Lann%20-%20Un%20moment%20d%60%C3%A9garement.gif);
-    padding-top:      calc( 205/380*100% + 2rem );
+    background-image: url(../../art/placeholders/kelly-gale-giphy.gif);
+    padding-top:      calc( 266/480*100% + 2rem );
 }
 #UniverseModelAppears .el-appears-message {
     grid-column: full;
-    padding: var(--syx);
+    padding: var(--all-space);
     font-size: 6vw;
-    color: white;
+    line-height: 1;
+    color: black;
     opacity: 0.5;
 
     position: absolute;
@@ -176,8 +177,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: flex-end;
-    align-items: flex-end;
+    align-content: flex-start;
+    align-items: flex-start;
 }
 #UniverseModelAppears .dialog-avatar>img {
     margin-left: auto;
