@@ -2372,8 +2372,9 @@ html {
 
 .elIllustration > img {
   --max-height:80vh;
+  --border: var(--sx) solid currentColor;
   max-height: var(--max-height);
-  border: var(--sx) solid currentColor;
+  border: var(--border);
 }
 
 .elCodeHolder {
