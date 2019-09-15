@@ -1,4 +1,4 @@
-<!doctype html><!-- appart :: 8002 :: 2019.8.13 -->
+<!doctype html><!-- appart :: 8102 :: 2019.9.12 -->
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -7,7 +7,7 @@
     <!-- ========================================= HEAD CONTENT -->
 
 
-    <title>Король Апп. Глава 2.</title>
+    <title>Король Апп. Глава 1.</title>
     <meta name="description" content="История сайта, расказанная его компонентами" />
     <meta name="author"      content="zl 2019, www.sheep.today" />
 
@@ -70,14 +70,62 @@
     <!-- ========================================= APP CUSTOM -->
 
     <link
-        href="app/styles/el-chapters.css?v2019.8.13.opacity"
+        href="app/styles/dora-style.css?v2019.8.31"
         rel="stylesheet" type="text/css">
-
+    <link
+        href="app/styles/el-chapters.css?v2019.8.31"
+        rel="stylesheet" type="text/css">
+    <link
+        href="app/styles/el-optimized.css?v2019.8.31"
+        rel="stylesheet" type="text/css">
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
-<body class="colors--ivory use-colors">
+<body class="el-master">
+
+<!-- -------------------------------------------- Вступление барона фон Гамбургера -->
+
+<header id="Introduction" class="elHamburg">
+
+    <section class="group-content-rows midi-paragraph auto-margin padding">
+        <p>Мой друг,</p>
+        <p>Моя обязанность — приглашать меню по вызову. А эти письма к вам — считаю своим долгом. Не забывайте о моём титуле.</p>
+        <p>С искренней любовью,<br>барон фон Гамбургер.</p>
+    </section>
+
+    <!-- Baron von Hamburger -->
+
+    <hr>
+    <figure class="el-ham js-for-ChaptersBar">
+        <img src="art/characters/hamburger.svg" alt="Барон фон Гамбургер">
+    </figure>
+    <hr>
+
+    <!-- Activate von Hamburger position -->
+
+    <script>
+        function vonHamburgerIsActiveWhenGoesNorth (markerName) {
+            const marker    = document.querySelector('#Introduction .el-ham')
+            const dutyPlace = document.querySelector('.VonHamburgerOnDuty')
+            const doDisplay = () => dutyPlace.classList.add('is-active')
+            const doAway    = () => dutyPlace.classList.remove('is-active')
+
+            if( !window.IntersectionObserver ) return doDisplay()
+
+            const markerFunction = (reports) => {
+                let status = reports[0]
+                if (status.boundingClientRect.bottom>0) doAway()
+                else doDisplay()
+            }
+            const markerObserver = new IntersectionObserver(markerFunction, {threshold:[0]} )
+            markerObserver.observe(marker)
+        }
+
+        app.onload(f=>vonHamburgerIsActiveWhenGoesNorth())
+    </script>
+
+</header>
 
 <!-- -------------------------------------------- Вступление барона фон Гамбургера -->
 
@@ -677,12 +725,11 @@ DnaModel = {
         <section class="sidepanel">
 
             <header class="sidepanel-header">
-                <h2 class="min-title">Глава 2.</h2>
+                <h2 class="h4">Глава 2.</h2>
             </header>
 
             <nav class="sidepanel-content">
                 <ul class="asidebar-list js-for-ChaptersBar">
-                    <li><a href="#Introduction">Вступление</a></li>
                     <li><a href="#BrowserMission">Миссия кота</a></li>
                     <li><a href="#DnaRescue">Спасение модели DNA</a></li>
                     <li><a href="#CarbonSwamp">Карбонские болота</a></li>
@@ -693,7 +740,9 @@ DnaModel = {
             </nav>
 
             <footer class="sidepanel-footer">
-                <div><a href="index.html">Начало</a></div>
+                <div class="auto-margin">
+                    <a href="index.html#Introduction" class="swed-button">Список глав</a>
+                </div>
             </footer>
 
         </section>
