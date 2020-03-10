@@ -137,47 +137,76 @@
         <h1>Король Апп</h1>
         <h2>Сезон 2</h2>
         <h2>«<mark>The Care</mark>»</h2>
-        <p>2019·12·9 — 2020 —</p>
+        <p><!-- 2019·12·9 — -->2020 —</p>
     </div>
 
-    <div>
-        <h3 class="h5">В предыдущих сериях</h3>
-        <h4 mark>let model = { name: "Константа" }</h4>
-    </div>
-    
+    <h3 class="h4">В предыдущих сериях</h3>
+    <h4 class="h5" mark>let model = { name: "Константа" }</h4>
+
     <div class="rows midi-paragraph text-inline-bigger text-color-descent font-style" style="font-style:italic">
-        <p>Константа нашла имя в Карбонских болотах. Именем оказалась строптивая ящерка — примитивный стринг.</p>
-        <p>На помощь в укрощении примитива, по радуге спустились весёлые старушки Гетера и Сетера.</p>
-        <p>Герои отправились к южным скалам на поиски пропитания...</p>
+        <p>В Карбонских болотах Константа нашла своё имя. Именем оказался примитивный стринг — ящерка со строптивым характером.</p>
+        <p>Укротить ящерку помогли Гетера и Сетера — весёлые старушки-сестрички, спустившиеся по радуге.</p>
+        <p>Герои отправились на юг, где за горными вершинами просматривались планы на пропитание...</p>
     </div>
 
 </article>
 
-<!-- ============================================= INTRODUCTION -->
+<!-- ============================================= NICE WELCOME -->
 
+<article id="Welcome">
 
-<div class="screen-goes-away">
-    <article class="banner-ninini ennoia-theme">
-        <figure class="ban-ninini-animation">
-            <div class="animation-wrap">
-                <img
-                     src="art/illustrations/ennoia-ninini-welcome.jpg"
-                     alt="Beautiful welcome illustration by ennoia"
-                     class="animation-img">
-            </div>
-        </figure>
+    <style>
+        #Welcome .screen-goes-away {
+          --height: 75vh;
+        }
+        #Welcome .banner-ninini.ennoia-theme {
+          --banner-min-height: var(--height);
+          --back-color:        black;
+          --layer0-fadeA:      1;
+          --layer0-fadeB:      1;
+          --layer1-image:      url(../../art/illustrations/ninini-mask1.svg);
+          --layer2-image:      url(../../art/illustrations/ninini-mask2.svg);
+        }
+    </style>
+
+    <div class="screen-goes-away">
+        <article class="banner-ninini ennoia-theme">
+            <figure class="ban-ninini-animation">
+                <div class="animation-wrap">
+                    <img
+                         src="art/illustrations/ennoia-ninini-welcome.jpg"
+                         alt="Beautiful welcome illustration by ennoia"
+                         class="animation-img">
+                </div>
+            </figure>
+        </article>
+    </div>
+
+    <style>
+        .text-on-art {
+            line-height: 1.4;
+        }
+        .text-on-art span>h3,
+        .text-on-art span>q,
+        .text-on-art span>p {
+            display:           inline;
+            background-color:  hsla(65, 98%, 74%, 0.8);
+            line-height:       1.4;
+        }
+    </style>
+
+    <article class="chapter grid-king text-on-art">
+            <span><h3><q>Очень красиво!<br>Что это? Где мы?</q></h3></span>
+            <span><p>Константа восхищалась тем, что видела, — красивая игра движения, цвета и загадочных форм.</p></span>
+        <span><q></q></span>
     </article>
-</div>
+
+</article>
+
 
 
 <style>
-    .text-on-art .text {
-        display:           inline;
-        background-color:  hsla(0,0%,100%,0.9);
-        /*padding: 0.125rem  0.25rem;
-        margin: -0.125rem -0.25rem;
-        border-radius:     4px;*/
-    }
+
     
 </style>
 
