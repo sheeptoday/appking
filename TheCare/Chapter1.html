@@ -204,18 +204,42 @@
         <header class="inngrid join-layers">
             <span><h3>Очень красиво!</h3></span>
             <span><h3>Что это? Где мы?</h3></span>
-            <span><p>Константа восхищалась увиденному, — приятная игра движения, цвета и загадочных форм.</p></span>
+            <span><p>Константа восхищалась увиденному, — увлекающая игра цвета, движения и загадочных форм.</p></span>
             <hr>
             <span><h4>Это креативное сияние,</h4></span>
-            <span><p>— объяснил король Апп.</p></span>
+            <span><p>— ответил король Апп.</p></span>
         </header>
 
         <span><p>Если объяснять научно-кулинарным языком, то в массе опыта появляются триггеры цели вместе с питательными удобрениями. Всё перемешивается на медленном огне, не перенапрягаясь. Добавляется случайная щепотка азарта и несколько листиков рутины. Чем больше рутины, тем более вязкой выйдет смесь. Когда остынет, креативное сияние можно намазывать на экран.</p></span>
 
-        <span><p>Мы только что пересекли Верхнюю Границу Экрана. В этих землях любят рассказывать подобные объяснения и показывать красивые изображения.</p></span>
+        <span><p>Мы только что пересекли Верхнюю Границу Экрана. В этих землях любят показывать красивые изображения.</p></span>
 
-        <span><p>Показывают ради удовольствия или для привлечения уставших путников, — таких, как мы.</p></span>
+        <span><p>Показывают ради собственного удовольствия или для привлечения уставших путников, — таких, как мы.</p></span>
 
+    </article>
+
+    <style>
+        .el-kba-back-layer {
+          --img-width: 32rem;
+          --img-margin: calc( 0.5 * var(--img-width) );
+            margin-top: var(--img-margin);
+        }
+        .el-kba-back-img {
+            transform: translateY( calc(2/3*(-100%)) );
+        }
+    </style>
+
+    <article class="screen-goes-next use-colors colors--primary el-kba-back-layer">
+       <figure class="layer">
+           <img
+               src="art/illustrations/kba-back-view.svg"
+               alt="Heroes sitting from behind"
+               class="el-kba-back-img auto-margin width"
+               style="--width:var(--img-width);">
+       </figure>
+        <figure class="layer">
+            <img src="art/illustrations/mountain-range.svg" class="width" style="--width:100%;">
+        </figure>
     </article>
 
 </article>
@@ -230,10 +254,7 @@
 
 <article class="chapter grid-king text-on-art use-colors colors--root">
     <figure class="layer">
-        <img src="art/illustrations/mountain-range.svg" style="width: 100%;">
-    </figure>
-    <figure class="inngrid-wrap">
-        <img src="art/illustrations/header-map-2020.svg" alt="">
+        <img src="art/illustrations/header-map-2020.svg" class="auto-margin" alt="">
     </figure>
     <header>
         <h3><span class="text"><q>Очень красиво вокруг!</q></span></h3>
