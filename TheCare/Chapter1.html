@@ -73,6 +73,71 @@
         app.ForceErrorsIfShouldBe()
     </script>
 
+    <!-- ༼°▽°༽ screen von loader -->
+    <style id="von-loader-style">
+        #von-loader { /* settings */
+          --back-color:       hsl(212, 34%, 29%);
+          --text-color:       hsl(226, 27%, 90%);
+          --icon-size:        6rem;
+         /* SVG: arrows circle loading */
+          --icon-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>'); }
+        #von-loader {
+          --state-opacity:    0;
+          --state-pointer:    none;
+            transition:       opacity 240ms ease-out;
+            background-color: var(--back-color);
+            color:            var(--text-color);
+            pointer-events:   var(--state-pointer);
+            opacity:          var(--state-opacity);         
+            position: fixed;  z-index: 100;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0; }
+        #von-loader.is-active {
+          --state-opacity:    1;
+          --state-pointer:    all; }
+        #von-loader::after {
+            content:  '';
+            position: absolute; z-index: 1;
+            top:      calc(40% - 0.5*var(--icon-size));
+            left:     calc(50% - 0.5*var(--icon-size));
+            width:    var(--icon-size);
+            height:   var(--icon-size);
+            background-image:    var(--icon-image);
+            background-size:     var(--icon-size);
+            background-repeat:   no-repeat;
+            background-position: center center;
+            animation: VonLoaderRotation 1s linear infinite; }
+            @keyframes VonLoaderRotation {
+                from { transform: rotate(360deg); }
+                to   { transform: rotate(  1deg); }
+            }
+    </style>
+    <script id="von-loader-script">
+        function vonLoader ( autostart = true ) {
+            let screen = document.querySelector('body')
+            let loader = document.createElement('div')
+                loader.id = "von-loader"
+                screen.appendChild(loader)
+            let ACTIVE = 'is-active'
+            let show   = () => { loader.classList.add(ACTIVE); }
+            let hide   = () => { loader.classList.remove(ACTIVE) }
+            let action = () => {
+                if (window.addEventListener) window.addEventListener("load", hide, false)
+                else if (window.attachEvent) window.attachEvent(   "onload", hide)
+                else hide() }
+            let start = () => {
+                show()
+                action() }
+            let init = autostart => {
+                if (autostart) start()
+                return { loader, show, hide, start } }
+            return init(autostart)
+        }
+    </script>
+
+
 
     <!-- ========================================= DESIGN -->
 
@@ -114,6 +179,7 @@
     <!-- ====================================== END OF HEAD -->
 </head>
 <body class="colors--ivory">
+<script>vonLoader()</script>
 
 <!-- ============================================= INTRODUCTION -->
 
@@ -186,35 +252,40 @@
     </div>
 
     <style>
-        .text-on-art {
-            line-height: 1.4;
+        .text-on-art span {
+            display: block;
+            margin: 0 -0.5rem;
         }
         .text-on-art span>h4,
         .text-on-art span>h3,
         .text-on-art span>q,
         .text-on-art span>p {
             display:           inline;
-            background-color:  hsla(65, 98%, 74%, 0.8);
-            line-height:       1.4;
+            background-color:  hsla(65, 98%, 74%, 1);
+            padding: 0.25rem 0.5rem;
+           -webkit-box-decoration-break: clone;
+            box-decoration-break:        clone;
         }
     </style>
 
-    <article class="chapter grid-king text-on-art">
+    <article class="text-on-art chapter grid-king">
 
         <header class="inngrid join-layers">
             <span><h3>Очень красиво!</h3></span>
             <span><h3>Что это? Где мы?</h3></span>
-            <span><p>Константа восхищалась увиденному, — увлекающая игра цвета, движения и загадочных форм.</p></span>
+            <span><p>Константа восхищалась увиденному, — увлекающая игра цвета и движения загадочных форм.</p></span>
             <hr>
             <span><h4>Это креативное сияние,</h4></span>
-            <span><p>— ответил король Апп.</p></span>
+            <span><p>— сказал король.</p></span>
         </header>
 
-        <span><p>Если объяснять научно-кулинарным языком, то в массе опыта появляются триггеры цели вместе с питательными удобрениями. Всё перемешивается на медленном огне, не перенапрягаясь. Добавляется случайная щепотка азарта и несколько листиков рутины. Чем больше рутины, тем более вязкой выйдет смесь. Когда остынет, креативное сияние можно намазывать на экран.</p></span>
+        <span><p>Если объяснять научно-кулинарным языком, то в массе опыта появляются триггеры цели вместе с питательными удобрениями. Всё перемешивается на медленном огне, не перенапрягаясь. Добавляется случайная щепотка азарта и несколько листиков рутины. Чем больше рутины, тем более насыщенным будет сияние. Дать немного остыть, и можно намазывать на экран или витрину.</p></span>
 
-        <span><p>Мы только что пересекли Верхнюю Границу Экрана. В этих землях любят показывать красивые изображения.</p></span>
+        <span><p>Мы только что пересекли Верхнюю Границу Экрана. В этих землях любят рассказывать похожие научно-кулинарные объяснения.</p></span>
 
-        <span><p>Показывают ради собственного удовольствия или для привлечения уставших путников, — таких, как мы.</p></span>
+        <span><p>Но ещё больше, любят показывать красивые изображения. Для привлечения уставших путников, — таких, как мы.</p></span>
+
+        <span><p>Или просто ради удовольствия.</p></span>
 
     </article>
 
@@ -237,25 +308,33 @@
                class="el-kba-back-img auto-margin width"
                style="--width:var(--img-width);">
        </figure>
+
+        <article class="chapter grid-king">
+            <header>
+                <h4>Я уже привлечена...</h4>
+                <p>Константа весьма устала после подъёма в гору</p>
+            </header>
+            <p>...и хочу в удовольствия. Давайте поскорее отправимся к гостепреимным хозяевам!</p>
+            <p>Ещё не определилась чего хочу в первую очередь, — огромную тарелку горячей еды или горячую ванну. Меня устроит одновременное решение.</p>
+        </article>
+
         <figure class="layer">
             <img src="art/illustrations/mountain-range.svg" class="width" style="--width:100%;">
         </figure>
+
+        <figure class="chapter layer use-colors colors--root">
+            <img src="art/illustrations/header-map-2020.svg" class="auto-margin" alt="">
+        </figure>
+
     </article>
 
 </article>
 
 
 
-<style>
-
-    
-</style>
 
 
-<article class="chapter grid-king text-on-art use-colors colors--root">
-    <figure class="layer">
-        <img src="art/illustrations/header-map-2020.svg" class="auto-margin" alt="">
-    </figure>
+<article class="chapter grid-king text-on-art use-colors colors--secondary">
     <header>
         <h3><span class="text"><q>Очень красиво вокруг!</q></span></h3>
     </header>
