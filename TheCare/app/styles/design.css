@@ -1,4 +1,9 @@
 
+/** UPDATE ROOT */
+
+@media screen and (min-width:1540px) {
+    html { font-size: 20px; }
+}
 
 /** APP PRE COMPONENTS */
 
