@@ -6,140 +6,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- appseed 219.12.15 -->
 
-    <!-- ========================================= HEAD CONTENT -->
+<!-- ========================================= HEAD CONTENT -->
 
 
     <title>App King</title>
 
 
-    <!-- ========================================= BOOT -->
+<!-- ========================================= BOOT -->
 
 
-    <!-- ༼°▽°༽ style boot -->
-    <style>
-        body    { width: 100%; height: auto; }
-        img,svg { max-width: 100%; }
-    </style>
+<!-- ༼°▽°༽ style boot -->
+<style>
+    body    { width: 100%; height: auto; }
+    img,svg { max-width: 100%; }
+</style>
 
-    <!-- ༼°▽°༽ prefetch boot -->
-    <link rel="preconnect"   href="//fonts.gstatic.com">
-    <link rel="preload"      href="art/bergamot-just-browse-here.svg" as="image">
-    <!-- INFO: https://3perf.com/blog/link-rels/ -->
+<!-- ༼°▽°༽ prefetch boot -->
+<link rel="preconnect"   href="//fonts.gstatic.com">
+<link rel="preload"      href="art/bergamot-just-browse-here.svg" as="image">
+<!-- INFO: https://3perf.com/blog/link-rels/ -->
 
-    <!-- ༼°▽°༽ app boot -->
-    <script>
-        function AppBoot() {
+<!-- ༼°▽°༽ app boot -->
+<script>
+    function AppBoot() {
 
-         // The Noble Blastula
-            let app = this
-            app.has = { memory: [], arrived:true }
-            app.has.queens = [ 'onload', 'mutate' ]
-            /*
-            King has arrived --- let app = new AppBoot()
-            Take the Queen ----- app.attach('queen_name')(function)
-            Keep in memory ----- app.queen_name(function_parameters)
-            Execute later ------ app.onload(function)
-            2019.9.15
-            */
+     // The Noble Blastula
+        let app = this
+        app.has = { memory: [], arrived:true }
+        app.has.queens = [ 'onload', 'mutate' ]
+        /*
+        King has arrived --- let app = new AppBoot()
+        Take the Queen ----- app.attach('queen_name')(function)
+        Keep in memory ----- app.queen_name(function_parameters)
+        Execute later ------ app.onload(function)
+        2019.9.15
+        */
 
-         // The Noble Provocator
-            const proteinProvoker = function ImitateCriticalTasks () {
-              let tpp = new this.__proto__.constructor()
-              let must_have_a_memory = tpp.has.memory.push('something')
-              let must_accept_queens = like_this_one => true
-              tpp.attach('queen_id')(must_accept_queens)
-              tpp.queen_id('try this')
-            }
-
-         // Define responsibility
-            const TakeTheQueen = (queen) =>
-                {
-                    app[queen] =  ExecuteLater(queen)
-                    return (f) => ExecuteLater('update')({name:queen,f})
-                }
-            const KeepInMemory = (dna) => app.has.memory.push(dna)
-            const ExecuteLater =
-                 (responsible) =>
-                         (dna) => KeepInMemory({dna,for:responsible})
-
-         // Apply responsibility
-            app.attach = TakeTheQueen
-            app.has.queens.map( queen => app.attach(queen) )
-            app.ForceErrorsIfShouldBe =  proteinProvoker
+     // The Noble Provocator
+        const proteinProvoker = function ImitateCriticalTasks () {
+          let tpp = new this.__proto__.constructor()
+          let must_have_a_memory = tpp.has.memory.push('something')
+          let must_accept_queens = like_this_one => true
+          tpp.attach('queen_id')(must_accept_queens)
+          tpp.queen_id('try this')
         }
 
-     // Run Immediately
-        let app = new AppBoot()
-        app.ForceErrorsIfShouldBe()
-    </script>
-
-    <!-- ༼°▽°༽ screen von loader -->
-    <style id="von-loader-style">
-        #von-loader { /* settings */
-          --back-color:       hsl(212, 34%, 29%);
-          --text-color:       hsl(226, 27%, 90%);
-          --icon-size:        6rem;
-         /* SVG: arrows circle loading */
-          --icon-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>'); }
-        #von-loader {
-          --state-opacity:    0;
-          --state-pointer:    none;
-            transition:       opacity 240ms ease-out;
-            background-color: var(--back-color);
-            color:            var(--text-color);
-            pointer-events:   var(--state-pointer);
-            opacity:          var(--state-opacity);         
-            position: fixed;  z-index: 100;
-            top:      0;
-            right:    0;
-            bottom:   0;
-            left:     0; }
-        #von-loader.is-active {
-          --state-opacity:    1;
-          --state-pointer:    all; }
-        #von-loader::after {
-            content:  '';
-            position: absolute; z-index: 1;
-            top:      calc(40% - 0.5*var(--icon-size));
-            left:     calc(50% - 0.5*var(--icon-size));
-            width:    var(--icon-size);
-            height:   var(--icon-size);
-            background-image:    var(--icon-image);
-            background-size:     var(--icon-size);
-            background-repeat:   no-repeat;
-            background-position: center center;
-            animation: VonLoaderRotation 1s linear infinite; }
-            @keyframes VonLoaderRotation {
-                from { transform: rotate(360deg); }
-                to   { transform: rotate(  1deg); }
+     // Define responsibility
+        const TakeTheQueen = (queen) =>
+            {
+                app[queen] =  ExecuteLater(queen)
+                return (f) => ExecuteLater('update')({name:queen,f})
             }
-    </style>
-    <script id="von-loader-script">
-        function vonLoader ( autostart = true ) {
-            let screen = document.querySelector('body')
-            let loader = document.createElement('div')
-                loader.id = "von-loader"
-                screen.appendChild(loader)
-            let ACTIVE = 'is-active'
-            let show   = () => { loader.classList.add(ACTIVE); }
-            let hide   = () => { loader.classList.remove(ACTIVE) }
-            let action = () => {
-                if (window.addEventListener) window.addEventListener("load", hide, false)
-                else if (window.attachEvent) window.attachEvent(   "onload", hide)
-                else hide() }
-            let start = () => {
-                show()
-                action() }
-            let init = autostart => {
-                if (autostart) start()
-                return { loader, show, hide, start } }
-            return init(autostart)
+        const KeepInMemory = (dna) => app.has.memory.push(dna)
+        const ExecuteLater =
+             (responsible) =>
+                     (dna) => KeepInMemory({dna,for:responsible})
+
+     // Apply responsibility
+        app.attach = TakeTheQueen
+        app.has.queens.map( queen => app.attach(queen) )
+        app.ForceErrorsIfShouldBe =  proteinProvoker
+    }
+
+ // Run Immediately
+    let app = new AppBoot()
+    app.ForceErrorsIfShouldBe()
+</script>
+
+<!-- ༼°▽°༽ screen von loader -->
+<style id="von-loader-style">
+    #von-loader { /* settings */
+      --back-color:       hsl(212, 34%, 29%);
+      --text-color:       hsl(226, 27%, 90%);
+      --icon-size:        6rem;
+     /* SVG: arrows circle loading */
+      --icon-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>'); }
+    #von-loader {
+      --state-opacity:    0;
+      --state-pointer:    none;
+        transition:       opacity 240ms ease-out;
+        background-color: var(--back-color);
+        color:            var(--text-color);
+        pointer-events:   var(--state-pointer);
+        opacity:          var(--state-opacity);         
+        position: fixed;  z-index: 100;
+        top:      0;
+        right:    0;
+        bottom:   0;
+        left:     0; }
+    #von-loader.is-active {
+      --state-opacity:    1;
+      --state-pointer:    all; }
+    #von-loader::after {
+        content:  '';
+        position: absolute; z-index: 1;
+        top:      calc(40% - 0.5*var(--icon-size));
+        left:     calc(50% - 0.5*var(--icon-size));
+        width:    var(--icon-size);
+        height:   var(--icon-size);
+        background-image:    var(--icon-image);
+        background-size:     var(--icon-size);
+        background-repeat:   no-repeat;
+        background-position: center center;
+        animation: VonLoaderRotation 1s linear infinite; }
+        @keyframes VonLoaderRotation {
+            from { transform: rotate(360deg); }
+            to   { transform: rotate(  1deg); }
         }
-    </script>
+</style>
+<script id="von-loader-script">
+    function vonLoader ( autostart = true ) {
+        let screen = document.querySelector('body')
+        let loader = document.createElement('div')
+            loader.id = "von-loader"
+            screen.appendChild(loader)
+        let ACTIVE = 'is-active'
+        let show   = () => { loader.classList.add(ACTIVE); }
+        let hide   = () => { loader.classList.remove(ACTIVE) }
+        let action = () => {
+            if (window.addEventListener) window.addEventListener("load", hide, false)
+            else if (window.attachEvent) window.attachEvent(   "onload", hide)
+            else hide() }
+        let start = () => {
+            show()
+            action() }
+        let init = autostart => {
+            if (autostart) start()
+            return { loader, show, hide, start } }
+        return init(autostart)
+    }
+</script>
 
 
 
-    <!-- ========================================= DESIGN -->
+<!-- ========================================= DESIGN -->
 
 
     <link
@@ -156,27 +156,32 @@
         rel="stylesheet">
 
 
-    <!-- ========================================= APP -->
+<!-- ========================================= APP -->
 
 
-    <!-- required core -->
-    <script defer src="app/script/app-core.js"></script>
+<!-- required core -->
+<script defer src="app/script/app-core.js"></script>
 
-    <!-- interface libs -->
-    <script defer src="app/script/components/css-class-mutator.js"></script>
-    <script defer src="app/script/components/image-zzzoom.js"></script>
-    <script defer src="app/script/components/scroll-to-var.js"></script>
-    <script>app.attach('wayway')</script>
+<!-- interface libs -->
+<script defer src="app/script/components/css-class-mutator.js"></script>
+<script defer src="app/script/components/image-zzzoom.js"></script>
+<script defer src="app/script/components/scroll-to-var.js"></script>
+<script>app.attach('wayway')</script>
 
-    <!-- dev libs -->
-    <script defer src="app/script/components/survival-test.js"></script>
+<!-- dev libs -->
+<script defer src="app/script/components/survival-test.js"></script>
+
+<!-- offsidebar -->
+
+<script defer src="app/components/offsidebar/interface-offsidebar.js"></script>
+<link href="app/components/offsidebar/offsidebar.css" rel="stylesheet">
 
 
-    <!-- ========================================= SWAMP -->
+<!-- ========================================= SWAMP -->
 
 
-    <!-- ========================================= ʕ⊙ᴥ⊙ʔ == -->
-    <!-- ====================================== END OF HEAD -->
+<!-- ========================================= ʕ⊙ᴥ⊙ʔ == -->
+<!-- ====================================== END OF HEAD -->
 </head>
 <body class="colors--ivory">
 <script>vonLoader()</script>
@@ -261,16 +266,24 @@
             display: block;
             margin: 0 -0.5rem;
         }
-        .text-on-art span>h4,
+        .text-on-art span>h3 { line-height: 1.75; }
         .text-on-art span>h3,
+        .text-on-art span>h4,
         .text-on-art span>q,
         .text-on-art span>p {
             display:           inline;
-            background-color:  hsla(65, 98%, 74%, 1);
+          --background-color:  hsla(65, 98%, 74%, 1);
+            background-color:  var(--background-color);
             padding: 0.25rem 0.5rem;
            -webkit-box-decoration-break: clone;
             box-decoration-break:        clone;
         }
+        .btn-on-art {
+            border-radius: 0.5em;
+            cursor: pointer;
+        }
+        .btn-on-art:hover { --background-color: hsla(65, 68%, 64%, 1); }
+        
     </style>
 
     <article class="text-on-art chapter grid-king">
@@ -284,21 +297,60 @@
             <span><p>— сказал король.</p></span>
         </header>
 
-        <span><p>Если объяснять научно-кулинарным языком, то на питательных удобрениях в массе опыта разводятся триггеры целей. Не напряжно подогреваются, смешиваются с щепоткой азарта и несколькими листиками рутины. Чем больше рутины, тем жирнее сияние.</p></span>
+        <span><p>Если хочешь длинное объяснение, то</p> <p class="btn-on-art jsCreative">кнопка.</p> <p>Мне ближе к сердцу молчаливое созерцание.</p></span>
 
-        <span><p>Когда уже всё горит, становится ничего не понятно. На помощь приходят кулинарные книги. Рекомендую «Завтрак у Тиффани» — непонятное можно выводить на прод.</p></span>
-<!-- 
-        <span><p> Дать немного остыть, и можно намазывать на экран или витрину.</p></span>
+        <div style="height: 80vh"></div>
 
-        <span><p>Если объяснять научно-кулинарным языком, то в массе опыта появляются триггеры цели вместе с питательными удобрениями. Всё перемешивается на медленном огне, не перенапрягаясь. Добавляется случайная щепотка азарта и несколько листиков рутины. Чем больше рутины, тем более насыщенным будет сияние. Дать немного остыть, и можно намазывать на экран или витрину.</p></span>
-
-        <span><p>Мы только что пересекли Верхнюю Границу Экрана. В этих землях любят рассказывать похожие научно-кулинарные объяснения.</p></span>
-
-        <span><p>Но ещё больше, любят показывать красивые изображения. Для привлечения уставших путников, — таких, как мы.</p></span>
-
-        <span><p>Или просто ради удовольствия.</p></span>
- -->
     </article>
+
+    <section class="offsidebar WelcomeCreativeBar colors--primary">
+        <div class="offsidebar-container">
+                <header class="offsidebar-header   bar-header">
+                    <h4 class="h3">Креативное сияние</h4>
+                </header>
+            <div class="offsidebar-content bar-content">
+
+               <article style="max-width:24em;">
+                   <figure>
+                    <img
+                         src="art/illustrations/ennoia-ninini-welcome.jpg"
+                         alt="Beautiful welcome illustration by ennoia"
+                         class="animation-img">
+                   </figure>
+                   <br>
+                   <div>
+                       <mark>img:</mark>
+                       <a href="https://www.instagram.com/p/CAGByD6J5qy/" rel="nofollow">yana.ennoia</a> "heady spring green"
+                       <br>
+                       <mark>class:</mark>
+                       .banner.ninini
+                   </div>
+                   <br>
+                   <p>На питательных удобрениях $ в массе опыта Exp разводятся триггеры целей G.</p>
+                   <p>⋆ ⋆ ⋆</p>
+                   <p>Подогреваются без лишнего напряжения t=whait, смешиваются с щепоткой азарта RND и несколькими листиками рутины TODO. Чем больше рутины, тем жирнее сияние.</p>
+                   <p>⋆ ⋆ ⋆</p>
+                   <p>Когда уже всё горит при t=soon, становится ничего не понятно TODO=RND. Обычно на помощь приходят кулинарные книги 1-8-READ-MORE. Рекомендуется заказать «Завтрак у Тиффани» — трогательный пример, когда ничего непонятно но уже всё красиво выведено на PROD.</p>
+                   <br>
+                   <div>
+                       <mark>$:</mark>
+                       <input type="text" name="TODO" size=3>
+                       <mark>PROD:</mark>
+                       <input type="text" name="PROD" size=3>
+                   </div>
+                   <br>
+               </article>
+            </div>
+        </div>
+    </section>
+    <script>
+        function ActivateWelcomeCreativeBar() {
+            let  bar_api = InterfaceOffsideBar('WelcomeCreativeBar')
+            if  (bar_api)
+                 bar_api.delegateToggle(document.querySelector('.jsCreative'))
+        }
+        app.onload(ActivateWelcomeCreativeBar)
+    </script>
 
     <style>
         .el-kba-back-layer {
@@ -369,8 +421,11 @@
 <div class="chapter grid-king">
     <div class="dialog universe">
         <q>Что это было?</q>
+        <p>[задумка для сложных формул]</p>
     </div>
 </div>
+
+
 
 </body>
 </html>

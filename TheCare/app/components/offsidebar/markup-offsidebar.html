@@ -1,0 +1,72 @@
+<!-- 2019.12.20 -->
+
+<!-- ------------------------------ Minimal Bar -->
+
+<section class="offsidebar MinimalBarName">
+    <div class="offsidebar-container">
+        <div class="offsidebar-content">
+
+        </div>
+    </div>
+</section>
+
+<!-- ------------------------------ Default Bar -->
+
+<section class="offsidebar DefaultBar">
+    <div class="offsidebar-container">
+        <header class="offsidebar-header   bar-header">
+            <h2 class="h4">Bar</h2>
+        </header>
+        <section class="offsidebar-content bar-content">
+            <div>...</div>
+        </section>
+        <footer class="offsidebar-footer   bar-footer">
+            <p>Footer</p>
+        </footer>
+    </div>
+</section>
+
+<!-- ------------------------------ Full Bar -->
+
+<section class="offsidebar from-eastside FullBar">
+    <!-- <div class="offsidebar-overlay"></div>    <!-- auto insertion with js -->
+    <!-- <div class="offsidebar-background"></div> <!-- auto insertion with js -->
+    <div class="offsidebar-container">
+        <header class="offsidebar-header bar-header">
+            <h2 class="h4">Bar</h2>
+        </header>
+        <section class="offsidebar-content bar-content">
+            <p>...</p>
+        </section>
+        <!--
+        <section class="offsidebar-content  form-design form-functional">
+            <p>...</p>
+        </section>
+         -->
+        <footer class="offsidebar-footer bar-footer">
+            <p>Footer</p>
+        </footer>
+    </div>
+</section>
+
+<!-- ------------------------------ Westside Bar -->
+
+<section class="offsidebar from-westside WestsideBar">
+</section>
+
+<!-- ------------------------------ Bartender -->
+
+<button class="js-for-DefaultBar">Eastside Bar</button>
+<button class="js-for-WestsideBar">Eastside Bar</button>
+
+<!-- ------------------------------ JS-operator -->
+
+<script src="interface-offsidebar.js"></script>
+<script>
+    function DemoActivateDefaultBar() {
+        let  bar_api = InterfaceOffsideBar('DefaultBar')
+        if  (bar_api)
+             bar_api.delegateToggle(document.querySelector('.toggle-DefaultBar'))
+    }
+    app.onload(DemoActivateDefaultBar)
+</script>
