@@ -289,7 +289,7 @@
     <article class="text-on-art chapter grid-king">
 
         <header class="inngrid join-layers">
-            <span><h3>Очень красиво!</h3></span>
+            <span><h3>※Очень красиво!</h3></span>
             <span><h3>Что это? Где мы?</h3></span>
             <span><p>Константа восхищалась увиденному, — увлекающая игра цвета и движения загадочных форм.</p></span>
             <hr>
@@ -330,7 +330,7 @@
                    <p>⋆ ⋆ ⋆</p>
                    <p>Подогреваются без лишнего напряжения t=whait, смешиваются с щепоткой азарта RND и несколькими листиками рутины TODO. Чем больше рутины, тем жирнее сияние.</p>
                    <p>⋆ ⋆ ⋆</p>
-                   <p>Когда уже всё горит при t=soon, становится ничего не понятно TODO=RND. Обычно на помощь приходят кулинарные книги 1-8-READ-MORE. Рекомендуется заказать «Завтрак у Тиффани» — трогательный пример, когда ничего непонятно но уже всё красиво выведено на PROD.</p>
+                   <p>Когда закипает при t=soon, становится ничего не понятно TODO=RND. Обычно на помощь приходят кулинарные книги 1-800-READ-BOOKS. Рекомендуется заказать завтрак у Тиффани — трогательный пример, когда ничего не понятно, но уже всё красиво выведено на PROD.</p>
                    <br>
                    <div>
                        <mark>$:</mark>
@@ -361,6 +361,16 @@
         .el-kba-back-img {
             transform: translateY( calc(2/3*(-100%)) );
         }
+        .cat-found-button {
+            display: inline-block;
+            width:    min-content;
+            white-space:   nowrap;
+            padding: 0.25em 0.5em;
+            cursor:       pointer;
+            border-radius: 0.25em;
+            background-color: var(--link-color);
+            color:            var(--link-color--text);
+        }
     </style>
 
     <article class="screen-goes-next use-colors colors--primary el-kba-back-layer">
@@ -374,11 +384,12 @@
 
         <article class="chapter grid-king">
             <header>
-                <h4>Я уже привлечена...</h4>
-                <p>Константа весьма устала после подъёма в гору</p>
+                <h4>Что за кнопка такая?</h4>
+                <p>Удивился кот Браузер</p>
             </header>
-            <p>...и хочу в удовольствия. Давайте поскорее отправимся к гостепреимным хозяевам!</p>
-            <p>Ещё не определилась чего хочу в первую очередь, — огромную тарелку горячей еды или горячую ванну. Меня устроит одновременное решение.</p>
+            <div class="cat-found-button jsWelcomeCatBox">сама небольшая...</div>
+            <p>Забрал себе для дальнейшего изучения.</p>
+            <p>Никто не заметил, потому что все рассматривали стенд с картой местности.</p>
         </article>
 
         <figure class="layer">
@@ -393,6 +404,29 @@
 
 </article>
 
+
+    <section class="offsidebar WelcomeCatBox colors--primary">
+        <div class="offsidebar-container">
+                <header class="offsidebar-header   bar-header">
+                    <h4 class="h3">...а внутри</h4>
+                </header>
+            <div class="offsidebar-content bar-content">
+
+               <article style="max-width:24em;">
+                    <h3 class="h3">много места!</h3>
+               </article>
+
+            </div>
+        </div>
+    </section>
+    <script>
+        function ActivateWelcomeCatBox() {
+            let  bar_api = InterfaceOffsideBar('WelcomeCatBox')
+            if  (bar_api)
+                 bar_api.delegateToggle(document.querySelector('.jsWelcomeCatBox'))
+        }
+        app.onload(ActivateWelcomeCatBox)
+    </script>
 
 
 
