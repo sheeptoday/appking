@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="ru">
+<!-- Открывается HEAD. Это вступление к опере. -->
+<head>
+    <!--
+        CITE:
+        The following 2 meta tags *must* come first in the <head>
+        to consistently ensure proper document rendering.
+        Any other head element should come *after* these tags.
+    -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!--<divider>==========================================< ʕ⊙ᴥ⊙ʔ >-->
+
+    <!--
+        ОПИСАНИЕ
+    -->
+
+    <title>Code</title><!-- Долина индекса — пьеса в асинхронном коде -->
+    <meta name="description" content="Это пьеса для браузеров на языке ECMAScript 2015. В начале сюжета: рождение мира, подключение функций, выращивание контента... И код и результат выполнения кода являются героями пьесы." />
+    <meta name="author" content="ZL" />
+    <meta name="date" content="2018.6.19" />
+
+<!--<divider>==========================================< ʕ⊙ᴥ⊙ʔ >-->
+
+    <!--
+        ОРКЕСТРОМ ДИРИЖИРУЕТ БРАУЗЕР
+        музыканты помогают разным браузерам дирижировать одинаково
+    -->
+
+    <!-- Презентация музыкантов -->
+
+    <!-- babel, переводит код ECMAScript в обычный javascript -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- vue, отдаёт команды визуальным декорациям -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <!-- специальный музыкант для браузеров от microsoft -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+<!--<divider>==========================================< ʕ⊙ᴥ⊙ʔ >-->
+
+    <!--
+        ХУДОЖЕСТВЕННОЕ ОФОРМЛЕНИЕ: GeneralArtist.css
+        HTML теги это декорации, оформление декораций описано командами CSS.
+    -->
+    <link href="world/GeneralArtist.css" rel="stylesheet"  media="all" />
+
+    <!--
+        РЕЖИССЕР: GeneralDirector.js
+        Скрипты в тегах <script> это игра актёров.
+        Режиссёр запускает ангелов, которые следят за процессом.
+    -->
+    <script src="world/GeneralDirector.js"></script>
+
+    <!--
+        СЦЕНАРИЙ: Chromosome.js
+        В сценарии описан мир на момент рождения.
+        Сценарий называется Хромосомой, состоит из ДНК для жителей мира.
+    -->
+    <script src="world/Chromosome.js"></script>
+
+
+<!--<divider>==========================================< ʕ⊙ᴥ⊙ʔ >-->
+
+
+</head>
+
+<!-- В зале гаснет свет, открывается BODY -->
+
+<body>
+
+<!-- Открываются декорации мира. -->
+
+<main class="World">
+
+<!--
+/* ****************************************************************************
+   ЭПИЗОД I.
+   Описание мира. Создание мира и рождение короля
+   **************************************************************************** */
+   -->
+
+<script type="text/babel">
+
+Radio.chapter('Episode I');
+
+// География мира
+
+// Географические объёкты мира имеют графические свойства и отображаются на экране.
+// Главный континент разделён на земли — Lands.
+// Все наземные жители и объекты стоят на землях.
+
+function WorldLand(dna) {
+
+    // Описание земли
+
+    this.name = dna && dna.name ? dna.name : 'wild_desert' ; // имя - признак существования
+    this.age = dna && dna.age ? dna.age : 0 ; // возраст - признак видимости, 0=невидимый
+    this.map = dna && dna.map ? dna.map : false ; // привязанный к карте — подчиняется карте
+
+    // ------------ Actions
+
+    this.GrowUp = (age_limit) => {
+        if ( age_limit && this.age>=age_limit ) return this;
+        this.age++;
+        return this;
+    };
+    this.Conquer = () => {
+        // До захваченной земли можно добраться и собирать местные ресурсы.
+        this.map = true;
+        return this;
+    }
+    this.Lost = () => {
+        this.map = false;
+        return this;
+    }
+
+    // ------------ Services
+
+    this.isVisible = () => this.age ? true : false ;
+    this.isUnderControl = () => this.map ;
+
+}
+
+// Пищевая экосистема мира
+
+// ресурс  → добывает работу
+// работа → выполняется и создаёт продукт
+// продукт → используется или обменивается
+
+// Ресурсы привязаны к землям. Добывают из земли минералы и превращают минералы в работу, которую можно забрать. Уровень ресурса влияет на добычу.
+
+function WorldResource(dna) {
+
+    // Описание ресурса
+
+    this.name           = dna && dna.name ? dna.name : 'dreams' ;
+    this.homeland       = dna && dna.homeland ? dna.homeland : this.name ;
+    this.lvl            = dna && dna.lvl ? dna.lvl : 0 ;
+    this.minerals       = dna && dna.minerals ? dna.minerals : [] ;
+    this.joblist        = [];
+
+    // ------------ Actions
+
+    this.Update = function(limit){
+        if ( limit && limit <= this.lvl ) return this;
+        this.lvl++;
+        Radio.m('Resource updated: '+this.name+'.'+this.lvl);
+        return this;
+    }
+    this.Destroy = function(){
+        this.lvl = 0;
+        Radio.m('Resource destroyed: '+this.name+'.'+this.lvl);
+        return this;
+    };
+    this.Grab = function() {
+        this.joblist = [];
+        if ( ! this.isWild() )
+            for ( let everything_you_can_grab in this.minerals )
+                if ( this.verifyJob(this.minerals[everything_you_can_grab]) )
+                    this.joblist.push(this.minerals[everything_you_can_grab].job);
+        return this.joblist;
+    };
+
+    // ------------ Services
+
+    this.isWild = () => this.lvl ? false : true ;
+    this.verifyJob = function(job) {
+        if (!job||!job.job) return false;
+        if ( job.min_lvl && job.min_lvl>this.lvl ) return false;
+        if ( job.max_lvl && job.max_lvl<this.lvl ) return false;
+        return true;
+    }
+
+}
+
+// Работа выполнятся в городе и после завершения создаёт продукты.
+
+function WorldJob(dna) {
+
+    // Описание работы
+
+    this.name = dna && dna.name ? dna.name : 'prokastination';
+    this.progress = 0;
+    this.finish = dna && dna.finish ? dna.finish : () => false ;
+    this.dna = dna;
+
+    // Стоимость работы определяется в DWS
+    //      d: days_to_complete,
+    //      w: wifi_each_day,
+    //      s: sheep_workers_each_day
+
+    this.cost = {
+        d: dna && dna.cost && dna.cost.d ? dna.cost.d : 1,
+        w: dna && dna.cost && dna.cost.w ? dna.cost.w : 0,
+        s: dna && dna.cost && dna.cost.s ? dna.cost.s : 0
+    }
+
+    // ------------ Services
+
+    this.ResetProgress = function() {
+        this.progress = this.cost.d;
+        return this;
+    }
+    this.UpdateProgress = function() {
+        if ( !this.Report() ) return false;
+        const before = this.progress;
+        this.progress--;
+        Radio.m('Job in progress: '+this.name+', '+before+' → '+this.Report());
+        if ( this.Report() < 1 ) this.JobComplete(); // Check complete
+        return true;
+    }
+    this.JobComplete = function() {
+        Radio.m('Job done: '+this.name);
+        this.progress = 0;
+        this.finish();
+        return 'complete';
+    };
+    this.DoItRightNow = function(){
+        this.progress = 1;
+        this.UpdateProgress();
+        return this;
+    }
+    this.Report = function() {
+        return this.progress > 0 ? this.progress*1 : 0 ;
+    }
+
+    // ------------ Newborn job reflex
+
+    this.ResetProgress();
+    Radio.m('Got new job: '+this.name+'.'+this.Report());
+}
+
+
+
+
+// В этом мире правит король
+
+function KingOfWorld(name) {
+    this.name = name; // имя - признак существования
+    this.age = 0;     // возраст - признак видимости, 0=невидимый
+};
+
+// В этом мире королю помогают принцы.
+// Их несколько, у каждого свои конкретные обязанности.
+
+// PrinceOfEvolution отвечает за процессы развития
+
+function PrinceOfEvolution(name) {
+    this.name = name;
+    this.age = 0;
+};
+
+// PrinceOfGeography хранит географическую информацию и превращает её в графическую.
+
+function PrinceOfGeography(name) {
+    this.name = name;
+    this.age = 0;
+};
+
+// PrincessOfCity - представитель юзера.
+// Город хранит богатства, контролирует производство и реализацию произведённого.
+
+function PrincessOfCity(name) {
+    this.name = name;
+    this.age = 0;
+    this.label = 'Index City'; // юмя принцессы для юзера
+
+    // Свадьба принцессы - это единение с юзером.
+    // Юзер принимает руководство над городом, выбирает новое имя.
+
+    this.Marriage = function(new_dna) {
+        this.label = new_dna.label;
+        this.isMarried = true;
+        return this;
+    };
+}
+
+// Земли делят географию мира на части.
+
+// Пищевая экосистема мира 
+
+
+
+// Рождение короля и принцев
+
+let World = new KingOfWorld('World');
+let Evolution = new PrinceOfEvolution('Evolution');
+let Geo = new PrinceOfGeography('Geo');
+let City = new PrincessOfCity('City');
+
+
+</script>
+
+<!-- Конец эпизода. -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+/* ****************************************************************************
+   ЭПИЗОД II.
+   Подготовка к коронации и церемония
+   **************************************************************************** */
+   -->
+
+<script type="text/babel">
+
+Radio.chapter('Episode II');
+
+// Мистер Коронация описывает пошаговый регламент коронации.
+// Коронация генерирует белый шум в радиоэфире в случае успешной коронации.
+
+World.mrCoronation = function() {
+
+    // #CoronationRule.1 Присоединение принцев к королю
+
+    this
+        .mrPhagocytosis(Evolution)
+        .mrPhagocytosis(Geo)
+        .mrPhagocytosis(City)
+        ;
+
+    // #CoronationRule.2 Принятие хромосомы
+
+    const chromosome = new WorldChromosome(); // Выделяется хромосома.
+    this.Evolution.ApplyChromosome(chromosome); // Старший принц применяет хромосому.
+
+    // #CoronationRule.3 Конец коронации
+
+    Radio.r('White noise! Coronation!',{world:this});
+    return this;
+}
+
+// Мистер Фагоцитоз во время коронации регистрирует принца и привязывает к королю.
+
+World.registered_kidnames = [];
+World.mrPhagocytosis = function(prince) {
+    prince.world = this;                        // принц получает мир
+    this[prince.name] = prince;                 // мир получает принца
+    this.registered_kidnames.push(prince.name); // регистрация имени
+    return this;
+};
+
+// Старший принц подготавливает церемонию принятия хромосомы в мир
+
+Evolution.ApplyChromosome = function(chromosome) {
+    this.world.chromosome = chromosome;
+    this.world.name = chromosome.worldDNA.name;
+    this.world.age = chromosome.worldDNA.age;
+    return this;
+};
+
+// После коронации все принцы приглашаются на вечеринку.
+// Цель вечеринки — хорошо отдохнуть, чтобы после завершения весь мир был готов к новым приключениям.
+
+World.mrWelcomeParty = function() {
+    for ( let everyone in this.registered_kidnames )
+        this[this.registered_kidnames[everyone]].Welcome();
+    Radio.r('Welcome party completed!',{guests:this.registered_kidnames,world:this});
+    return this;
+};
+
+// Принцы подготавливаются к вечеринке.
+// Призывают собственных лордов и подготавливаются к работе.
+
+Evolution.Welcome = function() {
+    Radio.m('Welcome '+this.name+' the PrinceOfEvolution!');
+    return this;
+};
+Geo.Welcome = function() {
+    Radio.m('Welcome '+this.name+' the PrinceOfGeography!');
+    return this;
+};
+City.Welcome = function() {
+    Radio.m('Welcome '+this.name+' the PrincessOfCity!');
+    return this;
+};
+
+
+
+
+// Церемония коронации
+
+World
+    .mrCoronation()
+    .mrWelcomeParty()
+    ;
+
+</script>
+
+<!-- Конец эпизода. -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Закрываются декорации мира. -->
+
+</main>
+
+
+
+<script type="text/babel">
+Radio.pause();
+Radio.d('Last World',World);
+Radio.pause();
+/*  ****************************************************************************
+    СТАРЫЙ СЦЕНАРИЙ
+    **************************************************************************** *
+
+
+
+
+// PrinceOfEvolution отвечает за процессы развития
+
+function PrinceOfEvolution(world) {
+
+    this.world = world;
+    
+    this.Welcome = function() {
+        Radio.m('Welcome Evolution the PrinceOfEvolution!');
+        return this;
+    };
+
+    this.Aging = function() {
+        this.world.age++
+        return this;
+    };
+
+};
+
+// PrinceOfGeography хранит географическую информацию и рисует её на экране
+
+function PrinceOfGeography(world) {
+
+    this.world = world;
+    
+    this.Welcome = function() {
+        Radio.m('Welcome Geo the PrinceOfGeography!');
+        return this;
+    };
+
+};
+
+// PrincessOfCity — представитель юзера.
+// Принцесса хранит богатства, контролирует производство и реализацию произведённого.
+
+function PrincessOfCity(world) {
+
+    this.world = world;    
+    this.name = 'index_city';
+    
+    this.Welcome = function() {
+        Radio.m('Welcome City the PrincessOfCity!');
+        return this;
+    };
+    
+    // Свадьба принцессы — это единение с юзером.
+    // Во время свадьбы принцесса меняет имя.
+    
+    this.Marriage = function(new_passport) {
+        this.name = new_passport.name;
+        return this;
+    };
+    
+}
+
+
+// После коронации все принцы приглашаются на вечеринку.
+// Во время приглашения принцы призывают собственных лордов.
+// Запускают жизненные процессы и приходят на вечеринку готовые к работе.
+// После вечеринки весь мир готов к новым приключениям
+
+World.mrWelcomeParty = function() {
+    for ( let everyone in this.registered_kidnames )
+        this[this.registered_kidnames[everyone]].Welcome();
+    Radio.r('Welcome party completed!',{guests:this.registered_kidnames,world:this});
+    return this;
+};
+
+
+// Церемония коронации
+
+World
+    .mrCoronation()
+    .mrWelcomeParty()
+    ;
+
+
+    
+    
+Radio.pause();
+Radio.d('Last World',World);
+Radio.pause();
+
+// ============================================================== END OF THE WORLD
+
+/* ****************************************************************************
+   Конец эпизода.
+   **************************************************************************** */
+
+
+
+
+// Lands занимаются географием местности
+// 
+// - На землях стоят Landmarks, производят события и ресурсы
+
+// Рождение принцев внутри короля
+
+
+//Radio.d('Kids are born', World);
+
+//
+/*
+    // #CoronationRule.2 Приглашение принцев
+    // Во время приглашения принцы призывают собственных лордов
+    // И приходят в статусе «готов работать»
+    
+    // Публичное общение с королём
+
+    this.Welcome = function() {
+        Radio.m('Welcome '+this.name+' the KingOfWorld!');
+        return this;
+    };
+    
+*/
+
+</script>
+
+
+<div id="BabelOutput"></div>
+<!-- Your custom script here -->
+<script type="text/babel">
+// welcome, babel
+const getMessage = () => "Babel, welcome!";
+document.getElementById('BabelOutput').innerHTML = getMessage();
+// welcome, vue
+const vueWorldMap = new Vue({
+  el: '.WorldMap'
+});
+</script>
+
+
+<!-- =================================================== [CONTENT END] -->
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+
+
+
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== [GROUND] -->
+
+
+</body>
+</html>
