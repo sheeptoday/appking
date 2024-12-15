@@ -438,7 +438,25 @@ King.has.toRemember('кто твой создатель')
     <!-- ---------------------------------------- Диалог с моделью -->
 
     <section id="UniverseModelAppears" class="layer has-bottom-divider">
-        <div class="el-appears-message">
+        <style id="UniverseModelVideoStyle">
+            #UniverseModelVideoElement {
+                position: absolute;
+                inset: 0;
+                width: 100vw;
+                height: 100%;
+                object-fit: cover;
+                object-position: 50% 11%;
+            }
+        </style>
+        <div style="overflow:hidden;">
+            <video id="UniverseModelVideoElement"
+              --controls muted loop autoplay
+              --onloadstart="this.playbackRate = 1;"
+                ><source type="video/mp4"
+                src="art/media/KaterinaJakovlevaAsHistory.mp4"
+                /></video>
+        </div>
+        <div class="el-appears-message" style="filter:invert();">
             <div>
                 <figure class="dialog-avatar for-history">
                     <img src="art/characters/dialog-woman.svg" alt="неизвестный женский голос">
@@ -451,8 +469,8 @@ King.has.toRemember('кто твой создатель')
 
         <aside class="note">
             <div>
-                <p>Kelly Gale.</p>
-                <p>Временно исполняет отвлекающую роль.</p>
+                <p>Katerina Jakovleva</p>
+                <p>Иллюстрирует отвлекающую роль.</p>
             </div>
         </aside>
 

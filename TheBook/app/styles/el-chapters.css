@@ -157,7 +157,6 @@
     background-size:       cover;
     background-position:   50% 50%;
     background-repeat:     no-repeat;
-    background-image: url(../../art/placeholders/kelly-gale-giphy.gif);
     padding-top:      calc( 266/480*100% + 2rem );
 }
 #UniverseModelAppears .el-appears-message {
